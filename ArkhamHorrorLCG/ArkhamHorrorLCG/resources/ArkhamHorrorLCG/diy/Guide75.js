@@ -21,7 +21,7 @@ function create( diy ) {
 	setDefaults();
 	createPortraits( diy, PortraitTypeList );
 
-	diy.version = 8;
+	diy.version = 16;
 }
 
 function setDefaults() {
@@ -34,6 +34,9 @@ function setDefaults() {
 	
 	$PositionPortrait1 = 'TopLeftSmall';
 	$PositionPortrait2 = 'BottomLarge';
+
+	$LineSpacingLeft = '100';
+	$LineSpacingRight = '100';
 }
 
 function createInterface( diy, editor ) {
@@ -57,12 +60,38 @@ function createInterface( diy, editor ) {
 
 	PortraitTab.addToEditor(editor, @AHLCG-Portraits);
 
-	var LeftTextTab = layoutText( bindings, [ 'Rules' ], 'Left', FACE_FRONT );
+//	var LeftTextTab = layoutText( bindings, [ 'Rules' ], 'Left', FACE_FRONT );
+	var LeftTextPanel = layoutText( bindings, [ 'Rules' ], 'Left', FACE_FRONT );
+//	LeftTextTab.editorTabScrolling = true;
+//	LeftTextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Left );
+
+	var spacingLeftSpinner = new spinner( 10, 300, 1, 100 );
+	bindings.add( 'LineSpacingLeft', spacingLeftSpinner, [0] );
+
+	var LeftTextTab = new Grid();
 	LeftTextTab.editorTabScrolling = true;
+	LeftTextTab.place(
+		LeftTextPanel, 'wrap, pushx, growx', 
+		@AHLCG-LineSpacing, 'align left, split', spacingLeftSpinner, 'align left', '%', 'pushx, growx, wrap, align left'
+	);
+	
 	LeftTextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Left );
 
-	var RightTextTab = layoutText( bindings, [ 'Rules' ], 'Right', FACE_FRONT );
+//	var RightTextTab = layoutText( bindings, [ 'Rules' ], 'Right', FACE_FRONT );
+	var RightTextPanel = layoutText( bindings, [ 'Rules' ], 'Right', FACE_FRONT );
+//	RightTextTab.editorTabScrolling = true;
+//	RightTextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Right );
+
+	var spacingRightSpinner = new spinner( 10, 300, 1, 100 );
+	bindings.add( 'LineSpacingRight', spacingRightSpinner, [0] );
+
+	var RightTextTab = new Grid();
 	RightTextTab.editorTabScrolling = true;
+	RightTextTab.place(
+		RightTextPanel, 'wrap, pushx, growx', 
+		@AHLCG-LineSpacing, 'align left, split', spacingRightSpinner, 'align left', '%', 'pushx, growx, wrap, align left'
+	);
+	
 	RightTextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Right );
 
 	bindings.bind();
@@ -78,6 +107,10 @@ function createFrontPainter( diy, sheet ) {
 	Header_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'ResHeader-style'), null);
 	Header_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Header-alignment'));
 
+	Label_box  = markupBox(sheet);
+	Label_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Label-style'), null);
+	Label_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Label-alignment'));
+
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
@@ -88,6 +121,9 @@ function createFrontPainter( diy, sheet ) {
 	Page_box = markupBox(sheet);
 	Page_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Page-style'), null);
 	Page_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Page-alignment'));
+	
+	setupGuidePortrait( diy, 0, $PositionPortrait1, false );
+	setupGuidePortrait( diy, 1, $PositionPortrait2, false );
 }
 
 function createBackPainter( diy, sheet ) {
@@ -96,7 +132,7 @@ function createBackPainter( diy, sheet ) {
 function paintFront( g, diy, sheet ) {
 	clearImage( g, sheet );
 
-	drawGuideTemplate( g, sheet );
+	drawGuideTemplate( diy, g, sheet, Label_box );
 	
 	if ( $PageType == 'Title' ) drawName( g, diy, sheet, Name_box );
 
@@ -110,8 +146,8 @@ function paintFront( g, diy, sheet ) {
 
 	if ( $PageType == 'Empty' ) drawPageNumber( g, diy, sheet, Page_box );
 
-	drawGuideBody( g, diy, sheet, Body_box, Header_box, portraitBodyRegions[0], $RulesLeft );	
-	drawGuideBody( g, diy, sheet, Body_box, Header_box, portraitBodyRegions[1], $RulesRight );	
+	drawGuideBody( g, diy, sheet, Body_box, Header_box, portraitBodyRegions[0], $RulesLeft, parseInt( $LineSpacingLeft ));
+	drawGuideBody( g, diy, sheet, Body_box, Header_box, portraitBodyRegions[1], $RulesRight, parseInt( $LineSpacingRight ));	
 }
 
 function paintBack( g, diy, sheet ) {
@@ -132,7 +168,12 @@ function onRead(diy, oos) {
 		readPortraits( diy, oos, PortraitTypeList, true );
 	}
 
-	diy.version = 8;
+	if ( diy.version < 16 ) {
+		$LineSpacingLeft = '100';
+		$LineSpacingRight = '100';
+	}
+
+	diy.version = 16;
 }
 
 function onWrite( diy, oos ) {

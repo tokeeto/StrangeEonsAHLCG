@@ -8,7 +8,7 @@ useLibrary('tints');
 importClass( arkham.component.DefaultPortrait );
 
 const CardTypes = [ 'AssetStory', 'BackPortrait' ];
-const BindingSuffixes = [ '' ];
+const BindingSuffixes = [ '', 'Back' ];
 
 const PortraitTypeList = [ 'Portrait-Front', 'BackPortrait-Back', 'Collection-Front', 'Encounter-Front' ];
 
@@ -25,14 +25,14 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 	
-	diy.version = 11;
+	diy.version = 18;
 }
 
 function setDefaults() {
 	$Unique = '0';
 	$Subtitle = '';
 
-	$BackTypeBack = 'Player';
+//	$BackTypeBack = 'Player';
 
 	$Skill1 = 'None';
 	$Skill2 = 'None';
@@ -47,6 +47,9 @@ function setDefaults() {
 	$Stamina = 'None';
 	$Sanity = 'None';
 	
+	$PerInvestigatorStamina = '0';
+	$PerInvestigatorSanity = '0';
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
@@ -60,6 +63,9 @@ function setDefaults() {
 	
 	$Artist = '';
 	$Copyright = '';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -70,7 +76,7 @@ function createInterface( diy, editor ) {
 	var TitlePanel = layoutTitleUnique( diy, bindings, true, [0], FACE_FRONT );
 	var StatsPanel = layoutAssetStoryStats( bindings, FACE_FRONT );
 	StatsPanel.setTitle( @AHLCG-BasicData );
-	var CopyrightPanel = layoutCopyright( bindings, [0], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -123,9 +129,9 @@ function createFrontPainter( diy, sheet ) {
 	Subtype_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Subtype-style'), null);
 	Subtype_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Subtype-alignment'));
 
-	Cost_box = markupBox(sheet);
-	Cost_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Cost-style'), null);
-	Cost_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Cost-alignment'));
+//	Cost_box = markupBox(sheet);
+//	Cost_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Cost-style'), null);
+//	Cost_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Cost-alignment'));
 
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
@@ -164,7 +170,7 @@ function paintFront( g, diy, sheet ) {
 	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Asset );
 	drawName( g, diy, sheet, Name_box );
 
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, 'Neutral', true );
+	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, $CardClass, true );
 	
 	if ($CardClass == 'Weakness' ) {	
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
@@ -181,7 +187,7 @@ function paintFront( g, diy, sheet ) {
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 //	drawCollectorInfo( g, diy, sheet, true, false, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, Encounter_box, true, Copyright_box, Artist_box );
 }
 
 function paintBack( g, diy, sheet ) {
@@ -214,11 +220,23 @@ function onRead(diy, oos) {
 	if ( diy.version < 11 ) {
 		$Slot2 = 'None';
 	}
-
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 16 ) {
+		diy.settings.reset('BackTypeundefined');
+		diy.settings.reset('BackTypeBack');	// not used, will mess up Zoop
+	}
+	if ( diy.version < 18 ) {
+		$PerInvestigatorStamina = '0';
+		$PerInvestigatorSanity = '0';
+	}
+	
 	updateCollection();
 	updateEncounter();
 
-	diy.version = 11;
+	diy.version = 18;
 }
 
 function onWrite( diy, oos ) {

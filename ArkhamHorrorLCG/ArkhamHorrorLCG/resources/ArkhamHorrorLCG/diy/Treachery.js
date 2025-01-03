@@ -15,7 +15,7 @@ function create( diy ) {
 	diy.frontTemplateKey = getExpandedKey(FACE_FRONT, 'Default', '-template');	// not used, set card size
 	diy.backTemplateKey = getExpandedKey(FACE_BACK, 'Default', '-template');
 
-	diy.faceStyle = FaceStyle.PLAIN_BACK;
+	diy.faceStyle = FaceStyle.TWO_FACES;
 
 	diy.name = '';
 
@@ -24,7 +24,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
-	diy.version = 8;
+	diy.version = 16;
 }
 
 function setDefaults() {
@@ -41,6 +41,11 @@ function setDefaults() {
 	
 	$Artist = '';
 	$Copyright = '';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
+
+	$BackTypeBack = 'Encounter';	// for Zoop
 }
 
 function createInterface( diy, editor ) {
@@ -49,7 +54,7 @@ function createInterface( diy, editor ) {
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitle( diy, bindings, false, [0], FACE_FRONT );
-	var CopyrightPanel = layoutCopyright( bindings, [0], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -118,14 +123,6 @@ function createFrontPainter( diy, sheet ) {
 }
 
 function createBackPainter( diy, sheet ) {
-	// this won't be called because the default face style
-	// is a plain (unpainted) card back [FaceStyle.PLAIN_BACK]
-	// in fact, we could leave this function out altogether;
-	// look out for this when writing your own scripts
-	// (a do-nothing function will be created to stand in
-	// for any missing DIY functions, so if one of your functions
-	// doesn't seem to be getting called, check the spelling
-	// carefully)
 }
 
 function paintFront( g, diy, sheet ) {
@@ -140,12 +137,13 @@ function paintFront( g, diy, sheet ) {
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 //	drawCollectorInfo( g, diy, sheet, true, false, true, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, Encounter_box, true, Copyright_box, Artist_box );
 }
 
 function paintBack( g, diy, sheet ) {
-	// like createBackPainter(), this won't be called because of
-	// the type of card we created
+	clearImage( g, sheet );
+
+	drawBackTemplate( g, sheet );
 }
 
 function onClear() {
@@ -158,10 +156,20 @@ function onClear() {
 function onRead(diy, oos) {
 	readPortraits( diy, oos, PortraitTypeList, true );
 
+	if ( diy.version < 15 ) {
+		diy.faceStyle = FaceStyle.TWO_FACES;
+		
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 16 ) {
+		$BackTypeBack = 'Encounter';	// for Zoop
+	}
+	
 	updateCollection();
 	updateEncounter();
 	
-	diy.version = 8;
+	diy.version = 16;
 }
 
 function onWrite( diy, oos ) {

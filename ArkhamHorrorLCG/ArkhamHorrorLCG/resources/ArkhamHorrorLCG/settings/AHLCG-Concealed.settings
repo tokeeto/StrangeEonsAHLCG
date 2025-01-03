@@ -1,0 +1,14 @@
+AHLCG-Concealed-Default-template = ArkhamHorrorLCG/templates/AHLCG-Concealed.jp2
+AHLCG-ConcealedBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-ConcealedBack.jp2
+
+# Standard
+AHLCG-Concealed-Name-region =  31,256,186,65
+AHLCG-Concealed-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize*1.45}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking-0.015}; FOREGROUND: #000000
+
+# Named Decoy
+AHLCG-Concealed-DecoyName-region =  51,212,146,63
+AHLCG-Concealed-DecoyName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize*1.40}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking-0.025}; FOREGROUND: #FFFFFF
+
+AHLCG-Concealed-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-Concealed-Portrait-portrait-pany = 0
+AHLCG-Concealed-Portrait-portrait-clip-region = 0,10,244,244

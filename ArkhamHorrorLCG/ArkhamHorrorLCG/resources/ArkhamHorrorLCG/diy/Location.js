@@ -27,7 +27,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
-	diy.version = 8;
+	diy.version = 18;
 }
 
 function setDefaults() {	
@@ -58,7 +58,9 @@ function setDefaults() {
 	$Shroud = '1';
 	$Clues = '1';
 	$PerInvestigator = '1';
-	$BackType = 'Standard';
+	$ShroudPerInvestigator = '0';
+//	$BackType = 'Standard';
+	$BackTypeBack = 'Standard';
 	
 	// back
 	$TitleBack = '';
@@ -83,8 +85,13 @@ function setDefaults() {
 	$Connection6IconBack = 'Copy front';
 
 	$ArtistBack = '';
-
 	$PortraitShare = '1';
+
+	$ShowEncounterIcon = '1';	
+	$ShowEncounterIconBack = '1';
+	
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -95,18 +102,21 @@ function createInterface( diy, editor ) {
 	var TitlePanel = layoutTitle( diy, bindings, true, [0], FACE_FRONT );
 	TitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Front );
 	var StatPanel = layoutLocationStats( bindings, FACE_FRONT );
-	var ConnectionPanel = layoutConnections( bindings, [0, 1], FACE_FRONT );	
+	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
+	var ConnectionPanel = layoutConnections( false, bindings, [0, 1], FACE_FRONT );	
 	ConnectionPanel.setTitle( @AHLCG-Connections + ': ' + @AHLCG-Front );
 	
 	var BackTitlePanel = layoutTitle( diy, bindings, true, [1], FACE_BACK );
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
-	var BackConnectionPanel = layoutConnections( bindings, [1], FACE_BACK );	
+	var BackStatPanel = layoutLocationBackTypeStats( diy, bindings, FACE_BACK );
+	BackStatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Back );
+	var BackConnectionPanel = layoutConnections( true, bindings, [1], FACE_BACK );	
 	BackConnectionPanel.setTitle( @AHLCG-Connections + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [0, 1], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0, 1], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
-	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatPanel, 'wrap, pushx, growx', ConnectionPanel, 'wrap, pushx, growx', BackTitlePanel, 'wrap, pushx, growx', BackConnectionPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
+	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatPanel, 'wrap, pushx, growx', ConnectionPanel, 'wrap, pushx, growx', BackTitlePanel, 'wrap, pushx, growx', BackStatPanel, 'wrap, pushx, growx', BackConnectionPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
 	
 	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
@@ -155,7 +165,7 @@ function createFrontPainter( diy, sheet ) {
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
+//	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
 //	createTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 	setTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 
@@ -166,6 +176,8 @@ function createFrontPainter( diy, sheet ) {
 	Victory_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Victory_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Victory-alignment'));
 	Victory_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Victory', '-tightness') + '-tightness') );	
+
+	initBodyTags( diy, Victory_box );
 
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
@@ -207,6 +219,25 @@ function createBackPainter( diy, sheet ) {
 	setBackTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ) );
 
 	initBodyTags( diy, BackBody_box );	
+
+	BackArtist_box = markupBox(sheet);
+	BackArtist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Artist-style'), null);
+	BackArtist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Artist-alignment'));
+
+	BackCopyright_box = markupBox(sheet);
+	BackCopyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Copyright-style'), null);
+	BackCopyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Copyright-alignment'));
+
+	initCopyrightTags( diy, BackCopyright_box );
+/*
+	BackCollection_box = markupBox(sheet);
+	BackCollection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'CollectionNumber-style'), null);
+	BackCollection_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'CollectionNumber-alignment'));
+
+	BackEncounter_box = markupBox(sheet);
+	BackEncounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'EncounterNumber-style'), null);
+	BackEncounter_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'EncounterNumber-alignment'));
+*/
 }
 
 function paintFront( g, diy, sheet ) {
@@ -216,14 +247,13 @@ function paintFront( g, diy, sheet ) {
 
 	if ( $Subtitle.length > 0) drawSubtitleTemplate( g, sheet, '' );
 	else drawTemplate( g, sheet, '' );
-	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Location );
 	drawName( g, diy, sheet, Name_box );
 
 	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, '', false );
 	
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
 
-	drawVictory( g, diy, sheet );
+	drawVictory( g, diy, sheet, Victory_box );
 
 	if ( $LocationIcon != 'None' ) drawLocationIcon( g, diy, sheet, 'LocationIcon', true );
 
@@ -234,14 +264,23 @@ function paintFront( g, diy, sheet ) {
 		drawLocationIcon( g, diy, sheet, 'Connection' + index + 'Icon', false );
 	}
 
+	var encounterIcon = false;
+	
+	if ( $ShowEncounterIcon == '1' ) {
+		drawLocationEncounterOverlay( g, diy, sheet );
+		encounterIcon = true;
+	}
+
 //	drawCollectorInfo( g, diy, sheet, true, false, true, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, Encounter_box, encounterIcon, Copyright_box, Artist_box );
+
+	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Location );
 }
 
 function paintBack( g, diy, sheet ) {
 	clearImage( g, sheet );
 
-	if ( $BackType == 'Standard' ) {
+	if ( $BackTypeBack == 'Standard' ) {
 		if ( $PortraitShare == '1' ) {
 			PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
 		}
@@ -252,6 +291,11 @@ function paintBack( g, diy, sheet ) {
 		if ( $SubtitleBack.length > 0) drawSubtitleTemplate( g, sheet, '' );
 		else drawTemplate( g, sheet, '' );
 		
+		if ( $ShowEncounterIconBack == '1' ) {
+			drawLocationEncounterOverlay( g, diy, sheet );
+			drawEncounterIcon( g, diy, sheet );	
+		}
+
 		drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Location );
 		
 		drawName( g, diy, sheet, BackName_box );
@@ -268,17 +312,15 @@ function paintBack( g, diy, sheet ) {
 			drawLocationIcon( g, diy, sheet, 'Connection' + index + 'Icon', false );
 		}
 
-		drawEncounterIcon( g, diy, sheet );	
-
 		// this is icky...
 		if ( $PortraitShare == '1' ) {
-			if ( $Artist.length > 0) drawArtist( g, diy, sheet, true );
+			if ( $Artist.length > 0) drawArtist( g, diy, sheet, BackArtist_box, true );
 		}
 		else { 
-			if ( $ArtistBack.length > 0 ) drawArtist( g, diy, sheet, false );
+			if ( $ArtistBack.length > 0 ) drawArtist( g, diy, sheet, BackArtist_box, false );
 		}
 
-		if ( $Copyright.length > 0 ) drawCopyright( g, diy, sheet );	
+		if ( $Copyright.length > 0 ) drawCopyright( g, diy, sheet, BackCopyright_box );	
 	}
 	else {
 		drawBackTemplate( g, sheet );
@@ -406,11 +448,32 @@ function onRead(diy, oos) {
 		$SubtitleBack = '';
 		if ( $BackType == null ) $BackType = 'Standard';
 	}
+	if ( diy.version < 15 ) {
+		$ShowEncounterIconBack = '1';
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 16 ) {
+		// it's calling this multiple times, and $BackType is null on the second
+		if ( $BackType ) {
+			$BackTypeBack = $BackType;
+			diy.settings.reset('BackType');
+		}
+	}
+	if ( diy.version < 17) {
+		$ShowEncounterIcon = '1';
+	}
+	if ( diy.version < 18 ) {
+		$ShroudPerInvestigator = '0';
+	}
+	
+	// some files, probably from a test version have $BackType and $BackTypeBack == null
+//	if ( $BackTypeBack == null) $BackTypeBack = 'Standard';
 	
 	updateCollection();
 	updateEncounter();
 	
-	diy.version = 8;
+	diy.version = 18;
 }
 
 function onWrite( diy, oos ) {

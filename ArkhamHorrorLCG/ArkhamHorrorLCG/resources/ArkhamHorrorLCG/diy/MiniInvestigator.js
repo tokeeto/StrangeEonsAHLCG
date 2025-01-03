@@ -40,6 +40,9 @@ function createInterface( diy, editor ) {
 }
 
 function createFrontPainter( diy, sheet ) {	
+	Artist_box = markupBox(sheet);
+	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
+	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
 }
 
 function createBackPainter( diy, sheet ) {
@@ -51,6 +54,7 @@ function paintFront( g, diy, sheet ) {
 	drawTemplate( g, sheet, '' );
 
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
+	drawArtist( g, diy, sheet, Artist_box, false );
 }
 
 function paintBack( g, diy, sheet ) {

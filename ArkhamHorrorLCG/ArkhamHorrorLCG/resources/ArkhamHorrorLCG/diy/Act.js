@@ -23,7 +23,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 	
-	diy.version = 12;
+	diy.version = 17;
 }
 
 function setDefaults() {
@@ -66,6 +66,9 @@ function setDefaults() {
 	$VictoryBackSpacing = '0';
 	$VictoryBack = '';
 	$ScaleModifier = '100';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -78,13 +81,13 @@ function createInterface( diy, editor ) {
 	var PortraitTab = PortraitTabArray[0];
 	PortraitTabArray.splice( 0, 1 );
 
-	var TitlePanel = layoutTitle2( diy, bindings, false, [0], FACE_FRONT );
+	var TitlePanel = layoutTitle2( diy, bindings, [0], FACE_FRONT );
 	TitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Front );
-	var StatPanel = layoutActStats( diy, bindings, FACE_FRONT, PortraitTabArray );
+	var StatPanel = layoutActStats( diy, bindings, FACE_FRONT, PortraitTabArray, editor );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
-	var BackTitlePanel = layoutTitle( diy, bindings, false, [1], FACE_BACK );
+	var BackTitlePanel = layoutTitle2( diy, bindings, [1], FACE_BACK );
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [0], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -173,6 +176,8 @@ function createFrontPainter( diy, sheet ) {
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
 	Collection_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'CollectionNumber-alignment'));
 
+	initSuffixTags( diy, Collection_box );	
+
 	Encounter_box = markupBox(sheet);
 	Encounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'EncounterNumber-style'), null);
 	Encounter_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'EncounterNumber-alignment'));
@@ -180,6 +185,10 @@ function createFrontPainter( diy, sheet ) {
 	Index_box = markupBox(sheet);
 	Index_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'ScenarioIndex-style'), null);
 	Index_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'ScenarioIndex-alignment'));
+
+	initSuffixTags( diy, Index_box );	
+
+	updateOrientation( diy, PortraitList[0], $Orientation, 'Act' );
 }
 
 function createBackPainter( diy, sheet ) {
@@ -202,11 +211,13 @@ function createBackPainter( diy, sheet ) {
 	initBodyTags( diy, BackHeader_box );	
 	initBodyTags( diy, BackStory_box );	
 	initBodyTags( diy, BackBody_box );	
-	
+		
 	BackIndex_box = markupBox(sheet);
-	BackIndex_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'ScenarioIndex-style'), null);
-	BackIndex_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'ScenarioIndex-alignment'));
-	BackIndex_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'ScenarioIndex', '-tightness') + '-tightness') );		
+	BackIndex_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'BackScenarioIndex-style'), null);
+	BackIndex_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'BackScenarioIndex-alignment'));
+	BackIndex_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'BackScenarioIndex', '-tightness') + '-tightness') );		
+
+	initSuffixTags( diy, BackIndex_box );	
 }
 
 function paintFront( g, diy, sheet ) {
@@ -216,14 +227,14 @@ function paintFront( g, diy, sheet ) {
 
 	drawTemplate( g, sheet, '' );
 
-	drawActAgendaName( g, diy, sheet, Name_box );
+	draw2LineName( g, diy, sheet, Name_box );
 
 	drawBody( g, diy, sheet, Body_box, new Array( 'ActStory', 'Rules' ) );
 
 	drawClues( g, diy, sheet );
 
 //	drawCollectorInfo( g, diy, sheet, true, false, true, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, Encounter_box, true, Copyright_box, Artist_box );
 	
 	drawScenarioIndexFront( g, diy, sheet, #AHLCG-Label-Act, Index_box );
 }
@@ -232,8 +243,8 @@ function paintBack( g, diy, sheet ) {
 	clearImage( g, sheet );
 
 	drawTemplate( g, sheet, '' );
-	
-	drawRotatedName( g, diy, sheet );
+
+	drawActAgendaBackName( g, diy, sheet );
 
 	drawIndentedStoryBody( g, diy, sheet, null, BackHeader_box, BackStory_box, BackBody_box );
 
@@ -244,45 +255,7 @@ function paintBack( g, diy, sheet ) {
 function onClear() {
 	setDefaults();
 }
-/*
-function createTextShape( textBox, textRegion, reverse ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
-	
-	var path = new java.awt.geom.Path2D.Double();
 
-	var xPathPoints = new Array( 0.000, 0.000, 0.715, 0.830, 0.830, 1.000, 1.000 );
-	var yPathPoints = new Array( 0.000, 1.000, 1.000, 0.957, 0.850, 0.850, 0.000 );
-	
-	var numPoints = xPathPoints.length;
-	
-	if ( reverse ) {
-		// swap order and x-value
-		for (let i = 0; i < numPoints / 2; i++) {
-			let px = xPathPoints[i];
-			let py = yPathPoints[i];
-			
-			xPathPoints[i] = 1.000 - xPathPoints[numPoints - i - 1];
-			yPathPoints[i] = yPathPoints[numPoints - i - 1];
-			
-			xPathPoints[numPoints - i - 1] = 1.000 - px;
-			yPathPoints[numPoints - i - 1] = py;
-		}
-	}
-	
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	for (let i = 1; i < numPoints; i++) {
-		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-*/
 function setTextShape( box, region, reverse ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -328,11 +301,20 @@ function onRead(diy, oos) {
 		$VictoryBack = '';
 		$VictoryBackSpacing = '0';
 	}
-	
+	if ( diy.version ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 17) {		
+		// region changed, requires a shift to look the same
+		var offset = ( $Orientation == 'Reversed' ) ? -10.0 : 10.0;
+		PortraitList[0].setPanX(PortraitList[0].getPanX() + offset);
+	}
+
 	updateCollection();
 	updateEncounter();
 	
-	diy.version = 12;
+	diy.version = 17;
 }
 
 function onWrite( diy, oos ) {

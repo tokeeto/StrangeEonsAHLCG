@@ -19,6 +19,9 @@ importClass( javax.swing.table.DefaultTableModel );
 importClass( ca.cgjennings.apps.arkham.diy.SBDropDown );
 
 useLibrary( 'res://ArkhamHorrorLCG/diy/AHLCG-layoutLibrary.js' );
+useLibrary( 'res://ArkhamHorrorLCG/diy/AHLCG-utilLibrary.js' );
+
+var defaultFontSettingsChanged;
 
 function createSetData() {
 	var data = {
@@ -173,6 +176,45 @@ function createSetData() {
 
 				this.dcComboBox = comboBox( itemArray );
 				this.dcComboBox.setPreferredSize( boxSize );
+
+				// font controls
+				var fontArray = createFontData();
+
+				function modifyFont( actionEvent ) {
+					defaultFontSettingsChanged = true;
+				}
+
+				this.fTitleComboBox = comboBox( fontArray, modifyFont );
+				this.fSubtitleComboBox = comboBox( fontArray, modifyFont );
+				this.fCardTypeComboBox = comboBox( fontArray, modifyFont );
+				this.fBodyComboBox = comboBox( fontArray, modifyFont );
+				this.fTraitComboBox = comboBox( fontArray, modifyFont );
+				this.fVictoryComboBox = comboBox( fontArray, modifyFont );
+				this.fFlavorComboBox = comboBox( fontArray, modifyFont );
+				this.fStoryComboBox = comboBox( fontArray, modifyFont );
+				this.fCollectionComboBox = comboBox( fontArray, modifyFont );
+				
+				this.fTitleSize = spinner( 1, 200, 1, 100, modifyFont );
+				this.fSubtitleSize = spinner( 1, 200, 1, 100, modifyFont );
+				this.fCardTypeSize = spinner( 1, 200, 1, 100, modifyFont );
+				this.fBodySize = spinner( 1, 200, 1, 100, modifyFont );
+				this.fTraitSize = spinner( 1, 200, 1, 100, modifyFont );
+				this.fVictorySize = spinner( 1, 200, 1, 100, modifyFont );
+				this.fFlavorSize = spinner( 1, 200, 1, 100, modifyFont );
+				this.fStorySize = spinner( 1, 200, 1, 100, modifyFont );
+				this.fCollectionSize = spinner( 1, 200, 1, 100, modifyFont );
+
+				this.fTitleOffset = spinner( -10, 10, 1, 0, modifyFont );
+				this.fSubtitleOffset = spinner( -10, 10, 1, 0, modifyFont );
+				this.fCardTypeOffset = spinner( -10, 10, 1, 0, modifyFont );
+				this.fBodyOffset = spinner( -10, 10, 1, 0, modifyFont );
+				this.fTraitOffset = spinner( -10, 10, 1, 0, modifyFont );
+				this.fVictoryOffset = spinner( -10, 10, 1, 0, modifyFont );
+				this.fFlavorOffset = spinner( -10, 10, 1, 0, modifyFont );
+				this.fStoryOffset = spinner( -10, 10, 1, 0, modifyFont );
+				this.fCollectionOffset = spinner( -10, 10, 1, 0, modifyFont );
+
+				this.fRotateTitleCheckBox = checkBox( @AHLCG-Pref-RotateTitle, true, modifyFont );
 			} catch ( ex ) {
 				Error.handleUncaught( ex );
 			} 
@@ -182,11 +224,22 @@ function createSetData() {
 	return data;
 }
 
+function createFontData() {
+	let families = FontUtils.availableFontFamilies();
+	families.splice( 0, 0, 'Default' );
+	
+	return families;
+}
+/*
+function defaultFontListener( actionEvent ) {
+	defaultFontSettingsChanged = true;
+}
+*/
 function addPreferences() {
 try {
 	var data = createSetData();
 	data.initialize();
-
+	
 	var seTable = new JResizableTable( data.seTableModel );
 	seTable.getColumnModel().getColumn(0).setPreferredWidth(20);
 	seTable.getColumnModel().getColumn(1).setPreferredWidth(250);
@@ -249,15 +302,14 @@ try {
 		storeSettings: function() {
 			storeAHLCGPreferences( data );
 		}
-	}, @AHLCG, 'ArkhamHorrorLCG/icons/AHLCG-Game.png' );	
+	}, @AHLCG, 'ArkhamHorrorLCG/icons/AHLCG-GameL.png' );	
 
-	pc.heading( @AHLCG ); 
-	pc.subheading( @AHLCG-Pref-DefaultValues );
+	pc.heading( @AHLCG-Pref-DefaultValues );
 	
 	pc.label( @AHLCG-Pref-DefaultSet );
 	pc.join();
 	pc.addUnmanagedControl( data.deComboBox );
-
+	
 	pc.label( @AHLCG-Pref-DefaultCollection );
 	pc.join();
 	pc.addUnmanagedControl( data.dcComboBox );
@@ -268,7 +320,7 @@ try {
 	data.scTableModel.addTableModelListener( cTableListener );
 	data.ucTableModel.addTableModelListener( cTableListener );
 
-	pc.subheading( @AHLCG-Pref-EncounterSets );
+	pc.heading( @AHLCG-Pref-EncounterSets );
 	pc.join();
 	pc.addTip( @AHLCG-PrefEncounterTip );
 	pc.indent();
@@ -378,7 +430,7 @@ try {
 	pc.label( @AHLCG-Pref-AddCustomSet );
 	pc.addUnmanagedControl( ueOuterPanel );
 
-	pc.subheading( @AHLCG-Pref-Collections );
+	pc.heading( @AHLCG-Pref-Collections );
 	pc.join();
 	pc.addTip( @AHLCG-PrefCollectionTip );
 	pc.indent();
@@ -488,6 +540,135 @@ try {
 	pc.label( @AHLCG-Pref-AddCustomCollection );
 	pc.addUnmanagedControl( ucOuterPanel );
 
+	pc.heading( @AHLCG-Pref-DefaultFonts );
+	pc.join();
+	pc.addTip( @AHLCG-PrefDefaultFontsTip );
+
+	pc.label( @AHLCG-Pref-TitleFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fTitleComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fTitleSize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fTitleOffset );
+	pc.unindent();
+
+	pc.label( @AHLCG-Pref-SubtitleFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fSubtitleComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fSubtitleSize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fSubtitleOffset );
+	pc.unindent();
+
+	pc.label( @AHLCG-Pref-CardTypeFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fCardTypeComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fCardTypeSize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fCardTypeOffset );
+	pc.unindent();
+	
+	pc.label( @AHLCG-Pref-BodyFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fBodyComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fBodySize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fBodyOffset );
+	pc.unindent();
+	
+	pc.label( @AHLCG-Pref-TraitFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fTraitComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fTraitSize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fTraitOffset );
+	pc.unindent();
+	
+	pc.label( @AHLCG-Pref-VictoryFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fVictoryComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fVictorySize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fVictoryOffset );
+	pc.unindent();
+	
+	pc.label( @AHLCG-Pref-FlavorFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fFlavorComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fFlavorSize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fFlavorOffset );
+	pc.unindent();
+	
+	pc.label( @AHLCG-Pref-StoryFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fStoryComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fStorySize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fStoryOffset );
+	pc.unindent();
+	
+	pc.label( @AHLCG-Pref-CollectionFont );
+	pc.indent();
+	pc.addUnmanagedControl( data.fCollectionComboBox );
+	pc.join();
+	pc.label( @AHLCG-Pref-Size );
+	pc.join();
+	pc.addUnmanagedControl( data.fCollectionSize );
+	pc.join();
+	pc.label( @AHLCG-Pref-VerticalOffset );
+	pc.join();
+	pc.addUnmanagedControl( data.fCollectionOffset );
+	pc.unindent();
+
+	pc.heading( @AHLCG-Pref-LanguageOptions );
+	pc.indent();
+	pc.addUnmanagedControl( data.fRotateTitleCheckBox );
+	pc.join();
+	pc.unindent();
+	
+	pc.addResetKeys( 'AHLCG-FontsEdited' );
+
 	Preferences.registerCategory( pc );
 } catch ( ex ) {
 	Error.handleUncaught (ex);
@@ -517,9 +698,10 @@ function loadAHLCGPreferences( data ) {
 	
 	for( index = 0; index < AHLCGObject.standardEncounterList.length; index++ ) {
 		let entry = AHLCGObject.standardEncounterList[index];
-		let collection = AHLCGObject.standardCollectionList[ entry[1] ];
-
-				let used = loadUsedValue( 'Encounter', entry[3] );
+//		let collection = AHLCGObject.standardCollectionList[ entry[1] ];
+		let collection = AHLCGObject.standardCollectionList[ getCollectionIndexForID( entry[1] )];
+		
+		let used = loadUsedValue( 'Encounter', entry[3] );
 
 		data.seTableModel.addRow( [ used, @( 'AHLCG-' + entry[0] ), @( 'AHLCG-' + collection[0] ), entry[2] ] );	
 	}	
@@ -540,8 +722,9 @@ function loadAHLCGPreferences( data ) {
 	
 	for( index = 0; index < AHLCGObject.standardCollectionList.length; index++ ) {
 		let entry = AHLCGObject.standardCollectionList[index];
- 
-		let used = loadUsedValue( 'Collection', index );
+
+//		let used = loadUsedValue( 'Collection', index );
+		let used = loadUsedValue( 'Collection', entry[2] );
 		
 		data.scTableModel.addRow( [ used, @( 'AHLCG-' + entry[0] ), entry[1] ] );						
 	}	
@@ -560,6 +743,43 @@ function loadAHLCGPreferences( data ) {
 
 	selectDefaultEncounter( data, defaultEncounter );
 	selectDefaultCollection( data, defaultCollection );
+
+	// default fonts
+	updateDefaultFont( data.fTitleComboBox, settings.get( 'AHLCG-DefaultTitleFont', 'Default' ) );
+
+	updateDefaultFont( data.fSubtitleComboBox, settings.get( 'AHLCG-DefaultSubtitleFont', 'Default' ) );
+	updateDefaultFont( data.fCardTypeComboBox, settings.get( 'AHLCG-DefaultCardTypeFont', 'Default' ) );
+	updateDefaultFont( data.fBodyComboBox, settings.get( 'AHLCG-DefaultBodyFont', 'Default' ) );
+	updateDefaultFont( data.fTraitComboBox, settings.get( 'AHLCG-DefaultTraitFont', 'Default' ) );
+	updateDefaultFont( data.fVictoryComboBox, settings.get( 'AHLCG-DefaultVictoryFont', 'Default' ) );
+	updateDefaultFont( data.fFlavorComboBox, settings.get( 'AHLCG-DefaultFlavorFont', 'Default' ) );
+	updateDefaultFont( data.fStoryComboBox, settings.get( 'AHLCG-DefaultStoryFont', 'Default' ) );
+	updateDefaultFont( data.fCollectionComboBox, settings.get( 'AHLCG-DefaultCollectionFont', 'Default' ) );
+
+	data.fTitleSize.setValue( parseInt( settings.get( 'AHLCG-DefaultTitleFontSize', 100 )));
+	data.fSubtitleSize.setValue( parseInt( settings.get( 'AHLCG-DefaultSubtitleFontSize', 100 )));
+	data.fCardTypeSize.setValue( parseInt( settings.get( 'AHLCG-DefaultCardTypeFontSize', 100 )));
+	data.fBodySize.setValue( parseInt( settings.get( 'AHLCG-DefaultBodyFontSize', 100 )));
+	data.fTraitSize.setValue( parseInt( settings.get( 'AHLCG-DefaultTraitFontSize', 100 )));
+	data.fVictorySize.setValue( parseInt( settings.get( 'AHLCG-DefaultVictoryFontSize', 100 )));
+	data.fFlavorSize.setValue( parseInt( settings.get( 'AHLCG-DefaultFlavorFontSize', 100 )));
+	data.fStorySize.setValue( parseInt( settings.get( 'AHLCG-DefaultStoryFontSize', 100 )));
+	data.fCollectionSize.setValue( parseInt( settings.get( 'AHLCG-DefaultCollectionFontSize', 100 )));
+
+	data.fTitleOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultTitleFontOffset', 0 )));
+	data.fSubtitleOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultSubtitleFontOffset', 0 )));
+	data.fCardTypeOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultCardTypeFontOffset', 0 )));
+	data.fBodyOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultBodyFontOffset', 0 )));
+	data.fTraitOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultTraitFontOffset', 0 )));
+	data.fVictoryOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultVictoryFontOffset', 0 )));
+	data.fFlavorOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultFlavorFontOffset', 0 )));
+	data.fStoryOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultStoryFontOffset', 0 )));
+	data.fCollectionOffset.setValue( parseInt( settings.get( 'AHLCG-DefaultCollectionFontOffset', 0 )));
+	
+	data.fRotateTitleCheckBox.setSelected( settings.getBoolean( 'AHLCG-DefaultRotateTitle', true ));
+
+	settings.reset( 'AHLCG-FontsEdited' );
+	defaultFontSettingsChanged = false;
 }
 
 function storeAHLCGPreferences( data ) {
@@ -642,7 +862,22 @@ function storeAHLCGPreferences( data ) {
 	usedString = '';
 	settingsIndex = 1;
 	for( index = 0; index < AHLCGObject.standardCollectionList.length; index++ ) {		
-		let value = data.scTableModel.getValueAt( index, 0 );
+		// we need to convert this index into the used setting string index		
+		let usedIndex = -1;
+
+		for ( i = 0; i < AHLCGObject.standardCollectionList.length; i++) {
+			let entry = AHLCGObject.standardCollectionList[i];
+			
+			if ( entry[2] == index ) {
+				usedIndex = i;		
+				break;
+			}
+		}
+
+		if (usedIndex < 0) continue;
+
+//		let value = data.scTableModel.getValueAt( index, 0 );
+		let value = data.scTableModel.getValueAt( usedIndex, 0 );
 
 		if ( value == java.lang.Boolean(false) ) usedString = usedString + '0';
 		else usedString = usedString + '1';
@@ -689,6 +924,44 @@ function storeAHLCGPreferences( data ) {
 
 	updateUsedEncounterSets( AHLCGObject );
 	updateUsedCollections( AHLCGObject );
+
+	// default fonts
+	if (defaultFontSettingsChanged) {
+		settings.set( 'AHLCG-DefaultTitleFont', data.fTitleComboBox.getSelectedItem().toString() );
+		settings.set( 'AHLCG-DefaultSubtitleFont', data.fSubtitleComboBox.getSelectedItem().toString() );
+		settings.set( 'AHLCG-DefaultCardTypeFont', data.fCardTypeComboBox.getSelectedItem().toString() );
+		settings.set( 'AHLCG-DefaultBodyFont', data.fBodyComboBox.getSelectedItem().toString() );
+		settings.set( 'AHLCG-DefaultTraitFont', data.fTraitComboBox.getSelectedItem().toString() );
+		settings.set( 'AHLCG-DefaultVictoryFont', data.fVictoryComboBox.getSelectedItem().toString() );
+		settings.set( 'AHLCG-DefaultFlavorFont', data.fFlavorComboBox.getSelectedItem().toString() );
+		settings.set( 'AHLCG-DefaultStoryFont', data.fStoryComboBox.getSelectedItem().toString() );
+		settings.set( 'AHLCG-DefaultCollectionFont', data.fCollectionComboBox.getSelectedItem().toString() );
+
+		settings.set( 'AHLCG-DefaultTitleFontSize', data.fTitleSize.getValue() );
+		settings.set( 'AHLCG-DefaultSubtitleFontSize', data.fSubtitleSize.getValue() );
+		settings.set( 'AHLCG-DefaultCardTypeFontSize', data.fCardTypeSize.getValue() );
+		settings.set( 'AHLCG-DefaultBodyFontSize', data.fBodySize.getValue() );
+		settings.set( 'AHLCG-DefaultTraitFontSize', data.fTraitSize.getValue() );
+		settings.set( 'AHLCG-DefaultVictoryFontSize', data.fVictorySize.getValue() );
+		settings.set( 'AHLCG-DefaultFlavorFontSize', data.fFlavorSize.getValue() );
+		settings.set( 'AHLCG-DefaultStoryFontSize', data.fStorySize.getValue() );
+		settings.set( 'AHLCG-DefaultCollectionFontSize', data.fCollectionSize.getValue() );
+
+		settings.set( 'AHLCG-DefaultTitleFontOffset', data.fTitleOffset.getValue() );
+		settings.set( 'AHLCG-DefaultSubtitleFontOffset', data.fSubtitleOffset.getValue() );
+		settings.set( 'AHLCG-DefaultCardTypeFontOffset', data.fCardTypeOffset.getValue() );
+		settings.set( 'AHLCG-DefaultBodyFontOffset', data.fBodyOffset.getValue() );
+		settings.set( 'AHLCG-DefaultTraitFontOffset', data.fTraitOffset.getValue() );
+		settings.set( 'AHLCG-DefaultVictoryFontOffset', data.fVictoryOffset.getValue() );
+		settings.set( 'AHLCG-DefaultFlavorFontOffset', data.fFlavorOffset.getValue() );
+		settings.set( 'AHLCG-DefaultStoryFontOffset', data.fStoryOffset.getValue() );
+		settings.set( 'AHLCG-DefaultCollectionFontOffset', data.fCollectionOffset.getValue() );
+
+		settings.setBoolean( 'AHLCG-DefaultRotateTitle', data.fRotateTitleCheckBox.isSelected() );
+
+		// I don't know why this is necessary, but if I just addResetKeys one of the main ones, it always triggers, even if we don't write it here
+		settings.setBoolean( 'AHLCG-FontsEdited', true );
+	}
 }
 
 function verifyUserEncounter( name, icon, tag, data ) {
@@ -912,4 +1185,28 @@ function selectDefaultCollection( data, value ) {
 	}
 		
 	data.dcComboBox.setSelectedIndex(selectedIndex);
+}
+
+function getCollectionIndexForID(collectionID) {
+	var AHLCGObject = Eons.namedObjects.AHLCGObject;
+
+	for (i = 0; i < AHLCGObject.standardCollectionList.length; i++) {
+		if ( AHLCGObject.standardCollectionList[i][2] == collectionID ) return i;
+	}
+}
+
+function updateDefaultFont( combobox, value ) {
+	var selectedItem = combobox.getSelectedItem();
+	var selectedIndex = 0;	// Default
+
+	for ( let i = 0; i < combobox.getItemCount(); i++) {
+		let item = combobox.getItemAt(i).toString();
+
+		if ( item == value ) {
+			selectedIndex = i;
+			break;
+		}
+	}
+
+	combobox.setSelectedIndex(selectedIndex);
 }

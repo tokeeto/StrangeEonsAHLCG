@@ -22,7 +22,7 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
 	
-	diy.version = 12;
+	diy.version = 15;
 }
 
 function setDefaults() {
@@ -54,7 +54,7 @@ function setDefaults() {
 	$Text3NameBack = 'Deckbuilding Options';
 	$Text3Back = '';
 	$Text3BackSpacing = '0';
-	$Text4NameBack = 'Deckbuilding Requirements</b> (do not count toward deck size)';
+	$Text4NameBack = 'Deckbuilding Requirements</hdr> (do not count toward deck size)<hdr>';
 	$Text4Back = '';
 	$Text4BackSpacing = '0';
 	$Text5NameBack = 'Deckbuilding Restrictions';
@@ -90,16 +90,19 @@ function setDefaults() {
 	$Copyright = '';
 
 	$PortraitShare = '1';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitleUnique( diy, bindings, true, [0, 1], FACE_FRONT );
 	var StatPanel = layoutInvestigatorStats( diy, bindings, FACE_FRONT );
-	var CopyrightPanel = layoutCopyright( bindings, [0], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -189,7 +192,7 @@ function createBackPainter( diy, sheet ) {
 	initBodyTags( diy, BackBody_box );	
 }
 
-function paintFront( g, diy, sheet ) {
+function paintFront( g, diy, sheet ) {	
 	clearImage( g, sheet );
 
 	drawTemplate( g, sheet, $CardClass );
@@ -208,11 +211,10 @@ function paintFront( g, diy, sheet ) {
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
 
 //	drawCollectorInfo( g, diy, sheet, true, false, false, false, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, null, false, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, null, false, Copyright_box, Artist_box );
 }
 
 function paintBack( g, diy, sheet ) {
-
 	clearImage( g, sheet );
 
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
@@ -255,6 +257,7 @@ function getPathPointArrays( className ) {
 		case 'Mystic':
 		case 'ParallelMystic':
 		case 'Survivor':
+		case 'ParallelSurvivor':
 			pointArray[0] = new Array( 0.355, 0.315, 0.276, 0.264, 0.010, 0.010, 1.0, 1.0 );
 //			pointArray[1] = new Array( 0.000, 0.544, 0.544, 0.631, 0.631, 1.000, 1.0, 0.0 );
 			pointArray[1] = new Array( 0.000, 0.544, 0.544, 0.611, 0.611, 1.000, 1.0, 0.0 );
@@ -325,7 +328,7 @@ function onRead(diy, oos) {
 		$Text1NameBack = 'Deck Size';
 		$Text2NameBack = 'Secondary Class Choice';
 		$Text3NameBack = 'Deckbuilding Options';
-		$Text4NameBack = 'Deckbuilding Requirements</b> (do not count toward deck size)';
+		$Text4NameBack = 'Deckbuilding Requirements</hdr> (do not count toward deck size)<hdr>';
 		$Text5NameBack = 'Deckbuilding Restrictions';
 		$Text6NameBack = 'Additional Requirements';
 		$Text7NameBack = 'Additional Restrictions';
@@ -340,6 +343,7 @@ function onRead(diy, oos) {
 		$Text7Back = '';
 		$Text8Back = '';
 
+		// this may just be needed because of corrupt .eon files, but it can't hurt
 		if ( $Text1Back == null ) $Text1Back = '';
 		if ( $Text2Back == null ) $Text2Back = '';
 		if ( $Text3Back == null ) $Text3Back = '';
@@ -354,18 +358,35 @@ function onRead(diy, oos) {
 		$Text5BackSpacing = $DeckRestrictionsBackSpacing;
 		$Text6BackSpacing = $AdditionalRequirementsBackSpacing;
 		$Text7BackSpacing = '0';
-
+		
 		if ( $Text1BackSpacing == null ) $Text1BackSpacing = '0';
 		if ( $Text2BackSpacing == null ) $Text2BackSpacing = '0';
 		if ( $Text3BackSpacing == null ) $Text3BackSpacing = '0';
 		if ( $Text4BackSpacing == null ) $Text4BackSpacing = '0';
 		if ( $Text5BackSpacing == null ) $Text5BackSpacing = '0';
 		if ( $Text6BackSpacing == null ) $Text6BackSpacing = '0';
+		
+		diy.settings.reset('DeckSizeBack');
+		diy.settings.reset('SecondaryClassBack');
+		diy.settings.reset('DeckOptionsBack');
+		diy.settings.reset('DeckRequirementsBack');
+		diy.settings.reset('DeckRestrictionsBack');
+		diy.settings.reset('AdditionalReuirementsBack');
+		diy.settings.reset('DeckSizeBackSpacing');
+		diy.settings.reset('SecondaryClassBackSpacing');
+		diy.settings.reset('DeckOptionsBackSpacing');
+		diy.settings.reset('DeckRequirementsBackSpacing');
+		diy.settings.reset('DeckRestrictionsBackSpacing');
+		diy.settings.reset('AdditionalRequirementsBackSpacing');
 	}
-	
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}	
+
 	updateCollection();
 	
-	diy.version = 12;
+	diy.version = 15;
 }
 
 function onWrite( diy, oos ) {

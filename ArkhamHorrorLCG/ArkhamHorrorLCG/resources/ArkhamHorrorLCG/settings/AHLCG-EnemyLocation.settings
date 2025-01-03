@@ -1,0 +1,105 @@
+AHLCG-EnemyLocation-Default-template = ArkhamHorrorLCG/templates/AHLCG-EnemyLocation.jp2
+AHLCG-EnemyLocationBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-Location.jp2
+
+AHLCG-EnemyLocation-Name-region = 65,4,242,29
+AHLCG-EnemyLocation-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
+AHLCG-EnemyLocation-Label-region = 138,278,100,14
+AHLCG-EnemyLocation-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
+AHLCG-EnemyLocation-SubtitleText-region = 95,36,191,21
+
+AHLCG-EnemyLocationBack-Name-region = 65,4,242,29
+AHLCG-EnemyLocationBack-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
+AHLCG-EnemyLocationBack-Label-region = 138,278,100,14
+AHLCG-EnemyLocationBack-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
+AHLCG-EnemyLocationBack-SubtitleText-region = 95,36,191,21
+
+AHLCG-EnemyLocation-EncounterOverlay-region = 163, 234, 50, 50
+AHLCG-EnemyLocationBack-EncounterOverlay-region = 163, 234, 50, 50
+
+AHLCG-EnemyLocation-Body-region = 20,358,336,143
+AHLCG-EnemyLocationBack-Body-region = 20,300,336,143
+
+AHLCG-EnemyLocation-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-EnemyLocation-Portrait-portrait-pany = 0
+AHLCG-EnemyLocation-Portrait-portrait-clip-region = 0,42,375,325
+
+AHLCG-EnemyLocationBack-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-EnemyLocationBack-BackPortrait-portrait-pany = 0
+AHLCG-EnemyLocationBack-BackPortrait-portrait-clip-region = 0,42,375,275
+
+AHLCG-EnemyLocation-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-EnemyLocation-BackPortrait-portrait-pany = 0
+AHLCG-EnemyLocation-BackPortrait-portrait-clip-region = 0,42,375,275
+
+AHLCG-EnemyLocation-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-EnemyLocation-Encounter-portrait-pany = 0
+AHLCG-EnemyLocation-DefaultEncounter-portrait-clip-region = 174,304,28,28
+AHLCG-EnemyLocation-Encounter-portrait-clip-region = 174,304,28,28
+AHLCG-EnemyLocation-ReturnEncounter-portrait-clip-region = 170,391,37,34
+
+AHLCG-EnemyLocationBack-Encounter-portrait-clip-region = 174,245,28,28
+AHLCG-EnemyLocationBack-ReturnEncounter-portrait-clip-region = 170,241,37,34
+
+AHLCG-EnemyLocation-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-EnemyLocation-Collection-portrait-pany = 0
+AHLCG-EnemyLocation-DefaultCollection-portrait-clip-region = 320,510,13,13
+AHLCG-EnemyLocation-Collection-portrait-clip-region = 320,510,13,13
+
+AHLCG-EnemyLocationBack-DefaultCollection-portrait-clip-region = 320,510,13,13
+AHLCG-EnemyLocationBack-Collection-portrait-clip-region = 320,510,13,13
+
+AHLCG-EnemyLocationIcon-region = 14,6,36,35
+AHLCG-Connection1Icon-region = 67,467,35,35
+AHLCG-Connection2Icon-region = 108,459,35,35
+AHLCG-Connection3Icon-region = 150,456,34,34
+AHLCG-Connection4Icon-region = 191,456,34,34
+AHLCG-Connection5Icon-region = 232,459,35,35
+AHLCG-Connection6Icon-region = 273,467,35,35
+
+AHLCG-EnemyLocation-Shroud-region = 0,310,49,50
+AHLCG-EnemyLocation-ShroudPerInv-region = 0,310,49,49
+AHLCG-EnemyLocation-ShroudPerInvIcon-region = 27,310,29,49
+AHLCG-EnemyLocation-Clues-region = 318,310,49,50
+AHLCG-EnemyLocation-CluesPerInv-region = 311,310,49,49
+AHLCG-EnemyLocation-CluesPerInvIcon-region = 338,310,29,49
+
+AHLCG-EnemyLocation-Victory-region = 262,458,104,42
+AHLCG-EnemyLocation-Victory-alignment = right, bottom
+AHLCG-EnemyLocation-Victory-tightness = 0.7
+
+AHLCG-BaseIcon-region = 9,1,47,46
+
+AHLCG-EnemyLocation-Copyright-region = 143,513,86,10
+AHLCG-EnemyLocationBack-Copyright-region = 128,513,86,10
+
+# -1 value means inverted color png
+AHLCG-EnemyLocation-Dash-tint = 38.0, 0.14, -1.0
+
+
+AHLCG-EnemyLocation-Label-region = 157,308,61,14
+AHLCG-EnemyLocation-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
+
+AHLCG-EnemyLocation-Attack-region = 100,51,26,27
+AHLCG-EnemyLocation-AttackPerInv-region = 96,51,24,27
+AHLCG-EnemyLocation-AttackPerInvIcon-region = 115,56,14,14
+AHLCG-EnemyLocation-Evade-region = 246,51,26,27
+AHLCG-EnemyLocation-EvadePerInv-region = 242,51,24,27
+AHLCG-EnemyLocation-EvadePerInvIcon-region = 261,56,14,14
+AHLCG-EnemyLocation-Health-region = 168,45,40,35
+AHLCG-EnemyLocation-HealthPerInv-region = 169,45,27,35
+AHLCG-EnemyLocation-HealthPerInvIcon-region = 190,52,17,17
+
+AHLCG-EnemyLocation-Damage1-region = 93,335,19,23
+AHLCG-EnemyLocation-Damage2-region = 73,341,19,23
+AHLCG-EnemyLocation-Damage3-region = 53,347,19,23
+AHLCG-EnemyLocation-Damage4-region = 33,355,19,23
+AHLCG-EnemyLocation-Damage5-region = 13,365,19,23
+AHLCG-EnemyLocation-Horror1-region = 253,335,27,24
+AHLCG-EnemyLocation-Horror2-region = 275,341,27,24
+AHLCG-EnemyLocation-Horror3-region = 297,347,27,24
+AHLCG-EnemyLocation-Horror4-region = 319,355,27,24
+AHLCG-EnemyLocation-Horror5-region = 342,365,27,24
+
+AHLCG-EnemyLocation-Dash-tint = 38.0, 0.14, 1.0
+
+

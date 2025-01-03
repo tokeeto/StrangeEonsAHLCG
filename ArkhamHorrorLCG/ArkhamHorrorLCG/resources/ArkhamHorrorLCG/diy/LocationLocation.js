@@ -27,7 +27,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
-	diy.version = 8;
+	diy.version = 17;
 }
 
 function setDefaults() {	
@@ -58,6 +58,7 @@ function setDefaults() {
 	$Shroud = '1';
 	$Clues = '1';
 	$PerInvestigator = '1';
+	$ShroudPerInvestigator = '0';
 	
 	// back
 	$TitleBack = '';
@@ -89,6 +90,12 @@ function setDefaults() {
 	$ArtistBack = '';
 
 	$PortraitShare = '1';
+
+	$ShowEncounterIcon = '1';
+	$ShowEncounterIconBack = '1';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -100,16 +107,16 @@ function createInterface( diy, editor ) {
 	TitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Front );
 	var StatPanel = layoutLocationBackStats( bindings, FACE_FRONT );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
-	var ConnectionPanel = layoutConnections( bindings, [0, 1], FACE_FRONT );	
+	var ConnectionPanel = layoutConnections( false, bindings, [0, 1], FACE_FRONT );	
 	ConnectionPanel.setTitle( @AHLCG-Connections + ': ' + @AHLCG-Front );
 	
 	var BackTitlePanel = layoutTitle( diy, bindings, true, [1], FACE_BACK );
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
 	var BackStatPanel = layoutLocationBackStats( bindings, FACE_BACK );
 	BackStatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Back );
-	var BackConnectionPanel = layoutConnections( bindings, [1], FACE_BACK );	
+	var BackConnectionPanel = layoutConnections( true, bindings, [1], FACE_BACK );	
 	BackConnectionPanel.setTitle( @AHLCG-Connections + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [0, 1], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0, 1], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -174,6 +181,8 @@ function createFrontPainter( diy, sheet ) {
 	Victory_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Victory-alignment'));
 	Victory_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Victory', '-tightness') + '-tightness') );	
 
+	initBodyTags( diy, Victory_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -221,6 +230,8 @@ function createBackPainter( diy, sheet ) {
 	BackVictory_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Victory-alignment'));
 	BackVictory_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'Victory', '-tightness') + '-tightness') );	
 
+	initBodyTags( diy, BackVictory_box );
+
 	BackArtist_box = markupBox(sheet);
 	BackArtist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Artist-style'), null);
 	BackArtist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Artist-alignment'));
@@ -247,13 +258,12 @@ function paintFront( g, diy, sheet ) {
 
 	if ( $Subtitle.length > 0) drawSubtitleTemplate( g, sheet, '' );
 	else drawTemplate( g, sheet, '' );
-	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Location );
 	drawName( g, diy, sheet, Name_box );
 
 	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, '', false );
 	
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
-	drawVictory( g, diy, sheet );
+	drawVictory( g, diy, sheet, Victory_box );
 
 	if ( $LocationIcon != 'None' ) drawLocationIcon( g, diy, sheet, 'LocationIcon', true );
 
@@ -264,8 +274,17 @@ function paintFront( g, diy, sheet ) {
 		drawLocationIcon( g, diy, sheet, 'Connection' + index + 'Icon', false );
 	}
 
+	var encounterIcon = false;
+	
+	if ( $ShowEncounterIcon == '1' ) {
+		drawLocationEncounterOverlay( g, diy, sheet );
+		encounterIcon = true;
+	}
+
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, true, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, true, true, Encounter_box, encounterIcon, Copyright_box, Artist_box );
+
+	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Location );
 }
 
 function paintBack( g, diy, sheet ) {
@@ -281,13 +300,12 @@ function paintBack( g, diy, sheet ) {
 	if ( $SubtitleBack.length > 0) drawSubtitleTemplate( g, sheet, '' );
 	else drawTemplate( g, sheet, '' );
 		
-	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Location );
 	drawName( g, diy, sheet, BackName_box );
 
 	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, '', false );
 
 	drawBody( g, diy, sheet, BackBody_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
-	drawVictory( g, diy, sheet );
+	drawVictory( g, diy, sheet, BackVictory_box );
 
 	if ( $LocationIcon != 'None' ) drawLocationIcon( g, diy, sheet, 'LocationIcon', true );
 
@@ -298,8 +316,25 @@ function paintBack( g, diy, sheet ) {
 		drawLocationIcon( g, diy, sheet, 'Connection' + index + 'Icon', false );
 	}
 
+	// this is icky...
+	if ( $PortraitShare == '1' ) {
+		if ( $Artist.length > 0) drawArtist( g, diy, sheet, BackArtist_box, true );
+	}
+	else { 
+		if ( $ArtistBack.length > 0 ) drawArtist( g, diy, sheet, BackArtist_box, false );
+	}
+
+	var encounterIcon = false;
+	
+	if ( $ShowEncounterIconBack == '1' ) {
+		drawLocationEncounterOverlay( g, diy, sheet );
+		encounterIcon = true;
+	}
+
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, true );
-	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, BackEncounter_box, true, BackCopyright_box, BackArtist_box );
+	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, true, BackEncounter_box, encounterIcon, BackCopyright_box );
+
+	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Location );
 }
 
 function onClear() {
@@ -416,10 +451,19 @@ function createVictoryTextShape( textBox, textRegion ) {
 function onRead(diy, oos) {
 	readPortraits( diy, oos, PortraitTypeList, true );
 	
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 17) {
+		$ShowEncounterIcon = '1';
+		$ShowEncounterIconBack = '1';
+	}
+	
 	updateCollection();
 	updateEncounter();
 	
-	diy.version = 8;
+	diy.version = 17;
 }
 
 function onWrite( diy, oos ) {

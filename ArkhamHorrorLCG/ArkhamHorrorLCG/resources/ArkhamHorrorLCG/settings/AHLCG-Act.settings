@@ -1,84 +1,53 @@
 AHLCG-Act-Default-template = ArkhamHorrorLCG/templates/AHLCG-Act.jp2
 AHLCG-ActBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-ActBack.jp2
 
-AHLCG-Act-Name-region = 9,64,250,22
-#AHLCG-Act-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 11.5; WEIGHT: WEIGHT_REGULAR; WIDTH: WIDTH_REGULAR; FOREGROUND: #000000
-AHLCG-Act-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 11.5; WEIGHT: WEIGHT_REGULAR; WIDTH: 1.05; FOREGROUND: #000000
+#AHLCG-Act-Name-region = 9,64,250,22
+AHLCG-Act-Name-region = 9,55,250,44
+AHLCG-Act-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
 
-AHLCG-ActBack-Name-region = 21,110,48,226
-AHLCG-ActBack-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 11.5; WEIGHT: WEIGHT_REGULAR; WIDTH: 1.05; FOREGROUND: #000000
+#AHLCG-ActBack-Name-region = 21,110,48,226
+AHLCG-ActBack-Name-region = 22,110,47,226
+AHLCG-ActBack-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
 AHLCG-ActBack-Name-alignment = center, middle
 
-AHLCG-Act-Body-region = 10,100,259,237
-AHLCG-Act-Body-alignment = left
-#AHLCG-Act-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: 7.8; WEIGHT: WEIGHT_MEDIUM; WIDTH: 1.02; FOREGROUND: #000000
-AHLCG-Act-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: WEIGHT_MEDIUM; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontSpacing}; FOREGROUND: #000000
-#AHLCG-Act-Body-tightness = 0.78
-#AHLCG-Act-Body-tightness = 0.85
-AHLCG-Act-Body-tightness = 1.0
+#AHLCG-Act-Body-region = 10,100,262,237
+AHLCG-Act-Body-region = 10,100,262,235
 
-AHLCG-ActBack-Header-alignment = left
-AHLCG-ActBack-Header-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontSpacing}; WEIGHT: WEIGHT_BOLD; FOREGROUND: #000000
-AHLCG-ActBack-Header-tightness = 1.0
-
-#AHLCG-ActBack-Story-region = 127,38,355,310
-AHLCG-ActBack-Story-region = 127,32,355,316
-AHLCG-ActBack-Story-alignment = left
-AHLCG-ActBack-Story-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontSpacing}; POSTURE: OBLIQUE; FOREGROUND: #000000
-AHLCG-ActBack-Story-tightness = 1.0
-
-#AHLCG-ActBack-Body-region = 112,38,370,310
-AHLCG-ActBack-Body-region = 112,32,370,316
-AHLCG-ActBack-Body-alignment = left
-#AHLCG-ActBack-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: 7.8; WEIGHT: WEIGHT_MEDIUM; WIDTH: 1.05; FOREGROUND: #000000
-AHLCG-ActBack-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: WEIGHT_MEDIUM; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontSpacing}; FOREGROUND: #000000
-AHLCG-ActBack-Body-tightness = 1.0
+AHLCG-ActBack-Story-region = 126,39,355,316
+AHLCG-ActBack-Body-region = 110,39,370,316
 
 AHLCG-Act-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
 AHLCG-Act-Portrait-portrait-pany = 0
-
-AHLCG-Act-Portrait-portrait-clip-region = 200,0,325,375
-AHLCG-Act-DefaultPortrait-portrait-clip-region = 200,0,325,375
+AHLCG-Act-Portrait-portrait-clip-region = 220,0,305,375
+AHLCG-Act-DefaultPortrait-portrait-clip-region = 220,0,305,375
 
 AHLCG-Act-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Act-Encounter-portrait-pany = 0
-
-AHLCG-Act-Encounter-portrait-clip-region = 122,27,28,28
-AHLCG-Act-DefaultEncounter-portrait-clip-region = 122,27,28,28
+#AHLCG-Act-Encounter-portrait-clip-region = 122,27,28,28
+AHLCG-Act-Encounter-portrait-clip-region = 120,23,32,32
+#AHLCG-Act-DefaultEncounter-portrait-clip-region = 122,27,28,28
+AHLCG-Act-DefaultEncounter-portrait-clip-region = 120,23,32,32
 AHLCG-Act-ReturnEncounter-portrait-clip-region = 118,22,35,35
 AHLCG-Act-DefaultReturnEncounter-portrait-clip-region = 118,22,35,35
+#AHLCG-ActBack-Encounter-portrait-clip-region = 27,57,36,36
 AHLCG-ActBack-Encounter-portrait-clip-region = 27,57,36,36
 AHLCG-ActBack-ReturnEncounter-portrait-clip-region = 20,50,49,48
 
+AHLCG-Act-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-Act-Collection-portrait-pany = 0
+AHLCG-Act-Collection-portrait-clip-region = 270,358,13,13
+AHLCG-Act-DefaultCollection-portrait-clip-region = 270,358,13,13
+
+AHLCG-Act-EncounterNumber-region = 195,361,55,10
+AHLCG-Act-CollectionNumber-region = 266,361,37,10
+AHLCG-Act-ScenarioIndex-region = 67,7,134,21
+AHLCG-ActBack-BackScenarioIndex-region = 22,33,45,16
+
 AHLCG-Act-Clues-region = 240,290,49,50
-AHLCG-Act-CluesPerInv-region = 235,290,49,49
-AHLCG-Act-PerInv-region = 261, 290, 30, 49
+AHLCG-Act-CluesPerInv-region = 234,290,49,49
+AHLCG-Act-CluesPerInvIcon-region = 261,289,29,49
 
 AHLCG-Act-Dash-tint = 38.0, 0.14, 1.0
 
-#AHLCG-Act-EncounterNumber-region = 223,363,35,10
-AHLCG-Act-EncounterNumber-region = 195,363,55,10
-AHLCG-Act-EncounterNumber-alignment = right, middle
-AHLCG-Act-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: WEIGHT_ULTRABOLD; WIDTH: WIDTH_REGULAR; FOREGROUND: #FFFFFF
-
-AHLCG-Act-Artist-region = 11,363,129,10
-AHLCG-Act-Copyright-region = 125,363,80,10
-
-AHLCG-Act-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
-AHLCG-Act-Collection-portrait-pany = 0
-
-AHLCG-Act-Collection-portrait-clip-region = 270,360,13,13
-AHLCG-Act-DefaultCollection-portrait-clip-region = 270,360,13,13
-
-#AHLCG-Act-CollectionNumber-region = 290,363,21,10
-#AHLCG-Act-CollectionNumber-region = 274,365,37,10
-AHLCG-Act-CollectionNumber-region = 266,363,37,10
-
-AHLCG-Act-ScenarioIndex-region = 67,8,134,21
-AHLCG-Act-ScenarioIndex-alignment = center, middle
-AHLCG-Act-ScenarioIndex-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.scenarioIndexSize}; WEIGHT: WEIGHT_BOLD; WIDTH: WIDTH_REGULAR; FOREGROUND: #000000
-
-AHLCG-ActBack-ScenarioIndex-region = 22,32,45,16
-AHLCG-ActBack-ScenarioIndex-alignment = center, middle
-AHLCG-ActBack-ScenarioIndex-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.scenarioIndexBackSize}; WEIGHT: WEIGHT_BOLD; WIDTH: WIDTH_REGULAR; FOREGROUND: #000000
-AHLCG-ActBack-ScenarioIndex-tightness = 0.1
+AHLCG-Act-Artist-region = 11,361,129,10
+AHLCG-Act-Copyright-region = 125,361,80,10

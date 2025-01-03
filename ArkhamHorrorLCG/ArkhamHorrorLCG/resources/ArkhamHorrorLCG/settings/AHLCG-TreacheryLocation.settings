@@ -1,0 +1,34 @@
+AHLCG-TreacheryLocation-Default-template = ArkhamHorrorLCG/templates/AHLCG-TreacheryLocation.jp2
+AHLCG-TreacheryLocationBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-EncounterBack.jp2
+AHLCG-TreacheryLocationStoryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2
+
+AHLCG-TreacheryLocation-Name-region = 39,307,299,29
+AHLCG-TreacheryLocation-Label-region = 137,286,104,14
+AHLCG-TreacheryLocation-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
+
+AHLCG-TreacheryLocation-Body-region = 30,340,318,160
+
+AHLCG-TreacheryLocation-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-TreacheryLocation-Portrait-portrait-pany = 0
+AHLCG-TreacheryLocation-Portrait-portrait-clip-region = 17,0,344,298
+
+AHLCG-TreacheryLocation-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-TreacheryLocation-BackPortrait-portrait-pany = 0
+AHLCG-TreacheryLocation-BackPortrait-portrait-clip-region = 17,0,344,298
+
+AHLCG-TreacheryLocation-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-TreacheryLocation-Encounter-portrait-pany = 0
+AHLCG-TreacheryLocation-Encounter-portrait-clip-region = 175,254,28,28
+AHLCG-TreacheryLocation-ReturnEncounter-portrait-clip-region = 171,250,36,33
+
+AHLCG-TreacheryLocation-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-TreacheryLocation-Collection-portrait-pany = 0
+AHLCG-TreacheryLocation-DefaultCollection-portrait-clip-region = 320,510,13,13
+AHLCG-TreacheryLocation-Collection-portrait-clip-region = 320,510,13,13
+
+AHLCG-TreacheryLocation-Shroud-region = 14,271,49,50
+AHLCG-TreacheryLocation-ShroudPerInv-region = 8,271,49,49
+AHLCG-TreacheryLocation-ShroudPerInvIcon-region = 35,270,29,49
+AHLCG-TreacheryLocation-Clues-region = 313,271,49,50
+AHLCG-TreacheryLocation-CluesPerInv-region = 306,271,49,49
+AHLCG-TreacheryLocation-CluesPerInvIcon-region = 333,270,29,49

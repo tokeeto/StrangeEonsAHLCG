@@ -1,52 +1,79 @@
 AHLCG-Cost-region = 18,11,40,38
-AHLCG-Cost-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 19; WEIGHT: WEIGHT_REGULAR; WIDTH: WIDTH_REGULAR; FOREGROUND: #FFFFFF
-AHLCG-Cost-alignment = center, middle
+
+#AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000; KERNING: KERNING_ON
+AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
+#AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 11.0; WEIGHT: WEIGHT_REGULAR; WIDTH: WIDTH_REGULAR; FOREGROUND: #000000
+AHLCG-Name-alignment = center, middle
+
+AHLCG-BackName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 13; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
+AHLCG-BackName-alignment = center, middle
+
+AHLCG-Subtype-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.subtypeSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.subtypeWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.subtypeWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.subtypeTracking}; FOREGROUND: #000000
+AHLCG-Subtype-alignment = center, middle
+AHLCG-Subtitle-style = FAMILY: {Eons.namedObjects.AHLCGObject.subtitleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.subtitleSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.subtitleWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.subtitleWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.subtitleTracking}; FOREGROUND: #000000
+AHLCG-Subtitle-alignment = center, middle
+AHLCG-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.smallLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.smallLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.smallLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.smallLabelTracking}; FOREGROUND: #000000
+AHLCG-Label-alignment = center, middle
+
+AHLCG-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
+AHLCG-Body-alignment = left
+AHLCG-Body-tightness = 0.6
+
+AHLCG-Header-style = FAMILY: {Eons.namedObjects.AHLCGObject.victoryFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyVictoryWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
+AHLCG-Header-alignment = left
+AHLCG-Header-tightness = 0.6
+AHLCG-Story-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; POSTURE: POSTURE_OBLIQUE; FOREGROUND: #000000
+AHLCG-Story-alignment = left
+AHLCG-Story-tightness = 0.6
+
+AHLCG-Artist-region = 14,512,121,10
+AHLCG-Artist-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
+AHLCG-Artist-alignment = left, middle
+AHLCG-Copyright-region = 124,512,86,10
+AHLCG-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
+AHLCG-Copyright-alignment = right, middle
 
 AHLCG-Level-region = 14,36,48,23
 AHLCG-NoLevel-region = 8,5,60,58
 AHLCG-Skill1-region = 0,80,54,44
-AHLCG-Skill2-region = 0,121,54,44
-AHLCG-Skill3-region = 0,162,54,44
-AHLCG-Skill4-region = 0,203,54,44
-AHLCG-Skill5-region = 0,244,54,44
-AHLCG-Skill6-region = 0,285,54,44
+AHLCG-Skill2-region = 0,122,54,44
+AHLCG-Skill3-region = 0,164,54,44
+AHLCG-Skill4-region = 0,206,54,44
+AHLCG-Skill5-region = 0,248,54,44
+AHLCG-Skill6-region = 0,290,54,44
 AHLCG-SkillIcon1-region = 13,87,25,26
-AHLCG-SkillIcon2-region = 13,128,25,26
-AHLCG-SkillIcon3-region = 13,169,25,26
-AHLCG-SkillIcon4-region = 13,210,25,26
-AHLCG-SkillIcon5-region = 13,251,25,26
-AHLCG-SkillIcon6-region = 13,292,25,26
+AHLCG-SkillIcon2-region = 13,129,25,26
+AHLCG-SkillIcon3-region = 13,171,25,26
+AHLCG-SkillIcon4-region = 13,213,25,26
+AHLCG-SkillIcon5-region = 13,255,25,26
+AHLCG-SkillIcon6-region = 13,297,25,26
+
 AHLCG-Slot-region = 309,454,51,52
 AHLCG-Slot2-region = 255,454,51,52
 
-AHLCG-Artist-region = 14,513,121,10
-AHLCG-Artist-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: WEIGHT_BOLD; WIDTH: WIDTH_REGULAR; FOREGROUND: #FFFFFF
-AHLCG-Artist-alignment = left, middle
-AHLCG-Copyright-region = 124,513,86,10
-AHLCG-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: WEIGHT_BOLD; WIDTH: WIDTH_REGULAR; FOREGROUND: #FFFFFF
-#AHLCG-Copyright-alignment = center, middle
-AHLCG-Copyright-alignment = right, middle
-
-AHLCG-Stamina-region = 148,465,33,41
-AHLCG-Sanity-region = 197,469,43,36
-
-AHLCG-Body-tightness = 1.0
+#AHLCG-Stamina-region = 148,465,33,41
+AHLCG-Stamina-region = 148,467,31,39
+AHLCG-StaminaPerInvIcon-region = 158,456,29,49
+#AHLCG-Sanity-region = 197,469,43,36
+AHLCG-Sanity-region = 197,471,43,36
+AHLCG-SanityPerInvIcon-region = 215,456,29,49
 
 AHLCG-Clues-region = 239,296,51,48
 
-AHLCG-CollectionNumber-region = 318,513,37,10
+AHLCG-CollectionNumber-region = 318,512,37,10
+AHLCG-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 AHLCG-CollectionNumber-alignment = right, middle
-AHLCG-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: WEIGHT_ULTRABOLD; WIDTH: WIDTH_REGULAR; FOREGROUND: #FFFFFF
 
-AHLCG-EncounterNumber-region = 247,513,55,10
+AHLCG-EncounterNumber-region = 247,512,55,10
 AHLCG-EncounterNumber-alignment = right, middle
-AHLCG-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: 4.5; WEIGHT: WEIGHT_ULTRABOLD; WIDTH: WIDTH_REGULAR; FOREGROUND: #FFFFFF
+AHLCG-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 
-AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 11.0; WEIGHT: WEIGHT_REGULAR; WIDTH: 1.0; FOREGROUND: #000000
-AHLCG-Name-alignment = center, bottom
+AHLCG-ScenarioIndex-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.scenarioIndexSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.scenarioIndexWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.scenarioIndexWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.scenarioIndexTracking}; FOREGROUND: #000000
+AHLCG-ScenarioIndex-alignment = center, middle
 
-AHLCG-BackName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 13; WEIGHT: WEIGHT_REGULAR; WIDTH: WIDTH_REGULAR; FOREGROUND: #000000
-AHLCG-BackName-alignment = center, middle
+AHLCG-BackScenarioIndex-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.scenarioIndexBackSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.scenarioIndexWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.scenarioIndexWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.scenarioIndexTracking}; FOREGROUND: #000000
+AHLCG-BackScenarioIndex-alignment = center, middle
+AHLCG-BackScenarioIndex-tightness = 0.1
 
 HorizontalSpacer-tag = hs
 HorizontalSpacer-tag-replacement = <image res://ArkhamHorrorLCG/images/empty1x1.png 0.12in 1pt>
@@ -63,6 +90,9 @@ Reaction-tag = rea
 Reaction-tag-replacement = <ahf>r</ahf>
 Fast-tag = fre
 Fast-tag-replacement = 	<ahf>f</ahf>
+
+Dash-tag = dash
+Dash-tag-replacement = <ahf>-</ahf>
 
 Guardian-tag = gua
 Guardian-tag-replacement = <ahf>G</ahf>
@@ -86,6 +116,16 @@ Agility-tag-replacement = <ahf>a</ahf>
 Wild-tag = wild
 Wild-tag-replacement = <ahf>?</ahf>
 
+Damage-tag = dmg
+Damage-tag-replacement = <ahf>h</ahf>
+Horror-tag = hor
+Horror-tag-replacement = <ahf>d</ahf>
+Resource-tag = rec
+Resource-tag-replacement = <ahf>m</ahf>
+Codex-tag = cod
+Codex-tag-replacement = <ahf>#</ahf>
+
+
 Skull-tag = sku
 Skull-tag-replacement = <ahf>S</ahf>
 Cultist-tag = cul
@@ -102,6 +142,22 @@ Bless-tag = ble
 Bless-tag-replacement = <ahf>D</ahf>
 Curse-tag = cur
 Curse-tag-replacement = <ahf>U</ahf>
+Frost-tag = fro
+Frost-tag-replacement = <ahf>H</ahf>
+
+Seal1-tag = seal1
+Seal1-tag-replacement = <ahf>1</ahf>
+Seal2-tag = seal2
+Seal2-tag-replacement = <ahf>2</ahf>
+Seal3-tag = seal3
+Seal3-tag-replacement = <ahf>3</ahf>
+Seal4-tag = seal4
+Seal4-tag-replacement = <ahf>4</ahf>
+Seal5-tag = seal5
+Seal5-tag-replacement = <ahf>5</ahf>
+
+Asterisk-tag = ast
+Asterisk-tag-replacement = <ahf>*</ahf>
 
 Unique-tag = uni
 Unique-tag-replacement = <ahf>u</ahf>
@@ -109,15 +165,107 @@ PerInvestigator-tag = per
 PerInvestigator-tag-replacement = <ahf>p</ahf>
 Bullet-tag = bul
 Bullet-tag-replacement = <ahf>b</ahf>
-Resolution-tag = res
-Resolution-tag-replacement = #AHLCG-Resolution-tag
-EndResolution-tag = /res
-EndResolution-tag-replacement = </b>
 GuideBullet-tag = gbul
 GuideBullet-tag-replacement = <ahf><boxbullet>B</boxbullet></ahf>
 Square-tag = squ
 Square-tag-replacement = <ahf>s</ahf>
 
+# for story cards
+#ActionSmall-tag = act
+#ActionSmall-tag-replacement = <ahf>n</ahf>
+#ReactionSmall-tag = rea
+#ReactionSmall-tag-replacement = <ahf>r</ahf>
+#FastSmall-tag = fre
+#FastSmall-tag-replacement = <ahf>f</ahf>
+
+#GuardianSmall-tag = gua
+#GuardianSmall-tag-replacement = <ahf>G</ahf>
+#SeekerSmall-tag = see
+#SeekerSmall-tag-replacement = <ahf>K</ahf>
+#RogueSmall-tag = rog
+#RogueSmall-tag-replacement = <ahf>R</ahf>
+#MysticSmall-tag = mys
+#MysticSmall-tag-replacement = <ahf>M</ahf>
+#SurvivorSmall-tag = sur
+#SurvivorSmall-tag-replacement = <ahf>V</ahf>
+
+#WillpowerSmall-tag = wil
+#WillpowerSmall-tag-replacement = <ahf>w</ahf>
+#IntellectSmall-tag = int
+#IntellectSmall-tag-replacement = <ahf>i</ahf>
+#CombatSmall-tag = com
+#CombatSmall-tag-replacement = <ahf>c</ahf>
+#AgilitySmall-tag = agi
+#AgilitySmall-tag-replacement = <ahf>a</ahf>
+#WildSmall-tag = wild
+#WildSmall-tag-replacement = <ahf>?</ahf>
+
+#SkullSmall-tag = sku
+#SkullSmall-tag-replacement = <ahf>S</ahf>
+#CultistSmall-tag = cul
+#CultistSmall-tag-replacement = <ahf>C</ahf>
+#ArtifactSmall-tag = tab
+#ArtifactSmall-tag-replacement = <ahf>A</ahf>
+#MonsterSmall-tag = mon
+#MonsterSmall-tag-replacement = <ahf>L</ahf>
+#ElderSignSmall-tag = eld
+#ElderSignSmall-tag-replacement = <ahf>E</ahf>
+#TentacleSmall-tag = ten
+#TentacleSmall-tag-replacement = <ahf>T</ahf>
+#BlessSmall-tag = ble
+#BlessSmall-tag-replacement = <ahf>D</ahf>
+#CurseSmall-tag = cur
+#CurseSmall-tag-replacement = <ahf>U</ahf>
+#FrostSmall-tag = fro
+#FrostSmall-tag-replacement = <ahf>H</ahf>
+
+#Seal1Small-tag = seal1
+#Seal1Small-tag-replacement = <ahf>1</ahf>
+#Seal2Small-tag = seal2
+#Seal2Small-tag-replacement = <ahf>2</ahf>
+#Seal3Small-tag = seal3
+#Seal3Small-tag-replacement = <ahf>3</ahf>
+#Seal4Small-tag = seal4
+#Seal4Small-tag-replacement = <ahf>4</ahf>
+#Seal5Small-tag = seal5
+#Seal5Small-tag-replacement = <ahf>5</ahf>
+
+#UniqueSmall-tag = uni
+#UniqueSmall-tag-replacement = <ahf>u</ahf>
+#PerInvestigatorSmall-tag = per
+#PerInvestigatorSmall-tag-replacement = <ahf>p</ahf>
+#BulletSmall-tag = bul
+#BulletSmall-tag-replacement = <ahf>b</ahf>
+#GuideBulletSmall-tag = gbul
+#GuideBulletSmall-tag-replacement = <ahf><boxbullet>B</boxbullet></ahf>
+#SquareSmall-tag = squ
+#SquareSmall-tag-replacement = <ahf>s</ahf>
+#end story tags
+
+Resolution-tag = res
+Resolution-tag-replacement = #AHLCG-Resolution-tag
+EndResolution-tag = /res
+EndResolution-tag-replacement = </hdr>
+TextEntry1-tag = entry1
+TextEntry1-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLine.png 0.5in 8pt bottom>
+TextEntry2-tag = entry2
+TextEntry2-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLine.png 0.75in 8pt bottom>
+TextEntry3-tag = entry3
+TextEntry3-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLine.png 1.0in 8pt bottom>
+TextEntry4-tag = entry4
+TextEntry4-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLine.png 1.25in 8pt bottom>
+TextEntry5-tag = entry5
+TextEntry5-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLine.png 1.5in 8pt bottom>
+TextEntry1A-tag = entry1
+TextEntry1A-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLineArno.png 0.5in 8pt bottom>
+TextEntry2A-tag = entry2
+TextEntry2A-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLineArno.png 0.75in 8pt bottom>
+TextEntry3A-tag = entry3
+TextEntry3A-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLineArno.png 1.0in 8pt bottom>
+TextEntry4A-tag = entry4
+TextEntry4A-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLineArno.png 1.25in 8pt bottom>
+TextEntry5A-tag = entry5
+TextEntry5A-tag-replacement = <image res://ArkhamHorrorLCG/images/EntryLineArno.png 1.5in 8pt bottom>
 Prey-tag = pre
 Prey-tag-replacement = #AHLCG-Prey-tag
 Spawn-tag = spa
@@ -130,31 +278,61 @@ Objective-tag = obj
 Objective-tag-replacement = #AHLCG-Objective-tag
 Haunted-tag = hau
 Haunted-tag-replacement = #AHLCG-Haunted-tag
-Patrol-tag = pat
-Patrol-tag-replacement = #AHLCG-Patrol-tag
+Shift-tag = shi
+Shift-tag-replacement = #AHLCG-Shift-tag
 Copyright-tag = cop
 Copyright-tag-replacement = \u00a9
+Suffix-tag = suf
+Suffix-style = FAMILY: {Eons.namedObjects.AHLCGObject.suffixFamily}; SIZE: {Eons.namedObjects.AHLCGObject.indexSuffixSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.indexSuffixWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.indexSuffixWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.indexSuffixTracking}; FOREGROUND: #000000
+SuffixBack-tag = sufb
+SuffixBack-style = FAMILY: {Eons.namedObjects.AHLCGObject.suffixFamily}; SIZE: {Eons.namedObjects.AHLCGObject.indexBackSuffixSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.indexSuffixWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.indexSuffixWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.indexSuffixTracking}; FOREGROUND: #000000
+
+// compatibility
+XPBox-tag = xpbox
+XPBox-tag-replacement = <family>\u29e0</family>
+XPBoxA-tag = xpbox
+XPBoxA-tag-replacement = \u2610
+// added for Fotune and Folly
+CheckBox-tag = cbox
+CheckBox-tag-replacement = <family>\u29e0</family>
+CheckBoxA-tag = cbox
+CheckBoxA-tag-replacement = \u2610
 
 Trait-tag = t
-Trait-style = FAMILY: { Eons.namedObjects.AHLCGObject.bodyFamily }; WEIGHT: WEIGHT_BOLD; POSTURE: OBLIQUE
+Trait-style = FAMILY: { Eons.namedObjects.AHLCGObject.traitFamily }; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyTraitWeight}; POSTURE: POSTURE_OBLIQUE
+Header-tag = hdr
+Header-style = FAMILY: { Eons.namedObjects.AHLCGObject.victoryFamily }; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyVictoryWeight}; POSTURE: POSTURE_REGULAR
+Flavor-tag = fla
+Flavor-style = FAMILY: { Eons.namedObjects.AHLCGObject.flavorFamily }; WEIGHT: { Eons.namedObjects.AHLCGObject.bodyFlavorWeight }; POSTURE: POSTURE_OBLIQUE
+Story-tag = sto
+Story-style = FAMILY: { Eons.namedObjects.AHLCGObject.storyFamily }; WEIGHT: { Eons.namedObjects.AHLCGObject.bodyStoryWeight }; POSTURE: POSTURE_OBLIQUE
+Victory-tag = vic
+Victory-style = FAMILY: { Eons.namedObjects.AHLCGObject.victoryFamily }; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyVictoryWeight}; POSTURE: POSTURE_REGULAR;
+Body-tag = bod
+#Body-style = FAMILY: { Eons.namedObjects.AHLCGObject.bodyFamily }; WEIGHT: WEIGHT_REGULAR; POSTURE: POSTURE_REGULAR;
+Body-style = FAMILY: { Eons.namedObjects.AHLCGObject.bodyFamily }; WEIGHT: { Eons.namedObjects.AHLCGObject.bodyFontWeight }; POSTURE: POSTURE_REGULAR;
 
 AHF-tag = ahf
 AHF-style = FAMILY: { Eons.namedObjects.AHLCGObject.symbolFamily }; SIZE: {Eons.namedObjects.AHLCGObject.symbolSize}
+AHFSmall-tag = ahf
+AHFSmall-style = FAMILY: { Eons.namedObjects.AHLCGObject.symbolFamily }; SIZE: {Eons.namedObjects.AHLCGObject.symbolSize*0.2}
 TraitSection-tag = ts
-TraitSection-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyTraitSize}; WEIGHT: WEIGHT_ULTRABOLD; WIDTH: {Eons.namedObjects.AHLCGObject.bodyTraitSpacing}; POSTURE: OBLIQUE
+TraitSection-style = FAMILY: {Eons.namedObjects.AHLCGObject.traitFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyTraitSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyTraitWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyTraitWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyTraitTracking}; POSTURE: POSTURE_OBLIQUE
 FlavorSection-tag = fs
-FlavorSection-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFlavorSize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFlavorSpacing}; POSTURE: OBLIQUE
+FlavorSection-style = FAMILY: {Eons.namedObjects.AHLCGObject.flavorFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFlavorSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFlavorWeight }; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFlavorWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFlavorTracking}; POSTURE: POSTURE_OBLIQUE
 InvStorySection-tag = iss
-InvStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize*0.925}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStorySpacing}; POSTURE: OBLIQUE
+InvStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize*0.925}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStoryWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyStoryTracking}; POSTURE: POSTURE_OBLIQUE
 ActStorySection-tag = css
-ActStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontSpacing}; POSTURE: OBLIQUE
+ActStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStoryWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyStoryTracking}; POSTURE: POSTURE_OBLIQUE; FOREGROUND: #000000
 AgendaStorySection-tag = gss
-AgendaStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontSpacing}; POSTURE: OBLIQUE
+AgendaStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStoryWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyStoryTracking}; POSTURE: POSTURE_OBLIQUE
 
 GuideSection-tag = section
-GuideSection-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 16.3; WIDTH: 1.05; FOREGROUND: #415a55
+#GuideSection-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 16.3; WIDTH: 1.05; FOREGROUND: #415a55
+GuideSection-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 16.3; WIDTH: 1.05
 GuideHeader-tag = header
-GuideHeader-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 14; WIDTH: 1.04; FOREGROUND: #415a55
+#GuideHeader-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 14; WIDTH: 1.04; FOREGROUND: #415a55
+GuideHeader-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 14; WIDTH: 1.04
 GuideBoxBullet-tag = boxbullet
 GuideBoxBullet-style = FOREGROUND: #415a55
 
@@ -172,6 +350,7 @@ AHLCG-Heart-tint = 24.0, 0.72, 0.73
 AHLCG-Star-tint = -71.0, 0.36, 0.23
 AHLCG-Quote-tint = 23.0, 0.64, 0.47
 AHLCG-Clover-tint = 123.0, 0.23, 0.44
+AHLCG-Spade-tint = -26.0, 0.66, 0.72
 
 AHLCG-TriangleAlt-tint = 50.0, 0.81, 0.88
 AHLCG-CrossAlt-tint = -2.0, 0.83, 0.73
@@ -200,4 +379,4 @@ LocHeart-tag = lhea
 LocStar-tag = lsta
 LocQuote-tag = lquo
 LocClover-tag = lclo
-
+LocSpade-tag = lspa

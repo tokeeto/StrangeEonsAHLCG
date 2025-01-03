@@ -1,0 +1,19 @@
+AHLCG-Customizable-Default-template = ArkhamHorrorLCG/templates/AHLCG-Story.jp2
+AHLCG-CustomizableBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-CustomizableBack.jp2
+
+AHLCG-Customizable-Name-region = 34,33,310,34
+AHLCG-Customizable-Label-region = 155,509,65,14
+AHLCG-Customizable-Label-alignment = center, middle
+AHLCG-Customizable-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.smallLabelSize*1.15}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
+
+AHLCG-Customizable-Body-region = 32,99,316,387
+AHLCG-Customizable-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize*0.94}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
+
+AHLCG-Customizable-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-Customizable-Collection-portrait-pany = 0
+AHLCG-Customizable-DefaultCollection-portrait-clip-region = 277,492,13,13
+AHLCG-Customizable-Collection-portrait-clip-region = 277,492,13,13
+
+AHLCG-Customizable-Copyright-region = 225,495,116,10
+AHLCG-Customizable-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #000000
+AHLCG-Customizable-Copyright-alignment = right, middle

@@ -7,7 +7,7 @@ useLibrary( 'fontutils' );
 importClass( arkham.component.DefaultPortrait );
 
 const CardTypes = [ 'Skill', 'SkillBack' ];
-const BindingSuffixes = [ '' ];
+const BindingSuffixes = [ '', 'Back' ];
 
 const PortraitTypeList = [ 'Portrait-Front', 'Collection-Front' ];
 
@@ -23,7 +23,7 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
 
-	diy.version = 13;
+	diy.version = 16;
 }
 
 function setDefaults() {
@@ -36,7 +36,7 @@ function setDefaults() {
 	$Skill5 = 'None';
 	$Skill6 = 'None';
 	
-	$BackStatBack = 'Player';
+	$BackTypeBack = 'Player';
 	
 	$Traits = '';
 	$Keywords = '';
@@ -51,6 +51,9 @@ function setDefaults() {
 	
 	$Artist = '';
 	$Copyright = '';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -63,7 +66,7 @@ function createInterface( diy, editor ) {
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
 	var BackStatPanel = layoutBackTypeStats( diy, bindings, FACE_BACK );
 	BackStatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [0], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -142,6 +145,9 @@ function paintFront( g, diy, sheet ) {
 	}
 	else if ($CardClass == 'BasicWeakness' ) {	
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-BasicWeakness );
+		
+		drawOverlay( g, diy, sheet, 'BasicWeaknessSkill' );
+		drawBasicWeaknessIcon( g, diy, sheet );
 	}
 	else {
 		drawLevel( g, diy, sheet, $CardClass );
@@ -154,7 +160,7 @@ function paintFront( g, diy, sheet ) {
 	drawBodyWithRegionName( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ), regionName );
 
 //	drawCollectorInfo( g, diy, sheet, true, false, false, false, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, null, false, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, null, false, Copyright_box, Artist_box );
 }
 
 function paintBack( g, diy, sheet ) {
@@ -224,13 +230,34 @@ function onRead(diy, oos) {
 	if ( diy.version < 12 ) {
 		$BackTypeBack = 'Player';
 	}
+	else {
+		if ( diy.version < 16 ) {
+			diy.settings.reset('BackStatBack');			// there was a typo in setDefaults (BackStatBack)... oops
+		}
+		if ( diy.version < 17 ) {
+			if ( $BackTypeundefined ) {	// fix for bug causing undefined binding suffix
+				$BackTypeBack = $BackTypeundefined;
+				diy.settings.reset('BackTypeundefined');
+			}
+		
+			if ( $BackTypeBack == null ) $BackTypeBack = 'Player';	// some cards created during testing might have both as null
+		}
+	}
+	
 	if ( diy.version < 13 ) {
 		$Skill6 = 'None';
+	}
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 16 ) {
+		diy.faceStyle = FaceStyle.TWO_FACES;	// change was in v15, but I forgot to add this
 	}
 
 	updateCollection();
 	
-	diy.version = 13;
+	diy.version = 16;
 }
 
 function onWrite( diy, oos ) {

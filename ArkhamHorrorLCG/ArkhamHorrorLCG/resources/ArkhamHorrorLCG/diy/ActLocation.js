@@ -25,7 +25,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 	
-	diy.version = 10;
+	diy.version = 18;
 }
 
 function setDefaults() {
@@ -73,6 +73,11 @@ function setDefaults() {
 	$Connection6IconBack = 'None';
 
 	$ArtistBack = '';
+
+	$ShowEncounterIconBack = '1';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -85,7 +90,7 @@ function createInterface( diy, editor ) {
 	var PortraitTab = PortraitTabArray[0];
 	PortraitTabArray.splice( 0, 1 );
 
-	var TitlePanel = layoutTitle2( diy, bindings, false, [0], FACE_FRONT );
+	var TitlePanel = layoutTitle2( diy, bindings, [0], FACE_FRONT );
 	TitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Front );
 	var StatPanel = layoutActStats( diy, bindings, FACE_FRONT, PortraitTabArray );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
@@ -93,9 +98,9 @@ function createInterface( diy, editor ) {
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
 	var BackStatPanel = layoutLocationBackStats( bindings, FACE_BACK );
 	BackStatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Back );
-	var BackConnectionsPanel = layoutConnections( bindings, [1], FACE_BACK );
+	var BackConnectionsPanel = layoutConnections( false, bindings, [1], FACE_BACK );
 	BackConnectionsPanel.setTitle( @AHLCG-Connections + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [0, 1], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0, 1], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -166,6 +171,8 @@ function createFrontPainter( diy, sheet ) {
 	Index_box = markupBox(sheet);
 	Index_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'ScenarioIndex-style'), null);
 	Index_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'ScenarioIndex-alignment'));
+
+	updateOrientation( diy, PortraitList[0], $Orientation, 'Act' );
 }
 
 function createBackPainter( diy, sheet ) {
@@ -190,9 +197,11 @@ function createBackPainter( diy, sheet ) {
 	initBodyTags( diy, BackBody_box );	
 	
 	// just going to use standard body style
-	Victory_box = markupBox(sheet);
-	Victory_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
-	Victory_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Victory-alignment'));
+	BackVictory_box = markupBox(sheet);
+	BackVictory_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
+	BackVictory_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Victory-alignment'));
+
+	initBodyTags( diy, BackVictory_box );
 
 	BackCollection_box = markupBox(sheet);
 	BackCollection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'CollectionNumber-style'), null);
@@ -218,16 +227,16 @@ function paintFront( g, diy, sheet ) {
 
 	drawTemplate( g, sheet, '' );
 
-	drawActAgendaName( g, diy, sheet, Name_box );
+	draw2LineName( g, diy, sheet, Name_box );
 
 	drawBody( g, diy, sheet, Body_box, new Array( 'ActStory', 'Rules' ) );
 
 	drawClues( g, diy, sheet );
 
-	if ( $Artist.length > 0 ) drawArtist( g, diy, sheet, false );
+	if ( $Artist.length > 0 ) drawArtist( g, diy, sheet, Artist_box, false );
 
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, true, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, true, true, Encounter_box, true, Copyright_box, Artist_box );
 	
 	drawScenarioIndexFront( g, diy, sheet, #AHLCG-Label-Act, Index_box );
 }
@@ -239,14 +248,13 @@ function paintBack( g, diy, sheet ) {
 
 	if ( $SubtitleBack.length > 0) drawSubtitleTemplate( g, sheet, '' );
 	else drawTemplate( g, sheet, '' );
-	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Location );
 	drawName( g, diy, sheet, BackName_box );
 
 	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, '', false );
 	
 	drawBody( g, diy, sheet, BackBody_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
 
-	drawVictory( g, diy, sheet );
+	drawVictory( g, diy, sheet, BackVictory_box );
 
 	if ( $LocationIconBack != 'None' ) drawLocationIcon( g, diy, sheet, 'LocationIcon', true );
 
@@ -257,93 +265,23 @@ function paintBack( g, diy, sheet ) {
 		drawLocationIcon( g, diy, sheet, 'Connection' + index + 'Icon', false );
 	}
 
+	var encounterIcon = false;
+	
+	if ( $ShowEncounterIconBack == '1' ) {
+		drawLocationEncounterOverlay( g, diy, sheet );
+		encounterIcon = true;
+	}
+
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, true );
-	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, BackEncounter_box, true, BackCopyright_box, BackArtist_box );
+	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, true, BackEncounter_box, encounterIcon, BackCopyright_box, BackArtist_box );
+
+	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Location );
 } 
 
 function onClear() {
 	setDefaults();
 }
-/*
-function createTextShape( textBox, textRegion, reverse) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
-	
-	var path = new java.awt.geom.Path2D.Double();
 
-	var xPathPoints = new Array( 0.000, 0.000, 0.715, 0.830, 0.830, 1.000, 1.000 );
-	var yPathPoints = new Array( 0.000, 1.000, 1.000, 0.957, 0.850, 0.850, 0.000 );
-	
-	var numPoints = xPathPoints.length;
-	
-	if ( reverse ) {
-		// swap order and x-value
-		for (let i = 0; i < numPoints / 2; i++) {
-			let px = xPathPoints[i];
-			let py = yPathPoints[i];
-			
-			xPathPoints[i] = 1.000 - xPathPoints[numPoints - i - 1];
-			yPathPoints[i] = yPathPoints[numPoints - i - 1];
-			
-			xPathPoints[numPoints - i - 1] = 1.000 - px;
-			yPathPoints[numPoints - i - 1] = py;
-		}
-	}
-	
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	for (let i = 1; i < numPoints; i++) {
-		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-
-function createBackTextShape( textBox, textRegion ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
-
-	var path = new java.awt.geom.Path2D.Double();
-
-	// asymmetrical	
-	var xPathPoints = new Array( 0.154, 0.000, 0.000, 1.000, 1.000, 0.951, 0.846 );
-	var yPathPoints = new Array( 0.000, 0.174, 1.000, 1.000, 0.319, 0.125, 0.000 );
-	
-	var xControlPoints = new Array( 0.107, 0.107, 0.991, 0.962, 0.936, 0.900 );
-	var yControlPoints = new Array( 0.153, 0.139, 0.278, 0.167, 0.132, 0.174 );
-	
-	var numPoints = xPathPoints.length;
-	
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	// just create by hand, it's asymmetrical
-	path.curveTo( x + w * xControlPoints[0], y + h * yControlPoints[0],
-		x + w * xControlPoints[1], y + h * yControlPoints[1],
-		x + w * xPathPoints[1], y + h * yPathPoints[1]
-	);
-	
-	for (let i = 2; i <= 4; i++) {
-		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
-	}
-
-	for (let i = 5; i <= 6; i++) {
-		path.curveTo( x + w * xControlPoints[i*2 - 8], y + h * yControlPoints[i*2 - 8],
-			x + w * xControlPoints[i*2 - 7], y + h * yControlPoints[i*2 - 7],
-			x + w * xPathPoints[i], y + h * yPathPoints[i]
-		);
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-*/
 function setTextShape( box, region, reverse ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -369,11 +307,22 @@ function onRead(diy, oos) {
 	if ( diy.version < 10 ) {
 		$Asterisk = '0';
 	}
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 17) {
+		$ShowEncounterIconBack = '1';
+	}
+	if ( diy.version < 18) {
+		// region changed, requires a shift to look the same
+		PortraitList[0].setPanX(PortraitList[0].getPanX() + 10.0);
+	}
 	
 	updateCollection();
 	updateEncounter();
 		
-	diy.version = 10;
+	diy.version = 18;
 }
 
 function onWrite( diy, oos ) {

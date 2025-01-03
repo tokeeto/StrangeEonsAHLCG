@@ -24,7 +24,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
-	diy.version = 10;
+	diy.version = 16;
 }
 
 function setDefaults() {
@@ -35,7 +35,9 @@ function setDefaults() {
 	$Health = '2';
 	$PerInvestigator = '0';
 	$Attack = '2';
+	$PerInvestigatorAttack = '0';
 	$Evade = '2';
+	$PerInvestigatorEvade = '0';
 			
 	$Damage = '0';
 	$Horror = '0';
@@ -67,7 +69,9 @@ function setDefaults() {
 	$HealthBack = '2';
 	$PerInvestigatorBack = '0';
 	$AttackBack = '2';
+	$PerInvestigatorAttackBack = '0';
 	$EvadeBack = '2';
+	$PerInvestigatorEvadeBack = '0';
 			
 	$DamageBack = '0';
 	$HorrorBack = '0';
@@ -86,6 +90,9 @@ function setDefaults() {
 	$ArtistBack = '';
 
 	$PortraitShare = '1';	
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -101,7 +108,7 @@ function createInterface( diy, editor ) {
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
 	var BackStatPanel = layoutEnemyStats( bindings, FACE_BACK );
 	BackStatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [0], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -249,7 +256,7 @@ function paintFront( g, diy, sheet ) {
 	var EncounterBox = $ShowEncounterNumberFront == '1' ? Encounter_box : null;
 
 //	drawCollectorInfo( g, diy, sheet, $ShowCollectionNumberFront == '1', collectionSuffix, $ShowEncounterNumberFront == '1', true, true );
-	drawCollectorInfo( g, diy, sheet, CollectionBox, collectionSuffix, EncounterBox, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, CollectionBox, collectionSuffix, true, EncounterBox, true, Copyright_box, Artist_box );
 }
 
 function paintBack( g, diy, sheet ) {
@@ -284,7 +291,7 @@ function paintBack( g, diy, sheet ) {
 	var encounterBox = $ShowEncounterNumberBack == '1' ? BackEncounter_box : null;
 
 //	drawCollectorInfo( g, diy, sheet, $ShowCollectionNumberBack == '1', collectionSuffix, $ShowEncounterNumberBack == '1', true, true );
-	drawCollectorInfo( g, diy, sheet, collectionBox, collectionSuffix, encounterBox, true, BackCopyright_box, BackArtist_box );
+	drawCollectorInfo( g, diy, sheet, collectionBox, collectionSuffix, true, encounterBox, true, BackCopyright_box, BackArtist_box );
 }
 
 function onClear() {
@@ -340,11 +347,21 @@ function onRead(diy, oos) {
 		$ShowEncounterNumberFront = '1';
 		$ShowEncounterNumberBack = '1';
 	}
-
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 16 ) {
+		$PerInvestigatorAttack = '0';
+		$PerInvestigatorEvade = '0';
+		$PerInvestigatorAttackBack = '0';
+		$PerInvestigatorEvadeBack = '0';
+	}
+	
 	updateCollection();
 	updateEncounter();
 	
-	diy.version = 10;
+	diy.version = 16;
 }
 
 function onWrite( diy, oos ) {

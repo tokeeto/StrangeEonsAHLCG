@@ -23,7 +23,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 	
-	diy.version = 13;
+	diy.version = 15;
 }
 
 function setDefaults() {
@@ -54,7 +54,7 @@ function setDefaults() {
 	$Text3NameBack = 'Deckbuilding Options';
 	$Text3Back = '';
 	$Text3BackSpacing = '0';
-	$Text4NameBack = 'Deckbuilding Requirements</b> (do not count toward deck size)';
+	$Text4NameBack = 'Deckbuilding Requirements</hdr> (do not count toward deck size)<hdr>';
 	$Text4Back = '';
 	$Text4BackSpacing = '0';
 	$Text5NameBack = 'Deckbuilding Restrictions';
@@ -95,6 +95,9 @@ function setDefaults() {
 	$Copyright = '';
 
 	$PortraitShare = '1';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -104,7 +107,7 @@ function createInterface( diy, editor ) {
 
 	var TitlePanel = layoutTitleUnique( diy, bindings, true, [0, 1], FACE_FRONT );
 	var StatPanel = layoutStoryInvestigatorStats( diy, bindings, FACE_FRONT );
-	var CopyrightPanel = layoutCopyright( bindings, [0], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -229,7 +232,7 @@ function paintFront( g, diy, sheet ) {
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
 
 //	drawCollectorInfo( g, diy, sheet, true, false, false, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, Encounter_box, true, Copyright_box, Artist_box );
 }
 
 function paintBack( g, diy, sheet ) {
@@ -349,7 +352,7 @@ function onRead(diy, oos) {
 		$Text1NameBack = 'Deck Size';
 		$Text2NameBack = 'Secondary Class Choice';
 		$Text3NameBack = 'Deckbuilding Options';
-		$Text4NameBack = 'Deckbuilding Requirements</b> (do not count toward deck size)';
+		$Text4NameBack = 'Deckbuilding Requirements</hdr> (do not count toward deck size)<hdr>';
 		$Text5NameBack = 'Deckbuilding Restrictions';
 		$Text6NameBack = 'Additional Requirements';
 		$Text7NameBack = 'Additional Restrictions';
@@ -372,10 +375,14 @@ function onRead(diy, oos) {
 		$Text6BackSpacing = $AdditionalRequirementsBackSpacing;
 		$Text7BackSpacing = '0';
 	}
+	if ( diy.vesion < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
 	
 	updateCollection();
 	
-	diy.version = 13;
+	diy.version = 15;
 }
 
 function onWrite( diy, oos ) {

@@ -12,24 +12,26 @@
     @AHLCG-AssetStory = diy:ArkhamHorrorLCG/diy/AssetStory.js | ArkhamHorrorLCG/icons/AHLCG-Asset.png | AHLCG
     @AHLCG-AssetStoryAsset = diy:ArkhamHorrorLCG/diy/AssetStoryAsset.js | ArkhamHorrorLCG/icons/AHLCG-Asset.png | AHLCG
     @AHLCG-AssetStoryEnemy = diy:ArkhamHorrorLCG/diy/AssetStoryEnemy.js | ArkhamHorrorLCG/icons/AHLCG-Asset.png | AHLCG
-    @AHLCG-AssetStoryPortrait = diy:ArkhamHorrorLCG/diy/AssetStoryPortrait.js | ArkhamHorrorLCG/icons/AHLCG-Asset.png | AHLCG
+    @AHLCG-Customizable = diy:ArkhamHorrorLCG/diy/Customizable.js | ArkhamHorrorLCG/icons/AHLCG-Story.png | AHLCG
+    @AHLCG-Key = diy:ArkhamHorrorLCG/diy/Key.js | ArkhamHorrorLCG/icons/AHLCG-Key.png | AHLCG
 
 @cat-effects
     @AHLCG-Event = diy:ArkhamHorrorLCG/diy/Event.js | ArkhamHorrorLCG/icons/AHLCG-Event.png | AHLCG
  	@AHLCG-Location = diy:ArkhamHorrorLCG/diy/Location.js | ArkhamHorrorLCG/icons/AHLCG-Location.png | AHLCG
  	@AHLCG-LocationLocation = diy:ArkhamHorrorLCG/diy/LocationLocation.js | ArkhamHorrorLCG/icons/AHLCG-Location.png | AHLCG
+    @AHLCG-EnemyLocation = diy:ArkhamHorrorLCG/diy/EnemyLocation.js | ArkhamHorrorLCG/icons/AHLCG-Location.png | AHLCG
     @AHLCG-Skill = diy:ArkhamHorrorLCG/diy/Skill.js | ArkhamHorrorLCG/icons/AHLCG-Skill.png | AHLCG
     @AHLCG-TreacheryEncounter = diy:ArkhamHorrorLCG/diy/Treachery.js | ArkhamHorrorLCG/icons/AHLCG-Treachery.png | AHLCG
-    @AHLCG-TreacheryPortrait = diy:ArkhamHorrorLCG/diy/TreacheryPortrait.js | ArkhamHorrorLCG/icons/AHLCG-Treachery.png | AHLCG
+    @AHLCG-TreacheryLocation = diy:ArkhamHorrorLCG/diy/TreacheryLocation.js | ArkhamHorrorLCG/icons/AHLCG-Treachery.png | AHLCG
     @AHLCG-TreacheryWeakness = diy:ArkhamHorrorLCG/diy/WeaknessTreachery.js | ArkhamHorrorLCG/icons/AHLCG-Weakness.png | AHLCG
    
- @cat-enemies
+@cat-enemies
     @AHLCG-EnemyEncounter = diy:ArkhamHorrorLCG/diy/Enemy.js | ArkhamHorrorLCG/icons/AHLCG-Enemy.png | AHLCG
     @AHLCG-EnemyEnemy = diy:ArkhamHorrorLCG/diy/EnemyEnemy.js | ArkhamHorrorLCG/icons/AHLCG-Enemy.png | AHLCG
-    @AHLCG-EnemyPortrait = diy:ArkhamHorrorLCG/diy/EnemyPortrait.js | ArkhamHorrorLCG/icons/AHLCG-Enemy.png | AHLCG
     @AHLCG-EnemyWeakness = diy:ArkhamHorrorLCG/diy/WeaknessEnemy.js | ArkhamHorrorLCG/icons/AHLCG-Enemy.png | AHLCG
+    @AHLCG-Concealed = diy:ArkhamHorrorLCG/diy/Concealed.js | ArkhamHorrorLCG/icons/AHLCG-Concealed.png | AHLCG
  	
- @cat-rules
+@cat-rules
     @AHLCG-Act = diy:ArkhamHorrorLCG/diy/Act.js | ArkhamHorrorLCG/icons/AHLCG-Act.png | AHLCG
     @AHLCG-ActEnemy = diy:ArkhamHorrorLCG/diy/ActEnemy.js | ArkhamHorrorLCG/icons/AHLCG-Act.png | AHLCG
     @AHLCG-ActLocation = diy:ArkhamHorrorLCG/diy/ActLocation.js | ArkhamHorrorLCG/icons/AHLCG-Act.png | AHLCG
@@ -44,6 +46,7 @@
     @AHLCG-AgendaTreachery = diy:ArkhamHorrorLCG/diy/AgendaTreachery.js | ArkhamHorrorLCG/icons/AHLCG-Agenda.png | AHLCG
     @AHLCG-CampaignGuide75 = diy:ArkhamHorrorLCG/diy/Guide75.js | ArkhamHorrorLCG/icons/AHLCG-Guide75.png | AHLCG
 	@AHLCG-CampaignGuideA4 = diy:ArkhamHorrorLCG/diy/GuideA4.js | ArkhamHorrorLCG/icons/AHLCG-GuideA4.png | AHLCG
+	@AHLCG-CampaignGuideLetter = diy:ArkhamHorrorLCG/diy/GuideLetter.js | ArkhamHorrorLCG/icons/AHLCG-GuideA4.png | AHLCG
     @AHLCG-ScenarioInformation = diy:ArkhamHorrorLCG/diy/Scenario.js | ArkhamHorrorLCG/icons/AHLCG-Scenario.png | AHLCG
     @AHLCG-ChaosEffects = diy:ArkhamHorrorLCG/diy/Chaos.js | ArkhamHorrorLCG/icons/AHLCG-Chaos.png | AHLCG
 	@AHLCG-StoryAsset = diy:ArkhamHorrorLCG/diy/StoryAsset.js | ArkhamHorrorLCG/icons/AHLCG-Story.png | AHLCG
@@ -52,3 +55,4 @@
     @AHLCG-StoryChaos = diy:ArkhamHorrorLCG/diy/StoryChaos.js | ArkhamHorrorLCG/icons/AHLCG-Story.png | AHLCG
     @AHLCG-StoryTreachery = diy:ArkhamHorrorLCG/diy/StoryTreachery.js | ArkhamHorrorLCG/icons/AHLCG-Story.png | AHLCG
     @AHLCG-StoryStory = diy:ArkhamHorrorLCG/diy/StoryStory.js | ArkhamHorrorLCG/icons/AHLCG-Story.png | AHLCG
+    @AHLCG-Ultimatum = diy:ArkhamHorrorLCG/diy/Ultimatum.js | ArkhamHorrorLCG/icons/AHLCG-Story.png | AHLCG

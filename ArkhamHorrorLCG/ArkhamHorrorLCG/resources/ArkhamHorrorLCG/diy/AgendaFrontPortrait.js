@@ -23,7 +23,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 	
-	diy.version = 12;
+	diy.version = 15;
 }
 
 function setDefaults() {
@@ -60,11 +60,15 @@ function setDefaults() {
 	$AccentedStoryCBackSpacing = '0';
 		
 	$VictoryBack = '';
+	
 	$VictoryBackSpacing = '0';
 	$ScaleModifier = '100';
 		
 	$Artist = '';
 	$Copyright = '';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -81,9 +85,9 @@ function createInterface( diy, editor ) {
 	TitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Front );
 	var StatPanel = layoutAgendaFrontPortraitStats( diy, bindings, FACE_FRONT, PortraitTabArray );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
-	var BackTitlePanel = layoutTitle( diy, bindings, false, [1], FACE_BACK );
+	var BackTitlePanel = layoutTitle2( diy, bindings, [1], FACE_BACK );
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [0, 1], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0, 1], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -203,8 +207,8 @@ function createBackPainter( diy, sheet ) {
 	initBodyTags( diy, BackBody_box );	
 
 	BackIndex_box = markupBox(sheet);
-	BackIndex_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'ScenarioIndex-style'), null);
-	BackIndex_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'ScenarioIndex-alignment'));
+	BackIndex_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'BackScenarioIndex-style'), null);
+	BackIndex_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'BackScenarioIndex-alignment'));
 }
 
 function paintFront( g, diy, sheet ) {
@@ -214,14 +218,14 @@ function paintFront( g, diy, sheet ) {
 
 	drawTemplate( g, sheet, '' );
 
-	drawActAgendaName( g, diy, sheet, Name_box );
+	draw2LineName( g, diy, sheet, Name_box );
 
 	drawBody( g, diy, sheet, Body_box, new Array( 'AgendaStory', 'Rules' ) );
 
 	drawDoom( g, diy, sheet );
 
 //	drawCollectorInfo( g, diy, sheet, true, false, true, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, Encounter_box, true, Copyright_box, Artist_box );
 			
 //	drawScenarioIndexFront( g, diy, sheet, #AHLCG-Label-Agenda, Index_box );
 }
@@ -231,7 +235,7 @@ function paintBack( g, diy, sheet ) {
 	
 	drawTemplate( g, sheet, '' );
 
-	drawRotatedName( g, diy, sheet );
+	drawActAgendaBackName( g, diy, sheet );
 
 	drawIndentedStoryBody( g, diy, sheet, null, BackHeader_box, BackStory_box, BackBody_box );
 
@@ -242,45 +246,7 @@ function paintBack( g, diy, sheet ) {
 function onClear() {
 	setDefaults();
 }
-/*
-function createTextShape( textBox, textRegion, reverse ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
 
-	var path = new java.awt.geom.Path2D.Double();
-
-	var xPathPoints = new Array( 0.000, 0.000, 0.148, 0.148, 1.000, 1.000 );
-	var yPathPoints = new Array( 0.000, 0.850, 0.850, 1.000, 1.000, 0.000 );
-
-	var numPoints = xPathPoints.length;
-	
-	if ( reverse ) {
-		// swap order and x-value
-		for (let i = 0; i < numPoints / 2; i++) {
-			let px = xPathPoints[i];
-			let py = yPathPoints[i];
-			
-			xPathPoints[i] = 1.000 - xPathPoints[numPoints - i - 1];
-			yPathPoints[i] = yPathPoints[numPoints - i - 1];
-			
-			xPathPoints[numPoints - i - 1] = 1.000 - px;
-			yPathPoints[numPoints - i - 1] = py;
-		}
-	}
-	
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	for (let i = 1; i < numPoints; i++) {
-		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-*/
 // These can be used to perform special processing during open/save.
 // For example, you can seamlessly upgrade from a previous version
 // of the script.
@@ -320,14 +286,18 @@ function onRead(diy, oos) {
 		$Asterisk = '0';
 	}
 	if ( diy.version < 12 ) {
-		$VictoryBack = ''
+		$VictoryBack = '';
 		$VictoryBackSpacing = '0';
+	}
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
 	}
 	
 	updateCollection();
 	updateEncounter();
 
-	diy.version = 12;
+	diy.version = 15;
 }
 
 function onWrite( diy, oos ) {

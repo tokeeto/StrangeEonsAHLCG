@@ -24,7 +24,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
-	diy.version = 10;
+	diy.version = 18;
 }
 
 function setDefaults() {
@@ -54,6 +54,10 @@ function setDefaults() {
 	$MergeTabletBack = 'None';
 	
 	$TrackerBox = '';
+	$TrackerHeight = '100';
+	
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -63,7 +67,7 @@ function createInterface( diy, editor ) {
 
 	var TitlePanel = layoutTitle2( diy, bindings, [0, 1], FACE_FRONT );
 	var StatPanel = layoutChaosStats( bindings, FACE_FRONT );
-	var CopyrightPanel = layoutCopyright( bindings, [0, 1], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0, 1], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -191,12 +195,12 @@ function paintFront( g, diy, sheet ) {
 	if ( diy.name != '' ) y = drawChaosName( g, diy, sheet, Name_box );
 	y = drawDifficulty( g, diy, sheet, Difficulty_box, #AHLCG-Difficulty-Front, y );
 
-	if ( $TrackerBox.length > 0 ) drawChaosTrackerBox( g, diy, sheet, Tracker_box );
+	if ( $TrackerBox.length > 0 ) drawTrackerBox( g, diy, sheet, Tracker_box );
 
 	drawChaosBody( g, diy, sheet, Body_boxes, null, y );
 
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, false );
-	drawCollectorInfo( g, diy, sheet, Collection_box, true, Encounter_box, true, Copyright_box, null );
+	drawCollectorInfo( g, diy, sheet, Collection_box, true, true, Encounter_box, true, Copyright_box, null );
 }
 
 function paintBack( g, diy, sheet ) {
@@ -209,12 +213,12 @@ function paintBack( g, diy, sheet ) {
 	if ( diy.name != '' ) y = drawChaosName( g, diy, sheet, BackName_box );
 	y = drawDifficulty( g, diy, sheet, BackDifficulty_box, #AHLCG-Difficulty-Back, y );
 	
-	if ( $TrackerBox.length > 0 ) drawChaosTrackerBox( g, diy, sheet, Tracker_box );
+	if ( $TrackerBox.length > 0 ) drawTrackerBox( g, diy, sheet, Tracker_box );
 
 	drawChaosBody( g, diy, sheet, BackBody_boxes, null, y );
 
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, false );
-	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, BackEncounter_box, true, BackCopyright_box, false );
+	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, true, BackEncounter_box, true, BackCopyright_box, false );
 } 
 
 function onClear() {
@@ -242,8 +246,15 @@ function onRead(diy, oos) {
 	if ( diy.version < 10 ) {
 		$TrackerBox = '';
 	}
-
-	diy.version = 10;
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 18 ) {
+		$TrackerHeight = '100';
+	}
+	
+	diy.version = 18;
 }
 
 function onWrite( diy, oos ) {

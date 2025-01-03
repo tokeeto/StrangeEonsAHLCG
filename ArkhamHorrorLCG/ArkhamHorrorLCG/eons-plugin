@@ -1,11 +1,11 @@
 #
 #
 
-id = CATALOGUEID{0b899f3c-78ae-40b8-bcfc-b06479b1f136:2021-6-6-9-16-21-604}
+id = CATALOGUEID{0b899f3c-78ae-40b8-bcfc-b06479b1f136:2025-0-2-22-53-49-995}
 
 priority = GAME
-ui-languages = en_US,it_IT,es,fr_FR,de_DE
-game-languages = en_US,it_IT,es,fr_FR,de_DE
+ui-languages = en,it,es,fr,de,uk,zh,zh_CN
+game-languages = en,it,es,fr,de,uk,zh,zh_CN
 
 catalog-name = Arkham Horror: The Card Game
 catalog-name_de_DE = Arkham Horror: Das Kartenspiel
@@ -26,9 +26,12 @@ catalog-description = <p>This plug-in allows the creation of components for \
     scans by Will Fuqua. Italian translation by Stefano Cardinale.  French \
     translation by David Violeau.  German translation by Magnus \
     Upmann.</p>\n<p>Thanks to Christopher G. Jennings for Strange Eons, and to Nate \
-    French, Matt Newman, and FFG for this great game.</p>\n<p>Thanks also to karagh, \
+    French, MJ Newman, and FFG for this great game.</p>\n<p>Thanks also to karagh, \
     whose Lord of the Rings: The Card Game plugin was instrumental in making this \
-    possible.</p>
+    possible.</p>\n<p>Please read and abide by the FFG Guidelines for Community Use \
+    of IP \
+    here:</p><p>https://images-cdn.fantasyflightgames.com/filer_public/fa/b1/fab15a15\
+    -94a6-404c-ab86-6a3b0e77a7a0/ip_policy_031419_final_v21.pdf</p>
 catalog-description_de_DE = <p>Mit diesem Plug-in lassen sich Komponenten f�r \
     <i><b>Arkham Horror: Das Kartenspiel</b></i> von Fantasy Flight Games \
     erstellen.</p>\n<p>Dieses Plug-in ist f�r Freunde des Spiels gedacht; \
@@ -43,7 +46,7 @@ catalog-description_de_DE = <p>Mit diesem Plug-in lassen sich Komponenten f�r 
     GeckoTH und Kartenscans von Will Fuqua entwickelt.  Deutsche �bersetzung von \
     Magnus Upmann.  Italienische �bersetzung von Stefano Cardinale.  Franz�sische \
     �bersetzung von David Violeau.</p>\n<p>Danke an Christopher G. Jennings f�r \
-    Strange Eons, und an Nate French, Matt Newman und FFG f�r dieses gro�artige \
+    Strange Eons, und an Nate French, MJ Newman und FFG f�r dieses gro�artige \
     Spiel.</p>\n<p>Au�erdem Danke an karagh, ohne dessen Plug-in f�r Der Herr der \
     Ringe: Das Kartenspiel die Entwicklung dieses Plug-ins nicht m�glich gewesen w�re.</p>
 catalog-description_en_US = catalog-description = <p>This plug-in allows the \
@@ -58,9 +61,12 @@ catalog-description_en_US = catalog-description = <p>This plug-in allows the \
     GeckoTH and card scans by Will Fuqua. Italian translation by Stefano Cardinale. \
     French translation by David Violeau. German translation by Magnus \
     Upmann.</p>\n<p>Thanks to Christopher G. Jennings for Strange Eons, and to Nate \
-    French, Matt Newman, and FFG for this great game.</p>\n<p>Thanks also to karagh, \
+    French, MJ Newman, and FFG for this great game.</p>\n<p>Thanks also to karagh, \
     whose Lord of the Rings: The Card Game plugin was instrumental in making this \
-    possible.</p>
+    possible.</p>\n<p>Please read and abide by the FFG Guidelines for Community Use \
+    of IP \
+    here:</p><p>https://images-cdn.fantasyflightgames.com/filer_public/fa/b1/fab15a15\
+    -94a6-404c-ab86-6a3b0e77a7a0/ip_policy_031419_final_v21.pdf</p>
 catalog-description_it_IT = <p>Questa plug-in permette la creazione di \
     componenti per <i><b>Arkham Horror: Il Gioco di Carte</b></i> della Fantasy \
     Flight Games.</p>\n<p>Questa plug-in &egrave; pensata per essere usata da \
@@ -73,7 +79,7 @@ catalog-description_it_IT = <p>Questa plug-in permette la creazione di \
     ringraziamenti:</h2>\n<p>Sviluppata da Tim Bennett (jaqenZann). Templates \
     sviluppati con l'aiuto di templates di GeckoTH e scansioni delle carte di Will \
     Fuqua. Traduzione in italiano di Stefano Cardinale.</p>\n<p>Grazie a Christopher \
-    G. Jennings per Strange Eons e a Nate French, Matt Newman, e la FFG per questo \
+    G. Jennings per Strange Eons e a Nate French, MJ Newman, e la FFG per questo \
     grande gioco.</p>\n<p>Grazie anche a karagh, per la sua plugin Lord of the \
     Rings: The Card Game che &egrave; stata indispensabile nel rendere tutto questo \
     possibile.</p>

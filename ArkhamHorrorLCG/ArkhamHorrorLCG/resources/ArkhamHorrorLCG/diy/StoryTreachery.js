@@ -25,7 +25,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 	
-	diy.version = 14;
+	diy.version = 18;
 }
 
 function setDefaults() {
@@ -54,7 +54,19 @@ function setDefaults() {
 	$Victory = '';
 	$VictorySpacing = '0';
 
+	$TrackerBox = '';
+	$TrackerHeight = '100';
+
 	$ScaleModifier = '100';
+
+	$ShowCollectionNumberFront = '1';
+	$ShowCollectionNumberBack = '1';
+	
+	$ShowEncounterNumberFront = '1';
+	$ShowEncounterNumberBack = '1';
+
+	$ShowCopyrightFront = '1';
+	$ShowCopyrightBack = '1';
 
 	// back
 	$TitleBack = '';
@@ -71,6 +83,9 @@ function setDefaults() {
 	
 	$ArtistBack = '';
 	$Copyright = '';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -78,13 +93,13 @@ function createInterface( diy, editor ) {
 	
 	var bindings = new Bindings( editor, diy );
 
-	var TitlePanel = layoutTitle( diy, bindings, false, [0], FACE_FRONT );
+	var TitlePanel = layoutTitle2( diy, bindings, [0], FACE_FRONT );
 	TitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Front );
-	var StatPanel = layoutStoryStats( bindings, FACE_FRONT );
+	var StatPanel = layoutStoryStats( diy, bindings, FACE_FRONT );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
 	var BackTitlePanel = layoutTitle( diy, bindings, false, [1], FACE_BACK );
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [1], FACE_BACK );
+	var CopyrightPanel = layoutCopyright( bindings, true, [0, 1], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -128,7 +143,7 @@ function createInterface( diy, editor ) {
 	PortraitTab.addToEditor(editor, @AHLCG-Portraits);
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
-	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [1], FACE_FRONT );
+	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, true, [0, 1], FACE_FRONT );
 	
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
@@ -136,7 +151,7 @@ function createInterface( diy, editor ) {
 	CollectionTab.addToEditor(editor, @AHLCG-Collection);
 
 	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
-	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0, 1], [0, 1], FACE_FRONT );
+	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, true, [0, 1], [0, 1], FACE_FRONT );
 	
 	var EncounterTab = new Grid();
 	EncounterTab.editorTabScrolling = true;
@@ -147,8 +162,8 @@ function createInterface( diy, editor ) {
 }
 
 function createFrontPainter( diy, sheet ) {
-	// always use Story settings, Chaos doesn't have label or Story settings
-	Label_box  = markupBox(sheet);
+	// create label box no matter what, but have to hardcode Story because Chaos template doesn't have a label
+	Label_box = markupBox(sheet);
 	Label_box.defaultStyle = diy.settings.getTextStyle('AHLCG-Story-Label-style', null);
 	Label_box.alignment = diy.settings.getTextAlignment('AHLCG-Story-Label-alignment');
 
@@ -183,6 +198,10 @@ function createFrontPainter( diy, sheet ) {
 	initBodyTags( diy, Story_box );	
 	initBodyTags( diy, Body_box );	
 
+	Tracker_box = markupBox(sheet);
+	Tracker_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'TrackerName-style'), null);
+	Tracker_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'TrackerName-alignment'));
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Artist-alignment'));
@@ -192,6 +211,16 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Copyright-alignment'));
  
 	initCopyrightTags( diy, Copyright_box );	
+
+	Collection_box = markupBox(sheet);
+	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'CollectionNumber-style'), null);
+	Collection_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'CollectionNumber-alignment'));
+
+	Encounter_box = markupBox(sheet);
+	Encounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'EncounterNumber-style'), null);
+	Encounter_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'EncounterNumber-alignment'));
+
+	updateCardType( diy, $Template, FACE_FRONT, 'Story', '' );
 }
 
 function createBackPainter( diy, sheet ) {
@@ -237,17 +266,33 @@ function paintFront( g, diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Name-alignment'));
 
+	// I do not know why I have to recreate these, but some of them don't change color if I don't
+	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Copyright-style'), null);
+	Encounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'EncounterNumber-style'), null);
+	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'CollectionNumber-style'), null);
+
 	if ( $Template == 'Story' ) {
 		drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Story );
-		drawName( g, diy, sheet, Name_box );
+		draw2LineName( g, diy, sheet, Name_box );
 	}
-	else {
+	else if ( $Template == 'Chaos' ) {
 		if ( diy.name != '' ) y = drawChaosName( g, diy, sheet, Name_box );
 	}
 
+	if ( $TrackerBox.length > 0 ) drawTrackerBox( g, diy, sheet, Tracker_box );
+
 	drawIndentedStoryBody( g, diy, sheet, Traits_box, Header_box, Story_box, Body_box );
 
-	drawEncounterIcon( g, diy, sheet );	
+	var collectionSuffix = false;
+	if ( $ShowCollectionNumberFront == '1' && $ShowCollectionNumberBack == '1' ) collectionSuffix = true;
+	var encounterIcon = ($Template == 'ChaosFull') ? false : true;
+	
+	var collectionBox = $ShowCollectionNumberFront == '1' ? Collection_box : null;
+	var encounterBox = $ShowEncounterNumberFront == '1' ? Encounter_box :  null;
+	var copyrightBox = $ShowCopyrightFront == '1' ? Copyright_box : null;
+
+	drawCollectorInfo( g, diy, sheet, collectionBox, collectionSuffix, $ShowCollectionNumberFront == '1', encounterBox, encounterIcon, copyrightBox, null );
+//	drawEncounterIcon( g, diy, sheet );	
 }
 
 function paintBack( g, diy, sheet ) {
@@ -261,8 +306,15 @@ function paintBack( g, diy, sheet ) {
 
 	drawBody( g, diy, sheet, BackBody_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
+	var collectionSuffix = false;
+	if ( $ShowCollectionNumberFront == '1' && $ShowCollectionNumberBack == '1' ) collectionSuffix = true;
+	
+	var collectionBox = $ShowCollectionNumberBack == '1' ? BackCollection_box : null;
+	var encounterBox = $ShowEncounterNumberBack == '1' ? BackEncounter_box :  null;
+	var copyrightBox = $ShowCopyrightBack == '1' ? BackCopyright_box : null;
+
 //	drawCollectorInfo( g, diy, sheet, true, false, true, true, true );
-	drawCollectorInfo( g, diy, sheet, BackCollection_box, false, BackEncounter_box, true, BackCopyright_box, BackArtist_box );
+	drawCollectorInfo( g, diy, sheet, collectionBox, collectionSuffix, true, encounterBox, true, copyrightBox, BackArtist_box );
 }
 
 function onClear() {
@@ -293,8 +345,25 @@ function onRead(diy, oos) {
 	if ( diy.version < 14 ) {
 		$Template = 'Story';
 	}
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+
+		$ShowCollectionNumberFront = '1';
+		$ShowCollectionNumberBack = '1';
+		$ShowEncounterNumberFront = '1';
+		$ShowEncounterNumberBack = '1';
+	}
+	if ( diy.version < 16 ) {
+		$ShowCopyrightFront = '1';
+		$ShowCopyrightBack = '1';
+	}
+	if ( diy.version < 18 ) {
+		$TrackerBox = '';
+		$TrackerHeight = '100';
+	}
 	
-	diy.version = 14;
+	diy.version = 18;
 }
 
 function onWrite( diy, oos ) {

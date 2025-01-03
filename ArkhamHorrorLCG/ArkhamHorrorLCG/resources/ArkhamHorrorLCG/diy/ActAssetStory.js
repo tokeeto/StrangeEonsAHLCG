@@ -25,7 +25,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 	
-	diy.version = 11;
+	diy.version = 17;
 }
 
 function setDefaults() {
@@ -74,6 +74,9 @@ function setDefaults() {
 	$FlavorBackSpacing = '0';
 	
 	$ArtistBack = '';
+
+	$TemplateReplacement = '';
+	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
@@ -86,7 +89,7 @@ function createInterface( diy, editor ) {
 	var PortraitTab = PortraitTabArray[0];
 	PortraitTabArray.splice( 0, 1 );
 
-	var TitlePanel = layoutTitle2( diy, bindings, false, [0], FACE_FRONT );
+	var TitlePanel = layoutTitle2( diy, bindings, [0], FACE_FRONT );
 	TitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Front );
 	var StatPanel = layoutActStats( diy, bindings, FACE_FRONT, PortraitTabArray );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
@@ -94,7 +97,7 @@ function createInterface( diy, editor ) {
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
 	var BackStatPanel = layoutAssetStoryStats( bindings, FACE_BACK );
 	BackStatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Back );
-	var CopyrightPanel = layoutCopyright( bindings, [0, 1], FACE_FRONT );
+	var CopyrightPanel = layoutCopyright( bindings, false, [0, 1], FACE_FRONT );
 
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
@@ -165,6 +168,8 @@ function createFrontPainter( diy, sheet ) {
 	Index_box = markupBox(sheet);
 	Index_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'ScenarioIndex-style'), null);
 	Index_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'ScenarioIndex-alignment'));
+
+	updateOrientation( diy, PortraitList[0], $Orientation, 'Act' );
 }
 
 function createBackPainter( diy, sheet ) {
@@ -186,9 +191,9 @@ function createBackPainter( diy, sheet ) {
 	BackSubtype_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Subtype-style'), null);
 	BackSubtype_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Subtype-alignment'));
 
-	BackCost_box = markupBox(sheet);
-	BackCost_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Cost-style'), null);
-	BackCost_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_BACK, 'Cost-alignment'));
+//	BackCost_box = markupBox(sheet);
+//	BackCost_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Cost-style'), null);
+//	BackCost_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_BACK, 'Cost-alignment'));
 
 	BackBody_box = markupBox(sheet);
 	BackBody_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
@@ -222,14 +227,14 @@ function paintFront( g, diy, sheet ) {
 
 	drawTemplate( g, sheet, '' );
 
-	drawActAgendaName( g, diy, sheet, Name_box );
+	draw2LineName( g, diy, sheet, Name_box );
 
 	drawBody( g, diy, sheet, Body_box, new Array( 'ActStory', 'Rules' ) );
 
 	drawClues( g, diy, sheet );
 
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, true, Encounter_box, true, Copyright_box, Artist_box );
+	drawCollectorInfo( g, diy, sheet, Collection_box, true, true, Encounter_box, true, Copyright_box, Artist_box );
 	
 	drawScenarioIndexFront( g, diy, sheet, #AHLCG-Label-Act, Index_box );
 }
@@ -243,7 +248,7 @@ function paintBack( g, diy, sheet ) {
 	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Asset );
 	drawName( g, diy, sheet, BackName_box );
 
-	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, 'Neutral', true );
+	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, $CardClassBack, true );
 	
 	if ($CardClassBack == 'Weakness' ) {	
 		drawSubtype( g, diy, sheet, BackSubtype_box, #AHLCG-Label-Weakness );
@@ -260,37 +265,13 @@ function paintBack( g, diy, sheet ) {
 	drawBody( g, diy, sheet, BackBody_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, true );
-	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, BackEncounter_box, true, BackCopyright_box, BackArtist_box );
+	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, true, BackEncounter_box, true, BackCopyright_box, BackArtist_box );
 } 
 
 function onClear() {
 	setDefaults();
 }
-/*
-function createTextShape( textBox, textRegion ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
 
-	var path = new java.awt.geom.Path2D.Double();
-
-	var xPathPoints = new Array( 0.000, 0.000, 0.148, 0.148, 1.000, 1.000 );
-	var yPathPoints = new Array( 0.000, 0.850, 0.850, 1.000, 1.000, 0.000 );
-
-	var numPoints = xPathPoints.length;
-	
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	for (let i = 1; i < numPoints; i++) {
-		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-*/
 function setTextShape( box, region, reverse ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -317,11 +298,19 @@ function onRead(diy, oos) {
 	if ( diy.version < 11 ) {
 		$Slot2Back = 'None';
 	}
-
+	if ( diy.version < 15 ) {
+		$TemplateReplacement = '';
+		$TemplateReplacementBack = '';
+	}
+	if ( diy.version < 17) {		
+		// region changed, requires a shift to look the same
+		PortraitList[0].setPanX(PortraitList[0].getPanX() + 10.0);
+	}
+	
 	updateCollection();
 	updateEncounter();
 		
-	diy.version = 11;
+	diy.version = 17;
 }
 
 function onWrite( diy, oos ) {
