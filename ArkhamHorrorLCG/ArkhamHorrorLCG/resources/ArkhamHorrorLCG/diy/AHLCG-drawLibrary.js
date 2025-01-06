@@ -2683,20 +2683,12 @@ function drawCopyright( g, diy, sheet, copyrightBox, collectorX ) {
 }
 
 // draws collection, encounter, and copyright info, keeps track of offset because of Threads of Fate style regions
-//function drawCollectorInfo( g, diy, sheet, collectionNumber, collectionSuffix, encounterNumber, encounterIcon, artistName ) {	
 function drawCollectorInfo( g, diy, sheet, collectionNumberBox, collectionSuffix, collectionIcon, encounterNumberBox, encounterIcon, copyrightBox, artistBox ) {	
 	var faceIndex = sheet.getSheetIndex();
 
-//	if ( CardTypes[faceIndex] == 'Story' && $Template == 'ChaosStory' ) {
-//		if ( collectionNumberBox ) collectionNumberBox.defaultStyle = diy.settings.getTextStyle('AHLCG-StoryChaos-CollectionNumber-style', null);
-//		if ( encounterNumberBox ) encounterNumberBox.defaultStyle = diy.settings.getTextStyle('AHLCG-StoryChaos-EncounterNumber-style', null);
-//		if ( copyrightBox ) copyrightBox.defaultStyle = diy.settings.getTextStyle('AHLCG-StoryChaos-Copyright-style', null);		
-//	}
-//	else {
-		if ( collectionNumberBox ) collectionNumberBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey( faceIndex, 'CollectionNumber-style'), null);
-		if ( encounterNumberBox ) encounterNumberBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey( faceIndex, 'EncounterNumber-style'), null);
-		if ( copyrightBox ) copyrightBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey( faceIndex, 'Copyright-style'), null);
-//	}
+	if ( collectionNumberBox ) collectionNumberBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey( faceIndex, 'CollectionNumber-style'), null);
+	if ( encounterNumberBox ) encounterNumberBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey( faceIndex, 'EncounterNumber-style'), null);
+	if ( copyrightBox ) copyrightBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey( faceIndex, 'Copyright-style'), null);
 
 	var collectorX = sheet.getTemplateWidth();
 
@@ -3076,18 +3068,10 @@ function drawCollectionIcon( g, diy, sheet, collectorX ) {
 		if ( CardTypes[faceIndex] == 'Story' ) icon = ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png');
 		else icon = createInvertedImage( ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png') );
 				
-		sheet.paintImage( g, icon, region );		
+		sheet.paintImage( g, icon, region );	
 	}
 	// custom
 	else {
-//		// [0] because that is the type the portrait is reading its setting from
-//		// [1] if it is a Story card, because the front side doesn't have a portrait... this was poorly planned
-//		let typeIndex = 0;
-//		if ( CardTypes[0] == 'Story' ) typeIndex = 1;
-
-//		diy.settings.setRegion( 'AHLCG-' + CardTypes[typeIndex] + '-Collection-portrait-clip-region', region );		
-//		PortraitList[getPortraitIndex( 'Collection' )].paint( g, sheet.getRenderTarget() );
-
 		// updated so we can invert a single side of story/enemy for example; also means we don't need to change the region
 		if ( CardTypes[faceIndex] == 'Story' )
 			sheet.paintImage( g, createInvertedImage( PortraitList[getPortraitIndex( 'Collection' )].getImage()), region);

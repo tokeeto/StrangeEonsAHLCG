@@ -523,7 +523,7 @@ function layoutEventStats( diy, bindings, faceIndex ) {
 
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
-	var ClassList1 = new comboBox( AHLCGObject.comboClassesBW, null );
+	var ClassList1 = new comboBox( AHLCGObject.comboClassesBWS, null );
 	bindings.add( 'CardClass' + BindingSuffixes[faceIndex], ClassList1, [faceIndex] );
 
 	ClassList1.addActionListener( function updateShape( actionEvent ) {

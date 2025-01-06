@@ -531,7 +531,19 @@ function gameObject( masterSettings ) {
 		ListItem( 'ParallelRogue', @AHLCG-Class-ParallelRogue ),
 		ListItem( 'ParallelMystic', @AHLCG-Class-ParallelMystic ),
 		ListItem( 'ParallelSurvivor', @AHLCG-Class-ParallelSurvivor ) );
-		
+
+    this.comboClassesBWS = new Array( 
+        ListItem( 'Guardian', @AHLCG-Class-Guardian ),
+        ListItem( 'Seeker', @AHLCG-Class-Seeker ),
+        ListItem( 'Rogue', @AHLCG-Class-Rogue ),
+        ListItem( 'Mystic', @AHLCG-Class-Mystic ),
+        ListItem( 'Survivor', @AHLCG-Class-Survivor ),
+        ListItem( 'Neutral' , @AHLCG-Class-Neutral ),
+        ListItem( 'Story' , @AHLCG-Class-Story ),
+        ListItem( 'Weakness' , @AHLCG-Class-Weakness ),
+        ListItem( 'BasicWeakness', @AHLCG-Class-BasicWeakness ) 
+    );
+    
 	this.comboClassesBW = new Array( 
 		ListItem( 'Guardian', @AHLCG-Class-Guardian ),
 		ListItem( 'Seeker', @AHLCG-Class-Seeker ),

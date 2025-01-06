@@ -9,10 +9,10 @@ importClass( arkham.component.DefaultPortrait );
 const CardTypes = [ 'Event', 'EventBack' ];
 const BindingSuffixes = [ '', 'Back' ];
 
-const PortraitTypeList = [ 'Portrait-Front', 'Collection-Front' ];
+const PortraitTypeList = [ 'Portrait-Front', 'Collection-Front', 'Encounter-Front' ];
 
 function create( diy ) {
-	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size	
+	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size
 	diy.backTemplateKey = getExpandedKey( FACE_BACK, 'Default', '-template' );
 
 	diy.faceStyle = FaceStyle.TWO_FACES;
@@ -22,6 +22,7 @@ function create( diy ) {
 	setDefaults();
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
+    setDefaultEncounter();
 
 	diy.version = 17;
 }
@@ -38,23 +39,23 @@ function setDefaults() {
 	$Skill3 = 'None';
 	$Skill4 = 'None';
 	$Skill5 = 'None';
-	
+
 	$BackTypeBack = 'Player';
-	
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
 	$Flavor = '';
 	$Victory = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
 	$FlavorSpacing = '0';
-	
+
 	$Artist = '';
 	$Copyright = '';
-	
+
 	$TemplateReplacement = '';
 	$TemplateReplacementBack = '';
 }
@@ -62,9 +63,9 @@ function setDefaults() {
 function createInterface( diy, editor ) {
 
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
-		
+
 	var TitlePanel = layoutTitle( diy, bindings, false, [0], FACE_FRONT );
 	var StatPanel = layoutEventStats( diy, bindings, FACE_FRONT );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
@@ -76,8 +77,8 @@ function createInterface( diy, editor ) {
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatPanel, 'wrap, pushx, growx', BackStatPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
-	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );	
+
+	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules );
 
@@ -86,13 +87,21 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
 	CollectionTab.addToEditor(editor, @AHLCG-Collection);
 
-	bindings.bind();	
+    var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
+    var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0], [0], FACE_FRONT );
+
+    var EncounterTab = new Grid();
+    EncounterTab.editorTabScrolling = true;
+    EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
+    EncounterTab.addToEditor(editor, @AHLCG-EncounterSet);
+
+	bindings.bind();
 }
 
 function createFrontPainter( diy, sheet ) {
@@ -104,7 +113,7 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Subtype_box = markupBox(sheet);
 	Subtype_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Subtype-style'), null);
@@ -116,8 +125,8 @@ function createFrontPainter( diy, sheet ) {
 //	createTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 	setTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -126,11 +135,15 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
 	Collection_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'CollectionNumber-alignment'));
+
+    Encounter_box = markupBox(sheet);
+    Encounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'EncounterNumber-style'), null);
+    Encounter_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'EncounterNumber-alignment'));
 }
 
 function createBackPainter( diy, sheet ) {
@@ -147,13 +160,13 @@ function paintFront( g, diy, sheet ) {
 
 	var subtypeRegion = diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Subtype-region' ) );
 	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) subtypeRegion.y -= 2;
-	
-	if ($CardClass == 'Weakness' ) {	
+
+	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
-	else if ($CardClass == 'BasicWeakness' ) {	
+	else if ($CardClass == 'BasicWeakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-BasicWeakness );
-		
+
 		drawOverlay( g, diy, sheet, 'BasicWeaknessEvent' );
 		drawBasicWeaknessIcon( g, diy, sheet );
 	}
@@ -162,15 +175,35 @@ function paintFront( g, diy, sheet ) {
 	}
 
 	drawCost( g, diy, sheet );
-	
+
 	drawSkillIcons( g, diy, sheet, $CardClass );
-	
+
 	var regionName = 'Body';
 	if ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness') regionName = 'WeaknessBody';
 	drawBodyWithRegionName( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ), regionName );
 
-//	drawCollectorInfo( g, diy, sheet, true, false, false, false, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, null, false, Copyright_box, Artist_box );
+    var drawIcon = false;
+    if ( $CardClass == 'Story'){
+        drawIcon = true;
+        sheet.paintImage(
+            g,
+            ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-StoryEventOverlay.jp2'),
+            diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Encounter-overlay-region' ) )
+        );
+    }
+
+	drawCollectorInfo(
+		g,
+		diy,
+		sheet,
+		Collection_box,
+		false,
+		true,
+		drawIcon ? Encounter_box : null,
+		drawIcon,
+		Copyright_box,
+		Artist_box
+	);
 }
 
 function paintBack( g, diy, sheet ) {
@@ -188,19 +221,19 @@ function createTextShape( textBox, textRegion, className  ) {
 	var y = textRegion.y;
 	var w = textRegion.width;
 	var h = textRegion.height;
-	
+
 	var path = new java.awt.geom.Path2D.Double();
-	
+
 //	var xPathPoints = new Array( 0.0, -0.054, -0.009, 0.179 );
 //	var xPathPoints = new Array( 0.0, -0.054, -0.004, 0.179 );
 	var xPathPoints = new Array( 0.0, -0.054, -0.004, 0.179 );
 	var yPathPoints = new Array( 0.0, 0.333, 0.892, 1.0 );
-	
+
 	var xControlPoints = new Array( 0.004, -0.060, -0.083, 0.006, 0.088, 0.047 );
 	var yControlPoints = new Array( 0.047, 0.193, 0.513, 0.674, 0.873, 0.993 );
-	
+
 	var numPoints = xPathPoints.length;
-	
+
 	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 	for (let i = 1; i < numPoints; i++) {
@@ -220,7 +253,7 @@ function createTextShape( textBox, textRegion, className  ) {
 	}
 
 	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
 }
 */
@@ -247,7 +280,7 @@ function onRead(diy, oos) {
 			$BackTypeBack = $BackTypeundefined;
 			diy.settings.reset('BackTypeundefined');
 		}
-		
+
 		if ( $BackTypeBack == null ) $BackTypeBack = 'Player';	// some cards created during testing might have both as null
 	}
 
@@ -260,9 +293,9 @@ function onRead(diy, oos) {
 	if ( diy.version < 16 ) {
 		diy.faceStyle = FaceStyle.TWO_FACES;	// change was in v15, but I forgot to add this
 	}
-	
+
 	updateCollection();
-	
+
 	diy.version = 17;
 }
 
