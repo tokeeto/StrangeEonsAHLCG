@@ -24,6 +24,7 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 
@@ -40,7 +41,7 @@ function setDefaults() {
 	$Skill3 = 'None';
 	$Skill4 = 'None';
 	$Skill5 = 'None';
-	
+
 	$Slot = 'None';
 	$Slot2 = 'None';
 	$Stamina = 'None';
@@ -48,24 +49,24 @@ function setDefaults() {
 
 	$PerInvestigatorStamina = '0';
 	$PerInvestigatorSanity = '0';
-	
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
 	$Flavor = '';
 	$Victory = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
 	$FlavorSpacing = '0';
-	
+
 	$Artist = '';
 	$Copyright = '';
-	
+
 	$ShowCollectionNumberFront = '1';
 	$ShowCollectionNumberBack = '1';
-	
+
 	//Back
 	$UniqueBack = '0';
 	$SubtitleBack = '';
@@ -79,12 +80,12 @@ function setDefaults() {
 	$Skill3Back = 'None';
 	$Skill4Back = 'None';
 	$Skill5Back = 'None';
-	
+
 	$SlotBack = 'None';
 	$Slot2Back = 'None';
 	$StaminaBack = 'None';
 	$SanityBack = 'None';
-	
+
 	$PerInvestigatorStaminaBack = '0';
 	$PerInvestigatorSanityBack = '0';
 
@@ -93,12 +94,12 @@ function setDefaults() {
 	$RulesBack = '';
 	$FlavorBack = '';
 	$VictoryBack = '';
-	
+
 	$TraitsBackSpacing = '0';
 	$KeywordsBackSpacing = '0';
 	$RulesBackSpacing = '0';
 	$FlavorBackSpacing = '0';
-	
+
 	$ArtistBack = '';
 
 	$TemplateReplacement = '';
@@ -107,7 +108,7 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitleUnique( diy, bindings, true, [0], FACE_FRONT );
@@ -124,7 +125,7 @@ function createInterface( diy, editor ) {
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatsPanel, 'wrap, pushx, growx', BackTitlePanel, 'wrap, pushx, growx', BackStatsPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
+
 	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Front );
@@ -138,7 +139,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, true, [0, 1], FACE_FRONT );
-		
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -156,7 +157,7 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Subtitle_box = markupBox(sheet);
 	Subtitle_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Subtitle-style'), null);
@@ -174,8 +175,8 @@ function createFrontPainter( diy, sheet ) {
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Artist-alignment'));
@@ -183,8 +184,8 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box = markupBox(sheet);
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Copyright-alignment'));
- 
-	initCopyrightTags( diy, Copyright_box );	
+
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'CollectionNumber-style'), null);
@@ -200,7 +201,7 @@ function createBackPainter( diy, sheet ) {
 	BackName_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Name-style'), null);
 	BackName_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_BACK, 'Name-alignment'));
 
-	initBodyTags( diy, BackName_box );	
+	initBodyTags( diy, BackName_box );
 
 	BackSubtitle_box = markupBox(sheet);
 	BackSubtitle_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Subtitle-style'), null);
@@ -218,8 +219,8 @@ function createBackPainter( diy, sheet ) {
 	BackBody_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
 	BackBody_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Body-alignment'));
 
-	initBodyTags( diy, BackBody_box );	
-	
+	initBodyTags( diy, BackBody_box );
+
 	BackArtist_box = markupBox(sheet);
 	BackArtist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Artist-style'), null);
 	BackArtist_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_BACK, 'Artist-alignment'));
@@ -227,8 +228,8 @@ function createBackPainter( diy, sheet ) {
 	BackCopyright_box = markupBox(sheet);
 	BackCopyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Copyright-style'), null);
 	BackCopyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_BACK, 'Copyright-alignment'));
- 
-	initCopyrightTags( diy, BackCopyright_box );	
+
+	initCopyrightTags( diy, BackCopyright_box );
 
 	BackCollection_box = markupBox(sheet);
 	BackCollection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'CollectionNumber-style'), null);
@@ -250,23 +251,23 @@ function paintFront( g, diy, sheet ) {
 		if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, cClass, true );
 	}
 
-	if ($CardClass == 'Weakness' ) {	
+	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
-	}	
-	else if ($CardClass == 'BasicWeakness' ) {	
+	}
+	else if ($CardClass == 'BasicWeakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-BasicWeakness );
-	}	
+	}
 	else {
 		drawLevel( g, diy, sheet, cClass );
 	}
-		
+
 	drawCost( g, diy, sheet );
 
 	drawSkillIcons( g, diy, sheet, cClass );
 	drawSlots( g, diy, sheet );
 	drawStamina( g, diy, sheet );
 	drawSanity( g, diy, sheet );
-	
+
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 	var collectionSuffix = false;
@@ -287,37 +288,37 @@ function paintBack( g, diy, sheet ) {
 	drawName( g, diy, sheet, BackName_box );
 
 //	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, $CardClassBack, true );
-	
+
 	var cClass = $CardClassBack;
 	if ( getClassCount( $CardClassBack, $CardClass2Back, $CardClass3Back ) > 1 ) cClass = 'Dual';
 
 	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, cClass, true );
 
-	if ($CardClassBack == 'Weakness' ) {	
+	if ($CardClassBack == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, BackSubtype_box, #AHLCG-Label-Weakness );
-	}	
-	else if ($CardClassBack == 'BasicWeakness' ) {	
+	}
+	else if ($CardClassBack == 'BasicWeakness' ) {
 		drawSubtype( g, diy, sheet, BackSubtype_box, #AHLCG-Label-BasicWeakness );
-	}	
+	}
 	else {
 		drawLevel( g, diy, sheet, cClass );
 	}
-		
+
 	drawCost( g, diy, sheet );
 
 	drawSkillIcons( g, diy, sheet, cClass );
 	drawSlots( g, diy, sheet );
 	drawStamina( g, diy, sheet );
 	drawSanity( g, diy, sheet );
-	
+
 	drawBody( g, diy, sheet, BackBody_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 	var collectionSuffix = false;
 	if ( $ShowCollectionNumberFront == '1' && $ShowCollectionNumberBack == '1' ) collectionSuffix = true;
 
-	
+
 	var collectionBox =  $ShowCollectionNumberBack == '1' ? BackCollection_box : null;
-	
+
 //	drawCollectorInfo( g, diy, sheet, $ShowCollectionNumberBack == '1', collectionSuffix, false, false, true );
 	drawCollectorInfo( g, diy, sheet, collectionBox, collectionSuffix, true, null, false, BackCopyright_box, BackArtist_box );
 }
@@ -360,9 +361,10 @@ function onRead(diy, oos) {
 		$PerInvestigatorStaminaBack = '0';
 		$PerInvestigatorSanityBack = '0';
 	}
-	
+
 	updateCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 

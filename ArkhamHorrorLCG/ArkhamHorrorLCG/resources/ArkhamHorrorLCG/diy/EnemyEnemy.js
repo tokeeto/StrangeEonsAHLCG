@@ -24,6 +24,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 16;
 }
 
@@ -31,65 +32,65 @@ function setDefaults() {
 	// front
 	$Unique = '0';
 	$Subtitle = '';
-	
+
 	$Health = '2';
 	$PerInvestigator = '0';
 	$Attack = '2';
 	$PerInvestigatorAttack = '0';
 	$Evade = '2';
 	$PerInvestigatorEvade = '0';
-			
+
 	$Damage = '0';
 	$Horror = '0';
-	
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
 	$Flavor = '';
 	$Victory = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
 	$FlavorSpacing = '0';
-	
+
 	$Artist = '';
 	$Copyright = '';
 
 	$ShowCollectionNumberFront = '1';
 	$ShowCollectionNumberBack = '1';
-	
+
 	$ShowEncounterNumberFront = '1';
 	$ShowEncounterNumberBack = '1';
 
 	// back
 	$UniqueBack = '0';
 	$SubtitleBack = '';
-	
+
 	$HealthBack = '2';
 	$PerInvestigatorBack = '0';
 	$AttackBack = '2';
 	$PerInvestigatorAttackBack = '0';
 	$EvadeBack = '2';
 	$PerInvestigatorEvadeBack = '0';
-			
+
 	$DamageBack = '0';
 	$HorrorBack = '0';
-	
+
 	$TraitsBack = '';
 	$KeywordsBack = '';
 	$RulesBack = '';
 	$FlavorBack = '';
 	$VictoryBack = '';
-	
+
 	$TraitsBackSpacing = '0';
 	$KeywordsBackSpacing = '0';
 	$RulesBackSpacing = '0';
 	$FlavorBackSpacing = '0';
-	
+
 	$ArtistBack = '';
 
-	$PortraitShare = '1';	
+	$PortraitShare = '1';
 
 	$TemplateReplacement = '';
 	$TemplateReplacementBack = '';
@@ -97,7 +98,7 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitleUnique( diy, bindings, true, [0], FACE_FRONT );
@@ -114,7 +115,7 @@ function createInterface( diy, editor ) {
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatPanel, 'wrap, pushx, growx', BackTitlePanel, 'wrap, pushx, growx', BackStatPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
+
 	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Front );
@@ -128,7 +129,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, true, [0, 1], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -154,7 +155,7 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Subtitle_box = markupBox(sheet);
 	Subtitle_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Subtitle-style'), null);
@@ -163,12 +164,12 @@ function createFrontPainter( diy, sheet ) {
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
+	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );
 //	createTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 	setTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -177,7 +178,7 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
@@ -206,12 +207,12 @@ function createBackPainter( diy, sheet ) {
 	BackBody_box = markupBox(sheet);
 	BackBody_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
 	BackBody_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Body-alignment'));
-	BackBody_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'Body', '-tightness') + '-tightness') );	
+	BackBody_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'Body', '-tightness') + '-tightness') );
 //	createTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ) );
 	setTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ) );
 
-	initBodyTags( diy, BackBody_box );	
-	
+	initBodyTags( diy, BackBody_box );
+
 	BackArtist_box = markupBox(sheet);
 	BackArtist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Artist-style'), null);
 	BackArtist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Artist-alignment'));
@@ -243,12 +244,12 @@ function paintFront( g, diy, sheet ) {
 
 	drawEnemyStats( g, diy, sheet, [ 'Attack', 'Evade' ] );
 	drawEnemyHealth( g, diy, sheet );
-	
+
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 	if ( $Damage > 0 )  drawDamage( g, diy, sheet );
 	if ( $Horror > 0 )	drawHorror( g, diy, sheet );
-	
+
 	var collectionSuffix = false;
 	if ( $ShowCollectionNumberFront == '1' && $ShowCollectionNumberBack == '1' ) collectionSuffix = true;
 
@@ -278,7 +279,7 @@ function paintBack( g, diy, sheet ) {
 
 	drawEnemyStats( g, diy, sheet, [ 'Attack', 'Evade' ] );
 	drawEnemyHealth( g, diy, sheet );
-	
+
 	drawBody( g, diy, sheet, BackBody_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 	if ( $DamageBack > 0 )  drawDamage( g, diy, sheet );
@@ -303,14 +304,14 @@ function createTextShape( textBox, textRegion ) {
 	var y = textRegion.y;
 	var w = textRegion.width;
 	var h = textRegion.height;
-	
+
 	var path = new java.awt.geom.Path2D.Double();
-	
+
 	var xPathPoints = new Array( 0.086, 0.086, 0.000, 0.000, 0.039, 0.078 );
 	var yPathPoints = new Array( 0.000, 0.189, 0.189, 0.693, 0.800, 1.000 );
 
 	var numPoints = xPathPoints.length;
-	
+
 	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 	for (let i = 1; i < numPoints; i++) {
@@ -324,8 +325,8 @@ function createTextShape( textBox, textRegion ) {
 	}
 
 	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );	
+
+	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
 }
 */
 function setTextShape( box, region ) {
@@ -357,10 +358,11 @@ function onRead(diy, oos) {
 		$PerInvestigatorAttackBack = '0';
 		$PerInvestigatorEvadeBack = '0';
 	}
-	
+
 	updateCollection();
 	updateEncounter();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 16;
 }
 

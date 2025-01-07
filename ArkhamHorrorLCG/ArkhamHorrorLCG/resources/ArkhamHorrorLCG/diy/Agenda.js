@@ -22,8 +22,8 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
-	diy.bleedMargin = 9;
-  diy.setCornerRadius(8);
+	diy.setCornerRadius(8);
+	//diy.bleedMargin = 9;
 	diy.version = 17;
 }
 
@@ -312,6 +312,7 @@ function onRead(diy, oos) {
 	updateCollection();
 	updateEncounter();
 
+	diy.setCornerRadius(8);
 	diy.version = 17;
 }
 

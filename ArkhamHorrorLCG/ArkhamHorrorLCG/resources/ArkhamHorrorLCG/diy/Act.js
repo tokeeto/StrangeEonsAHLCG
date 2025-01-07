@@ -12,9 +12,9 @@ const BindingSuffixes = [ '', 'Back' ];
 const PortraitTypeList = [ 'Portrait-Front', 'Collection-Both', 'Encounter-Both' ];
 
 function create( diy ) {
-	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size	
+	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size
 	diy.backTemplateKey = getExpandedKey( FACE_BACK, 'Default', '-template' );
-	
+
 	diy.faceStyle = FaceStyle.TWO_FACES;
 	diy.name = '';
 
@@ -22,27 +22,28 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultEncounter();
 	setDefaultCollection();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 17;
 }
 
 function setDefaults() {
-	// front	
+	// front
 	$ScenarioIndex = '1';
 	$ScenarioDeckID = 'a';
 	$Clues = '2';
 	$PerInvestigator = '0';
 	$Asterisk = '0';
 	$Orientation = 'Standard';
-	
+
 	$ActStory = '';
 	$Rules = '';
-	
+
 	$ActStorySpacing = '0';
-	
+
 	$Artist = '';
 	$Copyright = '';
-			
+
 	//back
 	$TitleBack = '';
 
@@ -73,7 +74,7 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	// do this first, we need the portrait panels for the title listener
@@ -111,24 +112,24 @@ function createInterface( diy, editor ) {
 	BackTextPanelC.editorTabScrolling = true;
 
 	var VictoryPanel = layoutVictoryText( bindings, FACE_BACK );
-	
+
 	var scaleSpinner = new spinner( 50, 150, 1, 100 );
 	bindings.add( 'ScaleModifier', scaleSpinner, [1] );
 
 	var BackTextTab = new Grid();
 	BackTextTab.editorTabScrolling = true;
 	BackTextTab.place(
-		BackTextPanelA, 'wrap, pushx, growx', 
+		BackTextPanelA, 'wrap, pushx, growx',
 		BackTextPanelB, 'wrap, pushx, growx',
 		BackTextPanelC, 'wrap, pushx, growx',
 		VictoryPanel, 'wrap, pushx, growx',
 		@AHLCG-TextScale, 'align left, split', scaleSpinner, 'align left', '%', 'pushx, growx, wrap, align left'
 	);
-	
+
 	BackTextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Back );
 
 	PortraitTab.addToEditor(editor, @AHLCG-Portraits);
-	
+
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0], FACE_FRONT );
 
@@ -139,7 +140,7 @@ function createInterface( diy, editor ) {
 
 	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
 	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0, 1], [0], FACE_FRONT );
-	
+
 	var EncounterTab = new Grid();
 	EncounterTab.editorTabScrolling = true;
 	EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
@@ -153,15 +154,15 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
 	updateReversableTextBoxShape( diy, $Orientation );
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -170,13 +171,13 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
 	Collection_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'CollectionNumber-alignment'));
 
-	initSuffixTags( diy, Collection_box );	
+	initSuffixTags( diy, Collection_box );
 
 	Encounter_box = markupBox(sheet);
 	Encounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'EncounterNumber-style'), null);
@@ -186,7 +187,7 @@ function createFrontPainter( diy, sheet ) {
 	Index_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'ScenarioIndex-style'), null);
 	Index_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'ScenarioIndex-alignment'));
 
-	initSuffixTags( diy, Index_box );	
+	initSuffixTags( diy, Index_box );
 
 	updateOrientation( diy, PortraitList[0], $Orientation, 'Act' );
 }
@@ -208,16 +209,16 @@ function createBackPainter( diy, sheet ) {
 	BackBody_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
 	BackBody_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Body-alignment'));
 
-	initBodyTags( diy, BackHeader_box );	
-	initBodyTags( diy, BackStory_box );	
-	initBodyTags( diy, BackBody_box );	
-		
+	initBodyTags( diy, BackHeader_box );
+	initBodyTags( diy, BackStory_box );
+	initBodyTags( diy, BackBody_box );
+
 	BackIndex_box = markupBox(sheet);
 	BackIndex_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'BackScenarioIndex-style'), null);
 	BackIndex_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'BackScenarioIndex-alignment'));
-	BackIndex_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'BackScenarioIndex', '-tightness') + '-tightness') );		
+	BackIndex_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'BackScenarioIndex', '-tightness') + '-tightness') );
 
-	initSuffixTags( diy, BackIndex_box );	
+	initSuffixTags( diy, BackIndex_box );
 }
 
 function paintFront( g, diy, sheet ) {
@@ -235,7 +236,7 @@ function paintFront( g, diy, sheet ) {
 
 //	drawCollectorInfo( g, diy, sheet, true, false, true, true, true );
 	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, Encounter_box, true, Copyright_box, Artist_box );
-	
+
 	drawScenarioIndexFront( g, diy, sheet, #AHLCG-Label-Act, Index_box );
 }
 
@@ -249,8 +250,8 @@ function paintBack( g, diy, sheet ) {
 	drawIndentedStoryBody( g, diy, sheet, null, BackHeader_box, BackStory_box, BackBody_box );
 
 	drawScenarioIndexBack( g, diy, sheet, #AHLCG-Label-Act, BackIndex_box );
-	drawEncounterIcon( g, diy, sheet );	
-} 
+	drawEncounterIcon( g, diy, sheet );
+}
 
 function onClear() {
 	setDefaults();
@@ -283,7 +284,7 @@ function onRead(diy, oos) {
 		$AccentedStoryBBackSpacing = '0';
 		$HeaderCBackSpacing = '0';
 		$AccentedStoryCBackSpacing = '0';
-		
+
 		$ScaleModifier = '100';
 	}
 	if ( diy.version < 6 ) {
@@ -305,7 +306,7 @@ function onRead(diy, oos) {
 		$TemplateReplacement = '';
 		$TemplateReplacementBack = '';
 	}
-	if ( diy.version < 17) {		
+	if ( diy.version < 17) {
 		// region changed, requires a shift to look the same
 		var offset = ( $Orientation == 'Reversed' ) ? -10.0 : 10.0;
 		PortraitList[0].setPanX(PortraitList[0].getPanX() + offset);
@@ -313,7 +314,8 @@ function onRead(diy, oos) {
 
 	updateCollection();
 	updateEncounter();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 17;
 }
 

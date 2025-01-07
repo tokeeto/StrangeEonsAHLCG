@@ -20,13 +20,11 @@ importClass( java.util.Locale );
 useLibrary( 'res://ArkhamHorrorLCG/diy/AHLCG-utilLibrary.js' );
 useLibrary( 'res://ArkhamHorrorLCG/diy/AHLCG-preferences.js' );
 
-function() initialize {
+function initialize() {
 	var GameLanguage = Language.getGame();
 	var InterfaceLanguage = Language.getInterface();
-	
-//	System.setProperty( "swing.aatext", "true" );
-//    System.setProperty( "awt.useSystemAAFontSettings", "on" );
-	
+
+
 	InterfaceLanguage.addStrings( 'ArkhamHorrorLCG/text/AHLCG-Interface' );
 	GameLanguage.addStrings( 'ArkhamHorrorLCG/text/AHLCG-Game' );
 
@@ -68,7 +66,7 @@ function() initialize {
 	Eons.namedObjects.AHLCGObject = new gameObject( ahlcgGame.masterSettings );
 
 	addPreferences();
-	
+
 	ClassMap.add( 'ArkhamHorrorLCG/ArkhamHorrorLCG.classmap' );
 }
 
@@ -116,30 +114,22 @@ function setupFonts( o ) {
 	var fVictoryOffset = userSettings.get( 'AHLCG-DefaultVictoryFontOffset', '0' );
 	var fFlavorOffset = userSettings.get( 'AHLCG-DefaultFlavorFontOffset', '0' );
 	var fStoryOffset = userSettings.get( 'AHLCG-DefaultStoryFontOffset', '0' );
-	var fCollectionOffset = userSettings.get( 'AHLCG-DefaultCollectionFontOffset', '0' );	
-	
+	var fCollectionOffset = userSettings.get( 'AHLCG-DefaultCollectionFontOffset', '0' );
+
 	var defaultFontList = 'Arno Pro, Times New Roman';
-//	var defaultFontList = 'Times New Roman';
 
 	var locale = getLocale();
-//println(locale);
-	// Default (Times New Roman/Teutonic)
 	o.bodyFontTightness = 1.0;
-//	o.bodyFontTightness = 1.0;
-//	o.bodyFontTightness = 0.9;
 
 	o.titleFontSize = 11.0;
 	o.titleFontWidth = 1.0;
-//	o.titleFontWeight = 800;
 	o.titleFontWeight = WEIGHT_REGULAR;
 	o.titleFontTracking = 0.015;
-			
+
 	o.bodyFontSize = 7.8;
 	o.bodyFontWidth = 1.0;
-//	o.bodyFontWeight = 600;
 	o.bodyFontWeight = WEIGHT_MEDIUM;
 	o.bodyFontTracking = 0.00;
-//	o.bodyFontTracking = 0.01;
 	o.bodyStorySize = 7.6;
 	o.bodyTraitSize = 7.4;
 	o.bodyFlavorSize = 7.4;
@@ -164,7 +154,6 @@ function setupFonts( o ) {
 	o.largeLabelWeight = WEIGHT_BOLD;
 	o.largeLabelWidth = 1.05;
 	o.largeLabelTracking = 0.00;
-//	o.subtypeSize = 5.5;
 	o.subtypeSize = 5.6;
 	o.subtypeWeight = WEIGHT_BOLD;
 	o.subtypeWidth = 1.0;
@@ -203,14 +192,13 @@ function setupFonts( o ) {
 	o.collectionFontOffset = 0;
 
 	if ( titleFontFamily == null || titleFontFamily == 'Default' ) {
-		o.titleFamily = registerTTFont( 'Teutonic' );		
+		o.titleFamily = registerTTFont( 'Arkhamic' );
 	}
 	else {
 		o.titleFamily = titleFontFamily;
 
 		o.titleFontSize = 11.0 * fTitleSize / 100.0;
 		o.titleFontWidth = 1.0;
-//		o.titleFontWeight = 800;
 		o.titleFontWeight = WEIGHT_REGULAR;
 		o.titleFontTracking = 0.0;
 
@@ -239,13 +227,6 @@ function setupFonts( o ) {
 		o.subtitleWidth = 1.0;
 		o.subtitleWeight = WEIGHT_BOLD;
 		o.subtitleTracking = 0.00;
-/*
-		o.scenarioIndexSize = 7.0 * fSubtitleSize / 100.0;
-		o.scenarioIndexWidth = 1.05;
-		o.scenarioIndexWeight = WEIGHT_REGULAR;
-		o.scenarioIndexTracking = 0.00;
-		o.scenarioIndexBackSize = 4.9;
-*/
 		o.subtitleFontOffset = fSubtitleOffset;
 	}
 
@@ -261,7 +242,6 @@ function setupFonts( o ) {
 			o.largeLabelWidth = 1.05;
 			o.largeLabelWeight = WEIGHT_BOLD;
 			o.largeLabelTracking = 0.00;
-//			o.subtypeSize = 6.5;
 			o.subtypeSize = 6.0;
 			o.subtypeWidth = 1.0;
 			o.subtypeWeight = WEIGHT_BOLD;
@@ -274,8 +254,8 @@ function setupFonts( o ) {
 			o.difficultySize = 6.0;
 			o.difficultyWidth = 0.97;
 			o.difficultyWeight = WEIGHT_BOLD;
-			o.difficultyTracking = 0.0;			
-			
+			o.difficultyTracking = 0.0;
+
 			o.typeFontOffset = 0;
 		}
 		else if ( o.typeFamily == 'Times New Roman' ) {
@@ -293,7 +273,6 @@ function setupFonts( o ) {
 		o.largeLabelWidth = 1.00;
 		o.largeLabelWeight = WEIGHT_BOLD;
 		o.largeLabelTracking = 0.00;
-//		o.subtypeSize = 5.5 * fCardTypeSize / 100.0;
 		o.subtypeSize = 5.6 * fCardTypeSize / 100.0;
 		o.subtypeWidth = 1.0;
 		o.subtypeWeight = WEIGHT_BOLD;
@@ -307,24 +286,18 @@ function setupFonts( o ) {
 		o.difficultyWidth = 1.00;
 		o.difficultyWeight = WEIGHT_BOLD;
 		o.difficultyTracking = 0.00;
-		
+
 		o.typeFontOffset = fCardTypeOffset;
 	}
-	
+
 	if ( bodyFontFamily == null || bodyFontFamily == 'Default' ) {
 		o.bodyFamily = ResourceKit.findAvailableFontFamily( defaultFontList, 'NimbusRomNo9' );
 
 		if ( o.bodyFamily == 'Arno Pro' ) {
-//			o.bodyFontSize = 8.4;
-//			o.bodyFontSize = 8.5;
 			o.bodyFontSize = 8.6;
 			o.bodyFontWidth = 0.98;
-//			o.bodyFontWeight = 600;
-//			o.bodyFontWeight = WEIGHT_REGULAR;
 			o.bodyFontWeight = WEIGHT_MEDIUM;
 			o.bodyFontTracking = -0.01;
-//			o.bodyFontTracking = 0.0;
-//			o.bodyFontTightness = 1.0;
 			o.bodyFontTightness = 0.90;
 			o.bodyFontOffset = 0;
 		}
@@ -337,22 +310,21 @@ function setupFonts( o ) {
 
 		o.bodyFontSize = 7.8 * fBodySize / 100.0;
 		o.bodyFontWidth = 1.0;
-//		o.bodyFontWeight = 600;
 		o.bodyFontWeight = WEIGHT_MEDIUM;
 		o.bodyFontTracking = 0.00;
 
 		o.bodyFontOffset = fBodyOffset;
 	}
-	
+
 	if ( traitFontFamily == null || traitFontFamily == 'Default' ) {
 		o.traitFamily = ResourceKit.findAvailableFontFamily( defaultFontList, 'NimbusRomNo9' );
-		
+
 		if ( o.traitFamily == 'Arno Pro' ) {
 			o.bodyTraitSize = 7.8;
 			o.bodyTraitWidth = 1.0;
 			o.bodyTraitWeight = WEIGHT_BOLD;
 			o.bodyTraitTracking = -0.01;
-			
+
 			o.traitFontOffset = 0;
 		}
 		else if ( o.traitFamily == 'Times New Roman' ) {
@@ -361,7 +333,7 @@ function setupFonts( o ) {
 	}
 	else {
 		o.traitFamily = traitFontFamily;
-		
+
 		o.bodyTraitSize = 7.4 * fTraitSize / 100.0;
 		o.bodyTraitWidth = 1.0;
 		o.bodyTraitWeight = WEIGHT_BOLD;
@@ -369,7 +341,7 @@ function setupFonts( o ) {
 
 		o.traitFontOffset = fTraitsOffset;
 	}
-	
+
 	if ( victoryFontFamily == null || victoryFontFamily == 'Default' ) {
 		o.victoryFamily = ResourceKit.findAvailableFontFamily( defaultFontList, 'NimbusRomNo9' );
 
@@ -378,7 +350,7 @@ function setupFonts( o ) {
 			o.bodyVictoryWidth = 1.0;
 			o.bodyVictoryWeight = WEIGHT_BOLD;
 			o.bodyVictoryTracking = 0.00;
-			
+
 			o.victoryFontOffset = 0;
 		}
 		else if ( o.victoryFamily == 'Times New Roman' ) {
@@ -387,12 +359,12 @@ function setupFonts( o ) {
 	}
 	else {
 		o.victoryFamily = victoryFontFamily;
-		
+
 		o.bodyVictorySize = 7.4 * fVictorySize / 100.0;
 		o.bodyVictoryWidth = 1.0;
 		o.bodyVictoryWeight = WEIGHT_BOLD;
 		o.bodyVictoryTracking = 0.00;
-		
+
 		o.victoryFontOffset = fVictoryOffset;
 	}
 
@@ -402,10 +374,9 @@ function setupFonts( o ) {
 		if ( o.flavorFamily == 'Arno Pro' ) {
 			o.bodyFlavorSize = 7.8;
 			o.bodyFlavorWidth = 1.0;
-//			o.bodyFlavorWidth = 0.9;
 			o.bodyFlavorWeight = WEIGHT_REGULAR;
 			o.bodyFlavorTracking = -0.01;
-			
+
 			o.flavorFontOffset = 0;
 		}
 		else if ( o.flavorFamily == 'Times New Roman' ) {
@@ -419,7 +390,7 @@ function setupFonts( o ) {
 		o.bodyFlavorWidth = 1.0;
 		o.bodyFlavorWeight = WEIGHT_REGULAR;
 		o.bodyFlavorTracking = 0.00;
-				
+
 		o.flavorFontOffset = fFlavorOffset;
 	}
 
@@ -427,13 +398,11 @@ function setupFonts( o ) {
 		o.storyFamily = ResourceKit.findAvailableFontFamily( defaultFontList, 'NimbusRomNo9' );
 
 		if ( o.storyFamily == 'Arno Pro' ) {
-//			o.bodyStorySize = 8.6;
-//			o.bodyStorySize = 9.0;
 			o.bodyStorySize = 8.6;
 			o.bodyStoryWidth = 1.0;
 			o.bodyStoryWeight = WEIGHT_REGULAR;
 			o.bodyStoryTracking = -0.01;
-			
+
 			o.storyFontOffset = 0;
 		}
 		else if ( o.storyFamily == 'Times New Roman' ) {
@@ -447,10 +416,10 @@ function setupFonts( o ) {
 		o.bodyStoryWidth = 1.0;
 		o.bodyStoryWeight = WEIGHT_REGULAR;
 		o.bodyStoryTracking = 0.00;
-								
+
 		o.storyFontOffset = fStoryOffset;
 	}
-			
+
 	if ( collectionFontFamily == null || collectionFontFamily == 'Default' ) {
 		o.collectionFamily = ResourceKit.findAvailableFontFamily( defaultFontList, 'NimbusRomNo9' );
 
@@ -459,7 +428,7 @@ function setupFonts( o ) {
 			o.collectionWidth = 1.0;
 			o.collectionWeight = WEIGHT_BOLD;
 			o.collectionTracking = 0.01;
-			
+
 			o.collectionFontOffset = 0;
 		}
 		else if ( o.collectionFamily == 'Times New Roman' ) {
@@ -468,7 +437,7 @@ function setupFonts( o ) {
 	}
 	else {
 		o.collectionFamily = collectionFontFamily;
-				
+
 		o.collectionSize = 4.2 * fCollectionSize / 100.0;
 		o.collectionWidth = 1.0;
 		o.collectionWeight = WEIGHT_BOLD;
@@ -476,12 +445,12 @@ function setupFonts( o ) {
 
 		o.collectionFontOffset = fCollectionOffset;
 	}
-		
+
 	if ( o.OS == 'Mac' ) {
 		o.titleFontWeight = WEIGHT_REGULAR;
 		o.bodyFontWeight = WEIGHT_REGULAR;
 	}
-					
+
 	suffixFontFamily = ResourceKit.findAvailableFontFamily( defaultFontList, 'NimbusRomNo9L' );
 	o.suffixFamily = suffixFontFamily;
 
@@ -492,26 +461,25 @@ function setupFonts( o ) {
 		o.indexSuffixTracking = 0.00;
 		o.indexBackSuffixSize = 4.9;
 	}
-		
+
 	if ( bodyFontFamily == 'NimbusRomNo9' ) o.bodyFamily = registerOTFont( 'NimbusRomNo9L-Med', 'NimbusRomNo9L-MedIta', 'NimbusRomNo9L-Reg', 'NimbusRomNo9L-RegIta' );
 
 	o.symbolSize = 6.8;
 
 	o.skillFamily = registerTTFont( 'Bolton', 'BoltonBold' );
 	o.symbolFamily = registerTTFont( 'AHLCGSymbol');
-	
-	o.costFont = ResourceKit.getFont('ArkhamHorrorLCG/fonts/Teutonic.ttf', 16.0);
+
+	o.costFont = ResourceKit.getFont('ArkhamHorrorLCG/fonts/Arkhamic.ttf', 16.0);
 	o.enemyFont = ResourceKit.getFont('ArkhamHorrorLCG/fonts/Bolton.ttf', 16.0);
 	o.symbolFont = ResourceKit.getFont('ArkhamHorrorLCG/fonts/AHLCGSymbol.ttf', 16.0);
-//	o.headerFont = ResourceKit.getFont('ArkhamHorrorLCG/fonts/AHLCGSymbol.ttf', 11.2);
 	o.chaosFont = ResourceKit.getFont('ArkhamHorrorLCG/fonts/AHLCGSymbol.ttf', 14.0);
 }
 
 function gameObject( masterSettings ) {
 	this.OS = "Windows";	// default
-	
+
 	var systemOS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
-	
+
 	if ( systemOS.indexOf("mac") >= 0 || systemOS.indexOf("darwin") >= 0) {
 		this.OS = "Mac";
 	}
@@ -519,7 +487,7 @@ function gameObject( masterSettings ) {
 	setupFonts( this );
 
 	// updated arrays for language support
-	this.comboClassesI = new Array( 
+	this.comboClassesI = new Array(
 		ListItem( 'Guardian', @AHLCG-Class-Guardian ),
 		ListItem( 'Seeker', @AHLCG-Class-Seeker ),
 		ListItem( 'Rogue', @AHLCG-Class-Rogue ),
@@ -532,7 +500,7 @@ function gameObject( masterSettings ) {
 		ListItem( 'ParallelMystic', @AHLCG-Class-ParallelMystic ),
 		ListItem( 'ParallelSurvivor', @AHLCG-Class-ParallelSurvivor ) );
 
-    this.comboClassesBWS = new Array( 
+    this.comboClassesBWS = new Array(
         ListItem( 'Guardian', @AHLCG-Class-Guardian ),
         ListItem( 'Seeker', @AHLCG-Class-Seeker ),
         ListItem( 'Rogue', @AHLCG-Class-Rogue ),
@@ -541,10 +509,10 @@ function gameObject( masterSettings ) {
         ListItem( 'Neutral' , @AHLCG-Class-Neutral ),
         ListItem( 'Story' , @AHLCG-Class-Story ),
         ListItem( 'Weakness' , @AHLCG-Class-Weakness ),
-        ListItem( 'BasicWeakness', @AHLCG-Class-BasicWeakness ) 
+        ListItem( 'BasicWeakness', @AHLCG-Class-BasicWeakness )
     );
-    
-	this.comboClassesBW = new Array( 
+
+	this.comboClassesBW = new Array(
 		ListItem( 'Guardian', @AHLCG-Class-Guardian ),
 		ListItem( 'Seeker', @AHLCG-Class-Seeker ),
 		ListItem( 'Rogue', @AHLCG-Class-Rogue ),
@@ -553,8 +521,8 @@ function gameObject( masterSettings ) {
 		ListItem( 'Neutral' , @AHLCG-Class-Neutral ),
 		ListItem( 'Weakness' , @AHLCG-Class-Weakness ),
 		ListItem( 'BasicWeakness', @AHLCG-Class-BasicWeakness ) );
-	
-	this.comboClassesW = new Array( 
+
+	this.comboClassesW = new Array(
 		ListItem( 'Guardian', @AHLCG-Class-Guardian ),
 		ListItem( 'Seeker', @AHLCG-Class-Seeker ),
 		ListItem( 'Rogue', @AHLCG-Class-Rogue ),
@@ -562,8 +530,8 @@ function gameObject( masterSettings ) {
 		ListItem( 'Survivor', @AHLCG-Class-Survivor ),
 		ListItem( 'Neutral' , @AHLCG-Class-Neutral ),
 		ListItem( 'Weakness' , @AHLCG-Class-Weakness ) );
-		
-	this.comboClassesD = new Array( 
+
+	this.comboClassesD = new Array(
 		ListItem( 'None', @AHLCG-Class-None ),
 		ListItem( 'Guardian', @AHLCG-Class-Guardian ),
 		ListItem( 'Seeker', @AHLCG-Class-Seeker ),
@@ -571,19 +539,19 @@ function gameObject( masterSettings ) {
 		ListItem( 'Mystic', @AHLCG-Class-Mystic ),
 		ListItem( 'Survivor', @AHLCG-Class-Survivor ) );
 
-	this.comboStoryAssetClasses = new Array( 
+	this.comboStoryAssetClasses = new Array(
 		ListItem( 'Neutral', @AHLCG-Class-Neutral ),
 		ListItem( 'Weakness', @AHLCG-Class-Weakness ) );
 
-	this.comboSkills = new Array( 
+	this.comboSkills = new Array(
 		ListItem( 'None', @AHLCG-Skill-None ),
 		ListItem( 'Willpower', @AHLCG-Skill-Willpower ),
 		ListItem( 'Intellect', @AHLCG-Skill-Intellect ),
 		ListItem( 'Combat', @AHLCG-Skill-Combat ),
 		ListItem( 'Agility', @AHLCG-Skill-Agility ),
 		ListItem( 'Wild' , @AHLCG-Skill-Wild ) );
-		
-	this.comboSlots = new Array( 
+
+	this.comboSlots = new Array(
 		ListItem( 'None', @AHLCG-Slot-None ),
 		ListItem( 'Ally', @AHLCG-Slot-Ally ),
 		ListItem( 'Accessory', @AHLCG-Slot-Accessory ),
@@ -594,38 +562,38 @@ function gameObject( masterSettings ) {
 		ListItem( '2 Arcane' , @AHLCG-Slot-2Arcane ),
 		ListItem( 'Tarot', @AHLCG-Slot-Tarot ) );
 
-	this.comboWeaknessTypes = new Array( 
-		ListItem( 'BasicWeakness', @AHLCG-WknType-BasicWeakness ), 
+	this.comboWeaknessTypes = new Array(
+		ListItem( 'BasicWeakness', @AHLCG-WknType-BasicWeakness ),
 		ListItem( 'Weakness', @AHLCG-WknType-Weakness ),
 		ListItem( 'StoryWeakness', @AHLCG-WknType-StoryWeakness ) );
 
-	this.comboWeaknessTypesI = new Array( 
-		ListItem( 'BasicWeakness', @AHLCG-WknType-BasicWeakness ), 
+	this.comboWeaknessTypesI = new Array(
+		ListItem( 'BasicWeakness', @AHLCG-WknType-BasicWeakness ),
 		ListItem( 'Weakness', @AHLCG-WknType-Weakness ),
 		ListItem( 'InvestigatorWeakness', @AHLCG-WknType-InvestigatorWeakness ),
 		ListItem( 'StoryWeakness', @AHLCG-WknType-StoryWeakness ) );
 
-	this.comboScenario = new Array( 
+	this.comboScenario = new Array(
 		ListItem( 'Title', @AHLCG-Scenario-Title ),
 		ListItem( 'Resolution', @AHLCG-Scenario-Resolution ),
 		ListItem( 'Chaos', @AHLCG-StoryTemplate-Token ),
 		ListItem( 'ChaosFull', @AHLCG-StoryTemplate-TokenFull ),
 		ListItem( 'Portrait', @AHLCG-Scenario-Portrait ) );
-				
-	this.comboBacks = new Array( 
+
+	this.comboBacks = new Array(
 		ListItem( 'Player', @AHLCG-Back-Player ),
 		ListItem( 'Encounter', @AHLCG-Back-Encounter ) );
 
-	this.comboLocationBacks = new Array( 
+	this.comboLocationBacks = new Array(
 		ListItem( 'Standard', @AHLCG-Back-Standard ),
 		ListItem( 'Player', @AHLCG-Back-Player ),
 		ListItem( 'Encounter', @AHLCG-Back-Encounter ) );
 
-	this.comboGuide = new Array( 
+	this.comboGuide = new Array(
 		ListItem( 'Title', @AHLCG-Guide-Title ),
 		ListItem( 'Empty', @AHLCG-Guide-Empty ) );
 
-	this.comboTemplateOrientation = new Array( 
+	this.comboTemplateOrientation = new Array(
 		ListItem( 'Standard', @AHLCG-Orientation-Standard ),
 		ListItem( 'Reversed', @AHLCG-Orientation-Reversed ) );
 
@@ -634,32 +602,7 @@ function gameObject( masterSettings ) {
 	for( let index = 0; index <= 5; index++ ){
 		this.comboLevelsN[this.comboLevelsN.length] = ListItem( index, String(index) );
 	}
-/*								
-	this.comboPortraitPosition1 = new Array( 
-		ListItem( 'None', @AHLCG-Guide-None ),
-		ListItem( 'TopLeftSmall', @AHLCG-Guide-TopLeftSmall ),
-		ListItem( 'TopLeftMedium', @AHLCG-Guide-TopLeftMedium ),
-		ListItem( 'TopLarge', @AHLCG-Guide-TopLarge ),
-		ListItem( 'BottomLeftSmall', @AHLCG-Guide-BottomLeftSmall ),
-		ListItem( 'BottomLeftMedium', @AHLCG-Guide-BottomLeftMedium ),
-		ListItem( 'BottomLarge', @AHLCG-Guide-BottomLarge ),
-		ListItem( 'LeftLarge', @AHLCG-Guide-LeftLarge ),
-		ListItem( 'TopLeftCorner', @AHLCG-Guide-TopLeftCorner ),
-		ListItem( 'BottomLeftCorner', @AHLCG-Guide-BottomLeftCorner ) );
-
-	this.comboPortraitPosition2 = new Array( 	
-		ListItem( 'None', @AHLCG-Guide-None ),
-		ListItem( 'TopRightSmall', @AHLCG-Guide-TopRightSmall ),
-		ListItem( 'TopRightMedium', @AHLCG-Guide-TopRightMedium ),
-		ListItem( 'TopLarge', @AHLCG-Guide-TopLarge ),
-		ListItem( 'BottomRightSmall', @AHLCG-Guide-BottomRightSmall ),
-		ListItem( 'BottomRightMedium', @AHLCG-Guide-BottomRightMedium ),
-		ListItem( 'BottomLarge', @AHLCG-Guide-BottomLarge ),
-		ListItem( 'RightLarge', @AHLCG-Guide-RightLarge ),
-		ListItem( 'TopRightCorner', @AHLCG-Guide-TopRightCorner ),
-		ListItem( 'BottomRightCorner', @AHLCG-Guide-BottomRightCorner ) );
-*/
-	this.comboPortraitPosition1 = new Array( 
+	this.comboPortraitPosition1 = new Array(
 		ListItem( 'None', @AHLCG-Guide-None ),
 		ListItem( 'TopLeftSmall', @AHLCG-Guide-TopLeftSmall ),
 		ListItem( 'TopLeftMedium', @AHLCG-Guide-TopLeftMedium ),
@@ -674,7 +617,7 @@ function gameObject( masterSettings ) {
 		ListItem( 'BottomLeftCorner', @AHLCG-Guide-BottomLeftCorner ),
 		ListItem( 'FullPage', @AHLCG-Guide-FullPage ) );
 
-	this.comboPortraitPosition2 = new Array( 	
+	this.comboPortraitPosition2 = new Array(
 		ListItem( 'None', @AHLCG-Guide-None ),
 		ListItem( 'TopRightSmall', @AHLCG-Guide-TopRightSmall ),
 		ListItem( 'TopRightMedium', @AHLCG-Guide-TopRightMedium ),
@@ -688,12 +631,12 @@ function gameObject( masterSettings ) {
 		ListItem( 'TopRightCorner', @AHLCG-Guide-TopRightCorner ),
 		ListItem( 'BottomRightCorner', @AHLCG-Guide-BottomRightCorner ) );
 
-	this.comboStoryTemplate = new Array( 
+	this.comboStoryTemplate = new Array(
 		ListItem( 'Story', @AHLCG-StoryTemplate-Story ),
 		ListItem( 'Chaos', @AHLCG-StoryTemplate-Token ),
 		ListItem( 'ChaosFull', @AHLCG-StoryTemplate-TokenFull ) );
 
-	this.comboStoryBackTemplate = new Array( 
+	this.comboStoryBackTemplate = new Array(
 		ListItem( 'Story', @AHLCG-StoryTemplate-Story ),
 		ListItem( 'Chaos', @AHLCG-StoryTemplate-Token ),
 		ListItem( 'ChaosFull', @AHLCG-StoryTemplate-TokenFull ),
@@ -715,9 +658,9 @@ function gameObject( masterSettings ) {
 	for( let index = 1; index <= 15; index++ ){
 		this.comboInvestigatorHealth[this.comboInvestigatorHealth.length] = ListItem( index, String(index) );
 	}
-	
+
 	this.comboAssetStamina = new Array(
-		ListItem( 'None', @AHLCG-Stamina-None ), 
+		ListItem( 'None', @AHLCG-Stamina-None ),
 		ListItem( '-', '-' ),
 		ListItem( 'Star', '*' ) );
 	for( let index = 1; index <= 15; index++ ){
@@ -725,7 +668,7 @@ function gameObject( masterSettings ) {
 	}
 
 	this.comboAssetSanity = new Array(
-		ListItem( 'None', @AHLCG-Sanity-None ), 
+		ListItem( 'None', @AHLCG-Sanity-None ),
 		ListItem( '-', '-' ),
 		ListItem( 'Star', '*' ) );
 	for( let index = 1; index <= 15; index++ ){
@@ -754,15 +697,15 @@ function gameObject( masterSettings ) {
 	for( let index = 0; index <= 19; index++ ) {
 		this.comboCost[this.comboCost.length] = ListItem( index, String(index) );
 	}
-	
+
 	this.comboClues = new Array(
 		ListItem( '-', '-' ),
 		ListItem( '?', '?' ),
-		ListItem( 'Star', '*' ) );	
+		ListItem( 'Star', '*' ) );
 	for( let index = 0; index <= 19; index++ ) {
 		this.comboClues[this.comboClues.length] = ListItem( index, String(index) );
 	}
-	
+
 	this.comboCustCost = new Array();
 	for( let index = 1; index <= 5; index++ ){
 		this.comboCustCost[index-1] = ListItem( index, String(index) );
@@ -781,7 +724,7 @@ function gameObject( masterSettings ) {
 	this.comboXD20 = new Array(
 		ListItem( '-', '-' ),
 		ListItem( 'X', 'X' ),
-		ListItem( 'Star', '*' ) );	
+		ListItem( 'Star', '*' ) );
 	for( let index = 0; index <= 20; index++ ){
 		this.comboXD20[this.comboXD20.length] = ListItem( index, String(index) );
 	}
@@ -789,8 +732,8 @@ function gameObject( masterSettings ) {
 	this.basicEncounterList = new Array(
 		'CustomEncounterSet',
 		'StrangeEons'
-	);																															
-																																																										
+	);
+
 	// Highest = 286 (Relics of the Past)
 	// NameKey, CollectionID, Tag, Index into select keys
 	this.standardEncounterList = new Array(
@@ -831,7 +774,7 @@ function gameObject( masterSettings ) {
 		[ 'BloodthirstySpirits', 24, 'bldspi', 209 ],
 		[ 'BrotherhoodOfTheBeast', 8, 'bhdbst', 89 ],
 		[ 'Byakhee', 4, 'byak', 48 ],
-		[ 'ByTheBook', 14, 'bybook', 250 ],		
+		[ 'ByTheBook', 14, 'bybook', 250 ],
 		[ 'CarnevaleOfHorrorsE', 3, 'carhor', 8 ],
 		[ 'ChildrenOfParadise', 23, 'chpar', 205 ],
 		[ 'ChillingCold', 0, 'chlcld', 9 ],
@@ -946,7 +889,7 @@ function gameObject( masterSettings ) {
 		[ 'ReadOrDie', 14, 'readordie', 167 ],
 		[ 'RealmOfDeath', 10, 'rlmdth', 117 ],
 		[ 'RedCoterie', 28, 'redcot', 268 ],
-		[ 'RedTideRising', 14, 'redtide', 252 ],		
+		[ 'RedTideRising', 14, 'redtide', 252 ],
 		[ 'RelicsOfThePast', 14, 'relpst', 286 ],
 		[ 'ResurgentEvils', 9, 'resevl', 96 ],
 		[ 'ReturnToAPhantomOfTruth', 11, 'rphntm', 133 ],
@@ -980,7 +923,7 @@ function gameObject( masterSettings ) {
 		[ 'ReturnToTheMiskatonicMuseum', 9, 'rmskmus', 102 ],
 		[ 'ReturnToThePallidMask', 11, 'rpalmsk', 139 ],
 		[ 'ReturnToTheSecretName', 24, 'rsecrtnm', 219 ],
-		[ 'ReturnToTheUnspeakableOath', 11, 'runspk', 140 ],	
+		[ 'ReturnToTheUnspeakableOath', 11, 'runspk', 140 ],
 		[ 'ReturnToTheUntamedWilds', 16, 'runtmdwld', 182 ],
 		[ 'ReturnToTheWagesOfSin', 24, 'rtwos', 220 ],
 		[ 'ReturnToTheWitchingHour', 24, 'rwtchhr', 221 ],
@@ -1047,7 +990,7 @@ function gameObject( masterSettings ) {
 		[ 'TheMidnightMasks', 0, 'midmsk', 28 ],
 		[ 'TheMiskatonicMuseum', 1, 'mskmus', 29 ],
 		[ 'TheNightsUsurper', 8, 'ntusrpr', 92 ],
-		[ 'ThePallidMask', 4, 'palmsk', 51 ],		
+		[ 'ThePallidMask', 4, 'palmsk', 51 ],
 		[ 'ThePitOfDespair', 22, 'pitdes', 197 ],
 		[ 'TheSearchForKadath', 12, 'tsfk', 155 ],
 		[ 'TheSecretName', 10, 'secrtnm', 121 ],
@@ -1153,15 +1096,15 @@ function gameObject( masterSettings ) {
 		[ 'WinifredHabbamock', 'winhab', 19 ],				// 19
 		[ 'TheFeastOfHemlockVale', 'hemloc', 33 ]			// 33
 	);
-	
+
 	this.encounterTypes = new Array();
 	this.collectionTypes = new Array();
 
 	updateUsedEncounterSets( this );
 	updateUsedCollections( this );
-						
+
 	this.TagList = new Array (
-		'Fast', 'Name', 'HorizontalSpacer', 'LargeVerticalSpacer', 'VerticalSpacer', 
+		'Fast', 'Name', 'HorizontalSpacer', 'LargeVerticalSpacer', 'VerticalSpacer',
 		'SmallVerticalSpacer', 'Action', 'Reaction', 'Fast',
 		'Guardian', 'Seeker', 'Rogue', 'Mystic', 'Survivor',
 		'Willpower', 'Intellect', 'Combat', 'Agility', 'Wild',
@@ -1170,35 +1113,17 @@ function gameObject( masterSettings ) {
 		'Objective', 'Haunted', 'Patrol', 'Shift', 'Bullet', 'Resolution', 'EndResolution', 'GuideBullet', 'Square',
 		'Seal1', 'Seal2', 'Seal3', 'Seal4', 'Seal5', 'Asterisk', 'Dash', 'CheckBox', 'Damage', 'Horror', 'Resource', 'Codex'
 	);
-	
+
 	if (this.bodyFamily == 'Arno Pro') {
 		this.TagList.push( 'TextEntry1A', 'TextEntry2A', 'TextEntry3A', 'TextEntry4A', 'TextEntry5A', 'XPBoxA' );
 	}
 	else {
 		this.TagList.push( 'TextEntry1', 'TextEntry2', 'TextEntry3', 'TextEntry4', 'TextEntry5', 'XPBox' );
 	}
-/*	
-	this.TagListSmall = new Array (
-		'FastSmall', 
-//		'Name', 'HorizontalSpacer', 'LargeVerticalSpacer', 'VerticalSpacer', 
-//		'SmallVerticalSpacer',
-		'ActionSmall', 'ReactionSmall', 'FastSmall',
-		'GuardianSmall', 'SeekerSmall', 'RogueSmall', 'MysticSmall', 'SurvivorSmall',
-		'WillpowerSmall', 'IntellectSmall', 'CombatSmall', 'AgilitySmall', 'WildSmall',
-		'SkullSmall', 'CultistSmall', 'ArtifactSmall', 'MonsterSmall', 'BlessSmall', 'CurseSmall',
-		'FrostSmall', 'ElderSignSmall', 'TentacleSmall',
-		'UniqueSmall', 'PerInvestigatorSmall',
-//		'Prey', 'Spawn', 'Revelation', 'Forced',
-//		'Objective', 'Haunted', 'Patrol', 
-		'BulletSmall', 
-//		'Resolution', 'EndResolution',
-		'GuideBulletSmall', 'SquareSmall',
-		'Seal1Small', 'Seal2Small', 'Seal3Small', 'Seal4Small', 'Seal5Small'
-	);
-*/	
+
 	this.StyleList = new Array (
 		'Trait', 'Flavor', 'Story', 'Victory', 'Header', 'Body',
-		'TraitSection', 'FlavorSection', 'InvStorySection', 
+		'TraitSection', 'FlavorSection', 'InvStorySection',
 		'ActStorySection', 'AgendaStorySection',
 		'AHF'
 	);
@@ -1229,10 +1154,10 @@ function gameObject( masterSettings ) {
 			),
 		ListItem( 'Empty', @AHLCG-LocIcon-Empty,
 			ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/images/empty1x1.png') , 12, 12 )
-			) 
+			)
 		);
-	
-	this.comboConnectionsBack = [ 
+
+	this.comboConnectionsBack = [
 		ListItem( 'Copy front', @AHLCG-LocIcon-CopyFront,
 			ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/images/empty1x1.png') , 12, 12 )
 			),
@@ -1250,29 +1175,29 @@ function gameObject( masterSettings ) {
 
 	for( let index = 0; index < this.locationIcons.length; index++ ) {
 		let item = this.locationIcons[index];
-		
+
 		var hsb = masterSettings.getTint( 'AHLCG-' + item + '-tint' );
 		test_tinter.setFactors( hsb[0], hsb[1], hsb[2] );
 
 		let iconBaseImage = test_tinter.getTintedImage();
-		
+
 		let ig = iconBaseImage.createGraphics();
 
 		ig.drawImage( ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + item + '.png' ), 4, 4, null );
 
 		this.comboConnections[index+2] = ListItem(
 			item, @('AHLCG-LocIcon-' + item),
-			ImageUtils.createIcon(iconBaseImage, 12, 12)		
+			ImageUtils.createIcon(iconBaseImage, 12, 12)
 			);
-				
+
 		this.comboConnectionsBack[index+3] = ListItem(
 			item, @('AHLCG-LocIcon-' + item),
-			ImageUtils.createIcon(iconBaseImage, 12, 12)		
+			ImageUtils.createIcon(iconBaseImage, 12, 12)
 			);
 
 		ig.dispose();
-	}	
-	
+	}
+
 	this.actTextShapes = new Array( null, null );
 	this.agendaTextShapes = new Array( null, null );
 	this.enemyPageShape = null;
@@ -1281,18 +1206,18 @@ function gameObject( masterSettings ) {
 	this.locationBackTextShape = null;
 	this.skillTextShape = null;
 	this.investigatorBackTextShapes = [];
-	
+
 	this.getIntBoxTint = function () {
 		if ( this.intBoxTint ) return this.intBoxTint;
-		
+
 		this.intBoxTint = new TintCache( new TintFilter() );
 		this.intBoxTint.setImage( ImageUtils.get( 'ArkhamHorrorLCG/overlays/AHLCG-BoxIntRed.png') );
-						
+
 		return this.intBoxTint;
 	};
 	this.getIntMidTint = function () {
 		if ( this.intMidTint ) return this.intMidTint;
-		
+
 		this.intMidTint = new TintCache( new TintFilter() );
 		this.intMidTint.setImage( ImageUtils.get( 'ArkhamHorrorLCG/overlays/AHLCG-BoxIntLineRed.png' ) );
 
@@ -1300,23 +1225,23 @@ function gameObject( masterSettings ) {
 	};
 	this.getBracketTint = function () {
 		if ( this.bracketTint ) return this.bracketTint;
-		
+
 		this.bracketTint = new TintCache( new TintFilter() );
 		this.bracketTint.setImage( ImageUtils.get( 'ArkhamHorrorLCG/overlays/AHLCG-BoxResBracketRed.png') );
-						
+
 		return this.bracketTint;
 	};
 	this.getResBoxTint = function () {
 		if ( this.resBoxTint ) return this.resBoxTint;
-		
+
 		this.resBoxTint = new TintCache( new TintFilter() );
 		this.resBoxTint.setImage( ImageUtils.get( 'ArkhamHorrorLCG/overlays/AHLCG-BoxResRed.png') );
-						
+
 		return this.resBoxTint;
 	};
 	this.getResMidTint = function () {
 		if ( this.resMidTint ) return this.resMidTint;
-		
+
 		this.resMidTint = new TintCache( new TintFilter() );
 		this.resMidTint.setImage( ImageUtils.get( 'ArkhamHorrorLCG/overlays/AHLCG-BoxResLineRed.png' ) );
 
@@ -1326,33 +1251,33 @@ function gameObject( masterSettings ) {
 		let nReverse = Number(reverse);
 
 		if ( this.actTextShapes[nReverse] ) return this.actTextShapes[nReverse];
-		
+
 		var x = region.x;
 		var y = region.y;
 		var w = region.width;
 		var h = region.height;
-	
+
 		var path = new java.awt.geom.Path2D.Double();
 
 		var xPathPoints = new Array( 0.000, 0.000, 0.715, 0.830, 0.830, 1.000, 1.000 );
 		var yPathPoints = new Array( 0.000, 1.000, 1.000, 0.957, 0.850, 0.850, 0.000 );
-	
+
 		var numPoints = xPathPoints.length;
-	
+
 		if ( reverse ) {
 			// swap order and x-value
 			for (let i = 0; i < numPoints / 2; i++) {
 				let px = xPathPoints[i];
 				let py = yPathPoints[i];
-			
+
 				xPathPoints[i] = 1.000 - xPathPoints[numPoints - i - 1];
 				yPathPoints[i] = yPathPoints[numPoints - i - 1];
-			
+
 				xPathPoints[numPoints - i - 1] = 1.000 - px;
 				yPathPoints[numPoints - i - 1] = py;
 			}
 		}
-	
+
 		path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 		for (let i = 1; i < numPoints; i++) {
@@ -1360,7 +1285,7 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.actTextShapes[nReverse] = PageShape.GeometricShape( path, region );
 
 		return this.actTextShapes[nReverse];
@@ -1381,21 +1306,21 @@ function gameObject( masterSettings ) {
 		var yPathPoints = new Array( 0.000, 0.850, 0.850, 1.000, 1.000, 0.000 );
 
 		var numPoints = xPathPoints.length;
-	
+
 		if ( reverse ) {
 			// swap order and x-value
 			for (let i = 0; i < numPoints / 2; i++) {
 				let px = xPathPoints[i];
 				let py = yPathPoints[i];
-			
+
 				xPathPoints[i] = 1.000 - xPathPoints[numPoints - i - 1];
 				yPathPoints[i] = yPathPoints[numPoints - i - 1];
-			
+
 				xPathPoints[numPoints - i - 1] = 1.000 - px;
 				yPathPoints[numPoints - i - 1] = py;
 			}
 		}
-	
+
 		path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 		for (let i = 1; i < numPoints; i++) {
@@ -1403,7 +1328,7 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.agendaTextShapes[nReverse] = PageShape.GeometricShape( path, region );
 
 		return this.agendaTextShapes[nReverse];
@@ -1415,14 +1340,14 @@ function gameObject( masterSettings ) {
 		var y = region.y;
 		var w = region.width;
 		var h = region.height;
-	
+
 		var path = new java.awt.geom.Path2D.Double();
-	
+
 		var xPathPoints = new Array( 0.086, 0.086, 0.000, 0.000, 0.039, 0.078 );
 		var yPathPoints = new Array( 0.000, 0.189, 0.189, 0.693, 0.800, 1.000 );
 
 		var numPoints = xPathPoints.length;
-	
+
 		path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 		for (let i = 1; i < numPoints; i++) {
@@ -1436,9 +1361,9 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.enemyPageShape = PageShape.GeometricShape( path, region );
-		
+
 		return this.enemyPageShape;
 	};
 	this.getEventTextShape = function ( region ) {
@@ -1448,19 +1373,17 @@ function gameObject( masterSettings ) {
 		var y = region.y;
 		var w = region.width;
 		var h = region.height;
-	
+
 		var path = new java.awt.geom.Path2D.Double();
-	
-//		var xPathPoints = new Array( 0.0, -0.054, -0.009, 0.179 );
-//		var xPathPoints = new Array( 0.0, -0.054, -0.004, 0.179 );
+
 		var xPathPoints = new Array( 0.0, -0.054, -0.004, 0.179 );
 		var yPathPoints = new Array( 0.0, 0.333, 0.892, 1.0 );
-	
+
 		var xControlPoints = new Array( 0.004, -0.060, -0.083, 0.006, 0.088, 0.047 );
 		var yControlPoints = new Array( 0.047, 0.193, 0.513, 0.674, 0.873, 0.993 );
-	
+
 		var numPoints = xPathPoints.length;
-	
+
 		path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 		for (let i = 1; i < numPoints; i++) {
@@ -1480,9 +1403,9 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.eventTextShape = PageShape.GeometricShape( path, region );
-		
+
 		return this.eventTextShape;
 	};
 	this.getLocationTextShape = function ( region ) {
@@ -1495,15 +1418,15 @@ function gameObject( masterSettings ) {
 
 		var path = new java.awt.geom.Path2D.Double();
 
-		// asymmetrical	
+		// asymmetrical
 		var xPathPoints = new Array( 0.074, 0.000, 0.000, 1.000, 1.000, 0.951, 0.926 );
 		var yPathPoints = new Array( 0.000, 0.174, 1.000, 1.000, 0.319, 0.125, 0.000 );
-	
+
 		var xControlPoints = new Array( 0.037, 0.107, 0.991, 0.962, 0.936, 0.970 );
 		var yControlPoints = new Array( 0.153, 0.139, 0.278, 0.167, 0.132, 0.174 );
-	
+
 		var numPoints = xPathPoints.length;
-	
+
 		path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 		// just create by hand, it's asymmetrical
@@ -1511,7 +1434,7 @@ function gameObject( masterSettings ) {
 			x + w * xControlPoints[1], y + h * yControlPoints[1],
 			x + w * xPathPoints[1], y + h * yPathPoints[1]
 		);
-	
+
 		for (let i = 2; i <= 4; i++) {
 			path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
 		}
@@ -1524,9 +1447,9 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.locationTextShape = PageShape.GeometricShape( path, region );
-		
+
 		return this.locationTextShape;
 	};
 	this.getLocationBackTextShape = function ( region ) {
@@ -1537,10 +1460,9 @@ function gameObject( masterSettings ) {
 		var w = region.width;
 		var h = region.height;
 
-//		var xPathPoints = new Array( 0.151, 0.000, 0.000, 1.000, 1.000, 0.849 );
 		var xPathPoints = new Array( 0.111, 0.000, 0.000, 1.000, 1.000, 0.889 );
 		var yPathPoints = new Array( 0.000, 0.204, 1.000, 1.000, 0.204, 0.000 );
-	
+
 		var path = new java.awt.geom.Path2D.Double();
 
 		var numPoints = xPathPoints.length;
@@ -1552,9 +1474,9 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.locationBackTextShape = PageShape.GeometricShape( path, region );
-		
+
 		return this.locationBackTextShape;
 	};
 	this.getSkillTextShape = function ( region ) {
@@ -1564,17 +1486,17 @@ function gameObject( masterSettings ) {
 		var y = region.y;
 		var w = region.width;
 		var h = region.height;
-	
+
 		var path = new java.awt.geom.Path2D.Double();
-	
+
 		var xPathPoints = new Array( 0.0, 0.015 );
 		var yPathPoints = new Array( 0.0, 1.000 );
-	
+
 		var xControlPoints = new Array( 0.053, 0.088 );
 		var yControlPoints = new Array( 0.307, 0.600 );
-	
+
 		var numPoints = xPathPoints.length;
-	
+
 		path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 		for (let i = 1; i < numPoints; i++) {
@@ -1594,9 +1516,9 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.skillTextShape = PageShape.GeometricShape( path, region );
-		
+
 		return this.skillTextShape;
 	};
 	this.getInvestigatorBackTextShape = function ( region, className ) {
@@ -1608,7 +1530,7 @@ function gameObject( masterSettings ) {
 		var h = region.height;
 
 		var pointArrays = getPathPointArrays( className );
-	
+
 		var xPathPoints = pointArrays[0];
 		var yPathPoints = pointArrays[1];
 
@@ -1623,9 +1545,9 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.investigatorBackTextShapes[className] = PageShape.GeometricShape( path, region );
-		
+
 		return this.investigatorBackTextShapes[className];
 	};
 	this.getKeyTextShape = function ( region ) {
@@ -1636,11 +1558,9 @@ function gameObject( masterSettings ) {
 		var w = region.width;
 		var h = region.height;
 
-//		var xPathPoints = new Array( 0.111, 0.000, 0.000, 1.000, 1.000, 0.889 );
-//		var yPathPoints = new Array( 0.000, 0.204, 1.000, 1.000, 0.204, 0.000 );
 		var xPathPoints = new Array( 0.000, 0.000, 0.100, 0.900, 1.000, 1.000 );
 		var yPathPoints = new Array( 0.000, 0.925, 1.000, 1.000, 0.925, 0.000 );
-	
+
 		var path = new java.awt.geom.Path2D.Double();
 
 		var numPoints = xPathPoints.length;
@@ -1652,9 +1572,9 @@ function gameObject( masterSettings ) {
 		}
 
 		path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 		this.locationBackTextShape = PageShape.GeometricShape( path, region );
-		
+
 		return this.locationBackTextShape;
 	};
 

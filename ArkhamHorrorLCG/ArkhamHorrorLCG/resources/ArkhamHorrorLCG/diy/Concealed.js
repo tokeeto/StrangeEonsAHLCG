@@ -12,7 +12,7 @@ const BindingSuffixes = [ '', 'Back' ];
 const PortraitTypeList = [ 'Portrait-Front' ];
 
 function create( diy ) {
-	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size	
+	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size
 	diy.backTemplateKey = getExpandedKey( FACE_BACK, 'Default', '-template' );
 
 	diy.faceStyle = FaceStyle.TWO_FACES;
@@ -22,12 +22,13 @@ function create( diy ) {
 	setDefaults();
 	createPortraits( diy, PortraitTypeList );
 
+	diy.setCornerRadius(8);
 	diy.version = 1;
 }
 
-function setDefaults() {		
+function setDefaults() {
 	$Template = 'Standard';
-	
+
 	$BackTypeBack = 'Concealed';
 
 	$TemplateReplacement = '';
@@ -37,23 +38,23 @@ function setDefaults() {
 function createInterface( diy, editor ) {
 
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
-		
+
 //	var TitlePanel = layoutTitle( diy, bindings, false, [0], FACE_FRONT );
 	var TitlePanel = layoutTitle2( diy, bindings, [0], FACE_FRONT );
 	var StatPanel = layoutConcealedStats( diy, bindings, FACE_FRONT );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
-	
+
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
+
 	PortraitTab = layoutPortraits( diy, bindings, 'Portrait', null, true, false, false );
 	PortraitTab.addToEditor(editor, @AHLCG-Portraits);
 
-	bindings.bind();	
+	bindings.bind();
 }
 
 function createFrontPainter( diy, sheet ) {
@@ -61,7 +62,7 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 /*
 	Subtype_box = markupBox(sheet);
 	Subtype_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Subtype-style'), null);
@@ -73,8 +74,8 @@ function createFrontPainter( diy, sheet ) {
 //	createTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 	setTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -83,7 +84,7 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
@@ -106,13 +107,13 @@ function paintFront( g, diy, sheet ) {
 /*
 	var subtypeRegion = diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Subtype-region' ) );
 	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) subtypeRegion.y -= 2;
-	
-	if ($CardClass == 'Weakness' ) {	
+
+	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
-	else if ($CardClass == 'BasicWeakness' ) {	
+	else if ($CardClass == 'BasicWeakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-BasicWeakness );
-		
+
 		drawOverlay( g, diy, sheet, 'BasicWeaknessEvent' );
 		drawBasicWeaknessIcon( g, diy, sheet );
 	}
@@ -121,9 +122,9 @@ function paintFront( g, diy, sheet ) {
 	}
 
 	drawCost( g, diy, sheet );
-	
+
 	drawSkillIcons( g, diy, sheet, $CardClass );
-	
+
 	var regionName = 'Body';
 	if ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness') regionName = 'WeaknessBody';
 	drawBodyWithRegionName( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ), regionName );
@@ -160,7 +161,7 @@ function onRead(diy, oos) {
 			$BackTypeBack = $BackTypeundefined;
 			diy.settings.reset('BackTypeundefined');
 		}
-		
+
 		if ( $BackTypeBack == null ) $BackTypeBack = 'Player';	// some cards created during testing might have both as null
 	}
 
@@ -173,9 +174,10 @@ function onRead(diy, oos) {
 	if ( diy.version < 16 ) {
 		diy.faceStyle = FaceStyle.TWO_FACES;	// change was in v15, but I forgot to add this
 	}
-	
+
 	updateCollection();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 17;
 }
 

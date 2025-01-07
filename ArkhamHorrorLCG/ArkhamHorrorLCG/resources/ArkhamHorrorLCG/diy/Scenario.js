@@ -24,6 +24,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 17;
 }
 
@@ -38,13 +39,13 @@ function setDefaults() {
 
 	$Page = '1';
 	$PageBack = '2';
-	
+
 	$Rules = '';
 	$RulesBack = '';
 
 	$ShowCollectionNumberFront = '1';
 	$ShowCollectionNumberBack = '1';
-	
+
 	$ShowEncounterNumberFront = '1';
 	$ShowEncounterNumberBack = '1';
 
@@ -59,9 +60,9 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
-	
+
 ///	var TitlePanel = layoutTitleScenario( diy, bindings, [0, 1], FACE_FRONT );
 	var TitlePanel = layoutTitle2( diy, bindings, [0], FACE_FRONT );
 	var StatPanel = layoutScenarioStats( diy, bindings, FACE_FRONT );
@@ -91,7 +92,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, true, [0, 1], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -99,7 +100,7 @@ function createInterface( diy, editor ) {
 
 	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
 	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, true, [0, 1], [0, 1], FACE_FRONT );
-	
+
 	var EncounterTab = new Grid();
 	EncounterTab.editorTabScrolling = true;
 	EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
@@ -108,22 +109,22 @@ function createInterface( diy, editor ) {
 	bindings.bind();
 }
 
-function createFrontPainter( diy, sheet ) {	
+function createFrontPainter( diy, sheet ) {
 	Name_box = markupBox(sheet);
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
-	Name_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Name', '-tightness') + '-tightness') );	
-	initBodyTags( diy, Name_box );	
+	Name_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Name', '-tightness') + '-tightness') );
+	initBodyTags( diy, Name_box );
 
 	Header_box = markupBox(sheet);
 	Header_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Header-style'), null);
 	Header_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Header-alignment'));
-	
+
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
-	initBodyTags( diy, Body_box );	
+	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );
+	initBodyTags( diy, Body_box );
 
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Artist-style'), null);
@@ -139,8 +140,8 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box = markupBox(sheet);
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Copyright-alignment'));
- 
-	initCopyrightTags( diy, Copyright_box );	
+
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'CollectionNumber-style'), null);
@@ -157,17 +158,17 @@ function createBackPainter( diy, sheet ) {
 	BackName_box = markupBox(sheet);
 	BackName_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Name-style'), null);
 	BackName_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Name-alignment'));
-	initBodyTags( diy, BackName_box );	
+	initBodyTags( diy, BackName_box );
 
 	BackHeader_box = markupBox(sheet);
 	BackHeader_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Header-style'), null);
 	BackHeader_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Header-alignment'));
-	
+
 	BackBody_box = markupBox(sheet);
 	BackBody_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
 	BackBody_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Body-alignment'));
-	BackBody_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
-	initBodyTags( diy, BackBody_box );	
+	BackBody_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );
+	initBodyTags( diy, BackBody_box );
 
 	BackArtist_box = markupBox(sheet);
 	BackArtist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Artist-style'), null);
@@ -180,8 +181,8 @@ function createBackPainter( diy, sheet ) {
 	BackCopyright_box = markupBox(sheet);
 	BackCopyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Copyright-style'), null);
 	BackCopyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_BACK, 'Copyright-alignment'));
- 
-	initCopyrightTags( diy, BackCopyright_box );	
+
+	initCopyrightTags( diy, BackCopyright_box );
 
 	BackCollection_box = markupBox(sheet);
 	BackCollection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'CollectionNumber-style'), null);
@@ -204,7 +205,7 @@ function paintFront( g, diy, sheet ) {
 	Header_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Header-style'), null);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
+	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );
 
 	if ( $Template == 'Portrait' ) {
 		PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
@@ -229,28 +230,28 @@ function paintFront( g, diy, sheet ) {
 		draw2LineName( g, diy, sheet, Name_box );
 		drawPageNumber( g, diy, sheet, Page_box );
 	}
-	
+
 //	if ( $Template == 'Title' ) drawName( g, diy, sheet, Name_box );
 //	else if ( $Template == 'Resolution' ) drawScenarioResolutionHeader( g, diy, sheet, Header_box );
-	
-	drawScenarioBody( g, diy, sheet, Body_box, new Array( 'Rules' ) );	
-	
+
+	drawScenarioBody( g, diy, sheet, Body_box, new Array( 'Rules' ) );
+
 	if ( drawCollectionInfo ) {
 		var collectionSuffix = false;
 
 		var showCollectionNumberBack = ( $ShowCollectionNumberBack == '1' );
 		if ( $TemplateBack == 'Portrait' || $TemplateBack == 'Resolution' || $TemplateBack == 'Title' ) showCollectionNumberBack = false;
-	
+
 		if ( $ShowCollectionNumberFront == '1' && showCollectionNumberBack == '1' ) collectionSuffix = true;
 		var encounterIcon = ($Template == 'ChaosFull') ? false : true;
-	
+
 		var collectionBox = $ShowCollectionNumberFront == '1' ? Collection_box : null;
 		var encounterBox = $ShowEncounterNumberFront == '1' ? Encounter_box :  null;
 		var copyrightBox = $ShowCopyrightFront == '1' ? Copyright_box : null;
 
 		drawCollectorInfo( g, diy, sheet, collectionBox, collectionSuffix, $ShowCollectionNumberFront == '1', encounterBox, encounterIcon, copyrightBox, null );
 	}
-	
+
 	if ( $Artist != '' ) drawArtist( g, diy, sheet, Artist_box, false );
 }
 
@@ -264,7 +265,7 @@ function paintBack( g, diy, sheet ) {
 	BackHeader_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Header-style'), null);
 	BackBody_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
 	BackBody_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Body-alignment'));
-	BackBody_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'Body', '-tightness') + '-tightness') );	
+	BackBody_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'Body', '-tightness') + '-tightness') );
 
 	if ( $TemplateBack == 'Portrait' ) {
 		PortraitList[getPortraitIndex( 'BackPortrait' )].paint( g, sheet.getRenderTarget() );
@@ -289,18 +290,18 @@ function paintBack( g, diy, sheet ) {
 		draw2LineName( g, diy, sheet, BackName_box );
 		drawPageNumber( g, diy, sheet, BackPage_box );
 	}
-	
-	drawScenarioBody( g, diy, sheet, BackBody_box, new Array( 'Rules' ) );	
+
+	drawScenarioBody( g, diy, sheet, BackBody_box, new Array( 'Rules' ) );
 
 	if ( drawCollectionInfo ) {
 		var collectionSuffix = false;
 
 		var showCollectionNumberBack = ( $ShowCollectionNumberBack == '1' );
 		if ( $Template == 'Portrait' || $Template == 'Resolution' || $Template == 'Title' ) showCollectionNumberFront = false;
-	
+
 		if ( $ShowCollectionNumberFront == '1' && showCollectionNumberBack == '1' ) collectionSuffix = true;
 		var encounterIcon = ($TemplateBack == 'ChaosFull') ? false : true;
-	
+
 		var collectionBox = $ShowCollectionNumberBack == '1' ? BackCollection_box : null;
 		var encounterBox = $ShowEncounterNumberBack == '1' ? BackEncounter_box :  null;
 		var copyrightBox = $ShowCopyrightBack == '1' ? BackCopyright_box : null;
@@ -309,7 +310,7 @@ function paintBack( g, diy, sheet ) {
 	}
 
 	if ( $ArtistBack != '' ) drawArtist( g, diy, sheet, BackArtist_box, false );
-} 
+}
 
 function onClear() {
 	setDefaults();
@@ -344,19 +345,20 @@ function onRead(diy, oos) {
 			createPortrait( diy, fullKey );
 		}
 	}
-	
+
 	if ( $Template == 'Portrait' ) PortraitList[0] = oos.readObject();
 	else createPortrait( diy, PortraitTypeList[0] );
-	
+
 	if ( $PageTypeBack == 'Portrait' ) PortraitList[1] = oos.readObject();
 	else createPortrait( diy, PortraitTypeList[1] );
 
 	if ( $Template == 'Chaos' || $TemplateBack == 'Chaos' ) PortraitList[2] = oos.readObject();
 	else createPortrait( diy, PortraitTypeList[2] );
-			
+
 	if ( $Template == 'Chaos' || $Template == 'ChaosFull' || $TemplateBack == 'Chaos' || $TemplateBack == 'ChaosFull' ) PortraitList[3] = oos.readObject();
 	else createPortrait( diy, PortraitTypeList[3] );
 
+	diy.setCornerRadius(8);
 	diy.version = 17;
 }
 

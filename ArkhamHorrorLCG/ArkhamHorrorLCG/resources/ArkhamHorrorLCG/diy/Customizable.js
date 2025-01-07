@@ -13,7 +13,7 @@ const BindingSuffixes = [ '', 'Back' ];
 const PortraitTypeList = [ 'Collection-Front' ];
 
 function create( diy ) {
-	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size	
+	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size
 	diy.backTemplateKey = getExpandedKey( FACE_BACK, 'Default', '-template' );
 
 	diy.faceStyle = FaceStyle.TWO_FACES;
@@ -23,6 +23,7 @@ function create( diy ) {
 	setDefaults();
 	createPortraits( diy, PortraitTypeList );
 
+	diy.setCornerRadius(8);
 	diy.version = 3;
 }
 
@@ -34,7 +35,7 @@ function setDefaults() {
 	$CustText1 = '';
 	$CustText1Spacing = '0';
 	$CustName1 = '';
-	
+
 	$CustCost2 = '2';
 	$CustText2 = '';
 	$CustText2Spacing = '0';
@@ -81,21 +82,21 @@ function setDefaults() {
 	$CustName10 = '';
 
 	$ScaleModifier = '100';
-		
+
 	$Copyright = '';
-	
+
 	$TemplateReplacement = '';
 	$TemplateReplacementBack = '';
-	
+
 	$BackTypeBack = 'PlayerPurple';
 }
 
 function createInterface( diy, editor ) {
 
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
-		
+
 	var TitlePanel = layoutTitle( diy, bindings, false, [0], FACE_FRONT );
 //	var StatPanel = layoutCustomizableStats( diy, bindings, FACE_FRONT );
 //	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
@@ -107,18 +108,18 @@ function createInterface( diy, editor ) {
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor, @AHLCG-General );
-	
+
 	var TextPanelHeader = layoutCustomizableText( bindings, 0, 'Header', false, true, FACE_FRONT );
 	TextPanelHeader.setTitle( @AHLCG-Rules + ' (' + @AHLCG-Header + ')' );
 	TextPanelHeader.editorTabScrolling = true;
-	
+
 	var TextPanel = new Array(10);
 	for ( let i = 1; i <= 8; i++ ) {
 		TextPanel[i-1] = layoutCustomizableText( bindings, i.toString(), 'Text', true, i < 8, FACE_FRONT );
 		TextPanel[i-1].setTitle( @AHLCG-Rules + ' (' + @AHLCG-Option + ' ' + i + ')' );
 		TextPanel[i-1].editorTabScrolling = true;
 	}
-	
+
 	var scaleSpinner = new spinner( 50, 150, 1, 100 );
 	bindings.add( 'ScaleModifier', scaleSpinner, [0] );
 
@@ -136,17 +137,17 @@ function createInterface( diy, editor ) {
 		TextPanel[7], 'wrap, pushx, growx',
 		@AHLCG-TextScale, 'align left, split', scaleSpinner, 'align left', '%', 'wrap, align left'
 	);
-	
+
 	TextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Front );
-/*	
-	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );	
+/*
+	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules );
 */
 //	PortraitTab = layoutPortraits( diy, bindings, 'Portrait', null, true, false, false );
 //	PortraitTab.addToEditor(editor, @AHLCG-Portraits);
 
-	bindings.bind();	
+	bindings.bind();
 }
 
 function createFrontPainter( diy, sheet ) {
@@ -159,19 +160,19 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
 
-	initBodyTags( diy, Body_box );		
+	initBodyTags( diy, Body_box );
 
 	Copyright_box = markupBox(sheet);
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 }
 
 function createBackPainter( diy, sheet ) {
@@ -211,6 +212,7 @@ function onRead(diy, oos) {
 		$BackTypeBack = 'PlayerPurple';
 	}
 
+	diy.setCornerRadius(8);
 	diy.version = 2;
 }
 

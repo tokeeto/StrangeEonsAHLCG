@@ -22,6 +22,7 @@ function create( diy ) {
 	setDefaults();
 	createPortraits( diy, PortraitTypeList );
 
+	diy.setCornerRadius(8);
 	diy.version = 8;
 }
 
@@ -30,7 +31,7 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	PortraitTab = layoutPortraits( diy, bindings, 'Portrait', null, true, false, false );
@@ -39,7 +40,7 @@ function createInterface( diy, editor ) {
 	bindings.bind();
 }
 
-function createFrontPainter( diy, sheet ) {	
+function createFrontPainter( diy, sheet ) {
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -67,12 +68,12 @@ function paintBack( g, diy, sheet ) {
 	var imagePanY = PortraitList[getPortraitIndex( 'Portrait' )].getPanY();
 	var imageRotation = PortraitList[getPortraitIndex( 'Portrait' )].getRotation();
 	var imageScale = PortraitList[getPortraitIndex( 'Portrait' )].getScale();
-	
+
 	imageTinted = createGreyscaleImage( imageTinted );
 
 	var region = diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Portrait-portrait-clip-region') );
 
-	var AT = java.awt.geom.AffineTransform;	
+	var AT = java.awt.geom.AffineTransform;
 	var transform =	AT.getTranslateInstance(
 		region.x + region.width/2 + imagePanX - ( ( imageTinted.width * imageScale ) / 2 ),
 		region.y + region.height/2 + imagePanY - ( ( imageTinted.height * imageScale ) / 2 )
@@ -81,7 +82,7 @@ function paintBack( g, diy, sheet ) {
 	transform.concatenate( AT.getRotateInstance( -imageRotation * Math.PI/180, imageTinted.width/2, imageTinted.height/2 ) );
 
 	g.drawImage(imageTinted, transform, null);
-} 
+}
 
 function onClear() {
 	setDefaults();
@@ -92,7 +93,8 @@ function onClear() {
 // of the script.
 function onRead(diy, oos) {
 	readPortraits( diy, oos, PortraitTypeList, true );
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 8;
 }
 

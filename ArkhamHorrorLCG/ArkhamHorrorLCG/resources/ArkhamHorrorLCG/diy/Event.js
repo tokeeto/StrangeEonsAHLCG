@@ -24,6 +24,7 @@ function create( diy ) {
 	setDefaultCollection();
     setDefaultEncounter();
 
+    diy.setCornerRadius(8);
 	diy.version = 17;
 }
 
@@ -296,6 +297,7 @@ function onRead(diy, oos) {
 
 	updateCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 17;
 }
 

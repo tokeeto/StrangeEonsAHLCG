@@ -25,45 +25,46 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 2;
 }
 
 function setDefaults() {
 	$Unique = '0';
 	$Subtitle = '';
-		
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
 	$Flavor = '';
 	$Victory = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
 	$FlavorSpacing = '0';
-	
+
 	$Artist = '';
 	$Copyright = '';
-	
+
 	$ShowCollectionNumberFront = '1';
 	$ShowCollectionNumberBack = '1';
-	
+
 	//Back
 	$UniqueBack = '0';
 	$SubtitleBack = '';
-		
+
 	$TraitsBack = '';
 	$KeywordsBack = '';
 	$RulesBack = '';
 	$FlavorBack = '';
 	$VictoryBack = '';
-	
+
 	$TraitsBackSpacing = '0';
 	$KeywordsBackSpacing = '0';
 	$RulesBackSpacing = '0';
 	$FlavorBackSpacing = '0';
-	
+
 	$ArtistBack = '';
 	$PortraitShare = '1';
 
@@ -73,7 +74,7 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitleUnique( diy, bindings, true, [0, 1], FACE_FRONT );
@@ -91,7 +92,7 @@ function createInterface( diy, editor ) {
 //	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatsPanel, 'wrap, pushx, growx', BackTitlePanel, 'wrap, pushx, growx', BackStatsPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', BackTitlePanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
+
 	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Front );
@@ -105,7 +106,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0, 1], FACE_FRONT );
-		
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -113,7 +114,7 @@ function createInterface( diy, editor ) {
 
 	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
 	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0, 1], [0, 1], FACE_FRONT );
-	
+
 	var EncounterTab = new Grid();
 	EncounterTab.editorTabScrolling = true;
 	EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
@@ -131,7 +132,7 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Subtitle_box = markupBox(sheet);
 	Subtitle_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Subtitle-style'), null);
@@ -142,7 +143,7 @@ function createFrontPainter( diy, sheet ) {
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
 	setTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 
-	initBodyTags( diy, Body_box );	
+	initBodyTags( diy, Body_box );
 
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Artist-style'), null);
@@ -151,8 +152,8 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box = markupBox(sheet);
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Copyright-alignment'));
- 
-	initCopyrightTags( diy, Copyright_box );	
+
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'CollectionNumber-style'), null);
@@ -172,7 +173,7 @@ function createBackPainter( diy, sheet ) {
 	BackName_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Name-style'), null);
 	BackName_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_BACK, 'Name-alignment'));
 
-	initBodyTags( diy, BackName_box );	
+	initBodyTags( diy, BackName_box );
 
 	BackSubtitle_box = markupBox(sheet);
 	BackSubtitle_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Subtitle-style'), null);
@@ -183,7 +184,7 @@ function createBackPainter( diy, sheet ) {
 	BackBody_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Body-alignment'));
 	setTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 
-	initBodyTags( diy, BackBody_box );	
+	initBodyTags( diy, BackBody_box );
 
 	BackArtist_box = markupBox(sheet);
 	BackArtist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Artist-style'), null);
@@ -192,8 +193,8 @@ function createBackPainter( diy, sheet ) {
 	BackCopyright_box = markupBox(sheet);
 	BackCopyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'Copyright-style'), null);
 	BackCopyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_BACK, 'Copyright-alignment'));
- 
-	initCopyrightTags( diy, BackCopyright_box );	
+
+	initCopyrightTags( diy, BackCopyright_box );
 
 	BackCollection_box = markupBox(sheet);
 	BackCollection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_BACK, 'CollectionNumber-style'), null);
@@ -259,9 +260,10 @@ function onRead(diy, oos) {
 	if ( diy.version < 2 ) {
 		$PortraitShare = '0';
 	}
-	
+
 	updateCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 2;
 }
 

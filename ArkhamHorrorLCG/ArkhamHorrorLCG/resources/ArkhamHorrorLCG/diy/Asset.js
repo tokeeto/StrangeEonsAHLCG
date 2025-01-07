@@ -24,13 +24,14 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 
 function setDefaults() {
 	$Unique = '0';
 	$Subtitle = '';
-	
+
 	$CardClass = 'Guardian';
 	$CardClass2 = 'None';
 	$CardClass3 = 'None';
@@ -41,28 +42,28 @@ function setDefaults() {
 	$Skill3 = 'None';
 	$Skill4 = 'None';
 	$Skill5 = 'None';
-	
+
 	$BackTypeBack = 'Player';
 
 	$Slot = 'None';
 	$Slot2 = 'None';
 	$Stamina = 'None';
 	$Sanity = 'None';
-	
+
 	$PerInvestigatorStamina = '0';
 	$PerInvestigatorSanity = '0';
-	
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
 	$Flavor = '';
 	$Victory = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
 	$FlavorSpacing = '0';
-	
+
 	$Artist = '';
 	$Copyright = '';
 
@@ -72,7 +73,7 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitleUnique( diy, bindings, true, [0], FACE_FRONT );
@@ -86,7 +87,7 @@ function createInterface( diy, editor ) {
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatsPanel, 'wrap, pushx, growx', BackStatPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
+
 	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules );
@@ -96,7 +97,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -114,7 +115,7 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Subtitle_box = markupBox(sheet);
 	Subtitle_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Subtitle-style'), null);
@@ -131,9 +132,9 @@ function createFrontPainter( diy, sheet ) {
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-	
-	initBodyTags( diy, Body_box );	
-	
+
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Artist-alignment'));
@@ -141,8 +142,8 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box = markupBox(sheet);
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey( FACE_FRONT, 'Copyright-alignment'));
- 
-	initCopyrightTags( diy, Copyright_box );	
+
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey( FACE_FRONT, 'CollectionNumber-style'), null);
@@ -165,28 +166,28 @@ function paintFront( g, diy, sheet ) {
 
 	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, cClass, true );
 
-	if ($CardClass == 'Weakness' ) {	
+	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
-	else if ($CardClass == 'BasicWeakness' ) {	
+	else if ($CardClass == 'BasicWeakness' ) {
 		drawBasicWeaknessIcon( g, diy, sheet );
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-BasicWeakness );
 	}
 	else {
 		drawLevel( g, diy, sheet, cClass );
 	}
-		
+
 	drawCost( g, diy, sheet );
 
 	drawSkillIcons( g, diy, sheet, cClass );
 	drawSlots( g, diy, sheet );
 	drawStamina( g, diy, sheet );
 	drawSanity( g, diy, sheet );
-	
+
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 //	drawCollectorInfo( g, diy, sheet, true, false, false, false, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, null, false, Copyright_box, Artist_box );	
+	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, null, false, Copyright_box, Artist_box );
 }
 
 function paintBack( g, diy, sheet ) {
@@ -220,7 +221,7 @@ function onRead(diy, oos) {
 			$BackTypeBack = $BackTypeundefined;
 			diy.settings.reset('BackTypeundefined');
 		}
-		
+
 		if ( $BackTypeBack == null ) $BackTypeBack = 'Player';	// some cards created during testing might have both as null
 	}
 
@@ -236,10 +237,11 @@ function onRead(diy, oos) {
 		$PerInvestigatorStamina = '0';
 		$PerInvestigatorSanity = '0';
 	}
-	
+
 	updateCollection();
 
 	diy.faceStyle = FaceStyle.TWO_FACES;
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 

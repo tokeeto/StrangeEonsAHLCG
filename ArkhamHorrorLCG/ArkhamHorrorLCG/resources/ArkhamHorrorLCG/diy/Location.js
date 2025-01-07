@@ -17,7 +17,7 @@ const PortraitTypeList = [ 'Portrait-Both', 'BackPortrait-Back', 'Collection-Bot
 function create( diy ) {
 	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template');	// not used, set card size
 	diy.backTemplateKey = getExpandedKey( FACE_BACK, 'Default', '-template' );
-	
+
 	diy.faceStyle = FaceStyle.TWO_FACES;
 
 	diy.name = '';
@@ -27,10 +27,11 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 
-function setDefaults() {	
+function setDefaults() {
 	// front
 	$Subtitle = '';
 	$Traits = '';
@@ -38,12 +39,12 @@ function setDefaults() {
 	$Rules = '';
 	$Flavor = '';
 	$Victory = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
 	$FlavorSpacing = '0';
-	
+
 	$LocationIcon = 'Circle';
 	$Connection1Icon =  'None';
 	$Connection2Icon = 'None';
@@ -61,16 +62,16 @@ function setDefaults() {
 	$ShroudPerInvestigator = '0';
 //	$BackType = 'Standard';
 	$BackTypeBack = 'Standard';
-	
+
 	// back
 	$TitleBack = '';
 	$SubtitleBack = '';
-	
+
 	$TraitsBack = '';
 	$KeywordsBack = '';
 	$RulesBack = '';
 	$FlavorBack = '';
-	
+
 	$TraitsBackSpacing = '0';
 	$KeywordsBackSpacing = '0';
 	$RulesBackSpacing = '0';
@@ -87,30 +88,30 @@ function setDefaults() {
 	$ArtistBack = '';
 	$PortraitShare = '1';
 
-	$ShowEncounterIcon = '1';	
+	$ShowEncounterIcon = '1';
 	$ShowEncounterIconBack = '1';
-	
+
 	$TemplateReplacement = '';
 	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitle( diy, bindings, true, [0], FACE_FRONT );
 	TitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Front );
 	var StatPanel = layoutLocationStats( bindings, FACE_FRONT );
 	StatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Front );
-	var ConnectionPanel = layoutConnections( false, bindings, [0, 1], FACE_FRONT );	
+	var ConnectionPanel = layoutConnections( false, bindings, [0, 1], FACE_FRONT );
 	ConnectionPanel.setTitle( @AHLCG-Connections + ': ' + @AHLCG-Front );
-	
+
 	var BackTitlePanel = layoutTitle( diy, bindings, true, [1], FACE_BACK );
 	BackTitlePanel.setTitle( @AHLCG-Title + ': ' + @AHLCG-Back );
 	var BackStatPanel = layoutLocationBackTypeStats( diy, bindings, FACE_BACK );
 	BackStatPanel.setTitle( @AHLCG-BasicData + ': ' + @AHLCG-Back );
-	var BackConnectionPanel = layoutConnections( true, bindings, [1], FACE_BACK );	
+	var BackConnectionPanel = layoutConnections( true, bindings, [1], FACE_BACK );
 	BackConnectionPanel.setTitle( @AHLCG-Connections + ': ' + @AHLCG-Back );
 	var CopyrightPanel = layoutCopyright( bindings, false, [0, 1], FACE_FRONT );
 
@@ -118,7 +119,7 @@ function createInterface( diy, editor ) {
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatPanel, 'wrap, pushx, growx', ConnectionPanel, 'wrap, pushx, growx', BackTitlePanel, 'wrap, pushx, growx', BackStatPanel, 'wrap, pushx, growx', BackConnectionPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
+
 	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Front );
@@ -132,7 +133,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0, 1], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -140,7 +141,7 @@ function createInterface( diy, editor ) {
 
 	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
 	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0, 1], [0, 1], FACE_FRONT );
-	
+
 	var EncounterTab = new Grid();
 	EncounterTab.editorTabScrolling = true;
 	EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
@@ -165,17 +166,17 @@ function createFrontPainter( diy, sheet ) {
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-//	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
+//	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );
 //	createTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 	setTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	// just going to use standard body style
 	Victory_box = markupBox(sheet);
 	Victory_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Victory_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Victory-alignment'));
-	Victory_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Victory', '-tightness') + '-tightness') );	
+	Victory_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Victory', '-tightness') + '-tightness') );
 
 	initBodyTags( diy, Victory_box );
 
@@ -187,7 +188,7 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
@@ -214,11 +215,11 @@ function createBackPainter( diy, sheet ) {
 	BackBody_box = markupBox(sheet);
 	BackBody_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
 	BackBody_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Body-alignment'));
-	BackBody_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'Body', '-tightness') + '-tightness') );	
+	BackBody_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'Body', '-tightness') + '-tightness') );
 //	createBackTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ) );
 	setBackTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ) );
 
-	initBodyTags( diy, BackBody_box );	
+	initBodyTags( diy, BackBody_box );
 
 	BackArtist_box = markupBox(sheet);
 	BackArtist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Artist-style'), null);
@@ -250,7 +251,7 @@ function paintFront( g, diy, sheet ) {
 	drawName( g, diy, sheet, Name_box );
 
 	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, '', false );
-	
+
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
 
 	drawVictory( g, diy, sheet, Victory_box );
@@ -265,7 +266,7 @@ function paintFront( g, diy, sheet ) {
 	}
 
 	var encounterIcon = false;
-	
+
 	if ( $ShowEncounterIcon == '1' ) {
 		drawLocationEncounterOverlay( g, diy, sheet );
 		encounterIcon = true;
@@ -290,14 +291,14 @@ function paintBack( g, diy, sheet ) {
 
 		if ( $SubtitleBack.length > 0) drawSubtitleTemplate( g, sheet, '' );
 		else drawTemplate( g, sheet, '' );
-		
+
 		if ( $ShowEncounterIconBack == '1' ) {
 			drawLocationEncounterOverlay( g, diy, sheet );
-			drawEncounterIcon( g, diy, sheet );	
+			drawEncounterIcon( g, diy, sheet );
 		}
 
 		drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Location );
-		
+
 		drawName( g, diy, sheet, BackName_box );
 
 		if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, '', false );
@@ -316,11 +317,11 @@ function paintBack( g, diy, sheet ) {
 		if ( $PortraitShare == '1' ) {
 			if ( $Artist.length > 0) drawArtist( g, diy, sheet, BackArtist_box, true );
 		}
-		else { 
+		else {
 			if ( $ArtistBack.length > 0 ) drawArtist( g, diy, sheet, BackArtist_box, false );
 		}
 
-		if ( $Copyright.length > 0 ) drawCopyright( g, diy, sheet, BackCopyright_box );	
+		if ( $Copyright.length > 0 ) drawCopyright( g, diy, sheet, BackCopyright_box );
 	}
 	else {
 		drawBackTemplate( g, sheet );
@@ -339,15 +340,15 @@ function createTextShape( textBox, textRegion ) {
 
 	var path = new java.awt.geom.Path2D.Double();
 
-	// asymmetrical	
+	// asymmetrical
 	var xPathPoints = new Array( 0.074, 0.000, 0.000, 1.000, 1.000, 0.951, 0.926 );
 	var yPathPoints = new Array( 0.000, 0.174, 1.000, 1.000, 0.319, 0.125, 0.000 );
-	
+
 	var xControlPoints = new Array( 0.037, 0.107, 0.991, 0.962, 0.936, 0.970 );
 	var yControlPoints = new Array( 0.153, 0.139, 0.278, 0.167, 0.132, 0.174 );
-	
+
 	var numPoints = xPathPoints.length;
-	
+
 	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 	// just create by hand, it's asymmetrical
@@ -355,7 +356,7 @@ function createTextShape( textBox, textRegion ) {
 		x + w * xControlPoints[1], y + h * yControlPoints[1],
 		x + w * xPathPoints[1], y + h * yPathPoints[1]
 	);
-	
+
 	for (let i = 2; i <= 4; i++) {
 		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
 	}
@@ -368,7 +369,7 @@ function createTextShape( textBox, textRegion ) {
 	}
 
 	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
 }
 
@@ -381,7 +382,7 @@ function createBackTextShape( textBox, textRegion ) {
 //	var xPathPoints = new Array( 0.151, 0.000, 0.000, 1.000, 1.000, 0.849 );
 	var xPathPoints = new Array( 0.111, 0.000, 0.000, 1.000, 1.000, 0.889 );
 	var yPathPoints = new Array( 0.000, 0.204, 1.000, 1.000, 0.204, 0.000 );
-	
+
 	var path = new java.awt.geom.Path2D.Double();
 
 	var numPoints = xPathPoints.length;
@@ -393,7 +394,7 @@ function createBackTextShape( textBox, textRegion ) {
 	}
 
 	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
 }
 */
@@ -419,7 +420,7 @@ function createVictoryTextShape( textBox, textRegion ) {
 	var yPathPoints = new Array( 0.000, 0.000, 1.000, 1.000, 0.500 );
 //	var xPathPoints = new Array( 0.000, 1.000, 1.000 );
 //	var yPathPoints = new Array( 0.000, 0.000, 1.000 );
-	
+
 	var path = new java.awt.geom.Path2D.Double();
 
 	var numPoints = xPathPoints.length;
@@ -431,7 +432,7 @@ function createVictoryTextShape( textBox, textRegion ) {
 	}
 
 	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
 }
 
@@ -466,13 +467,14 @@ function onRead(diy, oos) {
 	if ( diy.version < 18 ) {
 		$ShroudPerInvestigator = '0';
 	}
-	
+
 	// some files, probably from a test version have $BackType and $BackTypeBack == null
 //	if ( $BackTypeBack == null) $BackTypeBack = 'Standard';
-	
+
 	updateCollection();
 	updateEncounter();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 

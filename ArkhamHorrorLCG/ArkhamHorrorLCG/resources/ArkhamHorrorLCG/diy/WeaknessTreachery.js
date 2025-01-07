@@ -24,23 +24,24 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 15;
 }
 
 function setDefaults() {
 	$Subtype = 'BasicWeakness';
-	
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
 	$Flavor = '';
 	$Victory = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
 	$FlavorSpacing = '0';
-	
+
 	$Artist = '';
 	$Copyright = '';
 
@@ -52,18 +53,18 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitle( diy, bindings, false, [0], FACE_FRONT );
 	var StatPanel = layoutWeaknessStats( bindings, FACE_FRONT );
 	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
-	
+
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
+
 	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules );
@@ -73,7 +74,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -81,7 +82,7 @@ function createInterface( diy, editor ) {
 
 	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
 	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0, 1], [0], FACE_FRONT );
-	
+
 	var EncounterTab = new Grid();
 	EncounterTab.editorTabScrolling = true;
 	EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
@@ -106,10 +107,10 @@ function createFrontPainter( diy, sheet ) {
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
+	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -118,7 +119,7 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
@@ -146,7 +147,7 @@ function paintFront( g, diy, sheet ) {
 	if ( $Subtype == 'BasicWeakness' ) {
 		drawOverlay( g, diy, sheet, 'BasicWeakness' );
 		drawBasicWeaknessIcon( g, diy, sheet );
-		
+
 		subtypeText = #AHLCG-Label-BasicWeakness;
 	}
 	else if ( $Subtype == 'StoryWeakness' ) {
@@ -158,7 +159,7 @@ function paintFront( g, diy, sheet ) {
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 	var encounterBox = $Subtype == 'StoryWeakness' ? Encounter_box : null;
-	
+
 //	drawCollectorInfo( g, diy, sheet, true, false, $Subtype == 'StoryWeakness', $Subtype == 'StoryWeakness', true );
 	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, encounterBox, $Subtype == 'StoryWeakness', Copyright_box, Artist_box );
 }
@@ -170,7 +171,7 @@ function paintBack( g, diy, sheet ) {
 }
 
 function onClear() {
-	setDefaults();	
+	setDefaults();
 }
 
 // These can be used to perform special processing during open/save.
@@ -184,16 +185,17 @@ function onRead(diy, oos) {
 	}
 	if ( diy.version < 15 ) {
 		diy.faceStyle = FaceStyle.TWO_FACES;
-		
+
 		$TemplateReplacement = '';
 		$TemplateReplacementBack = '';
 	}
 	if ( diy.version < 16 ) {
 		$BackTypeBack = 'Player';	// for Zoop
 	}
-	
+
 	updateCollection();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 16;
 }
 

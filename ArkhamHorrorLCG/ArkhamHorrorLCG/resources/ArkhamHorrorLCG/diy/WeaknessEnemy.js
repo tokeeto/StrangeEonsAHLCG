@@ -24,34 +24,35 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 16;
 }
 
 function setDefaults() {
 	$Unique = '0';
 	$Subtype = 'BasicWeakness';
-	
+
 	$Health = '2';
 	$PerInvestigator = '0';
 	$Attack = '2';
 	$PerInvestigatorAttack = '0';
 	$Evade = '2';
 	$PerInvestigatorEvade = '0';
-			
+
 	$Damage = '0';
 	$Horror = '0';
-	
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
 	$Flavor = '';
 	$Victory = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
 	$FlavorSpacing = '0';
-	
+
 	$Artist = '';
 	$Copyright = '';
 
@@ -63,18 +64,18 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitleUnique( diy, bindings, false, [0], FACE_FRONT );
 	var StatPanel = layoutWeaknessEnemyStats( bindings, FACE_FRONT );
 	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
-	
+
 	var StatisticsTab = new Grid();
 	StatisticsTab.editorTabScrolling = true;
 	StatisticsTab.place(TitlePanel, 'wrap, pushx, growx', StatPanel, 'wrap, pushx, growx', CopyrightPanel, 'wrap, pushx, growx' );
 	StatisticsTab.addToEditor( editor , @AHLCG-General );
-	
+
 	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
 	TextTab.editorTabScrolling = true;
 	TextTab.addToEditor( editor, @AHLCG-Rules );
@@ -84,7 +85,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -105,12 +106,12 @@ function createFrontPainter( diy, sheet ) {
 	Label_box  = markupBox(sheet);
 	Label_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Label-style'), null);
 	Label_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Label-alignment'));
-	
+
 	Name_box = markupBox(sheet);
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Subtype_box = markupBox(sheet);
 	Subtype_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Subtype-style'), null);
@@ -119,12 +120,12 @@ function createFrontPainter( diy, sheet ) {
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );	
+	Body_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') );
 //	createTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 	setTextShape( Body_box, diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Body-region') ) );
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -133,7 +134,7 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
@@ -153,7 +154,7 @@ function paintFront( g, diy, sheet ) {
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
 
 	drawTemplate( g, sheet, '' );
-		
+
 	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Enemy );
 	drawName( g, diy, sheet, Name_box );
 
@@ -162,7 +163,7 @@ function paintFront( g, diy, sheet ) {
 	if ( $Subtype == 'BasicWeakness' ) {
 		drawOverlay( g, diy, sheet, 'BasicWeaknessEnemy' );
 		drawBasicWeaknessIcon( g, diy, sheet );
-		
+
 		subtypeText = #AHLCG-Label-BasicWeakness;
 	}
 	else if ( $Subtype == 'InvestigatorWeakness' ) {
@@ -176,7 +177,7 @@ function paintFront( g, diy, sheet ) {
 
 	drawEnemyStats( g, diy, sheet, [ 'Attack', 'Evade' ] );
 	drawEnemyHealth( g, diy, sheet );
-	
+
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
 	if ( $Damage > 0)  drawDamage( g, diy, sheet );
@@ -203,14 +204,14 @@ function createTextShape( textBox, textRegion ) {
 	var y = textRegion.y;
 	var w = textRegion.width;
 	var h = textRegion.height;
-	
+
 	var path = new java.awt.geom.Path2D.Double();
-	
+
 	var xPathPoints = new Array( 0.086, 0.086, 0.000, 0.000, 0.039, 0.078 );
 	var yPathPoints = new Array( 0.000, 0.189, 0.189, 0.693, 0.800, 1.000 );
 
 	var numPoints = xPathPoints.length;
-	
+
 	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
 
 	for (let i = 1; i < numPoints; i++) {
@@ -224,7 +225,7 @@ function createTextShape( textBox, textRegion ) {
 	}
 
 	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
 }
 */
@@ -245,7 +246,7 @@ function onRead(diy, oos) {
 	}
 	if ( diy.version < 15 ) {
 		diy.faceStyle = FaceStyle.TWO_FACES;
-		
+
 		$TemplateReplacement = '';
 		$TemplateReplacementBack = '';
 	}
@@ -255,9 +256,10 @@ function onRead(diy, oos) {
 
 		$BackTypeBack = 'Player';	// for Zoop
 	}
-	
+
 	updateCollection();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 16;
 }
 

@@ -13,7 +13,7 @@ const PortraitTypeList = [ 'TransparentPortrait-Both', 'Portrait-Back', 'Collect
 function create( diy ) {
 	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size
 	diy.backTemplateKey = getExpandedKey( FACE_BACK, 'Default', '-template' );
-		
+
 	diy.faceStyle = FaceStyle.TWO_FACES;
 
 	diy.name = '';
@@ -22,7 +22,8 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultEncounter();
 	setDefaultCollection();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 15;
 }
 
@@ -35,12 +36,12 @@ function setDefaults() {
 	$Agility = '3';
 	$Stamina = '7';
 	$Sanity = '7';
-	
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
 	$Flavor = '';
-	
+
 	$TraitsSpacing = '0';
 	$KeywordsSpacing = '0';
 	$RulesSpacing = '0';
@@ -70,7 +71,7 @@ function setDefaults() {
 	$Text8Back = '';
 
 	$InvStoryBack = '';
-/*	
+/*
 	$DeckSizeBack = '30';
 	$SecondaryClassBack = '';
 	$DeckOptionsBack = '';
@@ -102,7 +103,7 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitleUnique( diy, bindings, true, [0, 1], FACE_FRONT );
@@ -129,7 +130,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -151,24 +152,24 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Subtitle_box = markupBox(sheet);
 	Subtitle_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Subtitle-style'), null);
 	Subtitle_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Subtitle-alignment'));
-	
+
 	Skill_box_array = [];
 	for ( let i = 0; i < 4; i++ ) {
 		Skill_box_array[i] = markupBox(sheet);
 		Skill_box_array[i].defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Skill-style'), null);
-		Skill_box_array[i].alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Skill-alignment'));	
+		Skill_box_array[i].alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Skill-alignment'));
 	}
 
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
 
-	initBodyTags( diy, Body_box );	
+	initBodyTags( diy, Body_box );
 
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
@@ -178,7 +179,7 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
@@ -194,7 +195,7 @@ function createBackPainter( diy, sheet ) {
 	BackName_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Name-style'), null);
 	BackName_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Name-alignment'));
 
-	initBodyTags( diy, BackName_box );	
+	initBodyTags( diy, BackName_box );
 
 	BackSubtitle_box = markupBox(sheet);
 	BackSubtitle_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Subtitle-style'), null);
@@ -210,7 +211,7 @@ function createBackPainter( diy, sheet ) {
 	BackEncounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'EncounterNumber-style'), null);
 	BackEncounter_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'EncounterNumber-alignment'));
 
-	initBodyTags( diy, BackBody_box );	
+	initBodyTags( diy, BackBody_box );
 }
 
 function paintFront( g, diy, sheet ) {
@@ -225,7 +226,7 @@ function paintFront( g, diy, sheet ) {
 	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, 'Neutral', false );
 
 	drawSkills( g, diy, sheet, Skill_box_array, [ 'Willpower', 'Intellect', 'Combat', 'Agility' ] );
-						
+
 	drawStamina( g, diy, sheet );
 	drawSanity( g, diy, sheet );
 
@@ -248,9 +249,9 @@ function paintBack( g, diy, sheet ) {
 
 //	drawBody( g, diy, sheet, BackBody_box, new Array( 'DeckSize', 'SecondaryClass', 'DeckOptions', 'DeckRequirements', 'DeckRestrictions', 'AdditionalRequirements', 'Setup', 'StartingPlayArea', 'OpeningHand', 'InvStory' ) );
 	drawInvBackBody( g, diy, sheet, BackBody_box, new Array( 'Text1', 'Text2', 'Text3', 'Text4', 'Text5', 'Text6', 'Text7', 'Text8', 'InvStory' ) );
-	
+
 	drawEncounterIcon( g, diy, sheet );
-} 
+}
 
 function onClear() {
 	setDefaults();
@@ -294,7 +295,7 @@ function createBackTextShape( textBox, textRegion, className ) {
 	var h = textRegion.height;
 
 	var pointArrays = getPathPointArrays( className );
-	
+
 	var xPathPoints = pointArrays[0];
 	var yPathPoints = pointArrays[1];
 
@@ -309,7 +310,7 @@ function createBackTextShape( textBox, textRegion, className ) {
 	}
 
 	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-		
+
 	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
 }
 */
@@ -379,9 +380,10 @@ function onRead(diy, oos) {
 		$TemplateReplacement = '';
 		$TemplateReplacementBack = '';
 	}
-	
+
 	updateCollection();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 15;
 }
 

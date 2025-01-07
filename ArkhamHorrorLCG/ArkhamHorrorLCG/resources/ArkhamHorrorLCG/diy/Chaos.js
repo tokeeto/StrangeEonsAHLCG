@@ -24,6 +24,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 
@@ -35,7 +36,7 @@ function setDefaults() {
 	$Tablet = '';
 	$TabletSpacing = '0';
 	$ElderThing = '';
-	
+
 	$SkullBack = '';
 	$SkullBackSpacing = '0';
 	$CultistBack = '';
@@ -45,24 +46,24 @@ function setDefaults() {
 	$ElderThingBack = '';
 
 	$Copyright = '';
-	
+
 	$MergeSkull = 'None';
 	$MergeCultist = 'None';
 	$MergeTablet = 'None';
 	$MergeSkullBack = 'None';
 	$MergeCultistBack = 'None';
 	$MergeTabletBack = 'None';
-	
+
 	$TrackerBox = '';
 	$TrackerHeight = '100';
-	
+
 	$TemplateReplacement = '';
 	$TemplateReplacementBack = '';
 }
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	var TitlePanel = layoutTitle2( diy, bindings, [0, 1], FACE_FRONT );
@@ -84,7 +85,7 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0, 1], FACE_FRONT );
-	
+
 	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
@@ -92,7 +93,7 @@ function createInterface( diy, editor ) {
 
 	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
 	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0, 1], [0, 1], FACE_FRONT );
-	
+
 	var EncounterTab = new Grid();
 	EncounterTab.editorTabScrolling = true;
 	EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
@@ -107,7 +108,7 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 	Name_box.setTextFitting(FIT_NONE);
 	Name_box.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Name', '-tightness') + '-tightness') );	// this doesn't seem to matter, sadly...
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Difficulty_box = markupBox(sheet);
 	Difficulty_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Difficulty-style'), null);
@@ -118,10 +119,10 @@ function createFrontPainter( diy, sheet ) {
 		Body_boxes[i] = markupBox(sheet);
 		Body_boxes[i].defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 		Body_boxes[i].alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
-		Body_boxes[i].setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * Eons.namedObjects.AHLCGObject.bodyFontTightness );	
+		Body_boxes[i].setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * Eons.namedObjects.AHLCGObject.bodyFontTightness );
 		Body_boxes[i].setTextFitting( FIT_SCALE_TEXT );
 
-		initBodyTags( diy, Body_boxes[i] );	
+		initBodyTags( diy, Body_boxes[i] );
 	}
 
 	Tracker_box = markupBox(sheet);
@@ -132,7 +133,7 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
@@ -149,7 +150,7 @@ function createBackPainter( diy, sheet ) {
 	BackName_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Name-alignment'));
 	BackName_box.setTextFitting(FIT_NONE);
 	BackName_box.setLineTightness( $(getExpandedKey(FACE_BACK, 'Name', '-tightness') + '-tightness') );
-	initBodyTags( diy, BackName_box );	
+	initBodyTags( diy, BackName_box );
 
 	BackDifficulty_box  = markupBox(sheet);
 	BackDifficulty_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Difficulty-style'), null);
@@ -160,10 +161,10 @@ function createBackPainter( diy, sheet ) {
 		BackBody_boxes[i] = markupBox(sheet);
 		BackBody_boxes[i].defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
 		BackBody_boxes[i].alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Body-alignment'));
-		BackBody_boxes[i].setLineTightness( $(getExpandedKey(FACE_BACK, 'Body', '-tightness') + '-tightness') * Eons.namedObjects.AHLCGObject.bodyFontTightness );	
+		BackBody_boxes[i].setLineTightness( $(getExpandedKey(FACE_BACK, 'Body', '-tightness') + '-tightness') * Eons.namedObjects.AHLCGObject.bodyFontTightness );
 		BackBody_boxes[i].setTextFitting( FIT_SCALE_TEXT );
 
-		initBodyTags( diy, BackBody_boxes[i] );	
+		initBodyTags( diy, BackBody_boxes[i] );
 	}
 
 	BackTracker_box = markupBox(sheet);
@@ -174,7 +175,7 @@ function createBackPainter( diy, sheet ) {
 	BackCopyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Copyright-style'), null);
 	BackCopyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_BACK, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, BackCopyright_box );	
+	initCopyrightTags( diy, BackCopyright_box );
 
 	BackCollection_box = markupBox(sheet);
 	BackCollection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'CollectionNumber-style'), null);
@@ -212,14 +213,14 @@ function paintBack( g, diy, sheet ) {
 
 	if ( diy.name != '' ) y = drawChaosName( g, diy, sheet, BackName_box );
 	y = drawDifficulty( g, diy, sheet, BackDifficulty_box, #AHLCG-Difficulty-Back, y );
-	
+
 	if ( $TrackerBox.length > 0 ) drawTrackerBox( g, diy, sheet, Tracker_box );
 
 	drawChaosBody( g, diy, sheet, BackBody_boxes, null, y );
 
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, false );
 	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, true, BackEncounter_box, true, BackCopyright_box, false );
-} 
+}
 
 function onClear() {
 	setDefaults();
@@ -253,7 +254,8 @@ function onRead(diy, oos) {
 	if ( diy.version < 18 ) {
 		$TrackerHeight = '100';
 	}
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 

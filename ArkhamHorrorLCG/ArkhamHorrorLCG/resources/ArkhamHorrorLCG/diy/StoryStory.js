@@ -24,8 +24,8 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultEncounter();
 	setDefaultCollection();
-  diy.setCornerRadius(8);
 
+   	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 
@@ -478,6 +478,7 @@ function onRead(diy, oos) {
 		$TrackerHeightBack = '100';
 	}
 
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 

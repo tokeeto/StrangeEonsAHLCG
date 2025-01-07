@@ -14,7 +14,7 @@ const BindingSuffixes = [ '', 'Back' ];
 const PortraitTypeList = [ 'Portrait-Front', 'BackPortrait-Back', 'Collection-Both', 'Encounter-Both' ];
 
 function create( diy ) {
-	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size	
+	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size
 	diy.backTemplateKey = getExpandedKey( FACE_BACK, 'Default', '-template' );
 	diy.faceStyle = FaceStyle.TWO_FACES;
 
@@ -24,7 +24,8 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultEncounter();
 	setDefaultCollection();
-	
+
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 
@@ -36,25 +37,25 @@ function setDefaults() {
 	$PerInvestigator = '0';
 	$Asterisk = '0';
 	$Orientation = 'Standard';
-	
+
 	$ActStory = '';
 	$Rules = '';
-	
+
 	$ActStorySpacing = '0';
-		
+
 	$Artist = '';
 	$Copyright = '';
 
 	// back
 	$TitleBack = '';
 	$SubtitleBack = '';
-	
+
 	$TraitsBack = '';
 	$KeywordsBack = '';
 	$RulesBack = '';
 	$FlavorBack = '';
 	$VictoryBack = '';
-	
+
 	$TraitsBackSpacing = '0';
 	$KeywordsBackSpacing = '0';
 	$RulesBackSpacing = '0';
@@ -82,7 +83,7 @@ function setDefaults() {
 
 function createInterface( diy, editor ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
-	
+
 	var bindings = new Bindings( editor, diy );
 
 	// do this first, we need the portrait panels for the title listener
@@ -119,15 +120,15 @@ function createInterface( diy, editor ) {
 
 	var CollectionImagePanel = new portraitPanel( diy, getPortraitIndex( 'Collection' ), @AHLCG-CustomCollection );
 	var CollectionPanel = layoutCollection( bindings, CollectionImagePanel, false, false, [0, 1], FACE_FRONT );
-	
-	var CollectionTab = new Grid();	
+
+	var CollectionTab = new Grid();
 	CollectionTab.editorTabScrolling = true;
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
 	CollectionTab.addToEditor(editor, @AHLCG-Collection);
 
 	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
 	var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0, 1], [0, 1], FACE_FRONT );
-	
+
 	var EncounterTab = new Grid();
 	EncounterTab.editorTabScrolling = true;
 	EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
@@ -141,15 +142,15 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
-	initBodyTags( diy, Name_box );	
+	initBodyTags( diy, Name_box );
 
 	Body_box = markupBox(sheet);
 	Body_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Body-style'), null);
 	Body_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Body-alignment'));
 	updateReversableTextBoxShape( diy, $Orientation );
 
-	initBodyTags( diy, Body_box );	
-	
+	initBodyTags( diy, Body_box );
+
 	Artist_box = markupBox(sheet);
 	Artist_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Artist-style'), null);
 	Artist_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Artist-alignment'));
@@ -158,7 +159,7 @@ function createFrontPainter( diy, sheet ) {
 	Copyright_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Copyright-style'), null);
 	Copyright_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Copyright-alignment'));
 
-	initCopyrightTags( diy, Copyright_box );	
+	initCopyrightTags( diy, Copyright_box );
 
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
@@ -194,8 +195,8 @@ function createBackPainter( diy, sheet ) {
 //	createBackTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ) );
 	setBackTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ) );
 
-	initBodyTags( diy, BackBody_box );	
-	
+	initBodyTags( diy, BackBody_box );
+
 	// just going to use standard body style
 	BackVictory_box = markupBox(sheet);
 	BackVictory_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_BACK, 'Body-style'), null);
@@ -237,7 +238,7 @@ function paintFront( g, diy, sheet ) {
 
 //	drawCollectorInfo( g, diy, sheet, true, true, true, true, true );
 	drawCollectorInfo( g, diy, sheet, Collection_box, true, true, Encounter_box, true, Copyright_box, Artist_box );
-	
+
 	drawScenarioIndexFront( g, diy, sheet, #AHLCG-Label-Act, Index_box );
 }
 
@@ -251,7 +252,7 @@ function paintBack( g, diy, sheet ) {
 	drawName( g, diy, sheet, BackName_box );
 
 	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, '', false );
-	
+
 	drawBody( g, diy, sheet, BackBody_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
 
 	drawVictory( g, diy, sheet, BackVictory_box );
@@ -266,7 +267,7 @@ function paintBack( g, diy, sheet ) {
 	}
 
 	var encounterIcon = false;
-	
+
 	if ( $ShowEncounterIconBack == '1' ) {
 		drawLocationEncounterOverlay( g, diy, sheet );
 		encounterIcon = true;
@@ -276,7 +277,7 @@ function paintBack( g, diy, sheet ) {
 	drawCollectorInfo( g, diy, sheet, BackCollection_box, true, true, BackEncounter_box, encounterIcon, BackCopyright_box, BackArtist_box );
 
 	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Location );
-} 
+}
 
 function onClear() {
 	setDefaults();
@@ -318,10 +319,11 @@ function onRead(diy, oos) {
 		// region changed, requires a shift to look the same
 		PortraitList[0].setPanX(PortraitList[0].getPanX() + 10.0);
 	}
-	
+
 	updateCollection();
 	updateEncounter();
-		
+
+	diy.setCornerRadius(8);
 	diy.version = 18;
 }
 
