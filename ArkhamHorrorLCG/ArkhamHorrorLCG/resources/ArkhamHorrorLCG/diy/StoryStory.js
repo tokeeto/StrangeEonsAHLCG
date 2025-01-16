@@ -206,6 +206,9 @@ function createInterface( diy, editor ) {
 	EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
 	EncounterTab.addToEditor(editor, @AHLCG-EncounterSet);
 
+	PortraitTab = layoutPortraits( diy, bindings, null, null, true, false, false );
+	PortraitTab.addToEditor(editor, @AHLCG-Portraits);
+
 	bindings.bind();
 }
 

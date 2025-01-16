@@ -139,13 +139,9 @@ function createInterface( diy, editor ) {
 	);
 
 	TextTab.addToEditor( editor, @AHLCG-Rules + ': ' + @AHLCG-Front );
-/*
-	var TextTab = layoutText( bindings, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], '', FACE_FRONT );
-	TextTab.editorTabScrolling = true;
-	TextTab.addToEditor( editor, @AHLCG-Rules );
-*/
-//	PortraitTab = layoutPortraits( diy, bindings, 'Portrait', null, true, false, false );
-//	PortraitTab.addToEditor(editor, @AHLCG-Portraits);
+
+	PortraitTab = layoutPortraits( diy, bindings, null, null, true, false, false );
+	PortraitTab.addToEditor(editor, @AHLCG-Portraits);
 
 	bindings.bind();
 }
