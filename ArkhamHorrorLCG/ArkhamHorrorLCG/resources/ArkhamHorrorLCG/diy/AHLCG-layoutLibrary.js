@@ -599,7 +599,6 @@ function layoutInvestigatorStats( diy, bindings, faceIndex ) {
 
 	ClassList.addActionListener( function updateShape( actionEvent ) {
 		try {
-//			createBackTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ), (String)(ClassList.getSelectedItem()) );
 			setBackTextShape( BackBody_box, diy.settings.getRegion( getExpandedKey( FACE_BACK, 'Body-region') ), (String)(ClassList.getSelectedItem() ) );
 		} catch ( ex if ex instanceof ReferenceError ) {
 			// means Body_box has not been created yet (during createInterface)

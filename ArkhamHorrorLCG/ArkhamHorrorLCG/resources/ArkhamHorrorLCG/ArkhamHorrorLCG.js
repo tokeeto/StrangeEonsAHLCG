@@ -653,15 +653,19 @@ function gameObject( masterSettings ) {
 		this.comboStat[this.comboStat.length] = ListItem( index, String(index) );
 	}
 	this.comboStat[this.comboStat.length] = ListItem( "X", "X" );
+	this.comboStat[this.comboStat.length] = ListItem( "", "Blank" );
 
 	this.comboInvestigatorHealth = new Array();
 	for( let index = 1; index <= 15; index++ ){
 		this.comboInvestigatorHealth[this.comboInvestigatorHealth.length] = ListItem( index, String(index) );
 	}
+	this.comboInvestigatorHealth[this.comboInvestigatorHealth.length] = ListItem( "X", "X" );
+	this.comboInvestigatorHealth[this.comboInvestigatorHealth.length] = ListItem( "", "Blank" );
 
 	this.comboAssetStamina = new Array(
 		ListItem( 'None', @AHLCG-Stamina-None ),
 		ListItem( '-', '-' ),
+		ListItem( '', 'Blank' ),
 		ListItem( 'Star', '*' ) );
 	for( let index = 1; index <= 15; index++ ){
 		this.comboAssetStamina[this.comboAssetStamina.length] = ListItem( index, String(index) );
@@ -670,6 +674,7 @@ function gameObject( masterSettings ) {
 	this.comboAssetSanity = new Array(
 		ListItem( 'None', @AHLCG-Sanity-None ),
 		ListItem( '-', '-' ),
+		ListItem( '', 'Blank' ),
 		ListItem( 'Star', '*' ) );
 	for( let index = 1; index <= 15; index++ ){
 		this.comboAssetSanity[this.comboAssetSanity.length] = ListItem( index, String(index) );
@@ -678,6 +683,7 @@ function gameObject( masterSettings ) {
 	this.comboEnemyStat = new Array(
 		ListItem( '-', '-' ),
 		ListItem( '?', '?' ),
+		ListItem( '', 'Blank' ),
 		ListItem( 'X', 'X' ) );
 	for( let index = 0; index <= 29; index++ ){
 		this.comboEnemyStat[this.comboEnemyStat.length] = ListItem( index, String(index) );
@@ -686,6 +692,7 @@ function gameObject( masterSettings ) {
 	this.comboEnemyHealth = new Array(
 		ListItem( '-', '-' ),
 		ListItem( '?', '?' ),
+		ListItem( '', 'Blank' ),
 		ListItem( 'X', 'X' ) );
 	for( let index = 0; index <= 29; index++ ){
 		this.comboEnemyHealth[this.comboEnemyHealth.length] = ListItem( index, String(index) );
@@ -693,6 +700,7 @@ function gameObject( masterSettings ) {
 
 	this.comboCost = new Array(
 		ListItem( '-', '-' ),
+		ListItem( '', 'Blank' ),
 		ListItem( 'X', 'X' ) );
 	for( let index = 0; index <= 19; index++ ) {
 		this.comboCost[this.comboCost.length] = ListItem( index, String(index) );
@@ -701,6 +709,7 @@ function gameObject( masterSettings ) {
 	this.comboClues = new Array(
 		ListItem( '-', '-' ),
 		ListItem( '?', '?' ),
+		ListItem( '', 'Blank' ),
 		ListItem( 'Star', '*' ) );
 	for( let index = 0; index <= 19; index++ ) {
 		this.comboClues[this.comboClues.length] = ListItem( index, String(index) );
@@ -724,6 +733,7 @@ function gameObject( masterSettings ) {
 	this.comboXD20 = new Array(
 		ListItem( '-', '-' ),
 		ListItem( 'X', 'X' ),
+		ListItem( '', 'Blank' ),
 		ListItem( 'Star', '*' ) );
 	for( let index = 0; index <= 20; index++ ){
 		this.comboXD20[this.comboXD20.length] = ListItem( index, String(index) );
