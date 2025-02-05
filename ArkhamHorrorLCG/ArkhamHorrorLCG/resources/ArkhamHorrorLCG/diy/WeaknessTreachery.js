@@ -29,6 +29,7 @@ function create( diy ) {
 }
 
 function setDefaults() {
+	$Unique = '0';
 	$Subtype = 'BasicWeakness';
 
 	$Traits = '';
@@ -56,7 +57,7 @@ function createInterface( diy, editor ) {
 
 	var bindings = new Bindings( editor, diy );
 
-	var TitlePanel = layoutTitle( diy, bindings, false, [0], FACE_FRONT );
+	var TitlePanel = layoutTitleUnique( diy, bindings, false, [0], FACE_FRONT );
 	var StatPanel = layoutWeaknessStats( bindings, FACE_FRONT );
 	var CopyrightPanel = layoutCopyright( bindings, false, [0], FACE_FRONT );
 
@@ -99,6 +100,8 @@ function createFrontPainter( diy, sheet ) {
 	Name_box = markupBox(sheet);
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
+
+	initBodyTags( diy, Name_box );
 
 	Subtype_box = markupBox(sheet);
 	Subtype_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Subtype-style'), null);
