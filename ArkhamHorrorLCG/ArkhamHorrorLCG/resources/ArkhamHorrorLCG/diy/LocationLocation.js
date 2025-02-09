@@ -87,6 +87,7 @@ function setDefaults() {
 	$ShroudBack = '1';
 	$CluesBack = '1';
 	$PerInvestigatorBack = '1';
+    $ShroudPerInvestigatorBack = '0';
 
 	$ArtistBack = '';
 

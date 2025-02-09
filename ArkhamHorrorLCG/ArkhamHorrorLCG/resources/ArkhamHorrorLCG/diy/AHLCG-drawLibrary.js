@@ -3382,7 +3382,7 @@ function drawLocationIcon( g, diy, sheet, locationIconName, drawBaseCircle )
 
 	if ( locationIcon == 'Copy front' )	locationIcon = $( locationIconName );
 
-	if ( locationIcon != 'None' && locationIcon != 'Empty' ) {
+	if ( locationIcon != 'None' && locationIcon != 'Empty' && locationIcon != null) {
 		var index = AHLCGObject.locationIcons.indexOf( locationIcon );
 
 		var icon_tinter = new TintCache( new TintFilter(), Eons.namedObjects.AHLCGObject.baseLocationIcon );

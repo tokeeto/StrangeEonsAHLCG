@@ -680,10 +680,9 @@ function layoutLocationBackStats( bindings, faceIndex ) {
 	var StatPanel = new Grid();
 	StatPanel.setTitle( @AHLCG-BasicData );
 
-	var ShroudList = new comboBox( Eons.namedObjects.AHLCGObject.comboXD20, null );
+	var ShroudList = new comboBox( Eons.namedObjects.AHLCGObject.comboShroud, null );
 	bindings.add( 'Shroud' + BindingSuffixes[faceIndex], ShroudList, [faceIndex] );
 
-//	var CluesList = new comboBox( Eons.namedObjects.AHLCGObject.comboX20, null );
 	var CluesList = new comboBox( Eons.namedObjects.AHLCGObject.comboClues, null );
 	bindings.add( 'Clues' + BindingSuffixes[faceIndex], CluesList, [faceIndex] );
 
@@ -691,10 +690,14 @@ function layoutLocationBackStats( bindings, faceIndex ) {
 	var perInvestigatorButton = new toggleButton( '', perInvestigatorIcon, false );
 	bindings.add( 'PerInvestigator' + BindingSuffixes[faceIndex], perInvestigatorButton, [faceIndex] );
 
+	var shroudPerInvestigatorIcon = ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-PerInvestigator.png'), 12, 12);
+	var shroudPerInvestigatorButton = new toggleButton( '', shroudPerInvestigatorIcon, false );
+	bindings.add( 'ShroudPerInvestigator' + BindingSuffixes[faceIndex], shroudPerInvestigatorButton, [faceIndex] );
+
 	StatPanel.place(
-		@AHLCG-Shroud, 'align right', ShroudList, 'pushx, growx, sizegroup sp',
+		@AHLCG-Shroud, 'align right', ShroudList, 'pushx, growx, sizegroup sp', shroudPerInvestigatorButton, 'wmax 35, hmin 25, hmax 25',
 		@AHLCG-Clues, 'align right', CluesList, 'pushx, growx, sizegroup sp', perInvestigatorButton, 'wmax 35, hmin 25, hmax 25'
-		);
+	);
 
 	return StatPanel;
 }
