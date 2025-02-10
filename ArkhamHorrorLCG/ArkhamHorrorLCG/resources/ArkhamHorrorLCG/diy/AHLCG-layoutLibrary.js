@@ -680,7 +680,7 @@ function layoutLocationBackStats( bindings, faceIndex ) {
 	var StatPanel = new Grid();
 	StatPanel.setTitle( @AHLCG-BasicData );
 
-	var ShroudList = new comboBox( Eons.namedObjects.AHLCGObject.comboShroud, null );
+	var ShroudList = new comboBox( Eons.namedObjects.AHLCGObject.comboXD20, null );
 	bindings.add( 'Shroud' + BindingSuffixes[faceIndex], ShroudList, [faceIndex] );
 
 	var CluesList = new comboBox( Eons.namedObjects.AHLCGObject.comboClues, null );
@@ -775,13 +775,13 @@ function layoutEnemyLocationStats( bindings, faceIndex ) {
 	bindings.add( 'Horror' + BindingSuffixes[faceIndex], HorrorList, [faceIndex] );
 
 	StatPanel.place(
-		@AHLCG-Shroud, 'align right', ShroudList, 'pushx, growx', shroudPerInvestigatorButton, 'wmax 35, hmin 25, hmax 25',
-		@AHLCG-Clues, 'align right', CluesList, 'pushx, growx', perInvestigatorClueButton, 'wmax 35, hmin 25, hmax 25, wrap',
+    	@AHLCG-Shroud, 'align right', ShroudList, 'pushx, growx, sizegroup sp', shroudPerInvestigatorButton, 'wmax 35, hmin 25, hmax 25',
+    	@AHLCG-Clues, 'align right', CluesList, 'pushx, growx, sizegroup sp', perInvestigatorClueButton, 'wmax 35, hmin 25, hmax 25, wrap',
 		@AHLCG-Attack, 'align right', AttackList, 'pushx, growx', perInvestigatorAttackButton, 'wmax 35, hmin 25, hmax 25',
 		@AHLCG-Health, 'align right', HealthList, 'pushx, growx', perInvestigatorHealthButton, 'wmax 35, hmin 25, hmax 25',
 		@AHLCG-Evade, 'align right', EvadeList, 'pushx, growx', perInvestigatorEvadeButton, 'wmax 35, hmin 25, hmax 25, wrap',
-		@AHLCG-Damage, 'align right, gapx 10', DamageList, 'pushx, growx',
-		@AHLCG-Horror, 'align right', HorrorList, 'wrap, pushx, growx'
+		@AHLCG-Damage, 'align left, gapx 10', DamageList, 'pushx, growx',
+		@AHLCG-Horror, 'align left', HorrorList, 'pushx, growx, wrap'
 	);
 
 	return StatPanel;

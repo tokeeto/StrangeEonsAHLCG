@@ -69,13 +69,13 @@ function setDefaults() {
 	$FlavorBack = '';
 	$VictoryBack = '';
 
-	$LocationIconBack = 'Copy front';
-	$Connection1IconBack = 'Copy front';
-	$Connection2IconBack = 'Copy front';
-	$Connection3IconBack = 'Copy front';
-	$Connection4IconBack = 'Copy front';
-	$Connection5IconBack = 'Copy front';
-	$Connection6IconBack = 'Copy front';
+	$LocationIconBack = 'Circle';
+	$Connection1IconBack = 'None';
+	$Connection2IconBack = 'None';
+	$Connection3IconBack = 'None';
+	$Connection4IconBack = 'None';
+	$Connection5IconBack = 'None';
+	$Connection6IconBack = 'None';
 
 	$ShroudBack = '1';
 	$CluesBack = '1';
