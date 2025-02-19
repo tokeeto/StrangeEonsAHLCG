@@ -2626,7 +2626,7 @@ function drawVictory( g, diy, sheet, victoryBox ) {
 	var faceIndex = sheet.getSheetIndex();
 
 	let victory_text = $( 'Victory' + BindingSuffixes[faceIndex] );
-	if (victory_text.slice(-1) != '.'){
+	if (victory_text != '' && victory_text.slice(-1) != '.'){
 		victory_text = victory_text + '.';
 	}
 	victoryBox.markupText = '<vic>' + victory_text + '</vic>';
