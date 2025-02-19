@@ -1681,7 +1681,7 @@ function layoutPortraitOptions( bindings, faces, bindingFaceIndex, artist, mirro
 
 		OptionPanel.place(
 			shareBox, 'wrap, span 2'
-			);
+		);
 	}
 	if ( artist ) {
 		var artistField = new textField( '', 30 );
@@ -1689,12 +1689,12 @@ function layoutPortraitOptions( bindings, faces, bindingFaceIndex, artist, mirro
 
 		OptionPanel.place(
 			@AHLCG-Artist, 'align right', artistField, 'pushx, growx, sizegroup sp'
-			);
+		);
 	}
 	if ( mirror != null) {
 		OptionPanel.place(
 			mirror, 'align right'
-			);
+		);
 	}
 
 	return OptionPanel;
@@ -1928,11 +1928,13 @@ function layoutCollection( bindings, portraitPanel, useSpinner, selectFaces, fac
 				var icon = $( 'AHLCG-UserCollectionIcon' + type, '' );
 
 				PortraitList[ getPortraitIndex( 'Collection' ) ].setSource( icon );
-//				image = createInvertedImage( PortraitList[getPortraitIndex( 'Collection' )].getImage() );
 
 				// only don't invert for story/story - all other story types will be inverted on one side, not inverted on other
-				if ( CardTypes[1] == 'Story') image = ImageUtils.read( icon );	// story/story
-				else image = createInvertedImage( ImageUtils.read( icon ) );
+				if ( CardTypes[1] == 'Story' || CardTypes[0] == 'Ultimatum') {
+					image = ImageUtils.read( icon );	// story/story
+				} else {
+					image = createInvertedImage( ImageUtils.read( icon ) );
+				}
 
 				PortraitList[ getPortraitIndex( 'Collection' ) ].setImage( icon, image );
 				portraitPanel.updatePanel();
@@ -1995,9 +1997,13 @@ function layoutEncounter( bindings, portraitPanel, selectFaces, iconFaces, numbe
 			$EncounterType = type.toString();
 
 			if ( type > 0 ) {
-				var icon = $( 'AHLCG-UserEncounterIcon' + type, '' );
+				var icon = ImageUtils.read( $( 'AHLCG-UserEncounterIcon' + type, '' ));
 
-				PortraitList[ getPortraitIndex( 'Encounter' ) ].setSource( icon );
+				if (CardTypes[0] == 'Ultimatum') {
+					icon = createInvertedImage( icon );
+				}
+
+				PortraitList[ getPortraitIndex( 'Encounter' ) ].setImage( $( 'AHLCG-UserEncounterIcon' + type, '' ), icon );
 				portraitPanel.updatePanel();
 				setPortraitPanelFileFieldEnabled( portraitPanel, false );
 			}
@@ -2080,6 +2086,11 @@ function layoutEncounter( bindings, portraitPanel, selectFaces, iconFaces, numbe
 			' / ', 'split', totalNumber, 'split, wrap'
 		);
 	}
+
+	var invertButton = createPortraitInvertButton( "Encounter" );
+	EncounterPanel.place(
+		"Invert", 'align right', invertButton, 'align right'
+	);
 
 	return EncounterPanel;
 }

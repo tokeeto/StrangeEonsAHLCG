@@ -1,0 +1,10 @@
+[
+    {
+        "title": "MonsterSlayer",
+        "type": "Event",
+        "cost": 4,
+        "class": ["Seeker", "Guardian"],
+        "icons": [0, 1, 1],
+        "text": "This is a test card"
+    }
+]

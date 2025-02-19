@@ -8,7 +8,7 @@ useLibrary('tints');
 importClass( arkham.component.DefaultPortrait );
 
 const CardTypes = [ 'Ultimatum', 'UltimatumBack' ];
-const BindingSuffixes = [ '' ];
+const BindingSuffixes = [ '', 'Back' ];
 
 const PortraitTypeList = [ 'Portrait', 'Collection', 'Encounter' ];
 

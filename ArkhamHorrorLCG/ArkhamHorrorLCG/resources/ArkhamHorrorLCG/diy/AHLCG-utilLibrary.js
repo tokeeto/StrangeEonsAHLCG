@@ -150,7 +150,6 @@ function updateUsedEncounterSets( o ) {
 
 		o.comboEncounter[index] = ListItem(
 			item, @('AHLCG-' + item),
-//			ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + item + '.png'), 12, 12)
 			ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + item + '.png'), 24, 24)
 		);
 
@@ -170,7 +169,6 @@ function updateUsedEncounterSets( o ) {
 		if (used) {
 			o.comboEncounter[o.comboEncounter.length] = ListItem(
 				item, @('AHLCG-' + item),
-//				ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + item + '.png'), 12, 12)
 				ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + item + '.png'), 24, 24)
 			);
 
@@ -190,7 +188,6 @@ function updateUsedEncounterSets( o ) {
 			let icon = settings.get( 'AHLCG-UserEncounterIcon' + (index+1), '' );
 
 			try {
-//				let image = ImageUtils.createIcon( ImageUtils.read( icon ), 12, 12);
 				let image = ImageUtils.createIcon( ImageUtils.read( icon ), 24, 24);
 
 				o.comboEncounter[o.comboEncounter.length] = ListItem(
@@ -224,7 +221,6 @@ function updateUsedCollections( o ) {
 
 		o.comboCollection[index] = ListItem(
 			item, @('AHLCG-' + item),
-//			ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + item + '.png'), 12, 12)
 			ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + item + '.png'), 24, 24)
 		);
 
@@ -245,7 +241,6 @@ function updateUsedCollections( o ) {
 		if (used) {
 			o.comboCollection[o.comboCollection.length] = ListItem(
 				item, @('AHLCG-' + item),
-//				ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + item + '.png'), 12, 12)
 				ImageUtils.createIcon(ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + item + '.png'), 24, 24)
 			);
 
@@ -265,7 +260,6 @@ function updateUsedCollections( o ) {
 			let icon = settings.get( 'AHLCG-UserCollectionIcon' + (index+1), '' );
 
 			try {
-//				let image = ImageUtils.createIcon( ImageUtils.read( icon ), 12, 12);
 				let image = ImageUtils.createIcon( ImageUtils.read( icon ), 24, 24);
 
 				o.comboCollection[o.comboCollection.length] = ListItem(
@@ -335,11 +329,9 @@ function updateCollection() {
 
 		if ( $Collection == entry[0] ) {
 			// [2] is index of set in the used setting strings
-//			let used = loadUsedValue( 'Collection', index );
 			let used = loadUsedValue( 'Collection', entry[2] );
 
 			if ( !used ) {
-//				storeUsedValue( 'Collection', index, true );
 				storeUsedValue( 'Collection', entry[2], true );
 				updateUsedCollections( AHLCGObject );
 			}
@@ -573,7 +565,6 @@ function addTextPart( faceIndex, text, key, diy ) {
 			case 'CustText8':
 			case 'CustText9':
 			case 'CustText10':
-//□◻❐⧠⬜
 				var xpBox = '⧠';
 				// I do not know why this is necessary for Times New Roman
 				var xpStart = '<family>';
@@ -689,7 +680,6 @@ function initBodyTags( diy, textBox ) {
 	for ( let index = 0; index < AHLCGObject.standardCollectionList.length; index++ ) {
 		let entry = AHLCGObject.standardCollectionList[ index ];
 
-//		let used = loadUsedValue( 'Collection', index );
 		let used = loadUsedValue( 'Collection', entry[2] );
 
 		if (used) {
@@ -719,33 +709,7 @@ function initBodyTags( diy, textBox ) {
 		textBox.setReplacementForTag( $('Loc'+item+'-tag'), '<image res://ArkhamHorrorLCG/icons/AHLCG-Loc' + item + '.png 0.14in center>' );
 	}
 }
-/*
-function initSmallSymbolTags( diy, textBox ) {
-	for( let index = 0; index < AHLCGObject.SmallStyleList.length; index++ ) {
-		let item = AHLCGObject.SmallStyleList[index];
-		textBox.setStyleForTag($(item+'-tag'), diy.settings.getTextStyle(item+'-style',null));
-	}
-}
-*/
-/*
-function initSmallSymbolTags( diy, textBox ) {
-	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
-	for( let index = 0; index < AHLCGObject.TagListSmall.length; index++ ){
-		let item = AHLCGObject.TagListSmall[index];
-		let repl = $(item+'-tag-replacement');
-
-		if (repl != null && repl.startsWith('#'))
-		{
-			textBox.setReplacementForTag($(item+'-tag'), #(repl.substr(1)));
-		}
-		else
-		{
-			textBox.setReplacementForTag($(item+'-tag'), repl);
-		}
-	}
-}
-*/
 function initCopyrightTags( diy, textBox ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -774,13 +738,6 @@ function initGuideTags( diy, textBox ) {
 }
 
 function setPortraitDefaults( diy, faceIndex, key, portraitKey ) {
-//	println( 'SetPortraitDefaults template : ' + getExpandedKey( faceIndex, portraitKey + '-portrait-template' ) );
-//	println( 'SetPortraitDefaults rotation : ' + getExpandedKey( faceIndex, portraitKey + '-portrait-rotation' ) );
-//	println( 'SetPortraitDefaults region : ' + getExpandedKey( faceIndex, portraitKey + '-portrait-clip-region' ) );
-//	println( 'SetPortraitDefaults keytemplate : ' + getExpandedKey( faceIndex, key + '-portrait-template' ) );
-//	println( 'SetPortraitDefaults keyrotation : ' + getExpandedKey( faceIndex, key + '-portrait-rotation' ) );
-//	println( 'SetPortraitDefaults keyregion : ' + getExpandedKey( faceIndex, key + '-portrait-clip-region' ) );
-
 	if ( diy.settings.get( getExpandedKey( faceIndex, portraitKey + '-portrait-template' ), '' ) == '') {
 		diy.settings.set( 'AHLCG-' + CardTypes[faceIndex] + '-' + portraitKey + '-portrait-template', 'ArkhamHorrorLCG/images/empty1x1.png' );
 	}
@@ -788,23 +745,15 @@ function setPortraitDefaults( diy, faceIndex, key, portraitKey ) {
 	if ( diy.settings.get( getExpandedKey( faceIndex, portraitKey + '-portrait-rotation' ), '' ) == '' ) {
 		diy.settings.set( 'AHLCG-' + CardTypes[faceIndex] + '-' + portraitKey + '-portrait-rotation', '0' );
 	}
-//println('setPortraitDefaults');
-//println(diy.settings.get( getExpandedKey( faceIndex, portraitKey + '-portrait-clip-region' ), '') );
-//println($( getExpandedKey( faceIndex, key + '-portrait-clip-region' ) ) );
 	if ( diy.settings.get( getExpandedKey( faceIndex, portraitKey + '-portrait-clip-region' ), '' ) == '' ) {
-//		println( 'AHLCG-' + CardTypes[faceIndex] + '-' + portraitKey + '-portrait-clip-region = ' + $( getExpandedKey( faceIndex, key + '-portrait-clip-region' ) ) );
 		diy.settings.set( 'AHLCG-' + CardTypes[faceIndex] + '-' + portraitKey + '-portrait-clip-region', $( getExpandedKey( faceIndex, key + '-portrait-clip-region' ) ) );
 	}
-//	println( 'SetPortraitDefaults posttemplate : ' + $(getExpandedKey( faceIndex, portraitKey + '-portrait-template' ) ));
-//	println( 'SetPortraitDefaults postrotation : ' + $(getExpandedKey( faceIndex, portraitKey + '-portrait-rotation' ) ));
-//	println( 'SetPortraitDefaults postregion : ' + $(getExpandedKey( faceIndex, portraitKey + '-portrait-clip-region' ) ));
 }
 
 function createPortrait( diy, fullKey ) {
 	var partArray = fullKey.split('-');
 
 	var key = partArray[0];
-//	var portraitKey = key + 'Portrait';
 	var portraitKey = key;
 	var settingsFace;
 	var fillBackground;
@@ -855,8 +804,6 @@ function createPortrait( diy, fullKey ) {
 
 	setPortraitDefaults( diy, settingsFace, key, portraitKey );
 	if ( faces == 'Both' ) 	setPortraitDefaults( diy, FACE_BACK, key, portraitKey );
-//println(getExpandedKey( settingsFace, portraitKey, '-portrait-template' ));
-//println($(getExpandedKey( settingsFace, portraitKey, '-portrait-template' )));
 	PortraitList[portraitIndex] = new DefaultPortrait( diy, getExpandedKey( settingsFace, portraitKey, '-portrait-template' ), allowRotation );
 
 	PortraitList[portraitIndex].facesToUpdate = facesArray;
@@ -866,7 +813,7 @@ function createPortrait( diy, fullKey ) {
 }
 
 function createPortraits( diy, portraitKeys ) {
-	diy.customPortraitHandling = true;
+    diy.customPortraitHandling = true;
 
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -1169,7 +1116,7 @@ function getPortraitCount() {
 
 function getPortrait( index ) {
 	if( index < 0 || index >= PortraitList.length ) {
-		throw new Error( 'Invalid portrait index: ' + index );
+		throw new Error( 'Invalid portrait index: ' + index);
 	}
 	return PortraitList[ index ];
 }
@@ -1358,6 +1305,28 @@ function createPortraitMirrorButton( portraitName, portraitPanel ) {
 			PortraitList[portraitIndex].setPanY(panY);
 
 			portraitPanel.updatePanel();
+		}
+	);
+}
+
+function createPortraitInvertButton( portraitName ) {
+	var portraitIndex = getPortraitIndex( portraitName );
+
+	return new button(
+		"Invert", null,
+		function(){
+			var scale = PortraitList[portraitIndex].getScale();
+			var rotation = PortraitList[portraitIndex].getRotation();
+			var panX = PortraitList[portraitIndex].getPanX();
+			var panY = PortraitList[portraitIndex].getPanY();
+			PortraitList[portraitIndex].setImage(
+				PortraitList[portraitIndex].getSource(),
+				ImageUtils.invert(PortraitList[portraitIndex].getImage())
+			);
+			PortraitList[portraitIndex].setScale(scale);
+			PortraitList[portraitIndex].setRotation(rotation);
+			PortraitList[portraitIndex].setPanX(panX);
+			PortraitList[portraitIndex].setPanY(panY);
 		}
 	);
 }

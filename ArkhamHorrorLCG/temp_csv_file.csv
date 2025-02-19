@@ -1,0 +1,2 @@
+name,$Unique,$CardClass,$CardClass2,$CardClass3,$ResourceCost,$Level,$Skill1,$Skill2,$Skill3,$Skill4,$Skill5,$BackTypeBack,$Traits,$Keywords,$Rules,$Flavor,$Victory,$TraitsSpacing,$KeywordsSpacing,$RulesSpacing,$FlavorSpacing,$Artist,$Copyright,$TemplateReplacement,$TemplateReplacementBack
+test card,0,Guardian,None,None,5,0,None,None,None,None,None,Player,Bold.,Fast.,"This card cannot be played. It’s not legal, and should be burned. But it looks pretty!",,,,,,The best card ever made,Tokeeto,Toke Ivø 2025,,

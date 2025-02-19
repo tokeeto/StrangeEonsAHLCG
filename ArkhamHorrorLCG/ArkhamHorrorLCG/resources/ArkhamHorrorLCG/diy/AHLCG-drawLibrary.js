@@ -3140,7 +3140,6 @@ function drawEncounterIcon( g, diy, sheet ) {
 
 	if ( faceIndex == FACE_FRONT && $Orientation == 'Reversed' ) {
 		region = reverseRegion( region );
-//		region.x += 1;
 	}
 
 	if ( iconName.substring(0, 6) == 'Return') {
@@ -3167,45 +3166,36 @@ function drawEncounterIcon( g, diy, sheet ) {
 				iconName = 'Rainforest';
 
 			// resource
-
 			if ( $EncounterType == '0' ) {
 				sheet.paintImage( g, createReturnToImage( ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png') ), region );
 			}
 			// custom
 			else {
-				// [0] because that is the type the portrait is reading its setting from
-//				diy.settings.setRegion( 'AHLCG-' + CardTypes[0] + '-Encounter-portrait-clip-region', region );
-//				PortraitList[getPortraitIndex( 'Encounter' )].paint( g, sheet.getRenderTarget() );
-//
 				sheet.paintImage( g, createReturnToImage( PortraitList[getPortraitIndex( 'Encounter' )].getImage() ), region );
 			}
 		}
 		else {
-			if (CardTypes[faceIndex] == 'Ultimatum'){
-				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/icons_white/AHLCG-' + iconName + '.png'), region );
-			} else {
-				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png'), region );
-			}
+			let icon = ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png');
+			sheet.paintImage( g, icon, region );
 		}
-	}
-	else {
+	} else {
 		// resource
 		if ( $EncounterType == '0' ) {
-			if (CardTypes[faceIndex] == 'Ultimatum'){
-				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/icons_white/AHLCG-' + iconName + '.png'), region );
-			} else {
-				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png'), region );
-			}
+            let icon = ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png');
+
+            if (CardTypes[faceIndex] == 'Ultimatum'){
+				icon = createInvertedImage(icon);
+            }
+
+			sheet.paintImage( g, icon, region );
 		}
 		// custom
 		else {
 			// using this way even though a bit convoluted because it allows the scale and other settings in the SE interface to function properly
 			// [0] because that is the type the portrait is reading its setting from
 			diy.settings.setRegion( 'AHLCG-' + CardTypes[0] + '-Encounter-portrait-clip-region', region );
-			PortraitList[getPortraitIndex( 'Encounter' )].paint( g, sheet.getRenderTarget() );
-
-			// don't need to change the region this way - but users can't use the SE interface to alter
-//			sheet.paintImage( g, PortraitList[getPortraitIndex( 'Encounter' )].getImage(), region);
+			let portrait = PortraitList[getPortraitIndex('Encounter')];
+            portrait.paint( g, sheet.getRenderTarget() );
 		}
 	}
 }

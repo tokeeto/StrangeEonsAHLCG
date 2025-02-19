@@ -1,7 +1,3 @@
-/*
- * ArkhamHorrorLCG.js
- */
-
 useLibrary( 'extension' );
 useLibrary( 'imageutils' );
 useLibrary( 'fontutils' );
@@ -1156,7 +1152,6 @@ function gameObject( masterSettings ) {
 
 	this.locationIcons = [ 'Circle', 'Square', 'Triangle', 'Cross', 'Diamond', 'Slash', 'T', 'Hourglass', 'Moon', 'DoubleSlash', 'Heart', 'Star', 'Quote' , 'Clover', 'Spade', 'CircleAlt', 'SquareAlt', 'TriangleAlt', 'CrossAlt', 'DiamondAlt',
         'SlashAlt', 'TAlt', 'HourglassAlt', 'MoonAlt', 'DoubleSlashAlt', 'HeartAlt', 'StarAlt' ];
-
 
 	this.comboConnections = new Array (
 		ListItem( 'None', @AHLCG-LocIcon-None,
