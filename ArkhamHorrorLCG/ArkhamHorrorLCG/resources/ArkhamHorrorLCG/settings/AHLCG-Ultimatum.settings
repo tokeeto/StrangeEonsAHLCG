@@ -1,48 +1,50 @@
 AHLCG-Ultimatum-Default-template = ArkhamHorrorLCG/templates/ultimatums/Ultimatum-Common.png
+AHLCG-Ultimatum-Default-dpi = 290
 AHLCG-UltimatumBack-Default-template = ArkhamHorrorLCG/templates/ultimatums/Ultimatum-Back.png
-						
-AHLCG-Ultimatum-Name-region = 190,134,642,45
-AHLCG-Ultimatum-NameWithSubtitle-region = 190,104,642,45
-AHLCG-Ultimatum-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 30; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.05}; TRACKING:{Eons.namedObjects.AHLCGObject.titleFontTracking};FOREGROUND: #FFFFFF
+
+AHLCG-Ultimatum-Name-region = 150,134,742,60
+AHLCG-Ultimatum-NameWithSubtitle-region = 190,104,642,60
+AHLCG-Ultimatum-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 20; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.05}; TRACKING:{Eons.namedObjects.AHLCGObject.titleFontTracking};FOREGROUND: #FFFFFF
 AHLCG-Ultimatum-Name-alignment = center, bottom
 AHLCG-Ultimatum-Name-tightness = 0.2
 
-AHLCG-Ultimatum-Body-region = 134,940,750,350
+AHLCG-Ultimatum-Body-region = 134,1060,750,320
 AHLCG-Ultimatum-Body-alignment = center, middle
-AHLCG-Ultimatum-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize*1.7}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #FFFFFF
+AHLCG-Ultimatum-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #FFFFFF
 AHLCG-Ultimatum-Body-tightness = 0.5
 
-AHLCG-Ultimatum-Subtitle-region = 190,210,642,22
-AHLCG-Ultimatum-Subtitle-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: 18; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth*1.05}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #FFFFFF; POSTURE: POSTURE_OBLIQUE
+AHLCG-Ultimatum-Subtitle-region = 190,210,642,30
+AHLCG-Ultimatum-Subtitle-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: 10; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth*1.05}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #FFFFFF; POSTURE: POSTURE_OBLIQUE
 AHLCG-Ultimatum-Subtitle-alignment = center, bottom
 
 AHLCG-Ultimatum-Trait-region = 350,980,325,50
-AHLCG-Ultimatum-Trait-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: 18; WEIGHT: BOLD; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth*1.05}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #FFFFFF; POSTURE: POSTURE_OBLIQUE
+AHLCG-Ultimatum-Trait-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: 12; WEIGHT: BOLD; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth*1.05}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #FFFFFF; POSTURE: POSTURE_OBLIQUE
 AHLCG-Ultimatum-Trait-alignment = center, top
 
 AHLCG-Ultimatum-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Ultimatum-Encounter-portrait-pany = 0
-AHLCG-Ultimatum-Encounter-portrait-clip-region = 480,862,65,65
-AHLCG-Ultimatum-ReturnEncounter-portrait-clip-region = 480,862,65,65
-	
+AHLCG-Ultimatum-Encounter-portrait-clip-region = 750,1400,65,65
+AHLCG-Ultimatum-ReturnEncounter-portrait-clip-region = 750,1400,65,65
+
 AHLCG-Ultimatum-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Ultimatum-Collection-portrait-pany = 0
-AHLCG-Ultimatum-DefaultCollection-portrait-clip-region = 1300,800,13,13
-AHLCG-Ultimatum-Collection-portrait-clip-region = 1300,800,13,13
+AHLCG-Ultimatum-DefaultCollection-portrait-clip-region = 750,1400,13,13
+AHLCG-Ultimatum-Collection-portrait-clip-region = 750,1400,13,13
 
 AHLCG-Ultimatum-Portrait-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Ultimatum-Portrait-portrait-pany = 0
-AHLCG-Ultimatum-Portrait-portrait-clip-region = 0,230,1100,1024	
+AHLCG-Ultimatum-Portrait-portrait-clip-region = 0,230,1100,1024
 
 AHLCG-Ultimatum-Text-region = 100,156,800,305
 AHLCG-Ultimatum-Text-alignment = center, middle
-AHLCG-Ultimatum-Text-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize*1.02}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #FFFFFF
+AHLCG-Ultimatum-Text-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #FFFFFF
 
-AHLCG-Ultimatum-EncounterNumber-region = 800,1110,45,10
+AHLCG-Ultimatum-EncounterNumber-region = 800,1400,45,12
 AHLCG-Ultimatum-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
-AHLCG-Ultimatum-CollectionNumber-region = 800,1110,45,10
+AHLCG-Ultimatum-CollectionNumber-region = 800,1400,45,12
 AHLCG-Ultimatum-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 
-AHLCG-Ultimatum-Copyright-region = 134,1110,45,10
+AHLCG-Ultimatum-Copyright-region = 434,1400,150,12
+AHLCG-Ultimatum-Artist-region = 132,1400,200,12
 AHLCG-Ultimatum-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 AHLCG-Ultimatum-Copyright-alignment = left, bottom
