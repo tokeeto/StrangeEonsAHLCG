@@ -3057,9 +3057,11 @@ function drawCollectionIcon( g, diy, sheet, collectorX ) {
 	var iconName = $Collection;
 	var icon;
 
-	let region = diy.settings.getRegion( getExpandedKey( faceIndex, 'DefaultCollection-portrait-clip-region' ),
+	let region = diy.settings.getRegion(
+		getExpandedKey( faceIndex, 'DefaultCollection-portrait-clip-region' ),
 		// default - if no DefaultCollection defined, use normal Collection
-		diy.settings.getRegion( getExpandedKey( faceIndex, 'Collection-portrait-clip-region' ) ) );
+		diy.settings.getRegion( getExpandedKey( faceIndex, 'Collection-portrait-clip-region' ) )
+	);
 
 	if ( faceIndex == FACE_FRONT && $Orientation == 'Reversed' ) region = shiftRegion( region, CardTypes[faceIndex] );
 
@@ -3071,20 +3073,18 @@ function drawCollectionIcon( g, diy, sheet, collectorX ) {
 
 	// resource
 	if ( $CollectionType == '0' ) {
-		// story collection icons are black
-
-		if ( CardTypes[faceIndex] == 'Story' ) icon = ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png');
-		else icon = createInvertedImage( ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png') );
-
+		if ( CardTypes[faceIndex] == 'Story' ) {
+			icon = ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png');
+		} else {
+			icon = createInvertedImage( ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png') );
+		}
 		sheet.paintImage( g, icon, region );
-	}
-	// custom
-	else {
-		// updated so we can invert a single side of story/enemy for example; also means we don't need to change the region
-		if ( CardTypes[faceIndex] == 'Story' )
-			sheet.paintImage( g, createInvertedImage( PortraitList[getPortraitIndex( 'Collection' )].getImage()), region);
-		else
-			sheet.paintImage( g, PortraitList[getPortraitIndex( 'Collection' )].getImage(), region);
+	} else {
+		icon = PortraitList[getPortraitIndex('Collection')].getImage();
+		if (CardTypes[faceIndex] != 'Story'){
+			icon = createInvertedImage(icon);
+		}
+		sheet.paintImage( g, icon, region);
 	}
 
 	return region.x;

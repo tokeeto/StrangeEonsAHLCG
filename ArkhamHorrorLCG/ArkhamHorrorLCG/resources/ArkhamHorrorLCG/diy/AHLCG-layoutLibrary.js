@@ -1928,15 +1928,6 @@ function layoutCollection( bindings, portraitPanel, useSpinner, selectFaces, fac
 				var icon = $( 'AHLCG-UserCollectionIcon' + type, '' );
 
 				PortraitList[ getPortraitIndex( 'Collection' ) ].setSource( icon );
-
-				// only don't invert for story/story - all other story types will be inverted on one side, not inverted on other
-				if ( CardTypes[1] == 'Story' || CardTypes[0] == 'Ultimatum') {
-					image = ImageUtils.read( icon );	// story/story
-				} else {
-					image = createInvertedImage( ImageUtils.read( icon ) );
-				}
-
-				PortraitList[ getPortraitIndex( 'Collection' ) ].setImage( icon, image );
 				portraitPanel.updatePanel();
 				setPortraitPanelFileFieldEnabled( portraitPanel, false );
 			}

@@ -19,7 +19,7 @@ function getDescription() {
 }
 
 function getVersion() {
-    return 9.2;
+    return 9.3;
 }
 
 function getLocale() {
@@ -666,7 +666,7 @@ function initBodyTags( diy, textBox ) {
 	var userCount = settings.getInt( 'AHLCG-UserEncounterCount', 0 );
 
 	for ( let index = 1; index <= userCount; index++ ) {
-		let tag = settings.get( 'AHLCG-UserEncounterTag' + index );
+		let tag = settings.get( 'AHLCG-UserEncounterTag' + index ).toLowerCase();;
 		let icon = settings.get( 'AHLCG-UserEncounterIcon' + index );
 		let used = settings.getBoolean( 'AHLCG-UseUserEncounter' + index, true );
 
@@ -692,7 +692,7 @@ function initBodyTags( diy, textBox ) {
 	userCount = settings.getInt( 'AHLCG-UserCollectionCount', 0 );
 
 	for ( let index = 1; index <= userCount; index++ ) {
-		let tag = settings.get( 'AHLCG-UserCollectionTag' + index );
+		let tag = settings.get( 'AHLCG-UserCollectionTag' + index ).toLowerCase();;
 		let icon = settings.get( 'AHLCG-UserCollectionIcon' + index );
 		let used = settings.getBoolean( 'AHLCG-UseUserCollection' + index, true );
 
