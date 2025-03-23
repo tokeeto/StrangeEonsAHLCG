@@ -58,6 +58,7 @@ function initialize() {
 	ahlcgGame.masterSettings.addSettingsFrom('ArkhamHorrorLCG/settings/AHLCG-GuideLetter.settings');
 	ahlcgGame.masterSettings.addSettingsFrom('ArkhamHorrorLCG/settings/AHLCG-Key.settings');
 	ahlcgGame.masterSettings.addSettingsFrom('ArkhamHorrorLCG/settings/AHLCG-Concealed.settings');
+	ahlcgGame.masterSettings.addSettingsFrom('ArkhamHorrorLCG/settings/AHLCG-PackCover.settings');
 
 	Eons.namedObjects.AHLCGObject = new gameObject( ahlcgGame.masterSettings );
 
@@ -494,7 +495,8 @@ function gameObject( masterSettings ) {
 		ListItem( 'ParallelSeeker', @AHLCG-Class-ParallelSeeker ),
 		ListItem( 'ParallelRogue', @AHLCG-Class-ParallelRogue ),
 		ListItem( 'ParallelMystic', @AHLCG-Class-ParallelMystic ),
-		ListItem( 'ParallelSurvivor', @AHLCG-Class-ParallelSurvivor ) );
+		ListItem( 'ParallelSurvivor', @AHLCG-Class-ParallelSurvivor ),
+		ListItem( 'ParallelNeutral', @AHLCG-Class-ParallelNeutral ) );
 
     this.comboClassesBWS = new Array(
         ListItem( 'Guardian', @AHLCG-Class-Guardian ),

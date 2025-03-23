@@ -1,0 +1,70 @@
+AHLCG-Chaos-Default-template = ArkhamHorrorLCG/templates/AHLCG-Chaos.jp2
+
+AHLCG-Chaos-Name-region = 28,90,319,75
+AHLCG-Chaos-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize*1.318}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.05}; TRACKING:{Eons.namedObjects.AHLCGObject.titleFontTracking};FOREGROUND: #000000
+AHLCG-Chaos-Name-alignment = center, top
+AHLCG-Chaos-Name-tightness = 0.2
+
+AHLCG-Difficulty-region = 129,127,114,14
+AHLCG-Difficulty-alignment = center, top
+AHLCG-Difficulty-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.difficultySize}; WEIGHT: {Eons.namedObjects.AHLCGObject.difficultyWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.difficultyWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.difficultyTracking}; FOREGROUND: #000000
+
+AHLCG-Chaos-Header-region = 35,135,300,305
+AHLCG-Chaos-Header-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize*0.8}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth*1.05}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000; POSTURE: POSTURE_OBLIQUE
+AHLCG-Chaos-Header-alignment = center, top
+
+AHLCG-Chaos-Body-region = 95,156,240,305
+AHLCG-Chaos-Body-alignment = left, middle
+AHLCG-Chaos-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize*1.02}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
+AHLCG-Chaos-BodyIcon-region = 44,148,47,47
+AHLCG-Chaos-Body-tightness = 0.5
+
+AHLCG-StoryChaos-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
+AHLCG-StoryChaos-Body-alignment = left, top
+AHLCG-StoryChaosFull-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
+AHLCG-StoryChaosFull-Body-alignment = left, top
+
+AHLCG-Chaos-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-Chaos-Encounter-portrait-pany = 0
+AHLCG-Chaos-Encounter-portrait-clip-region = 171,57,32,32
+AHLCG-Chaos-ReturnEncounter-portrait-clip-region = 169,54,35,35
+AHLCG-ChaosStory-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-ChaosStory-Encounter-portrait-pany = 0
+AHLCG-ChaosStory-Encounter-portrait-clip-region = 173,59,28,28
+AHLCG-ChaosStory-ReturnEncounter-portrait-clip-region = 169,54,35,35
+AHLCG-StoryChaos-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-StoryChaos-Encounter-portrait-pany = 0
+AHLCG-StoryChaos-Encounter-portrait-clip-region = 173,59,28,28
+AHLCG-StoryChaos-ReturnEncounter-portrait-clip-region = 169,54,35,35
+
+AHLCG-Chaos-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-Chaos-Collection-portrait-pany = 0
+AHLCG-Chaos-DefaultCollection-portrait-clip-region = 320,509,13,13
+AHLCG-Chaos-Collection-portrait-clip-region = 320,509,13,13
+
+AHLCG-ChaosStory-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-ChaosStory-Collection-portrait-pany = 0
+AHLCG-ChaosStory-DefaultCollection-portrait-clip-region = 320,509,13,13
+AHLCG-ChaosStory-Collection-portrait-clip-region = 320,509,13,13
+
+AHLCG-StoryChaos-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+AHLCG-StoryChaos-Collection-portrait-pany = 0
+AHLCG-StoryChaos-DefaultCollection-portrait-clip-region = 320,509,13,13
+AHLCG-StoryChaos-Collection-portrait-clip-region = 320,509,13,13
+#AHLCG-ChaosStoryFull-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
+#AHLCG-ChaosStoryFull-Collection-portrait-pany = 0
+#AHLCG-ChaosStoryFull-DefaultCollection-portrait-clip-region = 320,509,13,13
+#AHLCG-ChaosStoryFull-Collection-portrait-clip-region = 320,509,13,13
+
+AHLCG-Chaos-EncounterNumber-region = 276,512,45,10
+AHLCG-Chaos-CollectionNumber-region = 333,512,21,10
+
+AHLCG-Chaos-Copyright-region = 19,512,102,10
+AHLCG-Chaos-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
+AHLCG-Chaos-Copyright-alignment = left, middle
+
+#AHLCG-Chaos-TrackerBox-region = 35,369,299,93
+AHLCG-Chaos-TrackerBox-region = 32,371,306,92
+AHLCG-Chaos-TrackerName-region = 44	,375,280,20
+AHLCG-Chaos-TrackerName-alignment = center, middle
+AHLCG-Chaos-TrackerName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE:{Eons.namedObjects.AHLCGObject.titleFontSize*0.836}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.02}; FOREGROUND: #000000

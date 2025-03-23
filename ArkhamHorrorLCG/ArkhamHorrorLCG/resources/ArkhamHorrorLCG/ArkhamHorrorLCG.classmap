@@ -24,13 +24,13 @@
     @AHLCG-TreacheryEncounter = diy:ArkhamHorrorLCG/diy/Treachery.js | ArkhamHorrorLCG/icons/AHLCG-Treachery.png | AHLCG
     @AHLCG-TreacheryLocation = diy:ArkhamHorrorLCG/diy/TreacheryLocation.js | ArkhamHorrorLCG/icons/AHLCG-Treachery.png | AHLCG
     @AHLCG-TreacheryWeakness = diy:ArkhamHorrorLCG/diy/WeaknessTreachery.js | ArkhamHorrorLCG/icons/AHLCG-Weakness.png | AHLCG
-   
+
 @cat-enemies
     @AHLCG-EnemyEncounter = diy:ArkhamHorrorLCG/diy/Enemy.js | ArkhamHorrorLCG/icons/AHLCG-Enemy.png | AHLCG
     @AHLCG-EnemyEnemy = diy:ArkhamHorrorLCG/diy/EnemyEnemy.js | ArkhamHorrorLCG/icons/AHLCG-Enemy.png | AHLCG
     @AHLCG-EnemyWeakness = diy:ArkhamHorrorLCG/diy/WeaknessEnemy.js | ArkhamHorrorLCG/icons/AHLCG-Enemy.png | AHLCG
     @AHLCG-Concealed = diy:ArkhamHorrorLCG/diy/Concealed.js | ArkhamHorrorLCG/icons/AHLCG-Concealed.png | AHLCG
- 	
+
 @cat-rules
     @AHLCG-Act = diy:ArkhamHorrorLCG/diy/Act.js | ArkhamHorrorLCG/icons/AHLCG-Act.png | AHLCG
     @AHLCG-ActEnemy = diy:ArkhamHorrorLCG/diy/ActEnemy.js | ArkhamHorrorLCG/icons/AHLCG-Act.png | AHLCG

@@ -15,6 +15,7 @@ AHLCG-Investigator-SubtitleTextMP-region = 72,40,175,20
 AHLCG-Investigator-SubtitleTextV-region = 72,39,175,20
 AHLCG-Investigator-SubtitleTextVP-region = 72,39,175,20
 AHLCG-Investigator-SubtitleTextN-region = 72,39,175,20
+AHLCG-Investigator-SubtitleTextNP-region = 72,39,175,20
 AHLCG-Investigator-SubtitleTextW-region = 72,39,175,20
 AHLCG-Investigator-SubtitleTextT-region = 72,39,175,20
 AHLCG-Investigator-Subtitle-style = FAMILY: {Eons.namedObjects.AHLCGObject.subtitleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.subtitleSize*1.1}; WEIGHT: {Eons.namedObjects.AHLCGObject.subtitleWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.subtitleWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.subtitleTracking}; FOREGROUND: #000000
@@ -35,6 +36,7 @@ AHLCG-InvestigatorBack-SubtitleTextMP-region = 296,41,159,15
 AHLCG-InvestigatorBack-SubtitleTextV-region = 294,41,159,15
 AHLCG-InvestigatorBack-SubtitleTextVP-region = 294,41,159,15
 AHLCG-InvestigatorBack-SubtitleTextN-region = 296,41,159,15
+AHLCG-InvestigatorBack-SubtitleTextNP-region = 296,41,159,15
 AHLCG-InvestigatorBack-SubtitleTextW-region = 298,41,159,15
 AHLCG-InvestigatorBack-SubtitleTextT-region = 298,41,159,15
 AHLCG-InvestigatorBack-Subtitle-style = FAMILY: {Eons.namedObjects.AHLCGObject.subtitleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.subtitleSize*1.1}; WEIGHT: {Eons.namedObjects.AHLCGObject.subtitleWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.subtitleWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.subtitleTracking}; FOREGROUND: #000000
@@ -85,7 +87,7 @@ AHLCG-Skill-style = FAMILY: {Eons.namedObjects.AHLCGObject.skillFamily}; SIZE: 1
 AHLCG-ParallelSkill-style = FAMILY: {Eons.namedObjects.AHLCGObject.skillFamily}; SIZE: 11.0; WEIGHT: WEIGHT_MEDIUM; WIDTH: WIDTH_REGULAR; FOREGROUND: #FFFFFF
 AHLCG-Skill-alignment = center, middle
 
-AHLCG-Investigator-Stamina-region = 366,306,31,40	
+AHLCG-Investigator-Stamina-region = 366,306,31,40
 AHLCG-Investigator-Sanity-region = 414,310,43,35
 
 AHLCG-Investigator-Artist-region = 288,363,102,10

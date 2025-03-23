@@ -1197,6 +1197,9 @@ function getClassInitial( className ) {
 		case 'Neutral':
 			initial = 'N';
 			break;
+		case 'ParallelNeutral':
+			initial = 'NP';
+			break;
 		case 'Story':
 			initial = 'S';
 			break;
@@ -1498,6 +1501,10 @@ function getPathPointArrays( className ) {
 			pointArray[0] = new Array( 0.355, 0.315, 0.276, 0.264, 0.010, 0.010, 1.0, 1.0 );
 //			pointArray[1] = new Array( 0.000, 0.544, 0.544, 0.631, 0.631, 1.000, 1.0, 0.0 );
 			pointArray[1] = new Array( 0.000, 0.544, 0.544, 0.611, 0.611, 1.000, 1.0, 0.0 );
+			break;
+		case 'ParallelNeutral':
+			pointArray[0] = new Array( 0.400, 0.357, 0.010, 0.010, 1.0, 1.0 );
+			pointArray[1] = new Array( 0.000, 0.468, 0.468, 1.000, 1.0, 0.0 );
 			break;
 		case 'Neutral':
 			pointArray[0] = new Array( 0.400, 0.357, 0.010, 0.010, 1.0, 1.0 );

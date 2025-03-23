@@ -326,8 +326,8 @@ function layoutAssetStats( bindings, faceIndex ) {
 	var SkillList6 = new comboBox( AHLCGObject.comboSkills, null );
 	bindings.add( 'Skill6' + BindingSuffixes[faceIndex], SkillList6, [faceIndex] );
 
-	var CostList = new comboBox( AHLCGObject.comboCost, null );
-	bindings.add( 'ResourceCost' + BindingSuffixes[faceIndex], CostList, [faceIndex] );
+	var CostText = new textField( '0', 10 );
+	bindings.add( 'ResourceCost' + BindingSuffixes[faceIndex], CostText, [faceIndex] );
 
 	var LevelList = new comboBox( AHLCGObject.comboLevelsN, null );
 	bindings.add( 'Level' + BindingSuffixes[faceIndex], LevelList, [faceIndex] );
@@ -357,7 +357,7 @@ function layoutAssetStats( bindings, faceIndex ) {
 		@AHLCG-Icon + ' 2', 'align right', SkillList2, 'wrap, pushx, growx, sizegroup sp, span 2',
 		@AHLCG-Class3, 'align right, gapx 10', ClassList3, 'pushx, growx, sizegroup sp, span 2',
 		@AHLCG-Icon + ' 3', 'align right', SkillList3, 'wrap, pushx, growx, sizegroup sp, span 2',
-		@AHLCG-Cost, 'align right, gapx 10', CostList, 'pushx, growx, sizegroup sp, span 2',
+		@AHLCG-Cost, 'align right, gapx 10', CostText, 'pushx, growx, sizegroup sp, span 2',
 		@AHLCG-Icon + ' 4', 'align right', SkillList4, 'wrap, pushx, growx, sizegroup sp, span 2',
 		@AHLCG-Level, 'align right, gapx 10', LevelList, 'pushx, growx, sizegroup sp, span 2',
 		@AHLCG-Icon + ' 5', 'align right', SkillList5, 'wrap, pushx, growx, sizegroup sp, span 2',
@@ -566,8 +566,8 @@ function layoutEventStats( diy, bindings, faceIndex ) {
 	var SkillList5 = new comboBox( AHLCGObject.comboSkills, null );
 	bindings.add( 'Skill5' + BindingSuffixes[faceIndex], SkillList5, [faceIndex] );
 
-	var CostList = new comboBox( AHLCGObject.comboCost, null );
-	bindings.add( 'ResourceCost' + BindingSuffixes[faceIndex], CostList, [faceIndex] );
+	var CostField = new textField( '0', 30 );
+	bindings.add( 'ResourceCost' + BindingSuffixes[faceIndex], CostField, [faceIndex] );
 
 	var LevelList = new comboBox( AHLCGObject.comboLevelsN, null );
 	bindings.add( 'Level' + BindingSuffixes[faceIndex], LevelList, [faceIndex] );
@@ -579,7 +579,7 @@ function layoutEventStats( diy, bindings, faceIndex ) {
 		@AHLCG-Icon + ' 2', 'align right, gapx 10', SkillList2, 'wrap, pushx, growx, sizegroup sp',
 		@AHLCG-Class3, 'align right', ClassList3, 'pushx, growx, sizegroup sp',
 		@AHLCG-Icon + ' 3', 'align right, gapx 10', SkillList3, 'wrap, pushx, growx, sizegroup sp',
-		@AHLCG-Cost, 'align right', CostList, 'pushx, growx, sizegroup sp',
+		@AHLCG-Cost, 'align right', CostField, 'pushx, growx, sizegroup sp',
 		@AHLCG-Icon + ' 4', 'align right, gapx 10', SkillList4, 'wrap, pushx, growx, sizegroup sp',
 		@AHLCG-Level, 'align right', LevelList, 'pushx, growx, sizegroup sp',
 		@AHLCG-Icon + ' 5', 'align right, gapx 10', SkillList5, 'pushx, growx, sizegroup sp'
@@ -1784,6 +1784,16 @@ function layoutPortraits( diy, bindings, frontPortrait, backPortrait, mirror, sh
 	var PortraitTabArray = layoutPortraitsWithPanels( diy, bindings, frontPortrait, backPortrait, mirror, share, backArtist );
 
 	return PortraitTabArray[0];
+}
+
+function layoutHSBPanel(diy, bindings, frontPortrait){
+	var HSBTab = new Grid();
+	HSBTab.editorTabScrolling = true;
+
+	var panel = new HSBPanel( diy, getPortraitIndex( frontPortrait ), @AHLCG-Portrait );
+	HSBTab.place( panel, 'wrap, pushx, growx' );
+
+	return HSBTab;
 }
 
 function layoutPortraitsWithPanels( diy, bindings, frontPortrait, backPortrait, mirror, share, backArtist ) {
