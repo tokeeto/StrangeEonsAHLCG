@@ -1786,11 +1786,12 @@ function layoutPortraits( diy, bindings, frontPortrait, backPortrait, mirror, sh
 	return PortraitTabArray[0];
 }
 
-function layoutHSBPanel(diy, bindings, frontPortrait){
+function layoutHSBPanel(diy, bindings){
 	var HSBTab = new Grid();
 	HSBTab.editorTabScrolling = true;
 
-	var panel = new HSBPanel( diy, getPortraitIndex( frontPortrait ), @AHLCG-Portrait );
+	var panel = new tintPanel();
+    bindings.add('tint', panel);
 	HSBTab.place( panel, 'wrap, pushx, growx' );
 
 	return HSBTab;

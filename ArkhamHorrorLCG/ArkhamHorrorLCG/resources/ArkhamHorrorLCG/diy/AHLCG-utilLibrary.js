@@ -19,7 +19,7 @@ function getDescription() {
 }
 
 function getVersion() {
-    return 9.3;
+    return 9.4;
 }
 
 function getLocale() {
@@ -1439,6 +1439,11 @@ const createAlphaInvertedImage = filterFunction(
 const createHSBImage = filterFunction(
 	new ca.cgjennings.graphics.filters.TintFilter( 0.4, 0.8, 0.6 )
 );
+
+function tintImage(image, tint) {
+    var filter = new ca.cgjennings.graphics.filters.TintFilter(tint[0], tint[1], tint[2]);
+    return filter.filter(image,null);
+}
 
 function createStencilImage( source, mask )
 {

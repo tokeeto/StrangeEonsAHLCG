@@ -7,7 +7,7 @@ useLibrary( 'fontutils' );
 importClass( arkham.component.DefaultPortrait );
 
 const CardTypes = [ 'PackCover' ];
-const BindingSuffixes = [ ''];
+const BindingSuffixes = [''];
 
 const PortraitTypeList = [ 'Portrait-Front' ];
 
@@ -24,7 +24,7 @@ function create( diy ) {
 }
 
 function setDefaults() {
-	$tint = 0, 0, 0;
+	$tint = '0,1,1';
 }
 
 function createInterface( diy, editor ) {
@@ -37,7 +37,7 @@ function createInterface( diy, editor ) {
 	var PortraitTab = PortraitTabArray[0];
 	PortraitTabArray.splice( 0, 1 );
 
-	var HSBPanel = layoutHSBPanel(diy, bindings, 'Portrait');
+	var HSBPanel = layoutHSBPanel(diy, bindings);
 	HSBPanel.addToEditor(editor, 'Tint');
 
 	var TitlePanel = layoutTitle2( diy, bindings, [0], FACE_FRONT );
@@ -58,15 +58,21 @@ function createFrontPainter( diy, sheet ) {
 	Name_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'Name-style'), null);
 	Name_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'Name-alignment'));
 
+
 	initBodyTags( diy, Name_box );
 }
 
-function paintFront( g, diy, sheet ) {
-	clearImage( g, sheet );
+function paintFront(g, diy, sheet) {
+    clearImage(g, sheet);
 
-	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
+    PortraitList[0].paint( g, sheet.getRenderTarget() );
 
-	drawTemplate( g, sheet, '' );
+    var hsb = $$tint.tint;
+    var tintable_image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-PackCoverTintable.png');
+	let tinted_image = ImageUtils.tint(tintable_image, hsb);
+    sheet.paintImage(g, tinted_image, diy.settings.getRegion('AHLCG-PackCover-Tint-region'));
+
+	drawBackTemplate( g, sheet, '' );
 
 	drawName( g, diy, sheet, Name_box );
 }
