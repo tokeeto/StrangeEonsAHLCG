@@ -1,0 +1,17 @@
+AHLCG-BoxCover-Default-template = ArkhamHorrorLCG/templates/AHLCG-BoxCover.png
+
+AHLCG-BoxCover-Name-region = 425,1110,767,53
+AHLCG-BoxCover-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 40; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.05}; TRACKING:{Eons.namedObjects.AHLCGObject.titleFontTracking};FOREGROUND: #FFFFFF
+AHLCG-BoxCover-Name-alignment = center, middle
+AHLCG-BoxCover-Name-tightness = 0.2
+
+AHLCG-BoxCover-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-BoxCover-Portrait = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-BoxCover-Portrait-portrait-pany = 0
+AHLCG-BoxCover-Portrait-portrait-clip-region = 420,733,781,347
+AHLCG-BoxCover-Tint-region = 420, 420, 781, 783
+
+AHLCG-BoxCover-PortraitBottom-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-BoxCover-PortraitBottom = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-BoxCover-PortraitBottom-portrait-pany = 0
+AHLCG-BoxCover-PortraitBottom-portrait-clip-region = 1630,420,785,785

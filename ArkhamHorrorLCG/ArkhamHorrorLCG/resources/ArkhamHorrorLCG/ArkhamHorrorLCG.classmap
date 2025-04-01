@@ -55,3 +55,4 @@ Other
     @AHLCG-Ultimatum = diy:ArkhamHorrorLCG/diy/Ultimatum.js | ArkhamHorrorLCG/icons/AHLCG-Story.png | AHLCG
     @AHLCG-ScenarioInformation = diy:ArkhamHorrorLCG/diy/Scenario.js | ArkhamHorrorLCG/icons/AHLCG-Scenario.png | AHLCG
     @AHLCG-PackCover = diy:ArkhamHorrorLCG/diy/PackCover.js | ArkhamHorrorLCG/icons/AHLCG-Divider.png | AHLCG
+    @AHLCG-BoxCover = diy:ArkhamHorrorLCG/diy/BoxCover.js | ArkhamHorrorLCG/icons/AHLCG-Divider.png | AHLCG
