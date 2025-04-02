@@ -23,8 +23,8 @@ AHLCG-Ultimatum-Trait-alignment = center, top
 
 AHLCG-Ultimatum-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Ultimatum-Encounter-portrait-pany = 0
-AHLCG-Ultimatum-Encounter-portrait-clip-region = 750,1400,65,65
-AHLCG-Ultimatum-ReturnEncounter-portrait-clip-region = 750,1400,65,65
+AHLCG-Ultimatum-Encounter-portrait-clip-region = 480,862,65,65
+AHLCG-Ultimatum-ReturnEncounter-portrait-clip-region = 480,862,65,65
 
 AHLCG-Ultimatum-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Ultimatum-Collection-portrait-pany = 0
