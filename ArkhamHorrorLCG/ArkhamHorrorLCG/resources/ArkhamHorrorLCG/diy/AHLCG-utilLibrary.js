@@ -19,7 +19,7 @@ function getDescription() {
 }
 
 function getVersion() {
-    return 9.5;
+    return 9.6;
 }
 
 function getLocale() {

@@ -25,7 +25,7 @@ function create( diy ) {
     setDefaultEncounter();
 
     diy.setCornerRadius(8);
-	diy.version = 17;
+	diy.version = 18;
 }
 
 function setDefaults() {
@@ -268,7 +268,7 @@ function setTextShape( box, region ) {
 // For example, you can seamlessly upgrade from a previous version
 // of the script.
 function onRead(diy, oos) {
-	readPortraits( diy, oos, PortraitTypeList, true );
+	readPortraits( diy, oos, PortraitTypeList, false );
 
 	if ( diy.version < 9 ) {
 		$Skill5 = 'None';
@@ -298,7 +298,7 @@ function onRead(diy, oos) {
 	updateCollection();
 
 	diy.setCornerRadius(8);
-	diy.version = 17;
+	diy.version = 18;
 }
 
 function onWrite( diy, oos ) {
