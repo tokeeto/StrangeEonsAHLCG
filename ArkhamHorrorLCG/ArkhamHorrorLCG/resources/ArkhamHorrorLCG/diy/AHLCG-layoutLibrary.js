@@ -344,10 +344,10 @@ function layoutAssetStats( bindings, faceIndex ) {
 	var perInvestigatorSanityButton = new toggleButton( '', perInvestigatorIcon, false );
 	bindings.add( 'PerInvestigatorSanity' + BindingSuffixes[faceIndex], perInvestigatorSanityButton, [faceIndex] );
 
-	var StaminaList = new comboBox( AHLCGObject.comboAssetStamina, null );
+	var StaminaList = new textField( '', 10 );
 	bindings.add( 'Stamina' + BindingSuffixes[faceIndex], StaminaList, [faceIndex] );
 
-	var SanityList = new comboBox( AHLCGObject.comboAssetSanity, null );
+	var SanityList = new textField( '', 10 );
 	bindings.add( 'Sanity' + BindingSuffixes[faceIndex], SanityList, [faceIndex] );
 
 	StatsPanel.place(

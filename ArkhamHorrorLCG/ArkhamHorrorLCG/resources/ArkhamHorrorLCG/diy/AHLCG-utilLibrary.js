@@ -19,7 +19,7 @@ function getDescription() {
 }
 
 function getVersion() {
-    return 9.6;
+    return 9.7;
 }
 
 function getLocale() {
@@ -61,8 +61,6 @@ function readPortraits( diy, oos, typeList, readEncounter ) {
 			try {
 				PortraitList[index] = oos.readObject();
 			} catch ( ex ) {
-				println( 'Unable to load portrait: ' + fullKey );
-
 				createPortrait( diy, fullKey );
 			}
 
@@ -1199,6 +1197,9 @@ function getClassInitial( className ) {
 			break;
 		case 'Neutral':
 			initial = 'N';
+			break;
+		case 'Specialist':
+			initial = 'P';
 			break;
 		case 'ParallelNeutral':
 			initial = 'NP';

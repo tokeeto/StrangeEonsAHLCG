@@ -506,6 +506,7 @@ function gameObject( masterSettings ) {
         ListItem( 'Mystic', @AHLCG-Class-Mystic ),
         ListItem( 'Survivor', @AHLCG-Class-Survivor ),
         ListItem( 'Neutral' , @AHLCG-Class-Neutral ),
+        ListItem( 'Specialist' , @AHLCG-Class-Specialist ),
         ListItem( 'Story' , @AHLCG-Class-Story ),
         ListItem( 'Weakness' , @AHLCG-Class-Weakness ),
         ListItem( 'BasicWeakness', @AHLCG-Class-BasicWeakness )
@@ -518,6 +519,7 @@ function gameObject( masterSettings ) {
 		ListItem( 'Mystic', @AHLCG-Class-Mystic ),
 		ListItem( 'Survivor', @AHLCG-Class-Survivor ),
 		ListItem( 'Neutral' , @AHLCG-Class-Neutral ),
+		ListItem( 'Specialist' , @AHLCG-Class-Specialist ),
 		ListItem( 'Weakness' , @AHLCG-Class-Weakness ),
 		ListItem( 'BasicWeakness', @AHLCG-Class-BasicWeakness ) );
 

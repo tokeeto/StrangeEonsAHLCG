@@ -494,16 +494,9 @@ function drawName( g, diy, sheet, nameBox ) {
 	}
 
 	if ( title.length > 0) {
-//		unique = $( 'Unique' + BindingSuffixes[faceIndex] );
-//		if ( unique == null ) unique = $Unique;
-
 		if ( unique == '1' ) {
-//			nameBox.markupText = '<uni>' + title;
 			title = '<uni>' + title;
 		}
-//		else {
-//			nameBox.markupText = title;
-//		}
 
 		var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Name-region') );
 
@@ -540,10 +533,8 @@ function drawName( g, diy, sheet, nameBox ) {
 
 				if ( classCount > 2 ) region.width -= 45;	// don't move the x value here though, it stays offcenter
 
-//				let height = nameBox.measure( g, region );
 				let height = testBox.measure( g, region );
 
-				// trying to figure out if it doesn't fit in the region at full size
 				if ( height < 22.0 || ( height > 25.0 && title.length > 20 ) ) {
 					region.x -= 30;
 					region.width += 30;
@@ -553,10 +544,6 @@ function drawName( g, diy, sheet, nameBox ) {
 		else if ( CardTypes[faceIndex] == 'Guide75' ) title = title.toUpperCase();
 		else if ( CardTypes[faceIndex] == 'GuideA4' ) title = title.toUpperCase();
 		else if ( CardTypes[faceIndex] == 'GuideLetter' ) title = title.toUpperCase();
-
-// original test
-//		nameBox.markupText = title;
-//		nameBox.drawAsSingleLine( g, region );
 
 		nameBox.markupText = "Size";
 		var lineHeight = nameBox.measure( g, region );
@@ -574,8 +561,6 @@ function drawName( g, diy, sheet, nameBox ) {
 			region.y += lineHeight * 0.8;
 			region.height -= lineHeight * 0.8;
 		}
-
-//		nameBox.drawAsSingleLine( g, region );
 	}
 }
 
@@ -2886,49 +2871,51 @@ function drawStamina( g, diy, sheet ) {
 		'14': -4,
 		'15': -4 };
 
-	if (stamina != 'None') {
-		let region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Stamina-region' ) );
-		sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-StaminaBase.png'), region );
-		region.x += offsetX[stamina];
-		region.y += offsetY[stamina];
+    if (stamina != 'None') {
+        let region = diy.settings.getRegion(getExpandedKey(faceIndex, 'Stamina-region'));
+        sheet.paintImage(g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-StaminaBase.png'), region);
+        try {
+            region.x += offsetX[stamina];
+            region.y += offsetY[stamina];
+        } catch (e) {
+            region.x += offsetX["X"];
+            region.y += offsetY["X"];
+        }
 
-		if ( stamina == '-' ) {
-			sheet.drawOutlinedTitle( g, stamina, region, Eons.namedObjects.AHLCGObject.symbolFont, 9.8, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true );
-		}
-		else if ( stamina == '*' ) {
-			// Teutonic
-			sheet.drawOutlinedTitle( g, stamina, region, Eons.namedObjects.AHLCGObject.costFont, 18.5, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true );
-		}
-		else if (perInvestigator == '1') {
-			let staminaPerInvRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'StaminaPerInvIcon-region' ) );
-			region.x -= 5;
+        if (stamina == '-') {
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.symbolFont, 9.8, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+        }
+        else if (stamina == '*') {
+            // Teutonic
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.costFont, 18.5, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+        }
+        else if (perInvestigator == '1') {
+            let staminaPerInvRegion = diy.settings.getRegion(getExpandedKey(faceIndex, 'StaminaPerInvIcon-region'));
+            region.x -= 5;
 
-			let fontSize = 14;
-			let symbolFontSize = 6.5;
+            let fontSize = 14;
+            let symbolFontSize = 6.5;
 
-			if ( stamina == 1 ) {
-				region.x -= 1;
-				staminaPerInvRegion.x -= 4;
-			}
-			else if ( stamina > 9 ) {
-				fontSize = 12;
-				symbolFontSize = 5.5;
-				staminaPerInvRegion.x += 4;
-			}
+            if (stamina == 1) {
+                region.x -= 1;
+                staminaPerInvRegion.x -= 4;
+            }
+            else if (stamina > 9) {
+                fontSize = 12;
+                symbolFontSize = 5.5;
+                staminaPerInvRegion.x += 4;
+            }
 
-			sheet.drawOutlinedTitle( g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true );
-			sheet.drawOutlinedTitle( g, 'p', staminaPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true );
-		}
-		else if ( stamina.length() > 1 ) {	// 10+
-			sheet.drawOutlinedTitle( g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, 11.5, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true );
-		}
-		else {
-			sheet.drawOutlinedTitle( g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, 14, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true );
-		}
-
-//		sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Stamina-' + stamina + '.png'),
-//			diy.settings.getRegion( getExpandedKey( faceIndex, 'Stamina-region' ) ) );
-	}
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+            sheet.drawOutlinedTitle(g, 'p', staminaPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+        }
+        else if (stamina.length() > 1) {	// 10+
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, 11.5, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+        }
+        else {
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, 14, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+        }
+   	}
 }
 
 function drawSanity( g, diy, sheet ) {
@@ -2983,8 +2970,13 @@ function drawSanity( g, diy, sheet ) {
 	if (sanity != 'None') {
 		let region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Sanity-region' ) );
 		sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-SanityBase.png'), region );
-		region.x += offsetX[sanity];
-		region.y += offsetY[sanity];
+        try {
+            region.x += offsetX[sanity];
+            region.y += offsetY[sanity];
+        } catch (e) {
+            region.x += offsetX["X"];
+            region.y += offsetY["X"];
+        }
 
 		if ( sanity == '-' ) {
 			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.symbolFont, 9.8, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
