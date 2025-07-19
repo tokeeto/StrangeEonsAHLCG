@@ -2651,12 +2651,6 @@ function drawCopyright( g, diy, sheet, copyrightBox, collectorX ) {
 	region.y += parseInt(Eons.namedObjects.AHLCGObject.collectionFontOffset);
 	if ( $Orientation == 'Reversed' ) region = shiftRegion( region, CardTypes[faceIndex] );
 
-	// x = left edge of region, using collectorX
-	var x = collectorX - region.width;
-
-	// we want the leftmost (if more space is being taken up because of Threads-like numbers)
-	if (x < region.x) region.x = collectorX - region.width;
-
 	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y -= 1;
 
 	// Please don't ask me why I have to do a markupText += X in order to get the color to change

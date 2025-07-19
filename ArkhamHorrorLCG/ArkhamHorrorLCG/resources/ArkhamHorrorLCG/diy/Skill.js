@@ -9,7 +9,7 @@ importClass( arkham.component.DefaultPortrait );
 const CardTypes = [ 'Skill', 'SkillBack' ];
 const BindingSuffixes = [ '', 'Back' ];
 
-const PortraitTypeList = [ 'Portrait-Front', 'Collection-Front' ];
+const PortraitTypeList = [ 'Portrait-Front', 'Collection-Front', 'Encounter-Both' ];
 
 function create( diy ) {
 	diy.frontTemplateKey = getExpandedKey(FACE_FRONT, 'Default', '-template');	// not used, set card size
@@ -22,9 +22,10 @@ function create( diy ) {
 	setDefaults();
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
+	setDefaultEncounter();
 
 	diy.setCornerRadius(8);
-	diy.version = 16;
+	diy.version = 17;
 }
 
 function setDefaults() {
@@ -89,6 +90,14 @@ function createInterface( diy, editor ) {
 	CollectionTab.place( CollectionPanel, 'wrap, pushx, growx', CollectionImagePanel, 'wrap, pushx, growx' );
 	CollectionTab.addToEditor(editor, @AHLCG-Collection);
 
+	var EncounterImagePanel = new portraitPanel( diy, getPortraitIndex( 'Encounter' ), @AHLCG-CustomEncounterSet );
+    var EncounterPanel = layoutEncounter( bindings, EncounterImagePanel, false, [0], [0], FACE_FRONT );
+
+    var EncounterTab = new Grid();
+    EncounterTab.editorTabScrolling = true;
+    EncounterTab.place( EncounterPanel, 'wrap, pushx, growx', EncounterImagePanel, 'wrap, pushx, growx' );
+    EncounterTab.addToEditor(editor, @AHLCG-EncounterSet);
+
 	bindings.bind();
 }
 
@@ -127,6 +136,14 @@ function createFrontPainter( diy, sheet ) {
 	Collection_box = markupBox(sheet);
 	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
 	Collection_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'CollectionNumber-alignment'));
+
+	Collection_box = markupBox(sheet);
+	Collection_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'CollectionNumber-style'), null);
+	Collection_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'CollectionNumber-alignment'));
+
+	Encounter_box = markupBox(sheet);
+    Encounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'EncounterNumber-style'), null);
+    Encounter_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'EncounterNumber-alignment'));
 }
 
 function createBackPainter( diy, sheet ) {
@@ -160,8 +177,28 @@ function paintFront( g, diy, sheet ) {
 	if ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness') regionName = 'WeaknessBody';
 	drawBodyWithRegionName( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ), regionName );
 
-//	drawCollectorInfo( g, diy, sheet, true, false, false, false, true );
-	drawCollectorInfo( g, diy, sheet, Collection_box, false, true, null, false, Copyright_box, Artist_box );
+	var drawIcon = false;
+    if ( $CardClass == 'Story' || $CardClass == 'StoryWeakness'){
+        drawIcon = true;
+        sheet.paintImage(
+            g,
+            ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-EventWeakness-EncounterIcon.png'),
+            diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Encounter-overlay-region' ) )
+        );
+    }
+
+    drawCollectorInfo(
+        g,
+        diy,
+        sheet,
+        Collection_box,
+        false,
+        true,
+        drawIcon ? Encounter_box : null,
+        drawIcon,
+        Copyright_box,
+        Artist_box
+    );
 }
 
 function paintBack( g, diy, sheet ) {
@@ -173,46 +210,7 @@ function paintBack( g, diy, sheet ) {
 function onClear() {
 	setDefaults();
 }
-/*
-function createTextShape( textBox, textRegion ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
 
-	var path = new java.awt.geom.Path2D.Double();
-
-	var xPathPoints = new Array( 0.0, 0.015 );
-	var yPathPoints = new Array( 0.0, 1.000 );
-
-	var xControlPoints = new Array( 0.053, 0.088 );
-	var yControlPoints = new Array( 0.307, 0.600 );
-
-	var numPoints = xPathPoints.length;
-
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	for (let i = 1; i < numPoints; i++) {
-		path.curveTo( x + w * xControlPoints[i*2 - 2], y + h * yControlPoints[i*2 - 2],
-					  x + w * xControlPoints[i*2 - 1], y + h * yControlPoints[i*2 - 1],
-					  x + w * xPathPoints[i], y + h * yPathPoints[i]
-		);
-	}
-
-	path.lineTo( x + w * (1 + xPathPoints[numPoints-1]), y + h * yPathPoints[numPoints-1] );
-
-	for (let i = numPoints-2; i >= 0; i--) {
-		path.curveTo( x + w * (1.0 + xControlPoints[i*2 + 1]), y + h * yControlPoints[i*2 + 1],
-					  x + w * (1.0 + xControlPoints[i*2]), y + h * yControlPoints[i*2],
-					  x + w * (1.0 + xPathPoints[i]), y + h * yPathPoints[i]
-		);
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-*/
 function setTextShape( box, region ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -255,11 +253,15 @@ function onRead(diy, oos) {
 	if ( diy.version < 16 ) {
 		diy.faceStyle = FaceStyle.TWO_FACES;	// change was in v15, but I forgot to add this
 	}
+	if ( diy.version < 17 ) {
+		setDefaultEncounter(diy);
+	}
 
 	updateCollection();
+	updateEncounter();
 
 	diy.setCornerRadius(8);
-	diy.version = 16;
+	diy.version = 17;
 }
 
 function onWrite( diy, oos ) {

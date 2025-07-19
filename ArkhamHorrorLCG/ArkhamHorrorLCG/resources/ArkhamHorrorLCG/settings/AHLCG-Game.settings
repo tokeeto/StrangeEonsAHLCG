@@ -29,9 +29,9 @@ AHLCG-Story-tightness = 0.6
 AHLCG-Artist-region = 14,512,121,10
 AHLCG-Artist-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 AHLCG-Artist-alignment = left, middle
-AHLCG-Copyright-region = 124,512,86,10
+AHLCG-Copyright-region = 137,512,101,10
 AHLCG-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
-AHLCG-Copyright-alignment = right, middle
+AHLCG-Copyright-alignment = center, middle
 
 AHLCG-Level-region = 14,36,48,23
 AHLCG-NoLevel-region = 8,5,60,58
