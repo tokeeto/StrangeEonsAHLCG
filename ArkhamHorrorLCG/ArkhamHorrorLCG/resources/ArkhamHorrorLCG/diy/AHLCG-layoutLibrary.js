@@ -828,7 +828,7 @@ function layoutSkillStats( bindings, faceIndex ) {
 
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
-	var ClassList = new comboBox( AHLCGObject.comboClassesBW, null );
+	var ClassList = new comboBox( AHLCGObject.comboClassesBWS, null );
 	bindings.add( 'CardClass' + BindingSuffixes[faceIndex], ClassList, [faceIndex] );
 
 	var SkillList1 = new comboBox( AHLCGObject.comboSkills, null );

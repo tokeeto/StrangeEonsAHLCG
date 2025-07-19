@@ -1207,6 +1207,9 @@ function getClassInitial( className ) {
 		case 'Story':
 			initial = 'S';
 			break;
+		case 'StoryWeakness':
+			initial = 'SW';
+			break;
 		case 'Dual':
 			initial = 'D';
 			break;

@@ -508,6 +508,7 @@ function gameObject( masterSettings ) {
         ListItem( 'Neutral' , @AHLCG-Class-Neutral ),
         ListItem( 'Specialist' , @AHLCG-Class-Specialist ),
         ListItem( 'Story' , @AHLCG-Class-Story ),
+        ListItem( 'StoryWeakness' , @AHLCG-Class-StoryWeakness ),
         ListItem( 'Weakness' , @AHLCG-Class-Weakness ),
         ListItem( 'BasicWeakness', @AHLCG-Class-BasicWeakness )
     );
