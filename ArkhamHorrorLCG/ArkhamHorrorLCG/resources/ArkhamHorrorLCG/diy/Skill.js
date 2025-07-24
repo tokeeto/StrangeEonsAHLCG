@@ -142,8 +142,8 @@ function createFrontPainter( diy, sheet ) {
 	Collection_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'CollectionNumber-alignment'));
 
 	Encounter_box = markupBox(sheet);
-    Encounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'EncounterNumber-style'), null);
-    Encounter_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'EncounterNumber-alignment'));
+	Encounter_box.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'EncounterNumber-style'), null);
+	Encounter_box.alignment = diy.settings.getTextAlignment(getExpandedKey(FACE_FRONT, 'EncounterNumber-alignment'));
 }
 
 function createBackPainter( diy, sheet ) {
@@ -161,6 +161,9 @@ function paintFront( g, diy, sheet ) {
 	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
+	else if ($CardClass == 'StoryWeakness' ) {
+		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
+	}
 	else if ($CardClass == 'BasicWeakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-BasicWeakness );
 
@@ -174,17 +177,26 @@ function paintFront( g, diy, sheet ) {
 	drawSkillIcons( g, diy, sheet, $CardClass );
 
 	var regionName = 'Body';
-	if ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness') regionName = 'WeaknessBody';
+	if ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness' || $CardClass == 'StoryWeakness' ) {
+	  regionName = 'WeaknessBody';
+	}
 	drawBodyWithRegionName( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ), regionName );
 
 	var drawIcon = false;
-    if ( $CardClass == 'Story' || $CardClass == 'StoryWeakness'){
+    if ( $CardClass == 'Story'){
         drawIcon = true;
         sheet.paintImage(
             g,
-            ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-EventWeakness-EncounterIcon.png'),
-            diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Encounter-overlay-region' ) )
+            ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-LocationCircle.png'),
+            diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'StoryWeakness-Inner-region' ) )
         );
+        sheet.paintImage(
+            g,
+            ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-NoLevel.png'),
+            diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'StoryWeakness-region' ) )
+        );
+    } else if ($CardClass == 'StoryWeakness'){
+      drawIcon = true;
     }
 
     drawCollectorInfo(
