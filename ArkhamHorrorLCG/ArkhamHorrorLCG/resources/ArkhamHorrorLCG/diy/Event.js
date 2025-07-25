@@ -184,13 +184,15 @@ function paintFront( g, diy, sheet ) {
 	drawBodyWithRegionName( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ), regionName );
 
     var drawIcon = false;
-    if ( $CardClass == 'Story' || $CardClass == 'StoryWeakness'){
+    if ( $CardClass == 'Story'){
         drawIcon = true;
         sheet.paintImage(
             g,
             ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-StoryEventOverlay.jp2'),
             diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Encounter-overlay-region' ) )
         );
+    } else if ( $CardClass == 'StoryWeakness' ){
+      drawIcon = true;
     }
 
 	drawCollectorInfo(
