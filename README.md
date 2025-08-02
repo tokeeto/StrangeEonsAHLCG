@@ -1,3 +1,19 @@
+---
+
+> ### **⚠️ Fork for Strange Eons 3.4+ Development**
+>
+> This is a personal fork of Tokeeto's Arkham Horror LCG plugin. The branches in this repository contain experimental fixes and optimizations specifically for the upcoming **Strange Eons 3.4 alpha** and later versions.
+>
+> **The changes here are designed to address font and layout rendering issues introduced by the move to Java 11 in SE 3.4.**
+>
+> **Warning:** Using plugins built from this fork on older, stable versions of Strange Eons (like 3.3) may result in visual inconsistencies.
+>
+> ---
+> **The official repository for the stable plugin can be found here:**
+> **[https://github.com/tokeeto/StrangeEonsAHLCG](https://github.com/tokeeto/StrangeEonsAHLCG)**
+> ---
+
+
 An Arkham Horror LCG plugin for Strange Eons.
 
 This is a fork of the original AHLCG plugin by Pilute23/JaqenZann
