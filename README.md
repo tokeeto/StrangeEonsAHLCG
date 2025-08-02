@@ -7,13 +7,13 @@
 > The `master` branch of this fork is kept in sync with the official repository. For experimental fixes and optimizations specifically for the upcoming **Strange Eons 3.4 alpha**, please see the branches listed below.
 >
 > **Development Branches:**
-> *   **[`fix/font-and-layout-for-se34`](https://github.com/YourGitHubUsername/StrangeEonsAHLCG/tree/fix/font-and-layout-for-se34)**: Contains fixes for font rendering and layout issues introduced by the move to Java 11 in SE 3.4. **(Work in Progress)**
+> *   **[`fix/font-and-layout-for-se34`](https://github.com/polochamps/StrangeEonsAHLCG/tree/fix/font-and-layout-for-se34)**: Contains fixes for font rendering and layout issues introduced by the move to Java 11 in SE 3.4. **(Work in Progress)**
 >
 > **Warning:** Using plugins built from these development branches on older, stable versions of Strange Eons (like 3.3) may result in visual inconsistencies.
 >
 > ---
-> *The official repository for the stable plugin can be found here:*
-> *[https://github.com/tokeeto/StrangeEonsAHLCG](https://github.com/tokeeto/StrangeEonsAHLCG)*
+> The official repository for the stable plugin can be found here:
+> [https://github.com/tokeeto/StrangeEonsAHLCG](https://github.com/tokeeto/StrangeEonsAHLCG)
 > ---
 
 ---
