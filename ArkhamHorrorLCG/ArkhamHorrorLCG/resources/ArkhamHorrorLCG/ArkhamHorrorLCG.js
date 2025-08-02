@@ -189,6 +189,32 @@ function setupFonts( o ) {
 	o.storyFontOffset = 0;
 	o.collectionFontOffset = 0;
 
+	// --- NEW: Individual Footer Font Properties ---
+	o.artistFontFamily = null; // Will be set to o.collectionFamily later
+	o.artistFontSize = null;   // Will be set to o.collectionSize later
+	o.artistFontWeight = null; // Will be set to o.collectionWeight later
+	o.artistFontWidth = 1.0;   // Default width
+	o.artistFontTracking = 0.0; // Default tracking
+
+	o.copyrightFontFamily = null;
+	o.copyrightFontSize = null;
+	o.copyrightFontWeight = null;
+	o.copyrightFontWidth = 1.0;
+	o.copyrightFontTracking = 0.0;
+
+	o.collectionNumFontFamily = null;
+	o.collectionNumFontSize = null;
+	o.collectionNumFontWeight = null;
+	o.collectionNumFontWidth = 1.0;
+	o.collectionNumFontTracking = 0.0;
+
+	o.encounterNumFontFamily = null; // This covers both '15 / 21' and '79'
+	o.encounterNumFontSize = null;
+	o.encounterNumFontWeight = null;
+	o.encounterNumFontWidth = 1.0;
+	o.encounterNumFontTracking = 0.0;	
+	// --- END NEW PROPERTIES ---			
+
 	if ( titleFontFamily == null || titleFontFamily == 'Default' ) {
 		o.titleFamily = registerTTFont( 'Arkhamic' );
 	}
@@ -236,19 +262,26 @@ function setupFonts( o ) {
 			o.smallLabelWidth = 0.92;
 			o.smallLabelWeight = WEIGHT_BOLD;
 			o.smallLabelTracking = 0.00;
+
 			o.largeLabelSize = 6.0;
-			o.largeLabelWidth = 1.05;
-			o.largeLabelWeight = WEIGHT_BOLD;
-			o.largeLabelTracking = 0.00;
+			o.largeLabelWidth = 1.00;
+			o.largeLabelWeight = WEIGHT_MEDIUM;
+			o.largeLabelTracking = 0.09;
+
 			o.subtypeSize = 6.0;
 			o.subtypeWidth = 1.0;
 			o.subtypeWeight = WEIGHT_BOLD;
 			o.subtypeTracking = 0.00;
+			// --- FRONT SETTINGS ---
 			o.scenarioIndexSize = 7.0;
-			o.scenarioIndexWeight = WEIGHT_BOLD;
-			o.scenarioIndexWidth = WIDTH_REGULAR;
+			o.scenarioIndexWeight = WEIGHT_MEDIUM;
+			o.scenarioIndexWidth = 1.05;
 			o.scenarioIndexTracking = 0.00;
-			o.scenarioIndexBackSize = 4.9;
+			// --- BACK SETTINGS ---
+			o.scenarioIndexBackSize = 5.1;
+			o.scenarioIndexBackWeight = WEIGHT_BOLD; // Default for back
+			o.scenarioIndexBackWidth = 0.95; // Default for back
+			o.scenarioIndexBackTracking = 0.00; // Default for back
 			o.difficultySize = 6.0;
 			o.difficultyWidth = 0.97;
 			o.difficultyWeight = WEIGHT_BOLD;
@@ -267,7 +300,7 @@ function setupFonts( o ) {
 		o.smallLabelWidth = 1.00;
 		o.smallLabelWeight = WEIGHT_BOLD;
 		o.smallLabelTracking = 0.00;
-		o.largeLabelSize = 5.6 * fCardTypeSize / 100.0;
+		o.largeLabelSize = 6.0 * fCardTypeSize / 100.0;
 		o.largeLabelWidth = 1.00;
 		o.largeLabelWeight = WEIGHT_BOLD;
 		o.largeLabelTracking = 0.00;
@@ -295,7 +328,7 @@ function setupFonts( o ) {
 			o.bodyFontSize = 8.6;
 			o.bodyFontWidth = 0.98;
 			o.bodyFontWeight = WEIGHT_MEDIUM;
-			o.bodyFontTracking = -0.01;
+			o.bodyFontTracking = 0.01;
 			o.bodyFontTightness = 0.90;
 			o.bodyFontOffset = 0;
 		}
@@ -321,7 +354,7 @@ function setupFonts( o ) {
 			o.bodyTraitSize = 7.8;
 			o.bodyTraitWidth = 1.0;
 			o.bodyTraitWeight = WEIGHT_BOLD;
-			o.bodyTraitTracking = -0.01;
+			o.bodyTraitTracking = 0.01;
 
 			o.traitFontOffset = 0;
 		}
@@ -373,7 +406,7 @@ function setupFonts( o ) {
 			o.bodyFlavorSize = 7.8;
 			o.bodyFlavorWidth = 1.0;
 			o.bodyFlavorWeight = WEIGHT_REGULAR;
-			o.bodyFlavorTracking = -0.01;
+			o.bodyFlavorTracking = 0.01;
 
 			o.flavorFontOffset = 0;
 		}
@@ -399,7 +432,7 @@ function setupFonts( o ) {
 			o.bodyStorySize = 8.6;
 			o.bodyStoryWidth = 1.0;
 			o.bodyStoryWeight = WEIGHT_REGULAR;
-			o.bodyStoryTracking = -0.01;
+			o.bodyStoryTracking = 0.01;
 
 			o.storyFontOffset = 0;
 		}
@@ -421,13 +454,40 @@ function setupFonts( o ) {
 	if ( collectionFontFamily == null || collectionFontFamily == 'Default' ) {
 		o.collectionFamily = ResourceKit.findAvailableFontFamily( defaultFontList, 'NimbusRomNo9' );
 
-		if ( o.collectionFamily == 'Arno Pro' ) {
+		if (o.collectionFamily == 'Arno Pro' ) {
 			o.collectionSize = 4.5;
-			o.collectionWidth = 1.0;
+			o.collectionWidth = 1.00;
 			o.collectionWeight = WEIGHT_BOLD;
 			o.collectionTracking = 0.01;
 
 			o.collectionFontOffset = 0;
+
+			// --- NEW: Arno Pro Specific Footer Overrides ---
+			o.artistFontFamily = o.collectionFamily; // Link to base Arno Pro
+			o.artistFontSize = o.collectionSize;     // Link to base Arno Pro size (4.5)
+			o.artistFontWeight = WEIGHT_BOLD; // Link to base Arno Pro weight (BOLD) o.collectionWeight
+			o.artistFontWidth = 1.0;  // Initial custom value for Artist
+			o.artistFontTracking = 0.01; // Initial custom value for Artist
+
+			o.copyrightFontFamily = o.collectionFamily;
+			o.copyrightFontSize = o.collectionSize;
+			o.copyrightFontWeight = o.collectionWeight;
+			o.copyrightFontWidth = 1.04; // Initial custom value for Copyright
+			o.copyrightFontTracking = 0.01; // Initial custom value for Copyright
+
+			o.collectionNumFontFamily = o.collectionFamily;
+			o.collectionNumFontSize = o.collectionSize;
+			o.collectionNumFontWeight = o.collectionWeight;
+			o.collectionNumFontWidth = 0.99; // Initial custom value for Collection Number (for '15 / 21')
+			o.collectionNumFontTracking = 0.02; // Initial custom value for Collection Number
+
+			o.encounterNumFontFamily = o.collectionFamily;
+			o.encounterNumFontSize = o.collectionSize;
+			o.encounterNumFontWeight = o.collectionWeight;
+			o.encounterNumFontWidth = 0.99; // Initial custom value for Encounter Number (for '79')
+			o.encounterNumFontTracking = 0.02; // Initial custom value for Encounter Number
+			// --- END NEW OVERRIDES ---
+
 		}
 		else if ( o.collectionFamily == 'Times New Roman' ) {
 			o.collectionFontOffset = -1;
@@ -442,6 +502,33 @@ function setupFonts( o ) {
 		o.collectionTracking = 0.00;
 
 		o.collectionFontOffset = fCollectionOffset;
+
+		// --- NEW: Arno Pro Specific Footer Overrides (User Selected Path) ---
+		o.artistFontFamily = o.collectionFamily;
+		o.artistFontSize = 4.2 * fCollectionSize / 100.0; // Use scaled size
+		o.artistFontWeight = o.collectionWeight;
+		o.artistFontWidth = 0.95;
+		o.artistFontTracking = -0.05;
+
+		o.copyrightFontFamily = o.collectionFamily;
+		o.copyrightFontSize = 4.2 * fCollectionSize / 100.0;
+		o.copyrightFontWeight = o.collectionWeight;
+		o.copyrightFontWidth = 0.95;
+		o.copyrightFontTracking = -0.05;
+
+		o.collectionNumFontFamily = o.collectionFamily;
+		o.collectionNumFontSize = 4.2 * fCollectionSize / 100.0;
+		o.collectionNumFontWeight = o.collectionWeight;
+		o.collectionNumFontWidth = 0.90;
+		o.collectionNumFontTracking = -0.05;
+
+		o.encounterNumFontFamily = o.collectionFamily;
+		o.encounterNumFontSize = 4.2 * fCollectionSize / 100.0;
+		o.encounterNumFontWeight = o.collectionWeight;
+		o.encounterNumFontWidth = 0.90;
+		o.encounterNumFontTracking = -0.05;
+		// --- END NEW OVERRIDES ---
+
 	}
 
 	if ( o.OS == 'Mac' ) {
@@ -453,11 +540,16 @@ function setupFonts( o ) {
 	o.suffixFamily = suffixFontFamily;
 
 	if ( o.typeFamily == 'Arno Pro' ) {
+		// --- FRONT SUFFIX ---
 		o.indexSuffixSize = 7.0;
-		o.indexSuffixWeight = WEIGHT_BOLD;
+		o.indexSuffixWeight = WEIGHT_MEDIUM;
 		o.indexSuffixWidth = WIDTH_REGULAR;
-		o.indexSuffixTracking = 0.00;
-		o.indexBackSuffixSize = 4.9;
+		o.indexSuffixTracking = 0.005;
+		// --- BACK SUFFIX ---
+		o.indexBackSuffixSize = 5.1;
+		o.indexSuffixBackWeight = WEIGHT_BOLD; // Default for back
+		o.indexSuffixBackWidth = WIDTH_REGULAR; // Default for back
+		o.indexSuffixBackTracking = -0.03; // Default for back
 	}
 
 	if ( bodyFontFamily == 'NimbusRomNo9' ) o.bodyFamily = registerOTFont( 'NimbusRomNo9L-Med', 'NimbusRomNo9L-MedIta', 'NimbusRomNo9L-Reg', 'NimbusRomNo9L-RegIta' );
@@ -508,6 +600,7 @@ function gameObject( masterSettings ) {
         ListItem( 'Neutral' , @AHLCG-Class-Neutral ),
         ListItem( 'Specialist' , @AHLCG-Class-Specialist ),
         ListItem( 'Story' , @AHLCG-Class-Story ),
+        ListItem( 'StoryWeakness' , @AHLCG-Class-StoryWeakness ),
         ListItem( 'Weakness' , @AHLCG-Class-Weakness ),
         ListItem( 'BasicWeakness', @AHLCG-Class-BasicWeakness )
     );

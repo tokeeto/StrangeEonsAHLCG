@@ -35,11 +35,11 @@ AHLCG-ActBack-ReturnEncounter-portrait-clip-region = 20,50,49,48
 
 AHLCG-Act-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Act-Collection-portrait-pany = 0
-AHLCG-Act-Collection-portrait-clip-region = 270,358,13,13
-AHLCG-Act-DefaultCollection-portrait-clip-region = 270,358,13,13
+AHLCG-Act-Collection-portrait-clip-region = 270,360,13,13
+AHLCG-Act-DefaultCollection-portrait-clip-region = 270,360,13,13
 
 AHLCG-Act-EncounterNumber-region = 195,361,55,10
-AHLCG-Act-CollectionNumber-region = 266,361,37,10
+AHLCG-Act-CollectionNumber-region = 260,361,37,10
 AHLCG-Act-ScenarioIndex-region = 67,7,134,21
 AHLCG-ActBack-BackScenarioIndex-region = 22,33,45,16
 

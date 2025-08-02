@@ -8,6 +8,12 @@ useLibrary('tints');
 
 importClass( arkham.component.DefaultPortrait );
 importClass(arkham.HSBPanel);
+importClass( java.awt.Font );
+importClass( java.awt.Color );
+importClass( java.awt.font.TextLayout );
+importClass( java.awt.RenderingHints );
+importClass( java.util.HashMap );
+importClass( java.awt.font.TextAttribute );
 
 const CardTypes = [ 'Location', 'Location' ];
 const BindingSuffixes = [ '', 'Back' ];
@@ -287,6 +293,8 @@ function paintFront( g, diy, sheet ) {
 	drawCollectorInfo( g, diy, sheet, Collection_box, true, true, Encounter_box, encounterIcon, Copyright_box, Artist_box );
 
 	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Location );
+	
+
 }
 
 function paintBack( g, diy, sheet ) {

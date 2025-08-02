@@ -19,7 +19,7 @@ function getDescription() {
 }
 
 function getVersion() {
-    return 9.7;
+    return 9.8;
 }
 
 function getLocale() {
@@ -1206,6 +1206,9 @@ function getClassInitial( className ) {
 			break;
 		case 'Story':
 			initial = 'S';
+			break;
+		case 'StoryWeakness':
+			initial = 'SW';
 			break;
 		case 'Dual':
 			initial = 'D';

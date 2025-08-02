@@ -9,7 +9,7 @@ importClass( arkham.component.DefaultPortrait );
 const CardTypes = [ 'Event', 'EventBack' ];
 const BindingSuffixes = [ '', 'Back' ];
 
-const PortraitTypeList = [ 'Portrait-Front', 'Collection-Front', 'Encounter-Front' ];
+const PortraitTypeList = [ 'Portrait-Front', 'Collection-Front', 'Encounter-Both' ];
 
 function create( diy ) {
 	diy.frontTemplateKey = getExpandedKey( FACE_FRONT, 'Default', '-template' );	// not used, set card size
@@ -191,6 +191,8 @@ function paintFront( g, diy, sheet ) {
             ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-StoryEventOverlay.jp2'),
             diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Encounter-overlay-region' ) )
         );
+    } else if ( $CardClass == 'StoryWeakness' ){
+      drawIcon = true;
     }
 
 	drawCollectorInfo(
@@ -216,48 +218,7 @@ function paintBack( g, diy, sheet ) {
 function onClear() {
 	setDefaults();
 }
-/*
-function createTextShape( textBox, textRegion, className  ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
 
-	var path = new java.awt.geom.Path2D.Double();
-
-//	var xPathPoints = new Array( 0.0, -0.054, -0.009, 0.179 );
-//	var xPathPoints = new Array( 0.0, -0.054, -0.004, 0.179 );
-	var xPathPoints = new Array( 0.0, -0.054, -0.004, 0.179 );
-	var yPathPoints = new Array( 0.0, 0.333, 0.892, 1.0 );
-
-	var xControlPoints = new Array( 0.004, -0.060, -0.083, 0.006, 0.088, 0.047 );
-	var yControlPoints = new Array( 0.047, 0.193, 0.513, 0.674, 0.873, 0.993 );
-
-	var numPoints = xPathPoints.length;
-
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	for (let i = 1; i < numPoints; i++) {
-		path.curveTo( x + w * xControlPoints[i*2 - 2], y + h * yControlPoints[i*2 - 2],
-					  x + w * xControlPoints[i*2 - 1], y + h * yControlPoints[i*2 - 1],
-					  x + w * xPathPoints[i], y + h * yPathPoints[i]
-		);
-	}
-
-	path.lineTo( x + w * (1 - xPathPoints[numPoints-1]), y + h * yPathPoints[numPoints-1] );
-
-	for (let i = numPoints-2; i >= 0; i--) {
-		path.curveTo( x + w * (1.0 - xControlPoints[i*2 + 1]), y + h * yControlPoints[i*2 + 1],
-					  x + w * (1.0 - xControlPoints[i*2]), y + h * yControlPoints[i*2],
-					  x + w * (1.0 - xPathPoints[i]), y + h * yPathPoints[i]
-		);
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-*/
 function setTextShape( box, region ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -268,7 +229,7 @@ function setTextShape( box, region ) {
 // For example, you can seamlessly upgrade from a previous version
 // of the script.
 function onRead(diy, oos) {
-	readPortraits( diy, oos, PortraitTypeList, false );
+	readPortraits( diy, oos, PortraitTypeList, true );
 
 	if ( diy.version < 9 ) {
 		$Skill5 = 'None';
@@ -294,8 +255,12 @@ function onRead(diy, oos) {
 	if ( diy.version < 16 ) {
 		diy.faceStyle = FaceStyle.TWO_FACES;	// change was in v15, but I forgot to add this
 	}
+	if ( $Encounter == null ) {
+	    setDefaultEncounter();
+	}
 
 	updateCollection();
+    updateEncounter();
 
 	diy.setCornerRadius(8);
 	diy.version = 18;

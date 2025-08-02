@@ -30,6 +30,6 @@ AHLCG-Event-WeaknessBody-region = 44,352,288,143
 
 AHLCG-Event-Dash-tint = 0.0, 0.0, 1.0
 
-AHLCG-Event-Encounter-overlay-region = 165,250,50,50
-AHLCG-Event-Encounter-portrait-clip-region = 177,259,27,27
-AHLCG-Event-ReturnEncounter-portrait-clip-region = 177,259,27,27
+AHLCG-Event-Encounter-overlay-region = 163,256,49,51
+AHLCG-Event-Encounter-portrait-clip-region = 174,266,28,28
+AHLCG-Event-ReturnEncounter-portrait-clip-region = 174,266,28,28

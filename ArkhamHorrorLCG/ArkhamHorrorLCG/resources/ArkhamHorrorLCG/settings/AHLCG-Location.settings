@@ -41,11 +41,11 @@ AHLCG-LocationBack-ReturnEncounter-portrait-clip-region = 170,241,37,34
 
 AHLCG-Location-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Location-Collection-portrait-pany = 0
-AHLCG-Location-DefaultCollection-portrait-clip-region = 320,510,13,13
-AHLCG-Location-Collection-portrait-clip-region = 320,510,13,13
+AHLCG-Location-DefaultCollection-portrait-clip-region = 324,509,13,13
+AHLCG-Location-Collection-portrait-clip-region = 324,509,13,13
 
-AHLCG-LocationBack-DefaultCollection-portrait-clip-region = 320,510,13,13
-AHLCG-LocationBack-Collection-portrait-clip-region = 320,510,13,13
+AHLCG-LocationBack-DefaultCollection-portrait-clip-region = 320,509,13,13
+AHLCG-LocationBack-Collection-portrait-clip-region = 320,509,13,13
 
 AHLCG-LocationIcon-region = 14,6,36,35
 AHLCG-Connection1Icon-region = 67,467,35,35
@@ -69,8 +69,8 @@ AHLCG-Location-Victory-tightness = 0.7
 
 AHLCG-BaseIcon-region = 9,1,47,46
 
-AHLCG-Location-Copyright-region = 143,513,86,10
-AHLCG-LocationBack-Copyright-region = 128,513,86,10
+AHLCG-Location-Copyright-region = 165,512,86,10
+AHLCG-LocationBack-Copyright-region = 165,512,86,10
 
 # -1 value means inverted color png
 AHLCG-Location-Dash-tint = 38.0, 0.14, -1.0

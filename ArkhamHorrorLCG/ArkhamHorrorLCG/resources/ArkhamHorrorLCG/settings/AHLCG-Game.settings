@@ -1,37 +1,35 @@
 AHLCG-Cost-region = 18,11,40,38
 
-#AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000; KERNING: KERNING_ON
-AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
-#AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 11.0; WEIGHT: WEIGHT_REGULAR; WIDTH: WIDTH_REGULAR; FOREGROUND: #000000
+AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #231f20
 AHLCG-Name-alignment = center, middle
 
-AHLCG-BackName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 13; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
+AHLCG-BackName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: 13; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #231f20
 AHLCG-BackName-alignment = center, middle
 
-AHLCG-Subtype-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.subtypeSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.subtypeWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.subtypeWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.subtypeTracking}; FOREGROUND: #000000
+AHLCG-Subtype-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.subtypeSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.subtypeWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.subtypeWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.subtypeTracking}; FOREGROUND: #231f20
 AHLCG-Subtype-alignment = center, middle
-AHLCG-Subtitle-style = FAMILY: {Eons.namedObjects.AHLCGObject.subtitleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.subtitleSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.subtitleWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.subtitleWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.subtitleTracking}; FOREGROUND: #000000
+AHLCG-Subtitle-style = FAMILY: {Eons.namedObjects.AHLCGObject.subtitleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.subtitleSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.subtitleWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.subtitleWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.subtitleTracking}; FOREGROUND: #231f20
 AHLCG-Subtitle-alignment = center, middle
-AHLCG-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.smallLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.smallLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.smallLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.smallLabelTracking}; FOREGROUND: #000000
+AHLCG-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.smallLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.smallLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.smallLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.smallLabelTracking}; FOREGROUND: #231f20
 AHLCG-Label-alignment = center, middle
 
-AHLCG-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
+AHLCG-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #231f20
 AHLCG-Body-alignment = left
 AHLCG-Body-tightness = 0.6
 
-AHLCG-Header-style = FAMILY: {Eons.namedObjects.AHLCGObject.victoryFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyVictoryWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
+AHLCG-Header-style = FAMILY: {Eons.namedObjects.AHLCGObject.victoryFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyVictoryWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #231f20
 AHLCG-Header-alignment = left
 AHLCG-Header-tightness = 0.6
-AHLCG-Story-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; POSTURE: POSTURE_OBLIQUE; FOREGROUND: #000000
+AHLCG-Story-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; POSTURE: POSTURE_OBLIQUE; FOREGROUND: #231f20
 AHLCG-Story-alignment = left
 AHLCG-Story-tightness = 0.6
 
-AHLCG-Artist-region = 14,512,121,10
-AHLCG-Artist-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
+AHLCG-Artist-region = 18,512,121,10
+AHLCG-Artist-style = FAMILY: {Eons.namedObjects.AHLCGObject.artistFontFamily}; SIZE: {Eons.namedObjects.AHLCGObject.artistFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.artistFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.artistFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.artistFontTracking}; FOREGROUND: #FFFFFF
 AHLCG-Artist-alignment = left, middle
-AHLCG-Copyright-region = 124,512,86,10
-AHLCG-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
-AHLCG-Copyright-alignment = right, middle
+AHLCG-Copyright-region = 137,512,101,10
+AHLCG-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.copyrightFontFamily}; SIZE: {Eons.namedObjects.AHLCGObject.copyrightFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.copyrightFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.copyrightFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.copyrightFontTracking}; FOREGROUND: #FFFFFF
+AHLCG-Copyright-alignment = center, middle
 
 AHLCG-Level-region = 14,36,48,23
 AHLCG-NoLevel-region = 8,5,60,58
@@ -60,18 +58,18 @@ AHLCG-SanityPerInvIcon-region = 215,456,29,49
 
 AHLCG-Clues-region = 239,296,51,48
 
-AHLCG-CollectionNumber-region = 318,512,37,10
-AHLCG-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
+AHLCG-CollectionNumber-region = 309,512,37,10
+AHLCG-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionNumFontFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionNumFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionNumFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionNumFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionNumFontTracking}; FOREGROUND: #FFFFFF
 AHLCG-CollectionNumber-alignment = right, middle
 
 AHLCG-EncounterNumber-region = 247,512,55,10
 AHLCG-EncounterNumber-alignment = right, middle
-AHLCG-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
+AHLCG-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.encounterNumFontFamily}; SIZE: {Eons.namedObjects.AHLCGObject.encounterNumFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.encounterNumFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.encounterNumFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.encounterNumFontTracking}; FOREGROUND: #FFFFFF
 
-AHLCG-ScenarioIndex-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.scenarioIndexSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.scenarioIndexWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.scenarioIndexWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.scenarioIndexTracking}; FOREGROUND: #000000
+AHLCG-ScenarioIndex-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.scenarioIndexSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.scenarioIndexWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.scenarioIndexWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.scenarioIndexTracking}; FOREGROUND: #231f20
 AHLCG-ScenarioIndex-alignment = center, middle
 
-AHLCG-BackScenarioIndex-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.scenarioIndexBackSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.scenarioIndexWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.scenarioIndexWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.scenarioIndexTracking}; FOREGROUND: #000000
+AHLCG-BackScenarioIndex-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.scenarioIndexBackSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.scenarioIndexBackWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.scenarioIndexBackWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.scenarioIndexBackTracking}; FOREGROUND: #231f20
 AHLCG-BackScenarioIndex-alignment = center, middle
 AHLCG-BackScenarioIndex-tightness = 0.1
 
@@ -283,9 +281,9 @@ Shift-tag-replacement = #AHLCG-Shift-tag
 Copyright-tag = cop
 Copyright-tag-replacement = \u00a9
 Suffix-tag = suf
-Suffix-style = FAMILY: {Eons.namedObjects.AHLCGObject.suffixFamily}; SIZE: {Eons.namedObjects.AHLCGObject.indexSuffixSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.indexSuffixWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.indexSuffixWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.indexSuffixTracking}; FOREGROUND: #000000
+Suffix-style = FAMILY: {Eons.namedObjects.AHLCGObject.suffixFamily}; SIZE: {Eons.namedObjects.AHLCGObject.indexSuffixSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.indexSuffixWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.indexSuffixWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.indexSuffixTracking}; FOREGROUND: #231f20
 SuffixBack-tag = sufb
-SuffixBack-style = FAMILY: {Eons.namedObjects.AHLCGObject.suffixFamily}; SIZE: {Eons.namedObjects.AHLCGObject.indexBackSuffixSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.indexSuffixWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.indexSuffixWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.indexSuffixTracking}; FOREGROUND: #000000
+SuffixBack-style = FAMILY: {Eons.namedObjects.AHLCGObject.suffixFamily}; SIZE: {Eons.namedObjects.AHLCGObject.indexBackSuffixSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.indexSuffixBackWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.indexSuffixBackWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.indexSuffixBackTracking}; FOREGROUND: #231f20
 
 // compatibility
 XPBox-tag = xpbox
@@ -323,7 +321,7 @@ FlavorSection-style = FAMILY: {Eons.namedObjects.AHLCGObject.flavorFamily}; SIZE
 InvStorySection-tag = iss
 InvStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize*0.925}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStoryWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyStoryTracking}; POSTURE: POSTURE_OBLIQUE
 ActStorySection-tag = css
-ActStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStoryWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyStoryTracking}; POSTURE: POSTURE_OBLIQUE; FOREGROUND: #000000
+ActStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStoryWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyStoryTracking}; POSTURE: POSTURE_OBLIQUE; FOREGROUND: #231f20
 AgendaStorySection-tag = gss
 AgendaStorySection-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStoryWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyStoryTracking}; POSTURE: POSTURE_OBLIQUE
 
