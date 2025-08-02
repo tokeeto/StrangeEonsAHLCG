@@ -9,6 +9,8 @@ AHLCG-Skill-Subtype-alignment = center, middle
 
 AHLCG-Skill-Level-region = 14,35,49,23
 AHLCG-Skill-NoLevel-region = 9,24,58,38
+AHLCG-Skill-StoryWeakness-region = 9,7,58,52
+AHLCG-Skill-StoryWeakness-Inner-region = 11,9,54,48
 
 AHLCG-Skill-Body-region = 37,351,301,145
 
@@ -23,4 +25,8 @@ AHLCG-Skill-Collection-portrait-clip-region = 319,508,13,13
 
 AHLCG-Skill-BasicWeaknessSkill-region = 312,3,54,53
 AHLCG-Skill-BasicWeaknessIcon-region = 324,13,30,30
-AHLCG-Skill-WeaknessBody-region = 37,370,301,125
+AHLCG-Skill-WeaknessBody-region = 37,365,301,109
+
+AHLCG-Skill-Encounter-overlay-region = 165,250,50,50
+AHLCG-Skill-Encounter-portrait-clip-region = 23,15,30,30
+AHLCG-Skill-ReturnEncounter-portrait-clip-region = 23,15,30,30
