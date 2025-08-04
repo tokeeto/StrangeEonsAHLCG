@@ -302,7 +302,7 @@ function onRead(diy, oos) {
 		$VictoryBack = '';
 		$VictoryBackSpacing = '0';
 	}
-	if ( diy.version ) {
+	if ( diy.version < 13 ) {
 		$TemplateReplacement = '';
 		$TemplateReplacementBack = '';
 	}
