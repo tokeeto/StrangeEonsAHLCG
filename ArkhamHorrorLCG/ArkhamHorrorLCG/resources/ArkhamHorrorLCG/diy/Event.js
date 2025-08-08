@@ -25,7 +25,7 @@ function create( diy ) {
     setDefaultEncounter();
 
     diy.setCornerRadius(8);
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function setDefaults() {
@@ -162,7 +162,7 @@ function paintFront( g, diy, sheet ) {
 	var subtypeRegion = diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Subtype-region' ) );
 	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) subtypeRegion.y -= 2;
 
-	if ($CardClass == 'Weakness' ) {
+	if ($CardClass == 'Weakness' || $CardClass == 'StoryWeakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
 	else if ($CardClass == 'BasicWeakness' ) {
@@ -180,7 +180,7 @@ function paintFront( g, diy, sheet ) {
 	drawSkillIcons( g, diy, sheet, $CardClass );
 
 	var regionName = 'Body';
-	if ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness') regionName = 'WeaknessBody';
+	if ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness' || $CardClass == 'StoryWeakness') regionName = 'WeaknessBody';
 	drawBodyWithRegionName( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ), regionName );
 
     var drawIcon = false;
@@ -258,12 +258,17 @@ function onRead(diy, oos) {
 	if ( $Encounter == null ) {
 	    setDefaultEncounter();
 	}
+	if (diy.version < 19) {
+	    if ($CardClass == 'StoryWeakness'){
+			diy.settings.reset('AHLCG-Event-Encounter-portrait-clip-region');
+		}
+	}
 
 	updateCollection();
     updateEncounter();
 
 	diy.setCornerRadius(8);
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function onWrite( diy, oos ) {

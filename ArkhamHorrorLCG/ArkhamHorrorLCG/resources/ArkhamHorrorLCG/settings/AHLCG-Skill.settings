@@ -27,6 +27,6 @@ AHLCG-Skill-BasicWeaknessSkill-region = 312,3,54,53
 AHLCG-Skill-BasicWeaknessIcon-region = 324,13,30,30
 AHLCG-Skill-WeaknessBody-region = 37,365,301,109
 
-AHLCG-Skill-Encounter-overlay-region = 165,250,50,50
-AHLCG-Skill-Encounter-portrait-clip-region = 23,15,30,30
-AHLCG-Skill-ReturnEncounter-portrait-clip-region = 23,15,30,30
+AHLCG-Skill-Encounter-overlay-region = 311,3,55,55
+AHLCG-Skill-Encounter-portrait-clip-region = 324,12,30,30
+AHLCG-Skill-ReturnEncounter-portrait-clip-region = 324,12,30,30

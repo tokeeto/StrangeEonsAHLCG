@@ -25,7 +25,7 @@ function create( diy ) {
 	setDefaultEncounter();
 
 	diy.setCornerRadius(8);
-	diy.version = 17;
+	diy.version = 18;
 }
 
 function setDefaults() {
@@ -152,6 +152,10 @@ function createBackPainter( diy, sheet ) {
 function paintFront( g, diy, sheet ) {
 	clearImage( g, sheet );
 
+	// reset hack for moving encounter icons
+	diy.settings.reset('AHLCG-Skill-DefaultEncounter-portrait-clip-region');
+    diy.settings.reset('AHLCG-Skill-DefaultReturnEncounter-portrait-clip-region');
+
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
 
 	drawTemplate( g, sheet, $CardClass );
@@ -162,6 +166,8 @@ function paintFront( g, diy, sheet ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
 	else if ($CardClass == 'StoryWeakness' ) {
+	    diy.settings.setRegion('AHLCG-Skill-DefaultEncounter-portrait-clip-region', Region(23, 15, 30, 30));
+        diy.settings.setRegion('AHLCG-Skill-DefaultReturnEncounter-portrait-clip-region', Region(23, 15, 30, 30));
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
 	else if ($CardClass == 'BasicWeakness' ) {
@@ -187,13 +193,8 @@ function paintFront( g, diy, sheet ) {
         drawIcon = true;
         sheet.paintImage(
             g,
-            ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-LocationCircle.png'),
-            diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'StoryWeakness-Inner-region' ) )
-        );
-        sheet.paintImage(
-            g,
-            ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-NoLevel.png'),
-            diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'StoryWeakness-region' ) )
+            ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Skill-EncounterSetOverlay.png'),
+            diy.settings.getRegion('AHLCG-Skill-Encounter-overlay-region')
         );
     } else if ($CardClass == 'StoryWeakness'){
       drawIcon = true;
@@ -267,6 +268,10 @@ function onRead(diy, oos) {
 	}
 	if ( diy.version < 17 ) {
 		setDefaultEncounter(diy);
+	}
+	if (diy.version < 18 ) {
+		// todo: Get portrait [2], reset location
+		//getPortrait(2).location
 	}
 
 	updateCollection();

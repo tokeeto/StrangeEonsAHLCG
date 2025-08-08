@@ -2764,7 +2764,7 @@ function drawSkillIcons( g, diy, sheet, className ) {
 			sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-SkillBox-' + getClassInitial( className ) + '.png'),
 				diy.settings.getRegion( getExpandedKey( faceIndex, 'Skill' + index + '-region' ) ) );
 
-			if ( className == 'Weakness' || className == 'BasicWeakness' ) {
+			if ( className == 'Weakness' || className == 'BasicWeakness' || className == 'StoryWeakness' ) {
 				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-SkillIcon-' + getSkillInitial( String(skillName) ) + 'W.png'),
 					diy.settings.getRegion( getExpandedKey( faceIndex, 'SkillIcon' + index + '-region') ) );
 			}
@@ -3119,6 +3119,11 @@ function drawEncounterIcon( g, diy, sheet ) {
 
 	var iconName = $Encounter;
 	var returnSet = false;
+
+	// To prevent issues with changing icon locations across card types, we reset this one to the default
+	// before doing the below manipulations. This is only required for custom icons on events, but never hurt.
+	diy.settings.reset('AHLCG-' + CardTypes[0] + '-Encounter-portrait-clip-region');
+	diy.settings.reset('AHLCG-' + CardTypes[0] + '-ReturnEncounter-portrait-clip-region');
 
 	var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'DefaultEncounter-portrait-clip-region' ),
 		// default - if no DefaultEncounter defined, use normal Encounter
