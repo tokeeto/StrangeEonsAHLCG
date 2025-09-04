@@ -3718,7 +3718,7 @@ function drawScenarioIndexFront( g, diy, sheet, typeText, textBox ) {
 		region.x -= 1;
 	}
 
-	var text = typeText + '<suf>' + $ScenarioIndex;
+	var text = typeText + ' <suf>' + $ScenarioIndex;
 	text = text + $ScenarioDeckID + '</suf>';
 
 	textBox.markupText = text;
@@ -3732,7 +3732,7 @@ function drawScenarioIndexBack( g, diy, sheet, typeText, textBox ) {
 	region.y += parseInt(Eons.namedObjects.AHLCGObject.typeFontOffset);
 //	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y -= 2;
 
-	var text = typeText.toUpperCase() + '<sufb>' + $ScenarioIndex;
+	var text = typeText.toUpperCase() + ' <sufb>' + $ScenarioIndex;
 	text = text + String.fromCharCode( $ScenarioDeckID.charCodeAt(0) + 1 ) + '</sufb>';
 
 	textBox.markupText = '';

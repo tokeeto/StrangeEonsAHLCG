@@ -224,8 +224,7 @@ function paintFront( g, diy, sheet ) {
 
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
 
-	//drawTemplate( g, sheet, '' );
-	sheet.paintImage( g, 'AHLCG-Agenda-Default-template', 0, 0 );
+	drawTemplate( g, sheet, '' );
 
 	draw2LineName( g, diy, sheet, Name_box );
 
