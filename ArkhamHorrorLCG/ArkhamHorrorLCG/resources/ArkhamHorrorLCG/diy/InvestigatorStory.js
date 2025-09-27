@@ -37,6 +37,8 @@ function setDefaults() {
 	$Stamina = '7';
 	$Sanity = '7';
 
+    $Class = 'Story';
+
 	$Traits = '';
 	$Keywords = '';
 	$Rules = '';
@@ -203,7 +205,7 @@ function paintFront( g, diy, sheet ) {
 
 	drawName( g, diy, sheet, Name_box );
 
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, 'Neutral', false );
+	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, 'Story', false );
 
 	drawSkills( g, diy, sheet, Skill_box_array, [ 'Willpower', 'Intellect', 'Combat', 'Agility' ] );
 
@@ -225,7 +227,7 @@ function paintBack( g, diy, sheet ) {
 
 	drawName( g, diy, sheet, BackName_box );
 
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, 'Neutral', false );
+	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, 'Story', false );
 
 //	drawBody( g, diy, sheet, BackBody_box, new Array( 'DeckSize', 'SecondaryClass', 'DeckOptions', 'DeckRequirements', 'DeckRestrictions', 'AdditionalRequirements', 'Setup', 'StartingPlayArea', 'OpeningHand', 'InvStory' ) );
 	drawInvBackBody( g, diy, sheet, BackBody_box, new Array( 'Text1', 'Text2', 'Text3', 'Text4', 'Text5', 'Text6', 'Text7', 'Text8', 'InvStory' ) );
