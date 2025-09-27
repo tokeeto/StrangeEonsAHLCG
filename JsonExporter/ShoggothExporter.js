@@ -7,7 +7,8 @@ importClass(arkham.project.ProjectUtilities);
 importClass(ca.cgjennings.apps.arkham.project.Project);
 
 const PROJECT_FOLDER = "/home/toke/Documents/Blood of Walachia/";
-const OUTPUT_FILE = "result_raw.json";
+const OUTPUT_FOLDER = "shoggoth_export";
+const OUTPUT_FILE = "project.json";
 
 const front_types = {
     "Act.js": "act",
@@ -114,6 +115,17 @@ let project = headless
     ? Project.open(new File(PROJECT_FOLDER))
     : Eons.getOpenProject();
 
+function determine_encounter_set(card) {
+    let settings = card.getSettings();
+    if (settings.get("Encounter") == "CustomEncounterSet") {
+        let encounter_set_path = card.getPortrait(2).getSource();
+        let paths = encounter_set_path.split("/");
+        return paths[paths.length - 1];
+    } else {
+        return settings.get("Encounter");
+    }
+}
+
 function process(progress) {
     function syncProject() {
         if (!headless) {
@@ -139,17 +151,7 @@ function process(progress) {
 
     let collection = {
         cards: [],
-        encounter_sets: {
-            "0_": { name: "Other", cards: [] },
-            "1_Village": { name: "Village", cards: [] },
-            "2_Forest": { name: "Forest", cards: [] },
-            "3_Vila": { name: "Vila", cards: [] },
-            "4_Monestary": { name: "Monestary", cards: [] },
-            "5_Swamp": { name: "Swamp", cards: [] },
-            "6_Castle": { name: "Castle", cards: [] },
-            "7_Tower": { name: "Tower", cards: [] },
-            "8_Stairs": { name: "Stairs", cards: [] },
-        },
+        encounter_sets: {},
     };
     for (let path of cards) {
         let card = ResourceKit.getGameComponentFromFile(new File(path), true);
@@ -163,7 +165,7 @@ function process(progress) {
                 break;
             }
         }
-        if (path.indexOf('/Investigator/') > -1){
+        if (path.indexOf("/Investigator/") > -1) {
             target_collection = collection.cards;
         }
         if (target_collection === null) {
@@ -172,7 +174,7 @@ function process(progress) {
         target_collection.push(out);
 
         println("processing " + path);
-        if (card.getFullName() != ""){
+        if (card.getFullName() != "") {
             out["name"] = card.getFullName();
         } else {
             let file_name = /\/([^\/]+)$/.exec(path)[1];
@@ -187,26 +189,35 @@ function process(progress) {
             type: back_types[script_name],
         };
 
-        if (settings.get("Keywords") || settings.get("Rules")){
-            out["front"]["text"] = settings.get("Keywords") + "\n" + settings.get("Rules");
+        if (settings.get("Keywords") || settings.get("Rules")) {
+            out["front"]["text"] =
+                settings.get("Keywords") + "\n" + settings.get("Rules");
         }
-        if (settings.get("AgendaStory") || settings.get("ActStory")){
-            out["front"]["text"] = "<i>" + settings.get("AgendaStory") + settings.get("ActStory") + "</i>\n" + out["front"]["text"];
+        if (settings.get("AgendaStory") || settings.get("ActStory")) {
+            out["front"]["text"] =
+                "<i>" +
+                settings.get("AgendaStory") +
+                settings.get("ActStory") +
+                "</i>\n" +
+                out["front"]["text"];
         }
-        if (settings.get("Flavor")){
+        if (settings.get("Flavor")) {
             out["front"]["flavor_text"] = settings.get("Flavor");
         }
-        if (settings.get("Traits")){
+        if (settings.get("Traits")) {
             out["front"]["traits"] = settings.get("Traits");
         }
-        if (settings.get("Victory")){
+        if (settings.get("Victory")) {
             out["front"]["victory"] = settings.get("Victory");
         }
-        if (settings.get("CardClass") && settings.get("CardClass2") != "None"){
+        if (settings.get("CardClass") && settings.get("CardClass2") != "None") {
             out["front"]["class"] = "multi";
-            out["front"]["classes"] = [settings.get("CardClass"), settings.get("CardClass2")];
-            if (settings.get("CardClass3") != "None"){
-                out["front"]["classes"].push(settings.get("CardClass3"))
+            out["front"]["classes"] = [
+                settings.get("CardClass"),
+                settings.get("CardClass2"),
+            ];
+            if (settings.get("CardClass3") != "None") {
+                out["front"]["classes"].push(settings.get("CardClass3"));
             }
         } else if (settings.get("CardClass")) {
             out["front"]["class"] = settings.get("CardClass");
@@ -214,7 +225,10 @@ function process(progress) {
 
         try {
             out["front"]["illustration"] = card.getPortrait(0).getSource();
-            out["front"]["illustration_scale"] = min(card.getPortrait(0).getScale()*2, 1);
+            out["front"]["illustration_scale"] = min(
+                card.getPortrait(0).getScale() * 2,
+                1,
+            );
             out["front"]["illustration_pan_x"] = card.getPortrait(0).getPanX();
             out["front"]["illustration_pan_y"] = card.getPortrait(0).getPanY();
         } catch (e) {}
@@ -234,22 +248,29 @@ function process(progress) {
             }
         } catch (e) {}
 
-        if (settings.get("Clues")){
-            out["front"]["clues"] = settings.get("Clues") + (settings.get("PerInvestigator") == "0" ? "" : '<per>');
+        if (settings.get("Clues")) {
+            out["front"]["clues"] =
+                settings.get("Clues") +
+                (settings.get("PerInvestigator") == "0" ? "" : "<per>");
         }
-        if (settings.get("Shroud")){
-            out["front"]["shroud"] = settings.get("Shroud") + (settings.get("ShroudPerInvestigator")  == "0" ? "" : '<per>');
+        if (settings.get("Shroud")) {
+            out["front"]["shroud"] =
+                settings.get("Shroud") +
+                (settings.get("ShroudPerInvestigator") == "0" ? "" : "<per>");
         }
-        if (settings.get("Doom")){
-            out["front"]["doom"] = settings.get("Doom") + (settings.get("PerInvestigator") == "0" ? "" : '<per>');
+        if (settings.get("Doom")) {
+            out["front"]["doom"] =
+                settings.get("Doom") +
+                (settings.get("PerInvestigator") == "0" ? "" : "<per>");
         }
-        if (settings.get("ScenarioIndex")){
-            out["front"]["scenarioIndex"] = settings.get("ScenarioIndex") + settings.get("ScenarioDeckID");
-        }        
-        if (settings.get("LocationIcon")){
+        if (settings.get("ScenarioIndex")) {
+            out["front"]["scenarioIndex"] =
+                settings.get("ScenarioIndex") + settings.get("ScenarioDeckID");
+        }
+        if (settings.get("LocationIcon")) {
             out["front"]["connection"] = settings.get("LocationIcon");
         }
-        if (settings.get("Connection1Icon")){
+        if (settings.get("Connection1Icon")) {
             out["front"]["connections"] = [
                 settings.get("Connection1Icon"),
                 settings.get("Connection2Icon"),

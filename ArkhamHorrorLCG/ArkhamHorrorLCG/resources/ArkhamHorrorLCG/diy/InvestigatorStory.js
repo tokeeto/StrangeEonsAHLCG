@@ -24,7 +24,7 @@ function create( diy ) {
 	setDefaultCollection();
 
 	diy.setCornerRadius(8);
-	diy.version = 15;
+	diy.version = 16;
 }
 
 function setDefaults() {
@@ -71,27 +71,7 @@ function setDefaults() {
 	$Text8Back = '';
 
 	$InvStoryBack = '';
-/*
-	$DeckSizeBack = '30';
-	$SecondaryClassBack = '';
-	$DeckOptionsBack = '';
-	$DeckRequirementsBack = '';
-	$DeckRestrictionsBack = '';
-	$AdditionalReqirementsBack = '';
-	$SetupBack = '';
-	$StartingPlayAreaBack = '';
-	$OpeningHandBack = '';
 
-	$DeckSizeBackSpacing = '0';
-	$SecondaryClassBackSpacing = '0';
-	$DeckOptionsBackSpacing = '0';
-	$DeckRequirementsBackSpacing = '0';
-	$DeckRestrictionsBackSpacing = '0';
-	$AdditionalRequirementsBackSpacing = '0';
-	$SetupBackSpacing = '0';
-	$StartingPlayAreaBackSpacing = '0';
-	$OpeningHandBackSpacing = '0';
-*/
 	$Artist = '';
 	$Copyright = '';
 
@@ -256,64 +236,7 @@ function paintBack( g, diy, sheet ) {
 function onClear() {
 	setDefaults();
 }
-/*
-function getPathPointArrays( className ) {
-	pointArray = [];
 
-	switch ( className )
-	{
-		case 'Guardian':
-			pointArray[0] = new Array( 0.355, 0.337, 0.271, 0.267, 0.010, 0.010, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.566, 0.566, 0.600, 0.600, 1.000, 1.0, 0.0 );
-			break;
-		case 'Seeker':
-			pointArray[0] = new Array( 0.355, 0.322, 0.296, 0.275, 0.010, 0.010, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.585, 0.578, 0.630, 0.622, 1.000, 1.0, 0.0 );
-			break;
-		case 'Rogue':
-			pointArray[0] = new Array( 0.355, 0.326, 0.272, 0.264, 0.000, 0.0, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.511, 0.511, 0.593, 0.593, 1.0, 1.0, 0.0 );
-			break;
-		case 'Mystic':
-		case 'Survivor':
-			pointArray[0] = new Array( 0.355, 0.315, 0.276, 0.264, 0.010, 0.010, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.544, 0.544, 0.631, 0.631, 1.000, 1.0, 0.0 );
-			break;
-		case 'Neutral':
-			pointArray[0] = new Array( 0.400, 0.357, 0.010, 0.010, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.468, 0.468, 1.000, 1.0, 0.0 );
-			break;
-	}
-
-	return pointArray;
-}
-
-function createBackTextShape( textBox, textRegion, className ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
-
-	var pointArrays = getPathPointArrays( className );
-
-	var xPathPoints = pointArrays[0];
-	var yPathPoints = pointArrays[1];
-
-	var path = new java.awt.geom.Path2D.Double();
-
-	var numPoints = xPathPoints.length;
-
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	for (let i = 0; i < numPoints; i++) {
-		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-*/
 function setBackTextShape( box, region, className ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -380,11 +303,14 @@ function onRead(diy, oos) {
 		$TemplateReplacement = '';
 		$TemplateReplacementBack = '';
 	}
+	if ( diy.vesion < 16 ) {
+		diy.settings.reset('AHLCG-Investigator-Encounter-portrait-clip-region');
+	}
 
 	updateCollection();
 
 	diy.setCornerRadius(8);
-	diy.version = 15;
+	diy.version = 16;
 }
 
 function onWrite( diy, oos ) {
