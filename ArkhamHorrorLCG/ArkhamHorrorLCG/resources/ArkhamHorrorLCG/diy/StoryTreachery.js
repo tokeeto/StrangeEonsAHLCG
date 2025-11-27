@@ -87,6 +87,7 @@ function setDefaults() {
 
 	$TemplateReplacement = '';
 	$TemplateReplacementBack = '';
+    $flipSuffix = false;
 }
 
 function createInterface( diy, editor ) {

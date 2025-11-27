@@ -558,6 +558,7 @@ function gameObject( masterSettings ) {
 		ListItem( 'Ally', @AHLCG-Slot-Ally ),
 		ListItem( 'Accessory', @AHLCG-Slot-Accessory ),
 		ListItem( 'Body', @AHLCG-Slot-Body ),
+		ListItem( 'Hat' , @AHLCG-Slot-Hat ),
 		ListItem( '1 Hand', @AHLCG-Slot-1Hand ),
 		ListItem( '2 Hands', @AHLCG-Slot-2Hands ),
 		ListItem( '1 Arcane', @AHLCG-Slot-1Arcane ),

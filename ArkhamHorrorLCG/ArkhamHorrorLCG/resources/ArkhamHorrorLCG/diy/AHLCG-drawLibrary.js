@@ -3028,8 +3028,8 @@ function drawCollectionNumber( g, diy, sheet, collectionNumberBox, drawSuffix ) 
 	collectionNumberBox.markupText = collectionNumber;
 
 	if (drawSuffix) {
-		if (faceIndex == FACE_FRONT) collectionNumberBox.markupText += 'a';
-		else collectionNumberBox.markupText += 'b';
+		if (faceIndex == FACE_FRONT) collectionNumberBox.markupText += ($flipSuffix == true ? 'b' : 'a');
+		else collectionNumberBox.markupText += ($flipSuffix == true ? 'a' : 'b');
 	}
 
 	var width = collectionNumberBox.drawAsSingleLine( g, region );

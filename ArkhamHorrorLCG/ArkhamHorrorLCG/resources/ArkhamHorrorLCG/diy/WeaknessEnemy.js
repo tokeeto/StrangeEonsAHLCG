@@ -60,6 +60,7 @@ function setDefaults() {
 	$TemplateReplacementBack = '';
 
 	$BackTypeBack = 'Player';	// for Zoop
+	$flipSuffix = false;
 }
 
 function createInterface( diy, editor ) {

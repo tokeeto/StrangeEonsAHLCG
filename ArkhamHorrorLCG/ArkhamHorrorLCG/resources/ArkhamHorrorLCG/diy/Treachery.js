@@ -47,6 +47,7 @@ function setDefaults() {
 	$TemplateReplacementBack = '';
 
 	$BackTypeBack = 'Encounter';	// for Zoop
+	$flipSuffix = false;
 }
 
 function createInterface( diy, editor ) {

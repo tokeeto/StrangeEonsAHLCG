@@ -1982,6 +1982,11 @@ function layoutCollection( bindings, portraitPanel, useSpinner, selectFaces, fac
 		);
 	}
 
+	var flipBox = new checkBox( 'Flip A/B suffix', false, null );
+	bindings.add( 'flipSuffix', flipBox, [false, true]);
+	CollectionPanel.place(
+		'Flip', 'align right', flipBox, 'wrap'
+	);
 	return CollectionPanel;
 }
 

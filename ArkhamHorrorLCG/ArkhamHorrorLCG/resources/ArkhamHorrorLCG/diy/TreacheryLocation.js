@@ -54,6 +54,7 @@ function setDefaults() {
 	$ShroudPerInvestigator = '0';
 //	$BackType = 'Standard';
 	$BackTypeBack = 'Standard';
+	$flipSuffix = false;
 }
 
 function createInterface( diy, editor ) {

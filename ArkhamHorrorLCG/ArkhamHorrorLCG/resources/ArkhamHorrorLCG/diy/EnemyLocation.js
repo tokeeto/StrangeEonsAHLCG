@@ -108,6 +108,7 @@ function setDefaults() {
 
 	$Damage = '0';
 	$Horror = '0';
+	$flipSuffix = false;
 }
 
 function createInterface( diy, editor ) {
