@@ -4,16 +4,18 @@
 id = CATALOGUEID{0b899f3c-78ae-40b8-bcfc-b06479b1f136:2025-10-27-15-46-0-542}
 
 priority = GAME
-ui-languages = en,it,es,fr,de,uk,zh,zh_CN
-game-languages = en,it,es,fr,de,uk,zh,zh_CN
+ui-languages = en,it,es,fr,de,uk,zh,zh_CN,pt
+game-languages = en,it,es,fr,de,uk,zh,zh_CN,pt_BR,pt
 
 catalog-name = Arkham Horror: The Card Game
 catalog-name_de_DE = Arkham Horror: Das Kartenspiel
 catalog-name_en_US = Arkham Horror: The Card Game
 catalog-name_fr_FR = Horreur a Arkham : Le Jeu de Cartes
 catalog-name_it_IT = Arkham Horror: Il Gioco di Carte
+catalog-name_pt = Arkham Horror: O Jogo de Cartas
 
 catalog-credit = jaqenZann
+
 catalog-description = <p>This plug-in allows the creation of components for \
     <i><b>Arkham Horror: The Card Game</b></i> by Fantasy Flight Games.</p>\n<p>This \
     plug-in is intended to be used by fans of the game, and <b>any commercial use is \
@@ -89,6 +91,25 @@ catalog-description_it_IT = <p>Questa plug-in permette la creazione di \
     grande gioco.</p>\n<p>Grazie anche a karagh, per la sua plugin Lord of the \
     Rings: The Card Game che &egrave; stata indispensabile nel rendere tutto questo \
     possibile.</p>
+catalog-description_pt = <p>Este plugin permite a criação de componentes para \
+    <i><b>Arkham Horror: O Jogo de Cartas</b></i> da Fantasy Flight Games.</p>\n<p> \
+    Este plugin foi desenvolvido para uso de fãs do jogo, e <b>qualquer uso \
+    comercial não é permitido</b>. Observe que este plugin não é produzido nem \
+    endossado pela FFG, e eles não fornecem suporte para ele. \
+    <i><b>LCG</b></i> e <i><b>Arkham Horror: O Jogo de Cartas</b></i> são marcas \
+    registradas da <i><b>Fantasy Flight Publishing, Inc.</b></i>. Todos os direitos \
+    pertencem aos seus respectivos proprietários.</p>\n<h2>Créditos e \
+    agradecimentos:</h2>\n<p>Desenvolvido por Tim Bennett (jaqenZann).</p>\n \
+    <p>Atualmente mantido por Tokeeto em <a \
+    href="https://github.com/tokeeto/StrangeEonsAHLCG">https://github.com/tokeeto/StrangeEonsAHLCG</a></p>\
+    <p>Modelos originais desenvolvidos com ajuda dos templates de GeckoTH e \
+    digitalizações de cartas de Will Fuqua.\n\nModelos posteriores foram \
+    atualizados, adicionados ou modificados por Tokeeto, 5argon e coldtoes da \
+    comunidade Mythos Busters.</p>\n<p>Tradução italiana por Stefano Cardinale. \
+    Tradução francesa por David Violeau. Tradução alemã por Magnus Upmann.</p>\
+    <p>Agradecimentos a Christopher G. Jennings pelo Strange Eons, e a Nate French, \
+    MJ Newman e FFG por este excelente jogo.</p>
+
 
 catalog-tags = game
 
