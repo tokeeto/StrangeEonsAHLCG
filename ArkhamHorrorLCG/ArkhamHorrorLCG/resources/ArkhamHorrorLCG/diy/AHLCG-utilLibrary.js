@@ -1472,16 +1472,36 @@ const createDarkenedImage = filterFunction(
 
 function createReturnToImage( iconImage )
 {
+	// 1. Pega o ícone padrão (preto e transparente) e redimensiona
 	var icon = ImageUtils.resize( iconImage, 28, 28 );
 	var base = ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-ReturnToBase.png');
 
+	// 2. O TRUQUE MÁGICO: Criar uma versão BRANCA do ícone em tempo de execução
+	var whiteIcon = ImageUtils.create( 28, 28, true );
+	var gWhite = whiteIcon.createGraphics();
+
+	// Pinta um quadrado inteiro de branco
+	gWhite.setColor( java.awt.Color.WHITE );
+	gWhite.fillRect( 0, 0, 28, 28 );
+
+	// DstIn: Mantém o branco APENAS onde o ícone original tem pixels (usando o alfa dele)
+	gWhite.setComposite( java.awt.AlphaComposite.DstIn );
+	gWhite.drawImage( icon, 0, 0, null );
+	gWhite.dispose();
+
+	// 3. Prepara o canvas final (36x33)
 	var destImage = ImageUtils.create( 36, 33, true );
 	var g = destImage.createGraphics();
-	g.drawImage( base, 0, 0, null );
-	g.setComposite( java.awt.AlphaComposite.DstOut );
-	g.drawImage(icon, 4, 4, null);
-	g.dispose();
+	g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
 
+	// 4. Desenha a base (o círculo preto sólido)
+	g.drawImage( base, 0, 0, null );
+
+	// 5. Desenha o novo ícone que agora é branco por cima do círculo preto
+	g.setComposite( java.awt.AlphaComposite.SrcOver );
+	g.drawImage( whiteIcon, 4, 4, null );
+
+	g.dispose();
 	return destImage;
 }
 
