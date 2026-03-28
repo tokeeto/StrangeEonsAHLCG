@@ -565,6 +565,7 @@ function gameObject( masterSettings ) {
 		ListItem( '2 Arcane' , @AHLCG-Slot-2Arcane ),
 		ListItem( 'Foot' , @AHLCG-Slot-Foot ),
 		ListItem( 'Mask' , @AHLCG-Slot-Mask ),
+		ListItem( 'Education' , @AHLCG-Slot-Education ),
 		ListItem( 'Tarot', @AHLCG-Slot-Tarot ) );
 
 	this.comboWeaknessTypes = new Array(

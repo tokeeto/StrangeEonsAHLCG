@@ -1,7 +1,17 @@
 AHLCG-Asset-Default-template = ArkhamHorrorLCG/templates/AHLCG-Asset-G.jp2
 AHLCG-AssetBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2
 
-AHLCG-Asset-Name-region =  68,14,238,29
+AHLCG-Asset-NameG-region =  68,14,238,29
+AHLCG-Asset-NameK-region =  68,14,238,29
+AHLCG-Asset-NameR-region =  68,14,238,29
+AHLCG-Asset-NameM-region =  68,14,238,29
+AHLCG-Asset-NameV-region =  68,14,238,29
+AHLCG-Asset-NameN-region =  68,14,238,29
+AHLCG-Asset-NameW-region =  68,14,238,29
+AHLCG-Asset-NameT-region =  68,14,238,29
+AHLCG-Asset-NameD-region =  73,14,228,29
+AHLCG-Asset-NameP-region =  68,14,238,29
+
 AHLCG-Asset-Subtype-region = 86,301,203,15
 AHLCG-Asset-Label-region = 20,62,38,14
 

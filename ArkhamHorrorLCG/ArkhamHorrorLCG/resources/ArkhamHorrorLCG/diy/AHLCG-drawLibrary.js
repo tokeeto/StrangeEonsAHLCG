@@ -458,7 +458,7 @@ function drawLocationEncounterOverlay( g, diy, sheet ) {
 	sheet.paintImage( g, image, region );
 }
 
-function drawName( g, diy, sheet, nameBox ) {
+function drawName( g, diy, sheet, nameBox, cClass ) {
 	var faceIndex = sheet.getSheetIndex();
 	var title = '';
 	var unique = '';
@@ -497,8 +497,12 @@ function drawName( g, diy, sheet, nameBox ) {
 		if ( unique == '1' ) {
 			title = '<uni>' + title;
 		}
-
-		var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Name-region') );
+		
+		if (cClass){
+			var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Name' + getClassInitial( cClass ) +  '-region') );
+		} else {
+			var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Name-region') );
+		}
 
 		if (CardTypes[faceIndex] == 'Ultimatum' && $Subtitle.length > 0) {
 			region = diy.settings.getRegion( getExpandedKey( faceIndex, 'NameWithSubtitle-region') );
@@ -729,10 +733,6 @@ function drawChaosName( g, diy, sheet, nameBox ) {
 
 function drawSubtitle( g, diy, sheet, subtitleBox, className, drawBox ) {
 	var faceIndex = sheet.getSheetIndex();
-
-	// not currently supported
-//	if ( className == 'Dual' ) return;
-
 	// can't make this work without creating a new box
 	// otherwise, you have to edit the text for the color change to happen
 	if ( className.indexOf('Parallel') >= 0) {
