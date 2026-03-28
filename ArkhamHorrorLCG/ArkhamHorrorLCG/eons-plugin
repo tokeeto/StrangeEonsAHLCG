@@ -1,11 +1,11 @@
 #
 #
 
-id = CATALOGUEID{0b899f3c-78ae-40b8-bcfc-b06479b1f136:2026-0-26-7-52-5-276}
+id = CATALOGUEID{0b899f3c-78ae-40b8-bcfc-b06479b1f136:2026-2-28-9-26-43-315}
 
 priority = GAME
 ui-languages = en,it,es,fr,de,uk,zh,zh_CN
-game-languages = en,it,es,fr,de,uk,zh,zh_CN
+game-languages = en,it,es,pl,fr,de,uk,zh,zh_CN
 
 catalog-name = Arkham Horror: The Card Game
 catalog-name_de_DE = Arkham Horror: Das Kartenspiel
