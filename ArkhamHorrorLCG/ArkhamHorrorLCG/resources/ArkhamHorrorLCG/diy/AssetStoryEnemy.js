@@ -299,8 +299,8 @@ function paintBack( g, diy, sheet ) {
 	var collectionSuffix = false;
 	if ( $ShowCollectionNumberFront == '1' && $ShowCollectionNumberBack == '1' ) collectionSuffix = true;
 
-	var collectionBox = $ShowCollectionNumberFront == '1' ? BackCollection_box : null;
-	var encounterBox = $ShowEncounterNumberFront == '1' ? BackEncounter_box : null;
+	var collectionBox = $ShowCollectionNumberBack == '1' ? BackCollection_box : null;
+	var encounterBox = $ShowEncounterNumberBack == '1' ? BackEncounter_box : null;
 
 //	drawCollectorInfo( g, diy, sheet, $ShowCollectionNumberBack == '1', collectionSuffix, $ShowEncounterNumberBack == '1', true, true );
 	drawCollectorInfo( g, diy, sheet, collectionBox, collectionSuffix, true, encounterBox, true, BackCopyright_box, BackArtist_box );
