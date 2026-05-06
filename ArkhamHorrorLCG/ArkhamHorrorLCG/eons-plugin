@@ -12,6 +12,7 @@ catalog-name_de_DE = Arkham Horror: Das Kartenspiel
 catalog-name_en_US = Arkham Horror: The Card Game
 catalog-name_fr_FR = Horreur a Arkham : Le Jeu de Cartes
 catalog-name_it_IT = Arkham Horror: Il Gioco di Carte
+catalog-name_pt = Arkham Horror: The Card Game
 
 catalog-credit = jaqenZann
 catalog-description = <p>This plug-in allows the creation of components for \
@@ -89,6 +90,24 @@ catalog-description_it_IT = <p>Questa plug-in permette la creazione di \
     grande gioco.</p>\n<p>Grazie anche a karagh, per la sua plugin Lord of the \
     Rings: The Card Game che &egrave; stata indispensabile nel rendere tutto questo \
     possibile.</p>
+catalog-description_pt = <p>Este plug-in permite a \
+    criação de componentes para o jogo <i><b>Arkham Horror: Card Game</b></i> da Fantasy \
+    Flight Games.</p>\n<p>Este plug-in destina-se ao uso por fãs do jogo, \
+    e <b>qualquer uso comercial não é permitido</b>. Note que este plug-in não é \
+    produzido ou endossado pela FFG, nem eles fornecem suporte para ele. \
+    <i><b>LCG</b></i> e <i><b>Arkham Horror: Card Game</b></i> são marcas \
+    registradas da <i><b>Fantasy Flight Publishing, Inc.</b></i> Todos os direitos reservados \
+    aos seus respectivos proprietários.</p>\n<h2>Créditos e agradecimentos:</h2>\n<p>Desenvolvido por \
+    Tim Bennett (jaqenZann). Templates desenvolvidos com a ajuda dos templates de \
+    GeckoTH e varreduras de cartas por Will Fuqua. Tradução italiana por Stefano Cardinale. \
+    Tradução francesa por David Violeau. Tradução alemã por Magnus \
+    Upmann.</p>\n<p>Agradecimentos a Christopher G. Jennings pelo Strange Eons, e a Nate \
+    French, MJ Newman e à FFG por este grande jogo.</p>\n<p>Agradecimentos também a karagh, \
+    cujo plugin de Lord of the Rings: The Card Game foi fundamental para tornar isto \
+    possível.</p>\n<p>Por favor, leia e cumpra as Diretrizes da FFG para Uso Comunitário \
+    de IP \
+    aqui:</p><p>https://images-cdn.fantasyflightgames.com/filer_public/fa/b1/fab15a15\
+    -94a6-404c-ab86-6a3b0e77a7a0/ip_policy_031419_final_v21.pdf</p>
 
 catalog-tags = game
 
