@@ -242,14 +242,13 @@ function paintFront( g, diy, sheet ) {
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
 	drawAssetTemplate( g, diy, sheet, $CardClass, $CardClass2, $CardClass3 );
 	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Asset );
-	drawName( g, diy, sheet, Name_box );
-
 	var cClass = $CardClass;
 	if ( getClassCount( $CardClass, $CardClass2, $CardClass3 ) > 1 ) cClass = 'Dual';
-	else {
-		// no subtitles for multiclass
-		if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, cClass, true );
-	}
+
+	drawName( g, diy, sheet, Name_box, cClass );
+
+	// no subtitles for multiclass
+	if ( cClass != 'Dual' && $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, cClass, true );
 
 	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
@@ -285,12 +284,10 @@ function paintBack( g, diy, sheet ) {
 	PortraitList[getPortraitIndex( 'BackPortrait' )].paint( g, sheet.getRenderTarget() );
 	drawAssetTemplate( g, diy, sheet, $CardClassBack, $CardClass2Back, $CardClass3Back );
 	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Asset );
-	drawName( g, diy, sheet, BackName_box );
-
-//	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, $CardClassBack, true );
-
 	var cClass = $CardClassBack;
 	if ( getClassCount( $CardClassBack, $CardClass2Back, $CardClass3Back ) > 1 ) cClass = 'Dual';
+
+	drawName( g, diy, sheet, BackName_box, cClass );
 
 	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, cClass, true );
 
