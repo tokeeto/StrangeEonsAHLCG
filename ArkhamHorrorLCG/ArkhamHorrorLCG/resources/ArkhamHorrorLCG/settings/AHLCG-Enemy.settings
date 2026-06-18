@@ -1,55 +1,55 @@
-AHLCG-Enemy-Default-template = ArkhamHorrorLCG/templates/AHLCG-Enemy.jp2
-AHLCG-EnemyBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-EncounterBack.jp2
+AHLCG-Enemy-Default-template = ArkhamHorrorLCG/templates/AHLCG-Enemy.png
+AHLCG-EnemyBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-EncounterBack.png
 
-AHLCG-Enemy-Name-region = 62,5,252,27
+AHLCG-Enemy-Name-region = 320,92,1008,108
 # Bigger than standard, but don't want fractional sizes because Teutonic comes out weird
 AHLCG-Enemy-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.05}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
-AHLCG-Enemy-SubtitleText-region = 40,32,293,20
+AHLCG-Enemy-SubtitleText-region = 232,200,1172,80
 
-AHLCG-Enemy-Label-region = 157,308,61,14
+AHLCG-Enemy-Label-region = 700,1304,244,56
 AHLCG-Enemy-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
 
-AHLCG-Enemy-Body-region = 20,104,338,165
+AHLCG-Enemy-Body-region = 152,488,1352,660
 
-AHLCG-Enemy-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-Enemy-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Enemy-Portrait-portrait-pany = 0
-AHLCG-Enemy-Portrait-portrait-clip-region = 0,241,375,284
+AHLCG-Enemy-Portrait-portrait-clip-region = 72,1036,1500,1136
 
-AHLCG-Enemy-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-Enemy-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Enemy-BackPortrait-portrait-pany = 0
-AHLCG-Enemy-BackPortrait-portrait-clip-region = 0,241,375,284
+AHLCG-Enemy-BackPortrait-portrait-clip-region = 72,1036,1500,1136
 
 AHLCG-Enemy-EncounterPortrait-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Enemy-EncounterPortrait-portrait-pany = 0
-AHLCG-Enemy-Encounter-portrait-clip-region = 174,274,28,28
-AHLCG-Enemy-DefaultEncounter-portrait-clip-region = 174,274,28,28
-AHLCG-Enemy-ReturnEncounter-portrait-clip-region = 169,270,37,33
-AHLCG-Enemy-DefaultReturnEncounter-portrait-clip-region = 169,270,37,33
+AHLCG-Enemy-Encounter-portrait-clip-region = 768,1168,112,112
+AHLCG-Enemy-DefaultEncounter-portrait-clip-region = 768,1168,112,112
+AHLCG-Enemy-ReturnEncounter-portrait-clip-region = 748,1152,148,132
+AHLCG-Enemy-DefaultReturnEncounter-portrait-clip-region = 748,1152,148,132
 
 AHLCG-Enemy-CollectionPortrait-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Enemy-CollectionPortrait-portrait-pany = 0
-AHLCG-Enemy-Collection-portrait-clip-region = 320,510,13,13
-AHLCG-Enemy-DefaultCollection-portrait-clip-region = 320,510,13,13
+AHLCG-Enemy-Collection-portrait-clip-region = 1352,2112,52,52
+AHLCG-Enemy-DefaultCollection-portrait-clip-region = 1352,2112,52,52
 
-AHLCG-Enemy-Attack-region = 106,51,26,27
-AHLCG-Enemy-AttackPerInv-region = 102,51,24,27
-AHLCG-Enemy-AttackPerInvIcon-region = 121,56,14,14
-AHLCG-Enemy-Evade-region = 246,51,26,27
-AHLCG-Enemy-EvadePerInv-region = 242,51,24,27
-AHLCG-Enemy-EvadePerInvIcon-region = 261,56,14,14
-AHLCG-Enemy-Health-region = 168,45,40,35
-AHLCG-Enemy-HealthPerInv-region = 169,45,27,35
-AHLCG-Enemy-HealthPerInvIcon-region = 190,52,17,17
+AHLCG-Enemy-Attack-region = 496,276,104,108
+AHLCG-Enemy-AttackPerInv-region = 480,276,96,108
+AHLCG-Enemy-AttackPerInvIcon-region = 556,296,56,56
+AHLCG-Enemy-Evade-region = 1056,276,104,108
+AHLCG-Enemy-EvadePerInv-region = 1040,276,96,108
+AHLCG-Enemy-EvadePerInvIcon-region = 1116,296,56,56
+AHLCG-Enemy-Health-region = 744,252,160,140
+AHLCG-Enemy-HealthPerInv-region = 748,252,108,140
+AHLCG-Enemy-HealthPerInvIcon-region = 832,280,68,68
 
-AHLCG-Enemy-Damage1-region = 132,284,19,23
-AHLCG-Enemy-Damage2-region = 109,277,19,23
-AHLCG-Enemy-Damage3-region = 86,268,19,23
-AHLCG-Enemy-Damage4-region = 65,256,19,23
-AHLCG-Enemy-Damage5-region = 45,242,19,23
-AHLCG-Enemy-Horror1-region = 221,284,27,24
-AHLCG-Enemy-Horror2-region = 244,277,27,24
-AHLCG-Enemy-Horror3-region = 267,268,27,24
-AHLCG-Enemy-Horror4-region = 288,255,27,24
-AHLCG-Enemy-Horror5-region = 308,241,27,24
+AHLCG-Enemy-Damage1-region = 600,1208,76,92
+AHLCG-Enemy-Damage2-region = 508,1180,76,92
+AHLCG-Enemy-Damage3-region = 416,1144,76,92
+AHLCG-Enemy-Damage4-region = 332,1096,76,92
+AHLCG-Enemy-Damage5-region = 252,1040,76,92
+AHLCG-Enemy-Horror1-region = 956,1208,108,96
+AHLCG-Enemy-Horror2-region = 1048,1180,108,96
+AHLCG-Enemy-Horror3-region = 1140,1144,108,96
+AHLCG-Enemy-Horror4-region = 1224,1092,108,96
+AHLCG-Enemy-Horror5-region = 1304,1036,108,96
 
 AHLCG-Enemy-Dash-tint = 38.0, 0.14, 1.0

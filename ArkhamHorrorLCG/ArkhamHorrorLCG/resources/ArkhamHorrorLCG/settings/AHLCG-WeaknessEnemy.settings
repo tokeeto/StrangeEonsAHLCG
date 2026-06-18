@@ -1,50 +1,50 @@
-AHLCG-WeaknessEnemy-Default-template = ArkhamHorrorLCG/templates/AHLCG-WeaknessEnemy.jp2
-AHLCG-WeaknessEnemyBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2
+AHLCG-WeaknessEnemy-Default-template = ArkhamHorrorLCG/templates/AHLCG-WeaknessEnemy.png
+AHLCG-WeaknessEnemyBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png
 
-#AHLCG-WeaknessEnemy-Name-region = 62,4,252,27
-AHLCG-WeaknessEnemy-Label-region = 158,305,58,15
+#AHLCG-WeaknessEnemy-Name-region = 320,88,1008,108
+AHLCG-WeaknessEnemy-Label-region = 704,1292,232,60
 #AHLCG-WeaknessEnemy-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
-AHLCG-WeaknessEnemy-Subtype-region = 40,31,293,20
+AHLCG-WeaknessEnemy-Subtype-region = 232,196,1172,80
 
-#AHLCG-WeaknessEnemy-Body-region = 20,103,338,165
+#AHLCG-WeaknessEnemy-Body-region = 152,484,1352,660
 
-AHLCG-WeaknessEnemy-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-WeaknessEnemy-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-WeaknessEnemy-Portrait-portrait-pany = 0
-AHLCG-WeaknessEnemy-Portrait-portrait-clip-region = 0,241,375,284
+AHLCG-WeaknessEnemy-Portrait-portrait-clip-region = 72,1036,1500,1136
 
 AHLCG-WeaknessEnemy-EncounterPortrait-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-WeaknessEnemy-EncounterPortrait-portrait-pany = 0
-AHLCG-WeaknessEnemy-Encounter-portrait-clip-region = 173,274,28,28
-AHLCG-WeaknessEnemy-DefaultEncounter-portrait-clip-region = 173,274,28,28
-AHLCG-WeaknessEnemy-ReturnEncounter-portrait-clip-region = 168,270,37,33
-AHLCG-WeaknessEnemy-DefaultReturnEncounter-portrait-clip-region = 168,270,37,33
+AHLCG-WeaknessEnemy-Encounter-portrait-clip-region = 764,1168,112,112
+AHLCG-WeaknessEnemy-DefaultEncounter-portrait-clip-region = 764,1168,112,112
+AHLCG-WeaknessEnemy-ReturnEncounter-portrait-clip-region = 744,1152,148,132
+AHLCG-WeaknessEnemy-DefaultReturnEncounter-portrait-clip-region = 744,1152,148,132
 
 AHLCG-WeaknessEnemy-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-WeaknessEnemy-Collection-portrait-pany = 0
-AHLCG-WeaknessEnemy-DefaultCollection-portrait-clip-region = 320,510,13,13
-AHLCG-WeaknessEnemy-Collection-portrait-clip-region = 320,510,13,13
+AHLCG-WeaknessEnemy-DefaultCollection-portrait-clip-region = 1352,2112,52,52
+AHLCG-WeaknessEnemy-Collection-portrait-clip-region = 1352,2112,52,52
 
-#AHLCG-WeaknessEnemy-Attack-region = 106,49,26,27
-#AHLCG-WeaknessEnemy-AttackPerInv-region = 102,49,24,27
-#AHLCG-WeaknessEnemy-AttackPerInvIcon-region = 121,54,14,14
-#AHLCG-WeaknessEnemy-Evade-region = 246,49,26,27
-#AHLCG-WeaknessEnemy-EvadePerInv-region = 242,49,24,27
-#AHLCG-WeaknessEnemy-EvadePerInvIcon-region = 261,54,14,14
-#AHLCG-WeaknessEnemy-Health-region = 168,44,40,35
-#AHLCG-WeaknessEnemy-HealthPerInv-region = 169,44,27,35
-#AHLCG-WeaknessEnemy-HealthPerInv-region = 191,52,17,17
+#AHLCG-WeaknessEnemy-Attack-region = 496,268,104,108
+#AHLCG-WeaknessEnemy-AttackPerInv-region = 480,268,96,108
+#AHLCG-WeaknessEnemy-AttackPerInvIcon-region = 556,288,56,56
+#AHLCG-WeaknessEnemy-Evade-region = 1056,268,104,108
+#AHLCG-WeaknessEnemy-EvadePerInv-region = 1040,268,96,108
+#AHLCG-WeaknessEnemy-EvadePerInvIcon-region = 1116,288,56,56
+#AHLCG-WeaknessEnemy-Health-region = 744,248,160,140
+#AHLCG-WeaknessEnemy-HealthPerInv-region = 748,248,108,140
+#AHLCG-WeaknessEnemy-HealthPerInv-region = 836,280,68,68
 
-#AHLCG-WeaknessEnemy-Damage1-region = 132,282,19,23
-#AHLCG-WeaknessEnemy-Damage2-region = 109,275,19,23
-#AHLCG-WeaknessEnemy-Damage3-region = 86,265,19,23
-#AHLCG-WeaknessEnemy-Damage4-region = 63,252,19,23
-#AHLCG-WeaknessEnemy-Damage5-region = 43,238,19,23
-#AHLCG-WeaknessEnemy-Horror1-region = 221,282,27,24
-#AHLCG-WeaknessEnemy-Horror2-region = 244,275,27,24
-#AHLCG-WeaknessEnemy-Horror3-region = 267,266,27,24
-#AHLCG-WeaknessEnemy-Horror4-region = 290,252,27,24
-#AHLCG-WeaknessEnemy-Horror5-region = 310,238,27,24
+#AHLCG-WeaknessEnemy-Damage1-region = 600,1200,76,92
+#AHLCG-WeaknessEnemy-Damage2-region = 508,1172,76,92
+#AHLCG-WeaknessEnemy-Damage3-region = 416,1132,76,92
+#AHLCG-WeaknessEnemy-Damage4-region = 324,1080,76,92
+#AHLCG-WeaknessEnemy-Damage5-region = 244,1024,76,92
+#AHLCG-WeaknessEnemy-Horror1-region = 956,1200,108,96
+#AHLCG-WeaknessEnemy-Horror2-region = 1048,1172,108,96
+#AHLCG-WeaknessEnemy-Horror3-region = 1140,1136,108,96
+#AHLCG-WeaknessEnemy-Horror4-region = 1232,1080,108,96
+#AHLCG-WeaknessEnemy-Horror5-region = 1312,1024,108,96
 
-AHLCG-WeaknessEnemy-BasicWeaknessEnemy-region = 155,264,64,40
-AHLCG-WeaknessEnemy-PersonalWeaknessEnemy-region = 155,264,64,40
-AHLCG-WeaknessEnemy-BasicWeaknessIcon-region = 173,274,28,28
+AHLCG-WeaknessEnemy-BasicWeaknessEnemy-region = 692,1128,256,160
+AHLCG-WeaknessEnemy-PersonalWeaknessEnemy-region = 692,1128,256,160
+AHLCG-WeaknessEnemy-BasicWeaknessIcon-region = 764,1168,112,112

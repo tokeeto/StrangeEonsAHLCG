@@ -1,35 +1,35 @@
-AHLCG-Event-Default-template = ArkhamHorrorLCG/templates/AHLCG-Event-G.jp2
-AHLCG-EventBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2
+AHLCG-Event-Default-template = ArkhamHorrorLCG/templates/AHLCG-Event-G.png
+AHLCG-EventBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png
 
-AHLCG-Event-Name-region = 40,304,297,29
-AHLCG-Event-Subtype-region = 86,333,203,15
-AHLCG-Event-Label-region = 21,62,36,14
-AHLCG-Event-Level-region = 14,35,49,23
+AHLCG-Event-Name-region = 232,1288,1188,116
+AHLCG-Event-Subtype-region = 416,1404,812,60
+AHLCG-Event-Label-region = 156,320,144,56
+AHLCG-Event-Level-region = 128,212,196,92
 
-AHLCG-Event-Body-region = 44,338,288,158
+AHLCG-Event-Body-region = 248,1424,1152,632
 
-AHLCG-Event-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-Event-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Event-Portrait-portrait-pany = 0
-AHLCG-Event-Portrait-portrait-clip-region = 0,0,375,288
+AHLCG-Event-Portrait-portrait-clip-region = 72,72,1500,1152
 
 AHLCG-Event-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Event-Collection-portrait-pany = 0
-AHLCG-Event-Collection-portrait-clip-region = 319,508,13,13
-AHLCG-Event-DefaultCollection-portrait-clip-region = 320,508,13,13
+AHLCG-Event-Collection-portrait-clip-region = 1348,2104,52,52
+AHLCG-Event-DefaultCollection-portrait-clip-region = 1352,2104,52,52
 
-AHLCG-Event-ClassSymbol21-region = 144, 256, 49, 49
-AHLCG-Event-ClassSymbol22-region = 187, 256, 49, 49
+AHLCG-Event-ClassSymbol21-region = 648,1096,196,196
+AHLCG-Event-ClassSymbol22-region = 820,1096,196,196
 
-AHLCG-Event-ClassSymbol31-region = 123, 256, 49, 49
-AHLCG-Event-ClassSymbol32-region = 166, 256, 49, 49
-AHLCG-Event-ClassSymbol33-region = 209, 256, 49, 49
+AHLCG-Event-ClassSymbol31-region = 564,1096,196,196
+AHLCG-Event-ClassSymbol32-region = 736,1096,196,196
+AHLCG-Event-ClassSymbol33-region = 908,1096,196,196
 
-AHLCG-Event-BasicWeaknessEvent-region = 162,247,54,53
-AHLCG-Event-BasicWeaknessIcon-region = 173,258,30,30
-AHLCG-Event-WeaknessBody-region = 44,352,288,143
+AHLCG-Event-BasicWeaknessEvent-region = 720,1060,216,212
+AHLCG-Event-BasicWeaknessIcon-region = 764,1104,120,120
+AHLCG-Event-WeaknessBody-region = 248,1480,1152,572
 
 AHLCG-Event-Dash-tint = 0.0, 0.0, 1.0
 
-AHLCG-Event-Encounter-overlay-region = 163,256,49,51
-AHLCG-Event-Encounter-portrait-clip-region = 174,266,28,28
-AHLCG-Event-ReturnEncounter-portrait-clip-region = 174,266,28,28
+AHLCG-Event-Encounter-overlay-region = 724,1096,196,204
+AHLCG-Event-Encounter-portrait-clip-region = 768,1136,112,112
+AHLCG-Event-ReturnEncounter-portrait-clip-region = 768,1136,112,112

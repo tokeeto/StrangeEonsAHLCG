@@ -1,4 +1,4 @@
-AHLCG-Cost-region = 18,11,40,38
+AHLCG-Cost-region = 144,116,160,152
 
 #AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000; KERNING: KERNING_ON
 AHLCG-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
@@ -26,45 +26,45 @@ AHLCG-Story-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {
 AHLCG-Story-alignment = left
 AHLCG-Story-tightness = 0.6
 
-AHLCG-Artist-region = 14,512,121,10
+AHLCG-Artist-region = 128,2120,484,40
 AHLCG-Artist-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 AHLCG-Artist-alignment = left, middle
-AHLCG-Copyright-region = 137,512,101,10
+AHLCG-Copyright-region = 620,2120,404,40
 AHLCG-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 AHLCG-Copyright-alignment = center, middle
 
-AHLCG-Level-region = 14,36,48,23
-AHLCG-NoLevel-region = 8,5,60,58
-AHLCG-Skill1-region = 0,80,54,44
-AHLCG-Skill2-region = 0,122,54,44
-AHLCG-Skill3-region = 0,164,54,44
-AHLCG-Skill4-region = 0,206,54,44
-AHLCG-Skill5-region = 0,248,54,44
-AHLCG-Skill6-region = 0,290,54,44
-AHLCG-SkillIcon1-region = 13,87,25,26
-AHLCG-SkillIcon2-region = 13,129,25,26
-AHLCG-SkillIcon3-region = 13,171,25,26
-AHLCG-SkillIcon4-region = 13,213,25,26
-AHLCG-SkillIcon5-region = 13,255,25,26
-AHLCG-SkillIcon6-region = 13,297,25,26
+AHLCG-Level-region = 128,216,192,92
+AHLCG-NoLevel-region = 104,92,240,232
+AHLCG-Skill1-region = 72,392,216,176
+AHLCG-Skill2-region = 72,560,216,176
+AHLCG-Skill3-region = 72,728,216,176
+AHLCG-Skill4-region = 72,896,216,176
+AHLCG-Skill5-region = 72,1064,216,176
+AHLCG-Skill6-region = 72,1232,216,176
+AHLCG-SkillIcon1-region = 124,420,100,104
+AHLCG-SkillIcon2-region = 124,588,100,104
+AHLCG-SkillIcon3-region = 124,756,100,104
+AHLCG-SkillIcon4-region = 124,924,100,104
+AHLCG-SkillIcon5-region = 124,1092,100,104
+AHLCG-SkillIcon6-region = 124,1260,100,104
 
-AHLCG-Slot-region = 309,454,51,52
-AHLCG-Slot2-region = 255,454,51,52
+AHLCG-Slot-region = 1308,1888,204,208
+AHLCG-Slot2-region = 1092,1888,204,208
 
-#AHLCG-Stamina-region = 148,465,33,41
-AHLCG-Stamina-region = 148,467,31,39
-AHLCG-StaminaPerInvIcon-region = 158,456,29,49
-#AHLCG-Sanity-region = 197,469,43,36
-AHLCG-Sanity-region = 197,471,43,36
-AHLCG-SanityPerInvIcon-region = 215,456,29,49
+#AHLCG-Stamina-region = 664,1932,132,164
+AHLCG-Stamina-region = 664,1940,124,156
+AHLCG-StaminaPerInvIcon-region = 704,1896,116,196
+#AHLCG-Sanity-region = 860,1948,172,144
+AHLCG-Sanity-region = 860,1956,172,144
+AHLCG-SanityPerInvIcon-region = 932,1896,116,196
 
-AHLCG-Clues-region = 239,296,51,48
+AHLCG-Clues-region = 1028,1256,204,192
 
-AHLCG-CollectionNumber-region = 318,512,37,10
+AHLCG-CollectionNumber-region = 1344,2120,148,40
 AHLCG-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 AHLCG-CollectionNumber-alignment = right, middle
 
-AHLCG-EncounterNumber-region = 247,512,55,10
+AHLCG-EncounterNumber-region = 1060,2120,220,40
 AHLCG-EncounterNumber-alignment = right, middle
 AHLCG-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 

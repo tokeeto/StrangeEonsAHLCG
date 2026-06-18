@@ -34,7 +34,7 @@ function getLocale() {
 // This function is a convenient shortcut for getting this plug-in's images
 function image( resource, folder, ext ) {
 	if( ext == undefined ) {
-		ext = 'jp2';
+		ext = 'png';
 	}
 
 	var imageName = 'ArkhamHorrorLCG/';

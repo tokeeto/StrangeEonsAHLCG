@@ -22,21 +22,21 @@ function drawTemplate( g, sheet, className ) {
 	if ( className != null && className.length > 0 ) {
 		// asset basic weaknesses should use the AssetStory template
 		if ( CardTypes[faceIndex] == 'Asset' && className == 'BasicWeakness' )
-			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-AssetStory' + '-' + getClassInitial( className ) + '.jp2');
+			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-AssetStory' + '-' + getClassInitial( className ) + '.png');
 		else
-			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '-' + getClassInitial( className ) + '.jp2');
+			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '-' + getClassInitial( className ) + '.png');
 	}
 	else if ( CardTypes[faceIndex] == 'StoryChaos' || CardTypes[faceIndex] == 'ChaosStory' ) {
-		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-Chaos.jp2');
+		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-Chaos.png');
 	}
 	else if ( 'Concealed' ) {
-		if ( $Template == 'Decoy' ) image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'Decoy.jp2');
-		else if ( $Template == 'NamedDecoy' ) image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'NamedDecoy.jp2');
-		else image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '.jp2');
+		if ( $Template == 'Decoy' ) image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'Decoy.png');
+		else if ( $Template == 'NamedDecoy' ) image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'NamedDecoy.png');
+		else image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '.png');
 	}
 	else
 	{
-		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '.jp2');
+		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '.png');
 	}
 
 	var w = image.getWidth();
@@ -92,7 +92,7 @@ function drawAssetTemplate( g, diy, sheet, className, className2, className3 ) {
 	}
 
 	// dual class
-	var image = ImageUtils.get( 'ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '-D.jp2' );
+	var image = ImageUtils.get( 'ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '-D.png' );
 
 	var w = image.getWidth();
 	var h = image.getHeight();
@@ -199,7 +199,7 @@ function drawEventTemplate( g, diy, sheet, className, className2, className3 ) {
 	}
 
 	// dual class
-	var image = ImageUtils.get( 'ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '-D.jp2' );
+	var image = ImageUtils.get( 'ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '-D.png' );
 
 	var w = image.getWidth();
 	var h = image.getHeight();
@@ -270,7 +270,7 @@ function drawReplacementTemplate(g, sheet, faceIndex ) {
 
 function drawGuideTemplate( diy, g, sheet, labelBox  ) {
 	var faceIndex = sheet.getSheetIndex();
-	var image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + $PageType + '.jp2');
+	var image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + $PageType + '.png');
 
 	var w = image.getWidth();
 	var h = image.getHeight();
@@ -303,7 +303,7 @@ function drawGuideTemplate( diy, g, sheet, labelBox  ) {
 
 function drawGuideTemplateA4( diy, g, sheet, labelBox ) {
 	var faceIndex = sheet.getSheetIndex();
-	var image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + $PageType + '.jp2');
+	var image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + $PageType + '.png');
 
 	var w = image.getWidth();
 	var h = image.getHeight();
@@ -336,7 +336,7 @@ function drawGuideTemplateA4( diy, g, sheet, labelBox ) {
 
 function drawGuideTemplateLetter( diy, g, sheet, labelBox ) {
 	var faceIndex = sheet.getSheetIndex();
-	var image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + $PageType + '.jp2');
+	var image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + $PageType + '.png');
 
 	var w = image.getWidth();
 	var h = image.getHeight();
@@ -429,11 +429,11 @@ function drawSubtitleTemplate( g, sheet, className ) {
 	}
 
 	if (className != null && className.length > 0) {
-		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'ST-' + getClassInitial( className ) + '.jp2');
+		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'ST-' + getClassInitial( className ) + '.png');
 	}
 	else
 	{
-		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'ST.jp2');
+		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'ST.png');
 	}
 
 	var w = image.getWidth();

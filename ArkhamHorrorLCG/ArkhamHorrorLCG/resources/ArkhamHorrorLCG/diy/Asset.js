@@ -26,6 +26,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(8);
 	diy.version = 18;
+	diy.bleedMargin = 8.64;
 }
 
 function setDefaults() {

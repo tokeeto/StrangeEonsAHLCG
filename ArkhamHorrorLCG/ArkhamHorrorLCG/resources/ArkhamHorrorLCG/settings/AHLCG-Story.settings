@@ -1,49 +1,49 @@
-AHLCG-Story-Default-template = ArkhamHorrorLCG/templates/AHLCG-Story.jp2
-AHLCG-StoryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-AssetStory.jp2
+AHLCG-Story-Default-template = ArkhamHorrorLCG/templates/AHLCG-Story.png
+AHLCG-StoryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-AssetStory.png
 
-#AHLCG-Story-Name-region = 38,31,254,31
-AHLCG-Story-Name-region = 38,24,254,44
+#AHLCG-Story-Name-region = 224,196,1016,124
+AHLCG-Story-Name-region = 224,168,1016,176
 #AHLCG-Story-Name-alignment = center, middle
-AHLCG-Story-Label-region = 138,508,100,14
+AHLCG-Story-Label-region = 624,2104,400,56
 AHLCG-Story-Label-alignment = center, middle
 AHLCG-Story-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.smallLabelSize*1.1}; WEIGHT: {Eons.namedObjects.AHLCGObject.smallLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.smallLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.smallLabelTracking}; FOREGROUND: #000000
 
 #indentedStoryBody
-AHLCG-Story-Story-region = 51,107,290,385
+AHLCG-Story-Story-region = 276,500,1160,1540
 AHLCG-Story-Story-alignment = left
 AHLCG-Story-Story-style = FAMILY: {Eons.namedObjects.AHLCGObject.storyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyStorySize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyStoryWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyStoryWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyStoryTracking}; POSTURE: POSTURE_OBLIQUE; FOREGROUND: #000000
 AHLCG-Story-Story-tightness = 0.6
-AHLCG-Story-Body-region = 36,107,305,385
+AHLCG-Story-Body-region = 216,500,1220,1540
 
-#AHLCG-Story-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+#AHLCG-Story-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 #AHLCG-Story-BackPortrait-portrait-pany = 0
-#AHLCG-Story-BackPortrait-portrait-clip-region = 0,241,375,284
+#AHLCG-Story-BackPortrait-portrait-clip-region = 72,1036,1500,1136
 
 AHLCG-Story-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Story-Encounter-portrait-pany = 0
-AHLCG-Story-Encounter-portrait-clip-region = 308,27,36,36
-AHLCG-Story-DefaultEncounter-portrait-clip-region = 308,27,36,36
-AHLCG-Story-ReturnEncounter-portrait-clip-region = 302,23,49,48
-AHLCG-Story-DefaultReturnEncounter-portrait-clip-region = 301,20,49,48
+AHLCG-Story-Encounter-portrait-clip-region = 1304,180,144,144
+AHLCG-Story-DefaultEncounter-portrait-clip-region = 1304,180,144,144
+AHLCG-Story-ReturnEncounter-portrait-clip-region = 1280,164,196,192
+AHLCG-Story-DefaultReturnEncounter-portrait-clip-region = 1276,152,196,192
 
 AHLCG-Story-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Story-Collection-portrait-pany = 0
-AHLCG-Story-DefaultCollection-portrait-clip-region = 277,492,13,13
-AHLCG-Story-Collection-portrait-clip-region = 277,492,13,13
+AHLCG-Story-DefaultCollection-portrait-clip-region = 1180,2040,52,52
+AHLCG-Story-Collection-portrait-clip-region = 1180,2040,52,52
 
-AHLCG-Story-TrackerBox-region = 34,393,306,90
-AHLCG-Story-TrackerName-region = 46,397,280,20
+AHLCG-Story-TrackerBox-region = 208,1644,1224,360
+AHLCG-Story-TrackerName-region = 256,1660,1120,80
 AHLCG-Story-TrackerName-alignment = center, middle
 AHLCG-Story-TrackerName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE:{Eons.namedObjects.AHLCGObject.titleFontSize*0.836}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.02}; FOREGROUND: #000000
 
-AHLCG-Story-EncounterNumber-region = 204,495,55,10
+AHLCG-Story-EncounterNumber-region = 888,2052,220,40
 AHLCG-Story-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #000000
 #AHLCG-StoryChaos-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
-AHLCG-Story-CollectionNumber-region = 269,495,37,10
+AHLCG-Story-CollectionNumber-region = 1148,2052,148,40
 AHLCG-Story-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #000000
 #AHLCG-StoryChaos-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 
-AHLCG-Story-Copyright-region = 70,495,86,10
+AHLCG-Story-Copyright-region = 352,2052,344,40
 AHLCG-Story-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #000000
 #AHLCG-StoryChaos-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 AHLCG-Story-Copyright-alignment = left, middle
@@ -51,13 +51,13 @@ AHLCG-Story-Copyright-alignment = left, middle
 AHLCG-Story-Dash-tint = 38.0, 0.14, 1.0
 
 # Chaos template story cards
-AHLCG-StoryChaos-Header-region = 35,135,300,305
-#AHLCG-StoryChaos-Body-region = 95,156,240,305
+AHLCG-StoryChaos-Header-region = 212,612,1200,1220
+#AHLCG-StoryChaos-Body-region = 452,696,960,1220
 
-AHLCG-StoryChaos-Body-region = 36,130,305,338
-AHLCG-StoryChaos-Story-region = 51,130,290,338
-AHLCG-StoryChaosFull-Body-region = 36,72,305,396
-AHLCG-StoryChaosFull-Story-region = 51,72,290,396
+AHLCG-StoryChaos-Body-region = 216,592,1220,1352
+AHLCG-StoryChaos-Story-region = 276,592,1160,1352
+AHLCG-StoryChaosFull-Body-region = 216,360,1220,1584
+AHLCG-StoryChaosFull-Story-region = 276,360,1160,1584
 
 AHLCG-StoryChaos-Header-style = FAMILY: {Eons.namedObjects.AHLCGObject.victoryFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyVictoryWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000
 AHLCG-StoryChaos-Header-alignment = left

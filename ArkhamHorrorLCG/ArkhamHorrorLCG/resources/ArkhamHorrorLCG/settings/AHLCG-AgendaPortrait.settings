@@ -1,27 +1,27 @@
-AHLCG-AgendaPortrait-Default-template = ArkhamHorrorLCG/templates/AHLCG-AgendaPortrait.jp2
+AHLCG-AgendaPortrait-Default-template = ArkhamHorrorLCG/templates/AHLCG-AgendaPortrait.png
 
-AHLCG-AgendaPortrait-Name-region = 87,249,330,28
-#AHLCG-AgendaPortrait-Name-region = 87,241,330,44
+AHLCG-AgendaPortrait-Name-region = 420,1068,1320,112
+#AHLCG-AgendaPortrait-Name-region = 420,1036,1320,176
 #AHLCG-AgendaPortrait-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
 
-#AHLCG-AgendaPortrait-Body-region = 19,283,493,58
-AHLCG-AgendaPortrait-Body-region = 19,283,493,64
+#AHLCG-AgendaPortrait-Body-region = 148,1204,1972,232
+AHLCG-AgendaPortrait-Body-region = 148,1204,1972,256
 AHLCG-AgendaPortrait-Body-alignment = left, middle
 
-AHLCG-AgendaPortrait-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-AgendaPortrait-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-AgendaPortrait-BackPortrait-portrait-pany = 0
-AHLCG-AgendaPortrait-BackPortrait-portrait-clip-region = 0,0,525,375
+AHLCG-AgendaPortrait-BackPortrait-portrait-clip-region = 72,72,2100,1500
 
-AHLCG-AgendaPortrait-Encounter-portrait-clip-region = 33,235,38,38
-AHLCG-AgendaPortrait-ReturnEncounter-portrait-clip-region = 29,231,45,45
-AHLCG-AgendaPortrait-DefaultEncounter-portrait-clip-region = 33,235,38,38
-AHLCG-AgendaPortrait-DefaultReturnEncounter-portrait-clip-region = 29,231,45,45
+AHLCG-AgendaPortrait-Encounter-portrait-clip-region = 204,1012,152,152
+AHLCG-AgendaPortrait-ReturnEncounter-portrait-clip-region = 188,996,180,180
+AHLCG-AgendaPortrait-DefaultEncounter-portrait-clip-region = 204,1012,152,152
+AHLCG-AgendaPortrait-DefaultReturnEncounter-portrait-clip-region = 188,996,180,180
 
-AHLCG-AgendaPortrait-Collection-portrait-clip-region = 471,358,13,13
-AHLCG-AgendaPortrait-DefaultCollection-portrait-clip-region = 471,358,13,13
+AHLCG-AgendaPortrait-Collection-portrait-clip-region = 1956,1504,52,52
+AHLCG-AgendaPortrait-DefaultCollection-portrait-clip-region = 1956,1504,52,52
 
-AHLCG-AgendaPortrait-EncounterNumber-region = 402,361,55,10
-AHLCG-AgendaPortrait-CollectionNumber-region = 472,361,37,10
+AHLCG-AgendaPortrait-EncounterNumber-region = 1680,1516,220,40
+AHLCG-AgendaPortrait-CollectionNumber-region = 1960,1516,148,40
 
-AHLCG-AgendaPortrait-Artist-region = 14,361,129,10
-AHLCG-AgendaPortrait-Copyright-region = 208,361,80,10
+AHLCG-AgendaPortrait-Artist-region = 128,1516,516,40
+AHLCG-AgendaPortrait-Copyright-region = 904,1516,320,40

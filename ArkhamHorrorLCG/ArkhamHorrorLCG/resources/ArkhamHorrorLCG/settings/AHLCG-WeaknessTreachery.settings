@@ -1,30 +1,30 @@
-AHLCG-WeaknessTreachery-Default-template = ArkhamHorrorLCG/templates/AHLCG-WeaknessTreachery.jp2
-AHLCG-WeaknessTreacheryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2
+AHLCG-WeaknessTreachery-Default-template = ArkhamHorrorLCG/templates/AHLCG-WeaknessTreachery.png
+AHLCG-WeaknessTreacheryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png
 
-#AHLCG-WeaknessTreachery-Name-region = 39,306,299,29
-#AHLCG-WeaknessTreachery-Label-region = 137,285,104,14
+#AHLCG-WeaknessTreachery-Name-region = 228,1296,1196,116
+#AHLCG-WeaknessTreachery-Label-region = 620,1212,416,56
 #AHLCG-WeaknessTreachery-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
-AHLCG-WeaknessTreachery-Subtype-region = 88,335,200,17
+AHLCG-WeaknessTreachery-Subtype-region = 424,1412,800,68
 
-AHLCG-WeaknessTreachery-Body-region = 29,357,318,145
+AHLCG-WeaknessTreachery-Body-region = 188,1500,1272,580
 
-AHLCG-WeaknessTreachery-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-WeaknessTreachery-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-WeaknessTreachery-Portrait-portrait-pany = 0
-AHLCG-WeaknessTreachery-Portrait-portrait-clip-region = 17,0,344,298
+AHLCG-WeaknessTreachery-Portrait-portrait-clip-region = 140,72,1376,1192
 
-AHLCG-WeaknessTreachery-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.jp2
+AHLCG-WeaknessTreachery-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-WeaknessTreachery-BackPortrait-portrait-pany = 0
-AHLCG-WeaknessTreachery-BackPortrait-portrait-clip-region = 17,0,344,298
+AHLCG-WeaknessTreachery-BackPortrait-portrait-clip-region = 140,72,1376,1192
 
 AHLCG-WeaknessTreachery-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-WeaknessTreachery-Encounter-portrait-pany = 0
-AHLCG-WeaknessTreachery-Encounter-portrait-clip-region = 175,254,28,28
-AHLCG-WeaknessTreachery-ReturnEncounter-portrait-clip-region = 171,250,36,33
+AHLCG-WeaknessTreachery-Encounter-portrait-clip-region = 772,1088,112,112
+AHLCG-WeaknessTreachery-ReturnEncounter-portrait-clip-region = 756,1072,144,132
 
 AHLCG-WeaknessTreachery-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-WeaknessTreachery-Collection-portrait-pany = 0
-AHLCG-WeaknessTreachery-DefaultCollection-portrait-clip-region = 319,510,13,13
-AHLCG-WeaknessTreachery-Collection-portrait-clip-region = 319,510,13,13
+AHLCG-WeaknessTreachery-DefaultCollection-portrait-clip-region = 1348,2112,52,52
+AHLCG-WeaknessTreachery-Collection-portrait-clip-region = 1348,2112,52,52
 
-AHLCG-WeaknessTreachery-BasicWeakness-region = 156,243,66,41
-AHLCG-WeaknessTreachery-BasicWeaknessIcon-region = 175,253,28,28
+AHLCG-WeaknessTreachery-BasicWeakness-region = 696,1044,264,164
+AHLCG-WeaknessTreachery-BasicWeaknessIcon-region = 772,1084,112,112

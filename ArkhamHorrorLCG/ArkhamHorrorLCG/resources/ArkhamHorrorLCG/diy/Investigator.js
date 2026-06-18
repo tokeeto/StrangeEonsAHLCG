@@ -22,8 +22,9 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
 
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 15;
+	diy.bleedMargin = 34.56; //8.64;
 }
 
 function setDefaults() {
