@@ -509,9 +509,9 @@ function drawName( g, diy, sheet, nameBox, cClass ) {
 		}
 
 		region.y += parseInt(Eons.namedObjects.AHLCGObject.titleFontOffset);
-		if ( CardTypes[faceIndex] == 'Event' && $CardClass == 'Neutral' ) region.y -= 2;
-		if ( CardTypes[faceIndex] == 'Event' && ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness' )) region.y -= 3;
-		if ( CardTypes[faceIndex] == 'Skill' && ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness' )) region.y -= 1;
+		if ( CardTypes[faceIndex] == 'Event' && $CardClass == 'Neutral' ) region.y -= hiResDelta( faceIndex, 2 );
+		if ( CardTypes[faceIndex] == 'Event' && ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness' )) region.y -= hiResDelta( faceIndex, 3 );
+		if ( CardTypes[faceIndex] == 'Skill' && ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness' )) region.y -= hiResDelta( faceIndex, 1 );
 		if ( $Orientation == 'Reversed' ) region = reverseRegion( region );
 
 		if ( CardTypes[faceIndex] == 'Asset' ) {
@@ -531,17 +531,17 @@ function drawName( g, diy, sheet, nameBox, cClass ) {
 //				testBox.markupText = nameBox.markupText;
 				testBox.markupText = title;
 
-				region.y -= 1;
-				region.x += 30;
-				region.width -= 55;
+				region.y -= hiResDelta( faceIndex, 1 );
+				region.x += hiResDelta( faceIndex, 30 );
+				region.width -= hiResDelta( faceIndex, 55 );
 
-				if ( classCount > 2 ) region.width -= 45;	// don't move the x value here though, it stays offcenter
+				if ( classCount > 2 ) region.width -= hiResDelta( faceIndex, 45 );	// don't move the x value here though, it stays offcenter
 
 				let height = testBox.measure( g, region );
 
 				if ( height < 22.0 || ( height > 25.0 && title.length > 20 ) ) {
-					region.x -= 30;
-					region.width += 30;
+					region.x -= hiResDelta( faceIndex, 30 );
+					region.width += hiResDelta( faceIndex, 30 );
 				}
 			}
 		}
@@ -551,7 +551,7 @@ function drawName( g, diy, sheet, nameBox, cClass ) {
 
 		nameBox.markupText = "Size";
 		var lineHeight = nameBox.measure( g, region );
-		lineHeight = 20.0;
+		lineHeight = hiResDelta( faceIndex, 20.0 );
 
 		var lines = title.split('\n');
 
@@ -624,7 +624,7 @@ function draw2LineName( g, diy, sheet, nameBox ) {
 
 			if ( CardTypes[faceIndex] == 'Concealed' && $Template == 'NamedDecoy' && lines[1][0] == '(' ) {
 				nameBox.markupText = '<size 85%>' + lines[1];
-				region.height -= 5;
+				region.height -= hiResDelta( faceIndex, 5 );
 			}
 			else nameBox.markupText = lines[1];
 			nameBox.alignment = LAYOUT_BOTTOM | LAYOUT_CENTER;
@@ -632,10 +632,10 @@ function draw2LineName( g, diy, sheet, nameBox ) {
 		}
 		else {
 			if ( CardTypes[faceIndex] == 'Concealed' ) {
-				if ( $Template == 'NamedDecoy' ) region.y -= 4;
-				else region.y -= 9;
+				if ( $Template == 'NamedDecoy' ) region.y -= hiResDelta( faceIndex, 4 );
+				else region.y -= hiResDelta( faceIndex, 9 );
 			}
-			else region.y += 1;
+			else region.y += hiResDelta( faceIndex, 1 );
 
 			nameBox.markupText = lines[0];
 			nameBox.alignment = LAYOUT_MIDDLE | LAYOUT_CENTER;
@@ -709,7 +709,7 @@ function drawChaosName( g, diy, sheet, nameBox ) {
 	}
 
 	// assume 1 line
-	if ( !lines ) return region.y + (lineHeight * 0.8) + 12;
+	if ( !lines ) return region.y + (lineHeight * 0.8) + hiResDelta( faceIndex, 12 );
 
 	var width = 0;
 	for ( let i = 0; i < lines.length; i++ ) {
@@ -724,11 +724,11 @@ function drawChaosName( g, diy, sheet, nameBox ) {
 //	sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/images/HorizLines.png'),
 //		new Region( region.x + (region.width - width) / 2, region.y + 1, width + 2, 6) );
 	g.setPaint( new Color( 0.0, 0.0, 0.0 ) );
-	g.setStroke( new BasicStroke( 1.0 ) );
-	g.drawLine(region.x + (region.width - width) / 2, region.y + 2, region.x + (region.width + width) / 2 + 2, region.y + 2);
-	g.drawLine(region.x + (region.width - width) / 2, region.y + 6, region.x + (region.width + width) / 2 + 2, region.y + 6);
+	g.setStroke( new BasicStroke( hiResDelta( faceIndex, 1.0 ) ) );
+	g.drawLine(region.x + (region.width - width) / 2, region.y + hiResDelta( faceIndex, 2 ), region.x + (region.width + width) / 2 + hiResDelta( faceIndex, 2 ), region.y + hiResDelta( faceIndex, 2 ));
+	g.drawLine(region.x + (region.width - width) / 2, region.y + hiResDelta( faceIndex, 6 ), region.x + (region.width + width) / 2 + hiResDelta( faceIndex, 2 ), region.y + hiResDelta( faceIndex, 6 ));
 
-	return region.y + 12;
+	return region.y + hiResDelta( faceIndex, 12 );
 }
 
 function drawSubtitle( g, diy, sheet, subtitleBox, className, drawBox ) {
@@ -794,11 +794,11 @@ function drawLabel( g, diy, sheet, textBox, text ) {
 	var faceIndex = sheet.getSheetIndex();
 
 	var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Label-region') );
-	if ( CardTypes[faceIndex] === 'Asset' && $CardClass === 'Neutral' ) region.y -= 1;
+	if ( CardTypes[faceIndex] === 'Asset' && $CardClass === 'Neutral' ) region.y -= hiResDelta( faceIndex, 1 );
 
 	region.y += parseInt(Eons.namedObjects.AHLCGObject.typeFontOffset);
 //	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y -= 2;
-	if ( CardTypes[faceIndex] == 'Event' && Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y += 1;
+	if ( CardTypes[faceIndex] == 'Event' && Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y += hiResDelta( faceIndex, 1 );
 
 	textBox.markupText = text.toUpperCase();
 	textBox.drawAsSingleLine( g, region );
@@ -813,23 +813,23 @@ function drawScenarioResolutionHeader( g, diy, sheet, headerBox ) {
 	headerBox.markupText = #AHLCG-Scenario-Header1;
 
 	var height = headerBox.measure( g, headerRegion );
-	var width1 = headerBox.drawAsSingleLine( g, headerRegion ) + 4.0;
+	var width1 = headerBox.drawAsSingleLine( g, headerRegion ) + hiResDelta( faceIndex, 4.0 );
 
 	headerRegion.y += height - 0.0;
 
 	headerBox.markupText = '<size 80%>' + #AHLCG-Scenario-Header2 + '<size 125%>';
 
 	height = headerBox.measure( g, headerRegion );
-	var width2 = headerBox.drawAsSingleLine( g, headerRegion ) + 4.0;
+	var width2 = headerBox.drawAsSingleLine( g, headerRegion ) + hiResDelta( faceIndex, 4.0 );
 
 	var headerWidth = Math.max( width1, width2 );
 
 //	sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/images/HorizLines.png'),
 //		new Region( headerRegion.x + (headerRegion.width - headerWidth)/ 2, headerRegion.y + height, headerWidth, 3) );
 	g.setPaint( new Color( 0.0, 0.0, 0.0 ) );
-	g.setStroke( new BasicStroke( 1.0 ) );
+	g.setStroke( new BasicStroke( hiResDelta( faceIndex, 1.0 ) ) );
 	g.drawLine(headerRegion.x + (headerRegion.width - headerWidth) / 2, headerRegion.y + height, headerRegion.x + (headerRegion.width + headerWidth) / 2, headerRegion.y + height);
-	g.drawLine(headerRegion.x + (headerRegion.width - headerWidth) / 2, headerRegion.y + height + 4, headerRegion.x + (headerRegion.width + headerWidth) / 2, headerRegion.y + height + 4);
+	g.drawLine(headerRegion.x + (headerRegion.width - headerWidth) / 2, headerRegion.y + height + hiResDelta( faceIndex, 4 ), headerRegion.x + (headerRegion.width + headerWidth) / 2, headerRegion.y + height + hiResDelta( faceIndex, 4 ));
 }
 
 function drawBody( g, diy, sheet, bodyBox, partsArray ) {
@@ -975,7 +975,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 	}
 
 	if ( trackerBox && trackerBox.length > 0 ) {
-		var diff = 90 * trackerHeight / 100.0 + 10;	// +10: bottom of region starts below bottom of box, want it to end above top
+		var diff = hiResDelta( faceIndex, 90 ) * trackerHeight / 100.0 + hiResDelta( faceIndex, 10 );	// +10: bottom of region starts below bottom of box, want it to end above top
 
 		fullRegion.height -= diff;
 		traitsRegion.height -= diff;
@@ -994,7 +994,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 		var nlIndex = title.indexOf("\n");
 
 		if (nlIndex > 0) {
-			let offset = 24;
+			let offset = hiResDelta( faceIndex, 24 );
 
 			fullRegion.y += offset;
 			fullRegion.height -= offset;
@@ -1011,22 +1011,22 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 		}
 	}
 
-	var horizLineSpace1 = 8;
-	var horizLineSpace2 = 8;
-	var vertLineOffset1 = -1;
-	var vertLineOffset2 = 4;
+	var horizLineSpace1 = hiResDelta( faceIndex, 8 );
+	var horizLineSpace2 = hiResDelta( faceIndex, 8 );
+	var vertLineOffset1 = hiResDelta( faceIndex, -1 );
+	var vertLineOffset2 = hiResDelta( faceIndex, 4 );
 
 	if ( AHLCGObject.bodyFamily == 'Arno Pro' ) {
-		horizLineSpace1 = 6;
-		horizLineSpace2 = 10;
-		vertLineOffset1 = -1;
-		vertLineOffset2 = 4;
+		horizLineSpace1 = hiResDelta( faceIndex, 6 );
+		horizLineSpace2 = hiResDelta( faceIndex, 10 );
+		vertLineOffset1 = hiResDelta( faceIndex, -1 );
+		vertLineOffset2 = hiResDelta( faceIndex, 4 );
 	}
 	if ( AHLCGObject.bodyFamily == 'Times New Roman' ) {
-		horizLineSpace1 = 8;
-		horizLineSpace2 = 8;
-		vertLineOffset1 = -4;
-		vertLineOffset2 = 4;
+		horizLineSpace1 = hiResDelta( faceIndex, 8 );
+		horizLineSpace2 = hiResDelta( faceIndex, 8 );
+		vertLineOffset1 = hiResDelta( faceIndex, -4 );
+		vertLineOffset2 = hiResDelta( faceIndex, 4 );
 /*
 		fullRegion.y -= 2;
 		headerRegion.y -= 2;
@@ -1107,19 +1107,19 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 	var victoryTextSize = 100.0;
 
 	if ( traitsBox ) {
-		traitsSpacing = parseInt( $( 'TraitsA' + BindingSuffixes[faceIndex] + 'Spacing' ), 10 );
+		traitsSpacing = hiResDelta( faceIndex, parseInt( $( 'TraitsA' + BindingSuffixes[faceIndex] + 'Spacing' ), 10 ) );
 		traitsText = String( $( 'TraitsA' + BindingSuffixes[faceIndex] ));
 	}
 
 	victoryText = String($( 'Victory' + BindingSuffixes[faceIndex] ));
-	victorySpacing = parseInt( $('Victory' + BindingSuffixes[faceIndex] + 'Spacing'), 10 );
+	victorySpacing = hiResDelta( faceIndex, parseInt( $('Victory' + BindingSuffixes[faceIndex] + 'Spacing'), 10 ) );
 
 	for ( let i = 0; i < 3; i++ ) {
 		headerText[i] = String( $( 'Header' + suffixArray[i] + BindingSuffixes[faceIndex] ));
-		headerSpacing[i] = headerText[i].length > 0 ? parseInt( $( 'Header' + suffixArray[i] + BindingSuffixes[faceIndex] + 'Spacing' ), 10 ) + 4 : 0;
+		headerSpacing[i] = headerText[i].length > 0 ? hiResDelta( faceIndex, parseInt( $( 'Header' + suffixArray[i] + BindingSuffixes[faceIndex] + 'Spacing' ), 10 ) + 4 ) : 0;
 
 		storyText[i] = String( $( 'AccentedStory' + suffixArray[i] + BindingSuffixes[faceIndex] ));
-		storySpacing[i] = storyText[i].length > 0 ? parseInt( $( 'AccentedStory' + suffixArray[i] + BindingSuffixes[faceIndex] + 'Spacing' ), 10 ) + 4 : 0;
+		storySpacing[i] = storyText[i].length > 0 ? hiResDelta( faceIndex, parseInt( $( 'AccentedStory' + suffixArray[i] + BindingSuffixes[faceIndex] + 'Spacing' ), 10 ) + 4 ) : 0;
 
 		bodyText[i] = '';
 		bodyText[i] = addTextPart( faceIndex, bodyText[i], 'Rules' + suffixArray[i], diy );
@@ -1181,7 +1181,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 				totalHeight += headerSpacing[i];
 
 				if ( i == 0 ) {
-					totalHeight += 4;	// if there's a first header, it needs to be moved down a bit
+				totalHeight += hiResDelta( faceIndex, 4 );	// if there's a first header, it needs to be moved down a bit
 				}
 
 				textExists = true;
@@ -1224,12 +1224,12 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 			}
 
 			if (textExists) {
-				totalHeight += 16;	// for the rule and spacing
+			totalHeight += hiResDelta( faceIndex, 16 );	// for the rule and spacing
 			}
 		}
 
 //?		totalHeight -= 28;	// don't need the final rule/spacing, tweaked to make Victory look better
-		totalHeight -= 16;	// don'tneed the final rule/spacing
+		totalHeight -= hiResDelta( faceIndex, 16 );	// don'tneed the final rule/spacing
 
 		iterations++;
 //		var ratio = fullHeight / totalHeight;
@@ -1282,7 +1282,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 	for ( let i = 0; i < 3; i++ ) {
 		if ( i == 0 ) {
 			if ( headerText[i].length > 0 ) {
-				headerRegion.y += 4*textScale; // if this is the first text after traits, it needs to be moved down a bit
+				headerRegion.y += hiResDelta( faceIndex, 4 ) * textScale; // if this is the first text after traits, it needs to be moved down a bit
 			}
 		}
 		else {
@@ -1291,7 +1291,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 //					new Region( headerRegion.x, headerRegion.y + ( horizLineSpace1 * scale * $ScaleModifier / 100.0 ), headerRegion.width, 7) );
 
 				g.setPaint( new Color( 0.0, 0.0, 0.0 ) );
-				g.setStroke( new BasicStroke( 1.0 ) );
+				g.setStroke( new BasicStroke( hiResDelta( faceIndex, 1.0 ) ) );
 
 				headerRegion.y += Math.ceil( horizLineSpace1 * scale * $ScaleModifier / 100.0);
 //				g.drawLine(headerRegion.x, headerRegion.y + ( horizLineSpace1 * scale + $ScaleModifier / 100.0 ), headerRegion.x + headerRegion.width, headerRegion.y + ( horizLineSpace1 * scale + $ScaleModifier / 100.0 ));
@@ -1321,7 +1321,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 
 		if ( i == 0 && headerText[i].length < 1 ) {
 			if ( storyText[i].length > 0 ) {
-				storyRegion.y += 4*textScale; // if this is the first text after traits, it needs to be moved down a bit
+				storyRegion.y += hiResDelta( faceIndex, 4 ) * textScale; // if this is the first text after traits, it needs to be moved down a bit
 			}
 		}
 
@@ -1335,7 +1335,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 			storyBox.markupText = storyText[i];
 
 			storyHeight[i] = storyBox.measure( g, fullStoryRegion );
-			storyRegion.height = Math.ceil( storyHeight[i] ) + 2;
+				storyRegion.height = Math.ceil( storyHeight[i] ) + hiResDelta( faceIndex, 2 );
 		}
 
 		bodyRegion.y = storyRegion.y + storyRegion.height + Math.ceil( storySpacing[i]  * scale * ($ScaleModifier / 100.0 ) );
@@ -1343,7 +1343,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 
 		if ( i == 0 && headerText[i].length < 1 && storyText[i].length < 1 ) {
 			if ( bodyText[i].length > 0 ) {
-				bodyRegion.y += 4*textScale; // if this is the first text after traits, it needs to be moved down a bit
+				bodyRegion.y += hiResDelta( faceIndex, 4 ) * textScale; // if this is the first text after traits, it needs to be moved down a bit
 			}
 		}
 
@@ -1383,9 +1383,9 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 //			sheet.paintImage( g, createDarkenedImage( ImageUtils.get('ArkhamHorrorLCG/images/Lines.png') ),
 //				new Region( storyRegion.x - 18, storyRegion.y, 6, storyRegion.height - 2) );
 			g.setPaint( new Color( 0.0, 0.0, 0.0 ) );
-			g.setStroke( new BasicStroke( 1.0 ) );
-			g.drawLine(storyRegion.x - 15, storyRegion.y - vertLineOffset1*scale, storyRegion.x - 15, storyRegion.y + storyRegion.height - vertLineOffset2*scale);
-			g.drawLine(storyRegion.x - 12, storyRegion.y - vertLineOffset1*scale, storyRegion.x - 12, storyRegion.y + storyRegion.height - vertLineOffset2*scale);
+			g.setStroke( new BasicStroke( hiResDelta( faceIndex, 1.0 ) ) );
+			g.drawLine(storyRegion.x - hiResDelta( faceIndex, 15 ), storyRegion.y - vertLineOffset1*scale, storyRegion.x - hiResDelta( faceIndex, 15 ), storyRegion.y + storyRegion.height - vertLineOffset2*scale);
+			g.drawLine(storyRegion.x - hiResDelta( faceIndex, 12 ), storyRegion.y - vertLineOffset1*scale, storyRegion.x - hiResDelta( faceIndex, 12 ), storyRegion.y + storyRegion.height - vertLineOffset2*scale);
 		}
 
 		if (bodyHeight[i] > 0) {
@@ -1401,7 +1401,7 @@ function drawIndentedStoryBody( g, diy, sheet, traitsBox, headerBox, storyBox, b
 
 		// update regions (everything is based off of headerRegion.y)
 		if ( bodyText[i] && bodyText[i].length > 0 ) {
-			headerRegion.y = bodyRegion.y + bodyRegion.height + ( 2 * scale );
+			headerRegion.y = bodyRegion.y + bodyRegion.height + ( hiResDelta( faceIndex, 2 ) * scale );
 		}
 		else {
 			headerRegion.y = storyRegion.y + storyRegion.height;
@@ -1530,12 +1530,12 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 					else {
 						g.setPaint( new Color( 0.255, 0.353, 0.333 ) );
 					}
-					g.setStroke( new BasicStroke( 1.0 ) );
-					g.drawLine(bodyRegion.x, bodyRegion.y + sectionHeight - 1, bodyRegion.x + bodyRegion.width + 2, bodyRegion.y + sectionHeight - 1);
-					g.drawLine(bodyRegion.x, bodyRegion.y + sectionHeight + 3, bodyRegion.x + bodyRegion.width + 2, bodyRegion.y + sectionHeight + 3);
+					g.setStroke( new BasicStroke( hiResDelta( faceIndex, 1.0 ) ) );
+					g.drawLine(bodyRegion.x, bodyRegion.y + sectionHeight - hiResDelta( faceIndex, 1 ), bodyRegion.x + bodyRegion.width + hiResDelta( faceIndex, 2 ), bodyRegion.y + sectionHeight - hiResDelta( faceIndex, 1 ));
+					g.drawLine(bodyRegion.x, bodyRegion.y + sectionHeight + hiResDelta( faceIndex, 3 ), bodyRegion.x + bodyRegion.width + hiResDelta( faceIndex, 2 ), bodyRegion.y + sectionHeight + hiResDelta( faceIndex, 3 ));
 
-					bodyRegion.y += sectionHeight - 4;
-					bodyRegion.height -= (sectionHeight - 4);
+					bodyRegion.y += sectionHeight - hiResDelta( faceIndex, 4 );
+					bodyRegion.height -= (sectionHeight - hiResDelta( faceIndex, 4 ));
 
 					bodyBox.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * tightness );
 
@@ -1569,8 +1569,8 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 						specialText = text.slice( startMatch.index );
 					}
 
-					bodyRegion.y += 8;
-					bodyRegion.height -= 8;
+					bodyRegion.y += hiResDelta( faceIndex, 8 );
+					bodyRegion.height -= hiResDelta( faceIndex, 8 );
 
 					specialText = specialText.replace( /<header.*?>/, '<header>' );
 
@@ -1614,8 +1614,8 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 //						bodyBox.setStyleForTag( 'header', defaultStyle );
 //					}
 
-					bodyRegion.y += sectionHeight - 12;
-					bodyRegion.height -= (sectionHeight - 12);
+					bodyRegion.y += sectionHeight - hiResDelta( faceIndex, 12 );
+					bodyRegion.height -= (sectionHeight - hiResDelta( faceIndex, 12 ));
 
 					bodyBox.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * tightness );
 
@@ -1693,22 +1693,22 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 
 					let headerHeight = 0;
 					if ( header ) {
-						headerHeight = res ? 80 : 47;
+						headerHeight = res ? hiResDelta( faceIndex, 80 ) : hiResDelta( faceIndex, 47 );
 					}
 
 //					let boxRegion = new Region( bodyRegion.x - 7, bodyRegion.y, bodyRegion.width + 36, bodyRegion.height );
 // matched, but caused text to go beyond right edge
 //					let boxRegion = new Region( bodyRegion.x - 15, bodyRegion.y, bodyRegion.width + 12, bodyRegion.height );
 					let boxRegion = (CardTypes[0] == 'Guide75') ?
-						new Region( bodyRegion.x - 22, bodyRegion.y, bodyRegion.width + 30, bodyRegion.height ) :		// 7.5
-						new Region( bodyRegion.x - 15, bodyRegion.y, bodyRegion.width + 30, bodyRegion.height );		// A4
+						new Region( bodyRegion.x - hiResDelta( faceIndex, 22 ), bodyRegion.y, bodyRegion.width + hiResDelta( faceIndex, 30 ), bodyRegion.height ) :		// 7.5
+						new Region( bodyRegion.x - hiResDelta( faceIndex, 15 ), bodyRegion.y, bodyRegion.width + hiResDelta( faceIndex, 30 ), bodyRegion.height );		// A4
 
 					if ( interlude ) {
-						boxRegion.x += 5;
-						boxRegion.width -= 7;
+						boxRegion.x += hiResDelta( faceIndex, 5 );
+						boxRegion.width -= hiResDelta( faceIndex, 7 );
 
-						bodyRegion.y += 5;
-						bodyRegion.height -= 10;
+						bodyRegion.y += hiResDelta( faceIndex, 5 );
+						bodyRegion.height -= hiResDelta( faceIndex, 10 );
 					}
 
 					// space before header/first text, if you change these you must change the -= below
@@ -1716,21 +1716,21 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 //					bodyRegion.width -= 48;
 
 					if ( CardTypes[0] == 'Guide75' ) {
-						bodyRegion.x += 16;
-						bodyRegion.width -= 48;
+						bodyRegion.x += hiResDelta( faceIndex, 16 );
+						bodyRegion.width -= hiResDelta( faceIndex, 48 );
 					}
 					else {	// A4
-						bodyRegion.x += 24;
-						bodyRegion.width -= 48;
+						bodyRegion.x += hiResDelta( faceIndex, 24 );
+						bodyRegion.width -= hiResDelta( faceIndex, 48 );
 					}
 
 					if ( header ) {
-						bodyRegion.y += 29;
-						bodyRegion.height -= 29;
+						bodyRegion.y += hiResDelta( faceIndex, 29 );
+						bodyRegion.height -= hiResDelta( faceIndex, 29 );
 					}
 					else {
-						bodyRegion.y += 27;
-						bodyRegion.height -= 27;
+						bodyRegion.y += hiResDelta( faceIndex, 27 );
+						bodyRegion.height -= hiResDelta( faceIndex, 27 );
 					}
 
 					textRegion.x = bodyRegion.x;
@@ -1739,7 +1739,7 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 					textRegion.height = bodyRegion.height;
 
 					if ( interlude ) {
-						textRegion.width += 5;
+						textRegion.width += hiResDelta( faceIndex, 5 );
 					}
 
 
@@ -1748,14 +1748,14 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 					sectionHeight = bodyBox.measure( g, textRegion );
 
 					if (interlude) {
-						let inset = 24;
+						let inset = hiResDelta( faceIndex, 24 );
 						bodyBox.setPageShape( new PageShape.CompoundShape(
-							new PageShape.CupShape(24, 24, bodyRegion.y + 12, 0, 0),
-							bodyRegion.y + sectionHeight - 12,
+							new PageShape.CupShape(hiResDelta( faceIndex, 24 ), hiResDelta( faceIndex, 24 ), bodyRegion.y + hiResDelta( faceIndex, 12 ), 0, 0),
+							bodyRegion.y + sectionHeight - hiResDelta( faceIndex, 12 ),
 							new PageShape.InsetShape(inset, inset)
 							) );
 
-						textRegion.height = sectionHeight + 2;
+						textRegion.height = sectionHeight + hiResDelta( faceIndex, 2 );
 
 						// test again, sectionHeight may have increased by a line because of the CupShape
 						let newSectionHeight = bodyBox.measure( g, textRegion );
@@ -1763,12 +1763,12 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 							sectionHeight = newSectionHeight;
 
 							bodyBox.setPageShape( new PageShape.CompoundShape(
-								new PageShape.CupShape(24, 24, bodyRegion.y + 12, 0, 0),
-								bodyRegion.y + sectionHeight - 12,
+								new PageShape.CupShape(hiResDelta( faceIndex, 24 ), hiResDelta( faceIndex, 24 ), bodyRegion.y + hiResDelta( faceIndex, 12 ), 0, 0),
+								bodyRegion.y + sectionHeight - hiResDelta( faceIndex, 12 ),
 								new PageShape.InsetShape(inset, inset)
 								) );
 
-							textRegion.height = sectionHeight + 2;
+							textRegion.height = sectionHeight + hiResDelta( faceIndex, 2 );
 							newSectionHeight = bodyBox.measure( g, textRegion );
 							}
 
@@ -1778,27 +1778,27 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 							sectionHeight = newSectionHeight;
 
 							do {
-								inset -= 4;
+							inset -= hiResDelta( faceIndex, 4 );
 
-								bodyBox.setPageShape( new PageShape.CompoundShape(
-									new PageShape.CupShape(24, 24, bodyRegion.y + 12, 0, 0),
-									bodyRegion.y + sectionHeight - 12,
+							bodyBox.setPageShape( new PageShape.CompoundShape(
+								new PageShape.CupShape(hiResDelta( faceIndex, 24 ), hiResDelta( faceIndex, 24 ), bodyRegion.y + hiResDelta( faceIndex, 12 ), 0, 0),
+								bodyRegion.y + sectionHeight - hiResDelta( faceIndex, 12 ),
 									new PageShape.InsetShape(inset, inset)
 									) );
 
-								textRegion.height = sectionHeight + 2;
+							textRegion.height = sectionHeight + hiResDelta( faceIndex, 2 );
 								newSectionHeight = bodyBox.measure( g, textRegion );
 							} while (newSectionHeight > sectionHeight && inset > 0);
 						}
 
 						sectionHeight = newSectionHeight;
 
-						if (interlude && sectionHeight < 60) sectionHeight = 60;
-						textRegion.height = sectionHeight + 2;
+						if (interlude && sectionHeight < hiResDelta( faceIndex, 60 )) sectionHeight = hiResDelta( faceIndex, 60 );
+						textRegion.height = sectionHeight + hiResDelta( faceIndex, 2 );
 
 						bodyBox.setPageShape( new PageShape.CompoundShape(
-							new PageShape.CupShape(24, 24, bodyRegion.y + 12, 0, 0),
-							bodyRegion.y + sectionHeight - 12,
+							new PageShape.CupShape(hiResDelta( faceIndex, 24 ), hiResDelta( faceIndex, 24 ), bodyRegion.y + hiResDelta( faceIndex, 12 ), 0, 0),
+							bodyRegion.y + sectionHeight - hiResDelta( faceIndex, 12 ),
 							new PageShape.InsetShape(inset, inset)
 							) );
 					}
@@ -1921,8 +1921,8 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 					boxRegion.y += topHeight;
 					boxRegion.height -= topHeight;
 
-					let minHeight = 84;
-					if ( interlude ) minHeight = 60;
+					let minHeight = hiResDelta( faceIndex, 84 );
+					if ( interlude ) minHeight = hiResDelta( faceIndex, 60 );
 
 					if ( rSectionHeight + rHeaderHeight > minHeight ) {
 						sheet.paintImage( g, boxMidImage,
@@ -1956,14 +1956,14 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 							headerBox.markupText = #AHLCG-Scenario-Header1;
 
 							let height = headerBox.measure( g, headerRegion );
-							let width1 = headerBox.drawAsSingleLine( g, headerRegion ) + 4.0;
+							let width1 = headerBox.drawAsSingleLine( g, headerRegion ) + hiResDelta( faceIndex, 4.0 );
 
 							headerRegion.y += height;
 
 							headerBox.markupText = '<size 80%>' + #AHLCG-Scenario-Header2 + '<size 125%>';
 
 							height += headerBox.measure( g, headerRegion );
-							let width2 = headerBox.drawAsSingleLine( g, headerRegion ) + 4.0;
+							let width2 = headerBox.drawAsSingleLine( g, headerRegion ) + hiResDelta( faceIndex, 4.0 );
 
 							let headerWidth = Math.max( width1, width2 );
 
@@ -1971,36 +1971,36 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 //								new Region( headerRegion.x + (headerRegion.width - headerWidth)/ 2, bodyRegion.y + height, headerWidth, 6) );
 //							g.setPaint( new Color( 0.282, 0.012, 0.0 ) );
 							g.setPaint( new Color( 0.388, 0.145, 0.114 ) );
-							g.setStroke( new BasicStroke( 1.0 ) );
+							g.setStroke( new BasicStroke( hiResDelta( faceIndex, 1.0 ) ) );
 							g.drawLine(headerRegion.x + (headerRegion.width - headerWidth) / 2, bodyRegion.y + height, headerRegion.x + (headerRegion.width - headerWidth) / 2 + headerWidth, bodyRegion.y + height);
-							g.drawLine(headerRegion.x + (headerRegion.width - headerWidth) / 2, bodyRegion.y + height + 5, headerRegion.x + (headerRegion.width - headerWidth) / 2 + headerWidth, bodyRegion.y + height + 5);
+							g.drawLine(headerRegion.x + (headerRegion.width - headerWidth) / 2, bodyRegion.y + height + hiResDelta( faceIndex, 5 ), headerRegion.x + (headerRegion.width - headerWidth) / 2 + headerWidth, bodyRegion.y + height + hiResDelta( faceIndex, 5 ));
 						}
 						else if ( sa ) {
 							headerBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'SAHeader-style'), null);
 
 							headerBox.markupText = '<size 90%>' + #AHLCG-Guide-Standalone + '<size 111%>';
 							let height = headerBox.measure( g, bodyRegion );
-							let width = headerBox.drawAsSingleLine( g, bodyRegion ) + 4.0;
+							let width = headerBox.drawAsSingleLine( g, bodyRegion ) + hiResDelta( faceIndex, 4.0 );
 
 //							sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/images/HorizLines.png'),
 //								new Region( bodyRegion.x + (bodyRegion.width - width)/ 2, bodyRegion.y + height - 2, width, 6) );
 //							g.setPaint( new Color( 0.255, 0.353, 0.333 ) );
 							g.setPaint( new Color( 0.176, 0.357, 0.345 ) );
-							g.setStroke( new BasicStroke( 1.0 ) );
-							g.drawLine(bodyRegion.x + (bodyRegion.width - width) / 2, bodyRegion.y + height - 2, bodyRegion.x + (bodyRegion.width + width) / 2, bodyRegion.y + height - 2);
-							g.drawLine(bodyRegion.x + (bodyRegion.width - width) / 2, bodyRegion.y + height + 3, bodyRegion.x + (bodyRegion.width + width) / 2, bodyRegion.y + height + 3);
+							g.setStroke( new BasicStroke( hiResDelta( faceIndex, 1.0 ) ) );
+							g.drawLine(bodyRegion.x + (bodyRegion.width - width) / 2, bodyRegion.y + height - hiResDelta( faceIndex, 2 ), bodyRegion.x + (bodyRegion.width + width) / 2, bodyRegion.y + height - hiResDelta( faceIndex, 2 ));
+							g.drawLine(bodyRegion.x + (bodyRegion.width - width) / 2, bodyRegion.y + height + hiResDelta( faceIndex, 3 ), bodyRegion.x + (bodyRegion.width + width) / 2, bodyRegion.y + height + hiResDelta( faceIndex, 3 ));
 						}
 						else {	// Keys
 							headerBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey(FACE_FRONT, 'KeyHeader-style'), null);
 
 							headerBox.markupText = '<size 90%>' + #AHLCG-Guide-Keys + '<size 111%>';
 							let height = headerBox.measure( g, bodyRegion );
-							let width = headerBox.drawAsSingleLine( g, bodyRegion ) + 4.0;
+							let width = headerBox.drawAsSingleLine( g, bodyRegion ) + hiResDelta( faceIndex, 4.0 );
 
 							g.setPaint( new Color( 0.494, 0.024, 0.027 ) );
-							g.setStroke( new BasicStroke( 1.0 ) );
-							g.drawLine(bodyRegion.x + (bodyRegion.width - width) / 2, bodyRegion.y + height - 2, bodyRegion.x + (bodyRegion.width + width) / 2, bodyRegion.y + height - 2);
-							g.drawLine(bodyRegion.x + (bodyRegion.width - width) / 2, bodyRegion.y + height + 3, bodyRegion.x + (bodyRegion.width + width) / 2, bodyRegion.y + height + 3);
+							g.setStroke( new BasicStroke( hiResDelta( faceIndex, 1.0 ) ) );
+							g.drawLine(bodyRegion.x + (bodyRegion.width - width) / 2, bodyRegion.y + height - hiResDelta( faceIndex, 2 ), bodyRegion.x + (bodyRegion.width + width) / 2, bodyRegion.y + height - hiResDelta( faceIndex, 2 ));
+							g.drawLine(bodyRegion.x + (bodyRegion.width - width) / 2, bodyRegion.y + height + hiResDelta( faceIndex, 3 ), bodyRegion.x + (bodyRegion.width + width) / 2, bodyRegion.y + height + hiResDelta( faceIndex, 3 ));
 						}
 
 						bodyRegion.y += headerHeight;
@@ -2025,13 +2025,13 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 					bodyBox.markupText = '';
 
 //					bodyRegion.x -= 34;
-					bodyRegion.x -= 24;
-					bodyRegion.width += 48;
+					bodyRegion.x -= hiResDelta( faceIndex, 24 );
+					bodyRegion.width += hiResDelta( faceIndex, 48 );
 
 //					if ( interlude ) bodyRegion.width -= 5;
 
-					bodyRegion.y += sectionHeight + 55;
-					bodyRegion.height -= (sectionHeight + 55);
+					bodyRegion.y += sectionHeight + hiResDelta( faceIndex, 55 );
+					bodyRegion.height -= (sectionHeight + hiResDelta( faceIndex, 55 ));
 
 					text = postSpecialText;
 
@@ -2094,8 +2094,8 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 		difference = y - headerRegion.y;
 
 		// header box is for special things like Disappearance of Elina Harper; difference is smaller when tracker displayed because we are working to fit everything
-		if ( trackerBox.length == 0 ) difference += 12;
-		else difference += 2;
+		if ( trackerBox.length == 0 ) difference += hiResDelta( faceIndex, 12 );
+		else difference += hiResDelta( faceIndex, 2 );
 
 		// add difference, but keep bottom in same place
 		headerRegion.y += difference;
@@ -2114,8 +2114,8 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 		let dy = newY - region.y;
 
 		// space after header; again, difference is smaller when tracker displayed because we are working to fit everything
-		if ( trackerBox.length == 0 ) difference = 15;
-		else difference = 5;
+		if ( trackerBox.length == 0 ) difference = hiResDelta( faceIndex, 15 );
+		else difference = hiResDelta( faceIndex, 5 );
 
 		// add difference, but keep bottom in same place
 		region.y = newY + difference;
@@ -2128,7 +2128,7 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 	if ( trackerBox.length > 0 ) {
 //			region.height -= 95;
 //		region.height -= 90
-		region.height -= 90 * trackerHeight / 100.0;
+		region.height -= hiResDelta( faceIndex, 90 ) * trackerHeight / 100.0;
 	}
 
 	var tokenRegion = [];
@@ -2147,9 +2147,9 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 	var useOffsetPct;
 
 	// minHeight and minCenterSpacing are based on how many tokens are being displayed (1-4)
-	minHeight = [ 48, 100, 152, 204 ];
-	minCenterSpacing = [ 115, 102, 85, 65 ];	// spaces them out if there aren't a full set
-	minSpacing = 15;							// default spacing between token blocks
+	minHeight = [ hiResDelta( faceIndex, 48 ), hiResDelta( faceIndex, 100 ), hiResDelta( faceIndex, 152 ), hiResDelta( faceIndex, 204 ) ];
+	minCenterSpacing = [ hiResDelta( faceIndex, 115 ), hiResDelta( faceIndex, 102 ), hiResDelta( faceIndex, 85 ), hiResDelta( faceIndex, 65 ) ];	// spaces them out if there aren't a full set
+	minSpacing = hiResDelta( faceIndex, 15 );							// default spacing between token blocks
 	useOffsetPct = 0.6;
 
 	var index = 0;
@@ -2215,7 +2215,7 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 
 	// help everything fit
 	if ( trackerBox.length > 0 && numTokens > 3) {
-		region.y -= 5;
+		region.y -= hiResDelta( faceIndex, 5 );
 //		minSpacing = 1;
 	}
 
@@ -2261,7 +2261,7 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 		// if there's a tracking box, this lets the icon extend up above the normal region top, so the text is at the top of the region, to save space
 		if ( !headerBox && i == 0 && tokenHeight[i] < iconRegion.height ) {
 			firstBlockOffset = (iconRegion.height - tokenHeight[i]) / 2;
-			if (firstBlockOffset > 10) firstBlockOffset = 10;
+			if (firstBlockOffset > hiResDelta( faceIndex, 10 )) firstBlockOffset = hiResDelta( faceIndex, 10 );
 		}
 
 		if (tokenHeight[i] < minHeight[tokensInGroup[i]-1]) tokenHeight[i] = minHeight[tokensInGroup[i]-1];
@@ -2277,7 +2277,7 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 //g.drawRect(region.x-2, region.y, region.width+4, region.height);
 		// calculate how tall each box should be to fit in region
 		var fittedCenterSpacing = ((region.height - (tokenHeight[0] + tokenHeight[groupCount-1] ) / 2) / (groupCount-1));
-		if ( fittedCenterSpacing < 52 ) fittedCenterSpacing = 52;
+		if ( fittedCenterSpacing < hiResDelta( faceIndex, 52 ) ) fittedCenterSpacing = hiResDelta( faceIndex, 52 );
 
 		for ( let i = 0; i < groupCount-1; i++ ) {
 			let spacing = (tokenHeight[i] + tokenHeight[i+1]) / 2;	// spacing between centers
@@ -2314,7 +2314,7 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 			region.y += (region.height - totalEqualHeight) * 0.35;
 	}
 	else {
-		minSpacing = 1;
+		minSpacing = hiResDelta( faceIndex, 1 );
 		totalHeight = totalEqualHeight;
 	}
 
@@ -2327,8 +2327,8 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 	if (region.height < totalHeight) {
 		if ( !headerBox ) {
 			// give a little more space
-			region.y -= 5;
-			region.height += 5;
+			region.y -= hiResDelta( faceIndex, 5 );
+			region.height += hiResDelta( faceIndex, 5 );
 			region.y -= firstBlockOffset;
 			region.height += firstBlockOffset;
 		}
@@ -2387,8 +2387,8 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 			tokenRegion[i].height = tokenHeight[i];
 
 			if (tokensInGroup[i] > 1) {
-				tokenRegion[i].x += 8;
-				tokenRegion[i].width -= 8;
+				tokenRegion[i].x += hiResDelta( faceIndex, 8 );
+				tokenRegion[i].width -= hiResDelta( faceIndex, 8 );
 			}
 			else {
 				tokenRegion[i].x = region.x;
@@ -2413,11 +2413,11 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 			for ( let j = 0; j < 4; j++ ) {				// token
 				if ( tokenGroup[j] == i+1 ) {
 //					let iconY = tokenRegion[i].y + tokenRegion[i].height/2 - iconRegion.height*tokensInGroup[i]/2 + tokenIndex*iconRegion.height + 1;
-					let iconY = tokenRegion[i].y + tokenRegion[i].height/2 - iconRegion.height*tokensInGroup[i]/2 + tokenIndex*iconRegion.height - 1;
+					let iconY = tokenRegion[i].y + tokenRegion[i].height/2 - iconRegion.height*tokensInGroup[i]/2 + tokenIndex*iconRegion.height - hiResDelta( faceIndex, 1 );
 
-					if (iconY + 1 < yIconMin) yIconMin = iconY + 1;
+					if (iconY + hiResDelta( faceIndex, 1 ) < yIconMin) yIconMin = iconY + hiResDelta( faceIndex, 1 );
 					if (tokenRegion[i].y < yIconMin) yIconMin = tokenRegion[i].y;
-					if (iconY + iconRegion.height - 3 > yIconMax) yIconMax = iconY + iconRegion.height - 3;
+					if (iconY + iconRegion.height - hiResDelta( faceIndex, 3 ) > yIconMax) yIconMax = iconY + iconRegion.height - hiResDelta( faceIndex, 3 );
 					if (tokenRegion[i].y + tokenRegion[i].height > yIconMax) yIconMax = tokenRegion[i].y + tokenRegion[i].height;
 //g.setPaint(Color.YELLOW);
 //g.drawRect(iconRegion.x, iconY, iconRegion.width, iconRegion.height);
@@ -2433,9 +2433,9 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 //				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/images/Lines.png'),
 //					new Region( iconRegion.x + iconRegion.width + 2, yIconMin, 3, yIconMax - yIconMin) );
 				g.setPaint( new Color( 0.0, 0.0, 0.0 ) );
-				g.setStroke( new BasicStroke( 0.5 ) );
-				g.drawLine(iconRegion.x + iconRegion.width + 2, yIconMin + 1, iconRegion.x + iconRegion.width + 2, yIconMax - 6);
-				g.drawLine(iconRegion.x + iconRegion.width + 4, yIconMin + 1, iconRegion.x + iconRegion.width + 4, yIconMax - 6);
+				g.setStroke( new BasicStroke( hiResDelta( faceIndex, 0.5 ) ) );
+				g.drawLine(iconRegion.x + iconRegion.width + hiResDelta( faceIndex, 2 ), yIconMin + hiResDelta( faceIndex, 1 ), iconRegion.x + iconRegion.width + hiResDelta( faceIndex, 2 ), yIconMax - hiResDelta( faceIndex, 6 ));
+				g.drawLine(iconRegion.x + iconRegion.width + hiResDelta( faceIndex, 4 ), yIconMin + hiResDelta( faceIndex, 1 ), iconRegion.x + iconRegion.width + hiResDelta( faceIndex, 4 ), yIconMax - hiResDelta( faceIndex, 6 ));
 			}
 
 //			yOffset += minSpacing + maxEqualCenterSpacing*scale;
@@ -2453,8 +2453,8 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 			tokenRegion[i].height = tokenHeight[i];
 
 			if (tokensInGroup[i] > 1) {
-				tokenRegion[i].x += 8;
-				tokenRegion[i].width -= 8;
+				tokenRegion[i].x += hiResDelta( faceIndex, 8 );
+				tokenRegion[i].width -= hiResDelta( faceIndex, 8 );
 			}
 			else {
 				tokenRegion[i].x = region.x;
@@ -2471,11 +2471,11 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 			let tokenIndex = 0;
 			for ( let j = 0; j < 4; j++ ) {				// token
 				if ( tokenGroup[j] == i+1 ) {
-					let iconY = tokenRegion[i].y + tokenRegion[i].height/2 - iconRegion.height*tokensInGroup[i]/2 + tokenIndex*iconRegion.height + 1;
+					let iconY = tokenRegion[i].y + tokenRegion[i].height/2 - iconRegion.height*tokensInGroup[i]/2 + tokenIndex*iconRegion.height + hiResDelta( faceIndex, 1 );
 
-					if (iconY + 1 < yIconMin) yIconMin = iconY + 1;
+					if (iconY + hiResDelta( faceIndex, 1 ) < yIconMin) yIconMin = iconY + hiResDelta( faceIndex, 1 );
 					if (tokenRegion[i].y < yIconMin) yIconMin = tokenRegion[i].y;
-					if (iconY + iconRegion.height - 3 > yIconMax) yIconMax = iconY + iconRegion.height - 3;
+					if (iconY + iconRegion.height - hiResDelta( faceIndex, 3 ) > yIconMax) yIconMax = iconY + iconRegion.height - hiResDelta( faceIndex, 3 );
 					if (tokenRegion[i].y + tokenRegion[i].height > yIconMax) yIconMax = tokenRegion[i].y + tokenRegion[i].height;
 
 //g.setPaint(Color.GREEN);
@@ -2492,9 +2492,9 @@ function drawChaosBody( g, diy, sheet, textBoxes, headerBox, y ) {
 //				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/images/Lines.png'),
 //					new Region( iconRegion.x + iconRegion.width + 2, yIconMin, 3, yIconMax - yIconMin) );
 				g.setPaint( new Color( 0.0, 0.0, 0.0 ) );
-				g.setStroke( new BasicStroke( 0.5 ) );
-				g.drawLine(iconRegion.x + iconRegion.width + 2, yIconMin + 1, iconRegion.x + iconRegion.width + 2, yIconMax - 1);
-				g.drawLine(iconRegion.x + iconRegion.width + 4, yIconMin + 1, iconRegion.x + iconRegion.width + 4, yIconMax - 1);
+				g.setStroke( new BasicStroke( hiResDelta( faceIndex, 0.5 ) ) );
+				g.drawLine(iconRegion.x + iconRegion.width + hiResDelta( faceIndex, 2 ), yIconMin + hiResDelta( faceIndex, 1 ), iconRegion.x + iconRegion.width + hiResDelta( faceIndex, 2 ), yIconMax - hiResDelta( faceIndex, 1 ));
+				g.drawLine(iconRegion.x + iconRegion.width + hiResDelta( faceIndex, 4 ), yIconMin + hiResDelta( faceIndex, 1 ), iconRegion.x + iconRegion.width + hiResDelta( faceIndex, 4 ), yIconMax - hiResDelta( faceIndex, 1 ));
 			}
 
 			yOffset += minSpacing + tokenHeight[i];
@@ -2594,7 +2594,7 @@ function drawScenarioBody( g, diy, sheet, bodyBox ) {
 		var nlIndex = title.indexOf("\n");
 
 		if (nlIndex > 0) {
-			let offset = 24;
+			let offset = hiResDelta( faceIndex, 24 );
 
 			region.y += offset;
 			region.height -= offset;
@@ -2651,7 +2651,7 @@ function drawCopyright( g, diy, sheet, copyrightBox, collectorX ) {
 	region.y += parseInt(Eons.namedObjects.AHLCGObject.collectionFontOffset);
 	if ( $Orientation == 'Reversed' ) region = shiftRegion( region, CardTypes[faceIndex] );
 
-	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y -= 1;
+	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y -= hiResDelta( faceIndex, 1 );
 
 	// Please don't ask me why I have to do a markupText += X in order to get the color to change
 	copyrightBox.markupText = '';
@@ -2673,15 +2673,15 @@ function drawCollectorInfo( g, diy, sheet, collectionNumberBox, collectionSuffix
 
 	if ( collectionNumberBox ) {
 		collectorX = drawCollectionNumber( g, diy, sheet, collectionNumberBox, collectionSuffix );
-		collectorX -= 3;
+		collectorX -= hiResDelta( faceIndex, 3 );
 	}
 
 	if ( collectionIcon ) {
 		collectorX = drawCollectionIcon( g, diy, sheet, collectorX );
-		collectorX -= 11;
+		collectorX -= hiResDelta( faceIndex, 11 );
 	}
 	else {
-		collectorX -= 21;
+		collectorX -= hiResDelta( faceIndex, 21 );
 	}
 
 	if ( encounterIcon ) {
@@ -2690,7 +2690,7 @@ function drawCollectorInfo( g, diy, sheet, collectionNumberBox, collectionSuffix
 
 	if ( encounterNumberBox ) {
 		collectorX = drawEncounterInfo( g, diy, sheet, encounterNumberBox, collectorX );
-		collectorX -= 20;
+		collectorX -= hiResDelta( faceIndex, 20 );
 	}
 
 	if ( copyrightBox ) collectorX = drawCopyright( g, diy, sheet, copyrightBox, collectorX );
@@ -2724,10 +2724,10 @@ function drawCost( g, diy, sheet ) {
 			drawDash( g, diy, sheet, costRegion, 2, 0 );
 	}
 	else if ( cost == 'X' ) {
-		sheet.drawOutlinedTitle( g, cost, costRegion, Eons.namedObjects.AHLCGObject.costFont, 14.0, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, cost, costRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 14.0 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else {
-		sheet.drawOutlinedTitle( g, cost, costRegion, Eons.namedObjects.AHLCGObject.costFont, 16.0, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, cost, costRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 16.0 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 }
 
@@ -2869,45 +2869,45 @@ function drawStamina( g, diy, sheet ) {
         let region = diy.settings.getRegion(getExpandedKey(faceIndex, 'Stamina-region'));
         sheet.paintImage(g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-StaminaBase.png'), region);
         try {
-            region.x += offsetX[stamina];
-            region.y += offsetY[stamina];
+            region.x += hiResDelta( faceIndex, offsetX[stamina] );
+            region.y += hiResDelta( faceIndex, offsetY[stamina] );
         } catch (e) {
-            region.x += offsetX["X"];
-            region.y += offsetY["X"];
+            region.x += hiResDelta( faceIndex, offsetX["X"] );
+            region.y += hiResDelta( faceIndex, offsetY["X"] );
         }
 
         if (stamina == '-') {
-            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.symbolFont, 9.8, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 9.8 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
         else if (stamina == '*') {
             // Teutonic
-            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.costFont, 18.5, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 18.5 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
         else if (perInvestigator == '1') {
             let staminaPerInvRegion = diy.settings.getRegion(getExpandedKey(faceIndex, 'StaminaPerInvIcon-region'));
-            region.x -= 5;
+            region.x -= hiResDelta( faceIndex, 5 );
 
-            let fontSize = 14;
-            let symbolFontSize = 6.5;
+			let fontSize = hiResDelta( faceIndex, 14 );
+			let symbolFontSize = hiResDelta( faceIndex, 6.5 );
 
             if (stamina == 1) {
-                region.x -= 1;
-                staminaPerInvRegion.x -= 4;
+				region.x -= hiResDelta( faceIndex, 1 );
+				staminaPerInvRegion.x -= hiResDelta( faceIndex, 4 );
             }
             else if (stamina > 9) {
-                fontSize = 12;
-                symbolFontSize = 5.5;
-                staminaPerInvRegion.x += 4;
+				fontSize = hiResDelta( faceIndex, 12 );
+				symbolFontSize = hiResDelta( faceIndex, 5.5 );
+				staminaPerInvRegion.x += hiResDelta( faceIndex, 4 );
             }
 
             sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
             sheet.drawOutlinedTitle(g, 'p', staminaPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
         else if (stamina.length() > 1) {	// 10+
-            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, 11.5, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+			sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.5 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
         else {
-            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, 14, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+			sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
    	}
 }
@@ -2965,45 +2965,45 @@ function drawSanity( g, diy, sheet ) {
 		let region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Sanity-region' ) );
 		sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-SanityBase.png'), region );
         try {
-            region.x += offsetX[sanity];
-            region.y += offsetY[sanity];
+            region.x += hiResDelta( faceIndex, offsetX[sanity] );
+            region.y += hiResDelta( faceIndex, offsetY[sanity] );
         } catch (e) {
-            region.x += offsetX["X"];
-            region.y += offsetY["X"];
+            region.x += hiResDelta( faceIndex, offsetX["X"] );
+            region.y += hiResDelta( faceIndex, offsetY["X"] );
         }
 
 		if ( sanity == '-' ) {
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.symbolFont, 9.8, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 9.8 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 		else if ( sanity == '*' ) {
 			// Teutonic
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.costFont, 18.5, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 18.5 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 		else if (perInvestigator == '1') {
 			let sanityPerInvRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'SanityPerInvIcon-region' ) );
-			region.x -= 5;
+			region.x -= hiResDelta( faceIndex, 5 );
 
-			let fontSize = 14;
-			let symbolFontSize = 6.5;
+			let fontSize = hiResDelta( faceIndex, 14 );
+			let symbolFontSize = hiResDelta( faceIndex, 6.5 );
 
 			if ( sanity == 1 ) {
-				region.x -= 1;
-				sanityPerInvRegion.x -= 4;
+				region.x -= hiResDelta( faceIndex, 1 );
+				sanityPerInvRegion.x -= hiResDelta( faceIndex, 4 );
 			}
 			else if ( sanity > 9 ) {
-				fontSize = 12;
-				symbolFontSize = 5.5;
-				sanityPerInvRegion.x += 4;
+				fontSize = hiResDelta( faceIndex, 12 );
+				symbolFontSize = hiResDelta( faceIndex, 5.5 );
+				sanityPerInvRegion.x += hiResDelta( faceIndex, 4 );
 			}
 
 			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 			sheet.drawOutlinedTitle( g, 'p', sanityPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 		else if ( sanity.length() > 1 ) {	// 10+
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, 11.5, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.5 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, 14, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 
 //		sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Sanity-' + sanity + '.png'),
@@ -3158,11 +3158,11 @@ function drawEncounterIcon( g, diy, sheet ) {
 
 			// resource
 			if ( $EncounterType == '0' ) {
-				sheet.paintImage( g, createReturnToImage( ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png') ), region );
+				sheet.paintImage( g, createReturnToImage( ImageUtils.get('ArkhamHorrorLCG/icons/AHLCG-' + iconName + '.png'), faceIndex ), region );
 			}
 			// custom
 			else {
-				sheet.paintImage( g, createReturnToImage( PortraitList[getPortraitIndex( 'Encounter' )].getImage() ), region );
+				sheet.paintImage( g, createReturnToImage( PortraitList[getPortraitIndex( 'Encounter' )].getImage(), faceIndex ), region );
 			}
 		}
 		else {
@@ -3220,37 +3220,37 @@ function drawEnemyStats( g, diy, sheet, statNames ) {
 		let statRegion = diy.settings.getRegion( getExpandedKey(faceIndex, stat + '-region' ) );
 
 		if ( statValue == '-' ) {
-			statRegion.y += 6.0;
+			statRegion.y += hiResDelta( faceIndex, 6.0 );
 
-			sheet.drawOutlinedTitle( g, '\u2014', statRegion, Eons.namedObjects.AHLCGObject.costFont, 11.5, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, '\u2014', statRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 		}
 		else if (perInvestigator == '1') {
 			let statRegion = diy.settings.getRegion( getExpandedKey(faceIndex, stat + 'PerInv-region' ) );
 			let statPerInvRegion = diy.settings.getRegion( getExpandedKey(faceIndex, stat + 'PerInvIcon-region' ) );
 
-			let fontSize = 11.5;
-			let symbolFontSize = 5.5;
+			let fontSize = hiResDelta( faceIndex, 11.5 );
+			let symbolFontSize = hiResDelta( faceIndex, 5.5 );
 
 //			if ( statValue == 'X' ) {
 //				statRegion.x += 2;
 //				statPerInvRegion.x += 2;
 //			}
 			if ( statValue == 1 ) {
-				statRegion.x -= 1;
-				statPerInvRegion.x -= 4;
+				statRegion.x -= hiResDelta( faceIndex, 1 );
+				statPerInvRegion.x -= hiResDelta( faceIndex, 4 );
 
 			}
 			else if ( statValue > 9 ) {
-				fontSize = 10.5;
-				symbolFontSize = 5.0;
-				statPerInvRegion.x += 4;
+				fontSize = hiResDelta( faceIndex, 10.5 );
+				symbolFontSize = hiResDelta( faceIndex, 5.0 );
+				statPerInvRegion.x += hiResDelta( faceIndex, 4 );
 			}
 
 			sheet.drawOutlinedTitle( g, statValue, statRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 			sheet.drawOutlinedTitle( g, 'p', statPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, statValue, statRegion, Eons.namedObjects.AHLCGObject.enemyFont, 11.0, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, statValue, statRegion, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.0 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 		}
 	}
 }
@@ -3262,31 +3262,31 @@ function drawEnemyLocationHealth( g, diy, sheet ) {
 
 	if ( health == '-' ) {
 		let healthRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'HealthPerInv-region' ) );
-		healthRegion.x += 5.0;
-		healthRegion.y += 6.0;
+		healthRegion.x += hiResDelta( faceIndex, 5.0 );
+		healthRegion.y += hiResDelta( faceIndex, 6.0 );
 
-		sheet.drawOutlinedTitle( g, '\u2014', healthRegion, Eons.namedObjects.AHLCGObject.costFont, 11.5, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, '\u2014', healthRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else if (perInvestigator == '1') {
 		let healthRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'HealthPerInv-region' ) );
 		let healthPerInvRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'HealthPerInvIcon-region' ) );
-		let fontSize = 13.5;
+		let fontSize = hiResDelta( faceIndex, 13.5 );
 
 		if ( health == 'X' ) {
-			healthRegion.x += 2;
-			healthPerInvRegion.x += 2;
+			healthRegion.x += hiResDelta( faceIndex, 2 );
+			healthPerInvRegion.x += hiResDelta( faceIndex, 2 );
 		}
 
 		if ( health > 9 ) {
-			fontSize = 13.0;
-			healthPerInvRegion.x += 4;
+			fontSize = hiResDelta( faceIndex, 13.0 );
+			healthPerInvRegion.x += hiResDelta( faceIndex, 4 );
 		}
 
 		sheet.drawOutlinedTitle( g, health, healthRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
-		sheet.drawOutlinedTitle( g, 'p', healthPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, 6.5, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, 'p', healthPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 6.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else {
-		sheet.drawOutlinedTitle( g, health, diy.settings.getRegion( getExpandedKey(faceIndex, 'Health-region' ) ), Eons.namedObjects.AHLCGObject.enemyFont, 13.5, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, health, diy.settings.getRegion( getExpandedKey(faceIndex, 'Health-region' ) ), Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 13.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 }
 
@@ -3297,31 +3297,31 @@ function drawEnemyHealth( g, diy, sheet ) {
 
 	if ( health == '-' ) {
 		let healthRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'HealthPerInv-region' ) );
-		healthRegion.x += 5.0;
-		healthRegion.y += 6.0;
+		healthRegion.x += hiResDelta( faceIndex, 5.0 );
+		healthRegion.y += hiResDelta( faceIndex, 6.0 );
 
-		sheet.drawOutlinedTitle( g, '\u2014', healthRegion, Eons.namedObjects.AHLCGObject.costFont, 11.5, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, '\u2014', healthRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else if (perInvestigator == '1') {
 		let healthRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'HealthPerInv-region' ) );
 		let healthPerInvRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'HealthPerInvIcon-region' ) );
-		let fontSize = 13.5;
+		let fontSize = hiResDelta( faceIndex, 13.5 );
 
 		if ( health == 'X' ) {
-			healthRegion.x += 2;
-			healthPerInvRegion.x += 2;
+			healthRegion.x += hiResDelta( faceIndex, 2 );
+			healthPerInvRegion.x += hiResDelta( faceIndex, 2 );
 		}
 
 		if ( health > 9 ) {
-			fontSize = 13.0;
-			healthPerInvRegion.x += 4;
+			fontSize = hiResDelta( faceIndex, 13.0 );
+			healthPerInvRegion.x += hiResDelta( faceIndex, 4 );
 		}
 
 		sheet.drawOutlinedTitle( g, health, healthRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
-		sheet.drawOutlinedTitle( g, 'p', healthPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, 6.5, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, 'p', healthPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 6.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else {
-		sheet.drawOutlinedTitle( g, health, diy.settings.getRegion( getExpandedKey(faceIndex, 'Health-region' ) ), Eons.namedObjects.AHLCGObject.enemyFont, 13.5, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, health, diy.settings.getRegion( getExpandedKey(faceIndex, 'Health-region' ) ), Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 13.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 }
 
@@ -3373,7 +3373,7 @@ function drawLocationIcon( g, diy, sheet, locationIconName, drawBaseCircle )
 		var locationImage = icon_tinter.getTintedImage();
 
 		var ig = locationImage.createGraphics();
-		ig.drawImage( ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + locationIcon + '.png' ), 5, 5, null );
+		ig.drawImage( ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + locationIcon + '.png' ), hiResDelta( faceIndex, 5 ), hiResDelta( faceIndex, 5 ), null );
 
 		sheet.paintImage(g, locationImage, region );
 	}
@@ -3381,7 +3381,7 @@ function drawLocationIcon( g, diy, sheet, locationIconName, drawBaseCircle )
 
 function drawShroud( g, diy, sheet ) {
 	var faceIndex = sheet.getSheetIndex();
-	var piIconSize = 7.5;
+	var piIconSize = hiResDelta( faceIndex, 7.5 );
 
 	var lightColor = new Color(0.996, 0.945, 0.859);
 	var darkColor = new Color(0, 0, 0);
@@ -3395,49 +3395,49 @@ function drawShroud( g, diy, sheet ) {
 	var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Shroud-region' ) );
 
 	if ( Number.isInteger( shroud ) && shroud > 9 ) {	// is possible??
-		piIconSize = 7.0;
+		piIconSize = hiResDelta( faceIndex, 7.0 );
 	}
 
 	if ( shroud == 1 || shroud == 4 ) {
-		region.x -= 2;
+		region.x -= hiResDelta( faceIndex, 2 );
 	}
-	else if ( shroud == 'X' ) region.x -= 1;
+	else if ( shroud == 'X' ) region.x -= hiResDelta( faceIndex, 1 );
 
 
 	if ( shroud == '-' ) {
-		sheet.drawOutlinedTitle( g, shroud, region, Eons.namedObjects.AHLCGObject.symbolFont, 12.0, 1.5, textColor, borderColor, 0, true );
+		sheet.drawOutlinedTitle( g, shroud, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 12.0 ), 1.5, textColor, borderColor, 0, true );
 	}
 	else if ( perInvestigator == '1' ) {
 		var perInvShroudRegion = diy.settings.getRegion( getExpandedKey( faceIndex, 'ShroudPerInv-region' ) );
 		var perInvRegion = diy.settings.getRegion( getExpandedKey( faceIndex, 'ShroudPerInvIcon-region' ) );
 
 		if ( Number.isInteger( shroud ) && shroud > 9 ) {
-			perInvRegion.x += 1;
+			perInvRegion.x += hiResDelta( faceIndex, 1 );
 		}
 		if ( Number.isInteger( shroud ) && shroud > 19 ) {
-			perInvShroudRegion.x += 1;
-			perInvRegion.x += 3;
+			perInvShroudRegion.x += hiResDelta( faceIndex, 1 );
+			perInvRegion.x += hiResDelta( faceIndex, 3 );
 		}
 
-		let fontSize = 14.0;
+		let fontSize = hiResDelta( faceIndex, 14.0 );
 
 		if ( shroud == 'X' ) {
-			perInvShroudRegion.x += 3;
-			perInvRegion.x += 3;
+			perInvShroudRegion.x += hiResDelta( faceIndex, 3 );
+			perInvRegion.x += hiResDelta( faceIndex, 3 );
 		}
 		else if ( shroud == 1 ) {
-			perInvRegion.x -= 4;
+			perInvRegion.x -= hiResDelta( faceIndex, 4 );
 		}
 		else if ( shroud.length() > 1 ) {
-			perInvRegion.x += 2;
-			fontSize = 11.0;
+			perInvRegion.x += hiResDelta( faceIndex, 2 );
+			fontSize = hiResDelta( faceIndex, 11.0 );
 		}
 
 		if ( shroud == 'Star' ) {
-			perInvShroudRegion.x += 1;
-			perInvShroudRegion.y += 2;
-			perInvRegion.x -= 2;
-			sheet.drawOutlinedTitle( g, '*', perInvShroudRegion, Eons.namedObjects.AHLCGObject.chaosFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			perInvShroudRegion.x += hiResDelta( faceIndex, 1 );
+			perInvShroudRegion.y += hiResDelta( faceIndex, 2 );
+			perInvRegion.x -= hiResDelta( faceIndex, 2 );
+			sheet.drawOutlinedTitle( g, '*', perInvShroudRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 		else {
 			sheet.drawOutlinedTitle( g, shroud, perInvShroudRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
@@ -3446,11 +3446,11 @@ function drawShroud( g, diy, sheet ) {
 	}
 	else {
 		if ( shroud == 'Star' ) {
-			region.y += 2;
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			region.y += hiResDelta( faceIndex, 2 );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, shroud, region, Eons.namedObjects.AHLCGObject.enemyFont, 14.0, 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, shroud, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 	}
 
@@ -3460,7 +3460,7 @@ function drawShroud( g, diy, sheet ) {
 function drawClues( g, diy, sheet ) {
 	var faceIndex = sheet.getSheetIndex();
 //	var piIconSize = 5.0;
-	var piIconSize = 7.5;
+	var piIconSize = hiResDelta( faceIndex, 7.5 );
 
 	// 254, 241, 219
 	var lightColor = new Color(0.996, 0.945, 0.859);
@@ -3475,10 +3475,10 @@ function drawClues( g, diy, sheet ) {
 
 	if ( CardTypes[faceIndex] == 'Act' ) {
 		if ( Number.isInteger( clues ) && clues > 9 ) {
-			piIconSize = 5.5;
+			piIconSize = hiResDelta( faceIndex, 5.5 );
 		}
 		else {
-			piIconSize = 6.0;
+			piIconSize = hiResDelta( faceIndex, 6.0 );
 		}
 
 		textColor = lightColor;
@@ -3486,7 +3486,7 @@ function drawClues( g, diy, sheet ) {
 	}
 	else {
 		if ( Number.isInteger( clues ) && clues > 9 ) {
-			piIconSize = 7.0;
+			piIconSize = hiResDelta( faceIndex, 7.0 );
 		}
 
 		textColor = darkColor;
@@ -3505,11 +3505,11 @@ function drawClues( g, diy, sheet ) {
 		var perInvRegion = diy.settings.getRegion( getExpandedKey( faceIndex, 'CluesPerInvIcon-region' ) );
 
 		if ( Number.isInteger( clues ) && clues > 9 ) {
-			perInvRegion.x += 1;
+			perInvRegion.x += hiResDelta( faceIndex, 1 );
 		}
 		if ( Number.isInteger( clues ) && clues > 19 ) {
-			perInvCluesRegion.x += 1;
-			perInvRegion.x += 3;
+			perInvCluesRegion.x += hiResDelta( faceIndex, 1 );
+			perInvRegion.x += hiResDelta( faceIndex, 3 );
 		}
 
 		if ( $Orientation == 'Reversed' ) {
@@ -3521,25 +3521,25 @@ function drawClues( g, diy, sheet ) {
 			perInvRegion.x = region.x + ( (region.x + region.width) - (perInvRegion.x + perInvRegion.width) );
 		}
 
-		let fontSize = 14.0;
+		let fontSize = hiResDelta( faceIndex, 14.0 );
 
 		if ( clues == 'X' ) {
-			perInvCluesRegion.x += 3;
-			perInvRegion.x += 3;
+			perInvCluesRegion.x += hiResDelta( faceIndex, 3 );
+			perInvRegion.x += hiResDelta( faceIndex, 3 );
 		}
 		else if ( clues == 1 ) {
-			perInvRegion.x -= 4;
+			perInvRegion.x -= hiResDelta( faceIndex, 4 );
 		}
 		else if ( clues.length() > 1 ) {
-			perInvRegion.x += 2;
-			fontSize = 11.0;
+			perInvRegion.x += hiResDelta( faceIndex, 2 );
+			fontSize = hiResDelta( faceIndex, 11.0 );
 		}
 
 		if ( clues == 'Star' ) {
-			perInvCluesRegion.x += 1;
-			perInvCluesRegion.y += 2;
-			perInvRegion.x -= 2;
-			sheet.drawOutlinedTitle( g, '*', perInvCluesRegion, Eons.namedObjects.AHLCGObject.chaosFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			perInvCluesRegion.x += hiResDelta( faceIndex, 1 );
+			perInvCluesRegion.y += hiResDelta( faceIndex, 2 );
+			perInvRegion.x -= hiResDelta( faceIndex, 2 );
+			sheet.drawOutlinedTitle( g, '*', perInvCluesRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 		else {
 			sheet.drawOutlinedTitle( g, clues, perInvCluesRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
@@ -3547,53 +3547,53 @@ function drawClues( g, diy, sheet ) {
 		sheet.drawOutlinedTitle( g, 'p', perInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, piIconSize, 0.8, textColor, borderColor, 0, true );
 	}
 	else if ( asterisk == '1' ) {
-		let fontSize = 14.0;
-		let regionXOffset = 7;
-		let regionYOffset = 7;
+		let fontSize = hiResDelta( faceIndex, 14.0 );
+		let regionXOffset = hiResDelta( faceIndex, 7 );
+		let regionYOffset = hiResDelta( faceIndex, 7 );
 
 		if (clues == 'Star') {
-			regionXOffset = 4;
+			regionXOffset = hiResDelta( faceIndex, 4 );
 		}
 		else if ( Number.isInteger(clues) && clues == 1 ) {
-			regionXOffset = 4;
+			regionXOffset = hiResDelta( faceIndex, 4 );
 		}
 		else if ( clues.length() > 1 ) {
-			region.x -= 1;
-			regionXOffset = 6;
-			regionYOffset = 7;
-			fontSize = 13.0;
+			region.x -= hiResDelta( faceIndex, 1 );
+			regionXOffset = hiResDelta( faceIndex, 6 );
+			regionYOffset = hiResDelta( faceIndex, 7 );
+			fontSize = hiResDelta( faceIndex, 13.0 );
 		}
 
 		if ( clues == 'Star' ) {
-			region.x -= 4;
-			region.y += 2;
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			region.x -= hiResDelta( faceIndex, 4 );
+			region.y += hiResDelta( faceIndex, 2 );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 		else {
-			region.x -= 4;
+			region.x -= hiResDelta( faceIndex, 4 );
 			sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
 		}
 
-		let asteriskFont = new Font( Eons.namedObjects.AHLCGObject.bodyFamily, Font.ITALIC, 12.0 );
+		let asteriskFont = new Font( Eons.namedObjects.AHLCGObject.bodyFamily, Font.ITALIC, hiResDelta( faceIndex, 12.0 ) );
 
 		region.x += regionXOffset;
 		region.y += regionYOffset;
 
 		if ( clues == 'Star' ) {
-			region.x += 6;
+			region.x += hiResDelta( faceIndex, 6 );
 		}
 		else {
 			region.x += g.getFontMetrics(asteriskFont).stringWidth(clues);
 		}
-		sheet.drawOutlinedTitle( g, '*', region, asteriskFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', region, asteriskFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 	}
 	else {
 		if ( clues == 'Star' ) {
-			region.y += 2;
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			region.y += hiResDelta( faceIndex, 2 );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.enemyFont, 14.0, 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 	}
 }
@@ -3610,7 +3610,7 @@ function drawDoom( g, diy, sheet ) {
 
 	var textColor = new Color(0.996, 0.945, 0.859);
 	var borderColor = new Color(0, 0, 0);
-	var piIconSize = 6.5;
+	var piIconSize = hiResDelta( faceIndex, 6.5 );
 
 	if ( doom == '-' ) {
 		drawDash( g, diy, sheet, region, 0, 6 );
@@ -3628,20 +3628,20 @@ function drawDoom( g, diy, sheet ) {
 			perInvRegion.x = region.x + ( (region.x + region.width) - (perInvRegion.x + perInvRegion.width) );
 		}
 
-		let fontSize = 14.0;
+		let fontSize = hiResDelta( faceIndex, 14.0 );
 
 		if ( doom.length() > 1 ) {
-			perInvDoomRegion.x -= 1;
-			perInvRegion.x += 1;
-			fontSize = 11.0;
-			piIconSize = 6.0;
+			perInvDoomRegion.x -= hiResDelta( faceIndex, 1 );
+			perInvRegion.x += hiResDelta( faceIndex, 1 );
+			fontSize = hiResDelta( faceIndex, 11.0 );
+			piIconSize = hiResDelta( faceIndex, 6.0 );
 		}
 
 		if ( doom == 'Star' ) {
-			perInvDoomRegion.x += 1;
-			perInvDoomRegion.y += 2;
-			perInvRegion.x -= 3;
-			sheet.drawOutlinedTitle( g, '*', perInvDoomRegion, Eons.namedObjects.AHLCGObject.chaosFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			perInvDoomRegion.x += hiResDelta( faceIndex, 1 );
+			perInvDoomRegion.y += hiResDelta( faceIndex, 2 );
+			perInvRegion.x -= hiResDelta( faceIndex, 3 );
+			sheet.drawOutlinedTitle( g, '*', perInvDoomRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 		else {
 			sheet.drawOutlinedTitle( g, doom, perInvDoomRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
@@ -3649,58 +3649,58 @@ function drawDoom( g, diy, sheet ) {
 		sheet.drawOutlinedTitle( g, 'p', perInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, piIconSize, 0.8, textColor, borderColor, 0, true );
 	}
 	else if ( asterisk == '1' ) {
-		let fontSize = 14.0;
-		let regionXOffset = 7;
-		let regionYOffset = 7;
+		let fontSize = hiResDelta( faceIndex, 14.0 );
+		let regionXOffset = hiResDelta( faceIndex, 7 );
+		let regionYOffset = hiResDelta( faceIndex, 7 );
 
 		if ( doom == 'Star' ) {
-			regionXOffset = 4;
+			regionXOffset = hiResDelta( faceIndex, 4 );
 		}
 		else if ( Number.isInteger(doom) && doom == 1 ) {
-			regionXOffset = 4;
+			regionXOffset = hiResDelta( faceIndex, 4 );
 		}
 		else if ( doom.length() > 1 ) {
-			region.x -= 1;
-			regionXOffset = 7;
-			regionYOffset = 7;
-			fontSize = 13.0;
+			region.x -= hiResDelta( faceIndex, 1 );
+			regionXOffset = hiResDelta( faceIndex, 7 );
+			regionYOffset = hiResDelta( faceIndex, 7 );
+			fontSize = hiResDelta( faceIndex, 13.0 );
 		}
 
 		if ( doom == 'Star' ) {
-			region.x -= 4;
-			region.y += 2;
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			region.x -= hiResDelta( faceIndex, 4 );
+			region.y += hiResDelta( faceIndex, 2 );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 		else {
-			region.x -= 4;
+			region.x -= hiResDelta( faceIndex, 4 );
 			sheet.drawOutlinedTitle( g, doom, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
 		}
 
-		let asteriskFont = new Font( Eons.namedObjects.AHLCGObject.bodyFamily, Font.ITALIC, 12.0 );
+		let asteriskFont = new Font( Eons.namedObjects.AHLCGObject.bodyFamily, Font.ITALIC, hiResDelta( faceIndex, 12.0 ) );
 
 		region.x += regionXOffset;
 		region.y += regionYOffset;
 
 		if ( doom == 'Star' ) {
-			region.x += 6;
+			region.x += hiResDelta( faceIndex, 6 );
 		}
 		else {
 			region.x += g.getFontMetrics(asteriskFont).stringWidth(doom);
 		}
 
-		sheet.drawOutlinedTitle( g, '*', region, asteriskFont, 12.0, 0.8, textColor, borderColor, 0, true );
+		sheet.drawOutlinedTitle( g, '*', region, asteriskFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 	}
 	else {
 		if ( doom == 'Star' ) {
-			region.y += 2;
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, 12.0, 0.8, textColor, borderColor, 0, true );
+			region.y += hiResDelta( faceIndex, 2 );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
 		}
 		else {
 			if ( $Orientation == 'Reversed' ) {
-				region.x -= 1;
+				region.x -= hiResDelta( faceIndex, 1 );
 				}
 
-			sheet.drawOutlinedTitle( g, doom, region, Eons.namedObjects.AHLCGObject.enemyFont, 14.0, 0.8, new Color(0.996, 0.945, 0.859), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, doom, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 0.8, new Color(0.996, 0.945, 0.859), new Color(0, 0, 0), 0, true );
 		}
 	}
 }
@@ -3715,7 +3715,7 @@ function drawScenarioIndexFront( g, diy, sheet, typeText, textBox ) {
 
 	if ( $Orientation == 'Reversed' ) {
 		region = reverseRegion( region );
-		region.x -= 1;
+		region.x -= hiResDelta( faceIndex, 1 );
 	}
 
 	var text = typeText + ' <suf>' + $ScenarioIndex;
@@ -3740,7 +3740,7 @@ function drawScenarioIndexBack( g, diy, sheet, typeText, textBox ) {
 	var height = textBox.measure(g, region);
 	textBox.markupText = '';
 
-	if ( height < 15 ) {	// fits on one line
+	if ( height < hiResDelta( faceIndex, 15 ) ) {	// fits on one line
 		textBox.markupText = text;
 		textBox.drawAsSingleLine( g, region );
 	}
@@ -3766,14 +3766,14 @@ function drawScenarioIndexBack( g, diy, sheet, typeText, textBox ) {
 function drawDash( g, diy, sheet, region, offsetX, offsetY ) {
 	var faceIndex = sheet.getSheetIndex();
 
-	var dashX = 26;
-	var dashY = 10;
+	var dashX = hiResDelta( faceIndex, 26 );
+	var dashY = hiResDelta( faceIndex, 10 );
 
 	// center in region
 	region.x = region.x + ( region.width - dashX ) / 2 + offsetX;
 	region.y = region.y + ( region.height - dashY ) / 2 + offsetY;
-	region.width = 26;
-	region.height = 10;
+	region.width = hiResDelta( faceIndex, 26 );
+	region.height = hiResDelta( faceIndex, 10 );
 
 	var hsb = diy.settings.getTint( getExpandedKey( faceIndex, 'Dash-tint' ) );
 

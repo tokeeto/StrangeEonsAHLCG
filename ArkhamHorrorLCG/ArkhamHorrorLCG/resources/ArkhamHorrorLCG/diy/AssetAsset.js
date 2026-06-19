@@ -24,7 +24,7 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
 
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 18;
 }
 
@@ -361,7 +361,7 @@ function onRead(diy, oos) {
 
 	updateCollection();
 
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 18;
 }
 

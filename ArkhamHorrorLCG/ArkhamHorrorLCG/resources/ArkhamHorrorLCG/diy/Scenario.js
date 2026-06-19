@@ -24,7 +24,7 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 17;
 }
 
@@ -359,7 +359,7 @@ function onRead(diy, oos) {
 	if ( $Template == 'Chaos' || $Template == 'ChaosFull' || $TemplateBack == 'Chaos' || $TemplateBack == 'ChaosFull' ) PortraitList[3] = oos.readObject();
 	else createPortrait( diy, PortraitTypeList[3] );
 
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 17;
 }
 

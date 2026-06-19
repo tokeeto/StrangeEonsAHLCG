@@ -23,7 +23,7 @@ function create( diy ) {
 	setDefaults();
 	createPortraits( diy, PortraitTypeList );
 
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 3;
 }
 
@@ -208,7 +208,7 @@ function onRead(diy, oos) {
 		$BackTypeBack = 'PlayerPurple';
 	}
 
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 2;
 }
 

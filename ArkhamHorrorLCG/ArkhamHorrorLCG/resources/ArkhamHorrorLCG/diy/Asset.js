@@ -24,7 +24,7 @@ function create( diy ) {
 	createPortraits( diy, PortraitTypeList );
 	setDefaultCollection();
 
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 18;
 	diy.bleedMargin = 8.64;
 }
@@ -242,7 +242,7 @@ function onRead(diy, oos) {
 	updateCollection();
 
 	diy.faceStyle = FaceStyle.TWO_FACES;
-	diy.setCornerRadius(8);
+	diy.setCornerRadius(32);
 	diy.version = 18;
 }
 

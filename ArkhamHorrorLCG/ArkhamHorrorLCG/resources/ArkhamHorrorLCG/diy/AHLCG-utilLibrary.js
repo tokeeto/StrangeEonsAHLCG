@@ -10,6 +10,99 @@ var IconSize = 24;
 const FACE_FRONT = 0;
 const FACE_BACK = 1;
 
+const HI_RES_CARD_TYPES = {
+	'Act': true,
+	'ActBack': true,
+	'Agenda': true,
+	'AgendaBack': true,
+	'AgendaFrontPortrait': true,
+	'AgendaPortrait': true,
+	'Asset': true,
+	'AssetBack': true,
+	'AssetStory': true,
+	'AssetStoryBack': true,
+	'BackPortrait': true,
+	'Chaos': true,
+	'ChaosStory': true,
+	'Concealed': true,
+	'ConcealedBack': true,
+	'Customizable': true,
+	'CustomizableBack': true,
+	'Enemy': true,
+	'EnemyBack': true,
+	'EnemyLocation': true,
+	'Event': true,
+	'EventBack': true,
+	'Investigator': true,
+	'InvestigatorBack': true,
+	'Key': true,
+	'KeyBack': true,
+	'Location': true,
+	'LocationBack': true,
+	'Scenario': true,
+	'Skill': true,
+	'SkillBack': true,
+	'Story': true,
+	'StoryChaos': true,
+	'StoryChaosFull': true,
+	'Treachery': true,
+	'TreacheryBack': true,
+	'TreacheryStoryBack': true,
+	'WeaknessEnemy': true,
+	'WeaknessEnemyBack': true,
+	'WeaknessTreachery': true,
+	'WeaknessTreacheryBack': true
+};
+
+function isHiResType( faceIndex ) {
+	return !!HI_RES_CARD_TYPES[CardTypes[faceIndex]];
+}
+
+function isHiResCardType( cardType ) {
+	return !!HI_RES_CARD_TYPES[cardType];
+}
+
+function hiResCardTypeScale( cardType ) {
+	return isHiResCardType( cardType ) ? 4 : 1;
+}
+
+function hiResScale( faceIndex ) {
+	return isHiResType( faceIndex ) ? 4 : 1;
+}
+
+function hiResBleed( faceIndex ) {
+	return isHiResType( faceIndex ) ? 72 : 0;
+}
+
+function hiResDelta( faceIndex, value ) {
+	return value * hiResScale( faceIndex );
+}
+
+function hiResX( faceIndex, value ) {
+	return value * hiResScale( faceIndex ) + hiResBleed( faceIndex );
+}
+
+function hiResY( faceIndex, value ) {
+	return value * hiResScale( faceIndex ) + hiResBleed( faceIndex );
+}
+
+function hiResLength( faceIndex, value ) {
+	return value * hiResScale( faceIndex );
+}
+
+function hiResFullLength( faceIndex, value ) {
+	return value * hiResScale( faceIndex ) + 2 * hiResBleed( faceIndex );
+}
+
+function hiResRegion( faceIndex, x, y, width, height, fullWidth, fullHeight ) {
+	return new Region(
+		hiResX( faceIndex, x ),
+		hiResY( faceIndex, y ),
+		fullWidth ? hiResFullLength( faceIndex, width ) : hiResLength( faceIndex, width ),
+		fullHeight ? hiResFullLength( faceIndex, height ) : hiResLength( faceIndex, height )
+	);
+}
+
 function getName() {
     return @AHLCG;
 }
@@ -470,11 +563,12 @@ function addSpacing( faceIndex, text, key, diy ) {
 		else spacing = 1.5;
 
 		if (sectionSpacing != null && sectionSpacing > 0) spacing += parseInt(sectionSpacing);
+		spacing *= hiResScale( faceIndex );
 
 		text = text + '\n<image res://ArkhamHorrorLCG/images/empty1x1.png 1pt ' + spacing + 'pt>';
 	}
 	else if ( sectionSpacing != null && sectionSpacing > 0 ) {
-		spacing = sectionSpacing;
+		spacing = sectionSpacing * hiResScale( faceIndex );
 
 		text = text + '<image res://ArkhamHorrorLCG/images/empty1x1.png 1pt ' + spacing + 'pt>';
 	}
@@ -1354,18 +1448,18 @@ function createPortraitShareButton( bindings ) {
 }
 
 function reverseRegion( region ) {
-	region.x = 525 - ( region.x + region.width );
+	region.x = hiResFullLength( FACE_FRONT, 525 ) - ( region.x + region.width );
 
 	return region;
 }
 
 function shiftRegion( region, cardType ) {
 	// default shift right
-	var offset = 209;
+	var offset = 209 * hiResCardTypeScale( cardType );
 
 	if ( cardType == 'Agenda' ) {
 		// shift left
-		offset = -209;
+		offset = -209 * hiResCardTypeScale( cardType );
 	}
 
 	region.x = region.x + offset;
@@ -1470,16 +1564,16 @@ const createDarkenedImage = filterFunction(
 	new ca.cgjennings.graphics.filters.BrightnessContrastFilter(-0.5,0.0)
 );
 
-function createReturnToImage( iconImage )
+function createReturnToImage( iconImage, faceIndex )
 {
-	var icon = ImageUtils.resize( iconImage, 28, 28 );
+	var icon = ImageUtils.resize( iconImage, hiResLength( faceIndex, 28 ), hiResLength( faceIndex, 28 ) );
 	var base = ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-ReturnToBase.png');
 
-	var destImage = ImageUtils.create( 36, 33, true );
+	var destImage = ImageUtils.create( hiResLength( faceIndex, 36 ), hiResLength( faceIndex, 33 ), true );
 	var g = destImage.createGraphics();
 	g.drawImage( base, 0, 0, null );
 	g.setComposite( java.awt.AlphaComposite.DstOut );
-	g.drawImage(icon, 4, 4, null);
+	g.drawImage(icon, hiResDelta( faceIndex, 4 ), hiResDelta( faceIndex, 4 ), null);
 	g.dispose();
 
 	return destImage;
