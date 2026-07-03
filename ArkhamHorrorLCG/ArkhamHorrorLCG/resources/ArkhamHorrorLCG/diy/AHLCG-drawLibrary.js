@@ -29,7 +29,7 @@ function drawTemplate( g, sheet, className ) {
 	else if ( CardTypes[faceIndex] == 'StoryChaos' || CardTypes[faceIndex] == 'ChaosStory' ) {
 		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-Chaos.png');
 	}
-	else if ( 'Concealed' ) {
+	else if ( CardTypes[faceIndex] == 'Concealed' ) {
 		if ( $Template == 'Decoy' ) image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'Decoy.png');
 		else if ( $Template == 'NamedDecoy' ) image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'NamedDecoy.png');
 		else image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '.png');
