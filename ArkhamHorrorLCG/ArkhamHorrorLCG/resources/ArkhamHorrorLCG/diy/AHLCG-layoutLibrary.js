@@ -892,10 +892,10 @@ function layoutBackTypeStats( diy, bindings, faceIndex ) {
 	BackList.addActionListener( function updateShape( actionEvent ) {
 		try {
 			if ( (String)(BackList.getSelectedItem()) == 'Player' ) {
-				diy.settings.set( 'AHLCG-' + CardTypes[1] + '-Default-template', 'ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2' );
+				diy.settings.set( 'AHLCG-' + CardTypes[1] + '-Default-template', 'ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png' );
 			}
 			else {
-				diy.settings.set( 'AHLCG-' + CardTypes[1] + '-Default-template', 'ArkhamHorrorLCG/templates/AHLCG-EncounterBack.jp2' );
+				diy.settings.set( 'AHLCG-' + CardTypes[1] + '-Default-template', 'ArkhamHorrorLCG/templates/AHLCG-EncounterBack.png' );
 			}
 		} catch (ex) {
 			Error.handleUncaught( ex );
@@ -904,7 +904,7 @@ function layoutBackTypeStats( diy, bindings, faceIndex ) {
 
 	StatsPanel.place(
 		@AHLCG-Back, 'align right ', BackList, 'wrap, width 40%'
-		);
+	);
 
 	return StatsPanel;
 }
@@ -919,13 +919,13 @@ function layoutLocationBackTypeStats( diy, bindings, faceIndex ) {
  	BackList.addActionListener( function updateShape( actionEvent ) {
 		try {
 			if ( (String)(BackList.getSelectedItem()) == 'Player' ) {
-				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2';
+				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png';
 			}
 			else if ( (String)(BackList.getSelectedItem()) == 'Encounter' ) {
-				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-EncounterBack.jp2';
+				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-EncounterBack.png';
 			}
 			else {
-				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-LocationBack.jp2';
+				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-LocationBack.png';
 			}
 		} catch (ex) {
 			Error.handleUncaught( ex );
