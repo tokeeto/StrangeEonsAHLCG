@@ -25,6 +25,7 @@ function create( diy ) {
 	setDefaultEncounter();
 
 	diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
 	diy.version = 18;
 }
 

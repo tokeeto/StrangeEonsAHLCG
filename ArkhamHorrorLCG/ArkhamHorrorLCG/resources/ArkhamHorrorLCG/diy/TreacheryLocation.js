@@ -25,6 +25,7 @@ function create( diy ) {
 	setDefaultCollection();
 
 	diy.setCornerRadius(8);
+	diy.bleedMargin = 8.64;
 	diy.version = 16;
 }
 

@@ -919,13 +919,13 @@ function layoutLocationBackTypeStats( diy, bindings, faceIndex ) {
  	BackList.addActionListener( function updateShape( actionEvent ) {
 		try {
 			if ( (String)(BackList.getSelectedItem()) == 'Player' ) {
-				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2';
+				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png';
 			}
 			else if ( (String)(BackList.getSelectedItem()) == 'Encounter' ) {
-				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-EncounterBack.jp2';
+				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-EncounterBack.png';
 			}
 			else {
-				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-LocationBack.jp2';
+				$AHLCG-LocationBack-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-LocationBack.png';
 			}
 		} catch (ex) {
 			Error.handleUncaught( ex );

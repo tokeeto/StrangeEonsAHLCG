@@ -13,11 +13,11 @@ AHLCG-Enemy-Body-region = 152,488,1352,660
 
 AHLCG-Enemy-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Enemy-Portrait-portrait-pany = 0
-AHLCG-Enemy-Portrait-portrait-clip-region = 72,1036,1500,1136
+AHLCG-Enemy-Portrait-portrait-clip-region = 0,1036,1644,1208
 
 AHLCG-Enemy-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Enemy-BackPortrait-portrait-pany = 0
-AHLCG-Enemy-BackPortrait-portrait-clip-region = 72,1036,1500,1136
+AHLCG-Enemy-BackPortrait-portrait-clip-region = 0,1036,1644,1208
 
 AHLCG-Enemy-EncounterPortrait-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Enemy-EncounterPortrait-portrait-pany = 0
