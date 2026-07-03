@@ -1,2 +1,4 @@
-
 .DS_Store
+
+# Built Strange Eons plugin bundles — published via GitHub Releases, not committed
+*.seext
