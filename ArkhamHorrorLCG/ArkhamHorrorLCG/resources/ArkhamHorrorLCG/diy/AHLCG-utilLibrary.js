@@ -54,6 +54,18 @@ const HI_RES_CARD_TYPES = {
 	'WeaknessTreacheryBack': true
 };
 
+// Template base names that have a high-resolution PNG in templates/ (distinct
+// from HI_RES_CARD_TYPES, which lists intended-hi-res types whose PNG may not
+// exist yet). Add a name here when its .jp2 template gains a .png counterpart.
+const HI_RES_TEMPLATES = {
+	'Story': true,
+	'StoryChaosFull': true,
+	'Chaos': true,
+	'PlayerBack': true,
+	'EncounterBack': true,
+	'LocationBack': true
+};
+
 function isHiResType( faceIndex ) {
 	return !!HI_RES_CARD_TYPES[CardTypes[faceIndex]];
 }
@@ -101,6 +113,11 @@ function hiResRegion( faceIndex, x, y, width, height, fullWidth, fullHeight ) {
 		fullWidth ? hiResFullLength( faceIndex, width ) : hiResLength( faceIndex, width ),
 		fullHeight ? hiResFullLength( faceIndex, height ) : hiResLength( faceIndex, height )
 	);
+}
+
+function templateResource( templateName ) {
+	var ext = HI_RES_TEMPLATES[templateName] ? 'png' : 'jp2';
+	return 'ArkhamHorrorLCG/templates/AHLCG-' + templateName + '.' + ext;
 }
 
 function getName() {
@@ -1509,7 +1526,7 @@ function updateCardType( diy, type, faceIndex, defaultType, setting ) {
  	}
 
  	if ( setting.length > 0 ) {
- 		diy.settings.set(setting, 'ArkhamHorrorLCG/templates/AHLCG-' + templateName + '.jp2');
+ 		diy.settings.set(setting, templateResource(templateName));
  	}
 }
 
