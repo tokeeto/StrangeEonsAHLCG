@@ -10,11 +10,18 @@ This also means, that outside of a last few updates that I've promised the commu
 
 ## How to use
 0. Download and install [Strange Eons](https://cgjennings.ca/eons/) by C.G.Jennings.
-1. Download ArkhamHorrorLCG.seext (Strange Eons Extension file) found in ArkhamHorrorLCG/ArkhamHorrorLCG.seext
+1. Download the latest `ArkhamHorrorLCG.seext` (Strange Eons Extension file) from the [**Releases** page](https://github.com/tokeeto/StrangeEonsAHLCG/releases/latest) — or use this [direct download link](https://github.com/tokeeto/StrangeEonsAHLCG/releases/latest/download/ArkhamHorrorLCG.seext).
 2. Drag the file into SE while open - that should install it.
 3. Create new content for Arkham Horror LCG and share it with the community. Repeat ad infinitum.
 
 Note that the ArkhamHorrorLCG plugin found in the StrangeEons built-in plugin repository is outdated by this point. It works fine, it just doesn't have all the changes and fixes found here.
+
+## Publishing a release (maintainers)
+The plugin bundle (`ArkhamHorrorLCG.seext`) is distributed via [GitHub Releases](https://github.com/tokeeto/StrangeEonsAHLCG/releases), not committed to the repo. After building the bundle in Strange Eons, publish it with:
+
+    scripts/make-release.sh <version>   # e.g. scripts/make-release.sh 1.2.3
+
+This creates (or updates) the `vX.Y.Z` release, attaches `ArkhamHorrorLCG.seext`, and marks it as the latest release. Requires the [GitHub CLI](https://cli.github.com/) (run `gh auth login` once).
 
 ## How to contribute
 If you wish to make changes to the AHLCG plugin yourself, and potentially make a pull request, here's how to do it:
@@ -25,7 +32,7 @@ If you wish to make changes to the AHLCG plugin yourself, and potentially make a
 4. Right-click on the Plugin folder in SE, and click "test plugin". This will open up a test instance of SE with your new version installed.
 5. Repeat steps 3-4 until you're satisfied.
 6. Copy back the changes (if you symlinked the folders, skip this step).
-7. Make sure to copy over the new .seext file as well
+7. Don't commit the built `.seext` bundle — it is no longer tracked in the repo. The maintainer publishes it to [Releases](https://github.com/tokeeto/StrangeEonsAHLCG/releases) with `scripts/make-release.sh`. Just commit your source changes.
 8. Make a pull request with your changes, and a solid description of what they fix.
 
 ### What even is github?
