@@ -25,8 +25,9 @@ function create( diy ) {
 	setDefaultEncounter();
 	setDefaultCollection();
 
-	diy.setCornerRadius(32);
-	diy.version = 2;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+	diy.version = 3;
 }
 
 function setDefaults() {
@@ -214,7 +215,7 @@ function paintFront( g, diy, sheet ) {
 
 	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Key );
 	drawName( g, diy, sheet, Name_box );
-	drawSubtitle( g, diy, sheet, Subtitle_box, '', false );
+	drawSubtitle( g, diy, sheet, Subtitle_box, '' );
 
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
@@ -235,7 +236,7 @@ function paintBack( g, diy, sheet ) {
 
 	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Key );
 	drawName( g, diy, sheet, BackName_box );
-	drawSubtitle( g, diy, sheet, BackSubtitle_box, '', false );
+	drawSubtitle( g, diy, sheet, BackSubtitle_box, '' );
 
 	drawBody( g, diy, sheet, BackBody_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ) );
 
@@ -264,8 +265,18 @@ function onRead(diy, oos) {
 
 	updateCollection();
 
-	diy.setCornerRadius(32);
-	diy.version = 2;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 3 ) {
+		// template resolution increased 4x; rescale existing portraits to match
+		let portraitIndex = getPortraitIndex( 'Portrait' );
+		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+
+		let backPortraitIndex = getPortraitIndex( 'BackPortrait' );
+		PortraitList[backPortraitIndex].setScale( PortraitList[backPortraitIndex].getScale() * 4 );
+	}
+	diy.version = 3;
 }
 
 function onWrite( diy, oos ) {

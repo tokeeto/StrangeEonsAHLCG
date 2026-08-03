@@ -4,7 +4,8 @@ AHLCG-EventBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.pn
 AHLCG-Event-Name-region = 232,1288,1188,116
 AHLCG-Event-Subtype-region = 416,1404,812,60
 AHLCG-Event-Label-region = 156,320,144,56
-AHLCG-Event-Level-region = 128,212,196,92
+AHLCG-Event-LevelCircle-region = 110,142,232,232
+AHLCG-Event-LevelIcon-region = 145,177,162,162
 
 AHLCG-Event-Body-region = 248,1424,1152,632
 

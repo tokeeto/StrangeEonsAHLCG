@@ -29,7 +29,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function setDefaults() {
@@ -252,7 +252,7 @@ function paintFront( g, diy, sheet ) {
 	else drawTemplate( g, sheet, '' );
 	drawName( g, diy, sheet, Name_box );
 
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, '', false );
+	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, '' );
 
 	drawBody( g, diy, sheet, Body_box, new Array( 'Traits', 'Keywords', 'Rules', 'Flavor' ) );
 
@@ -303,7 +303,7 @@ function paintBack( g, diy, sheet ) {
 
 		drawName( g, diy, sheet, BackName_box );
 
-		if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, '', false );
+		if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, '' );
 
 		drawCollectionIcon( g, diy, sheet );
 
@@ -476,8 +476,18 @@ function onRead(diy, oos) {
 	updateCollection();
 	updateEncounter();
 
-	diy.setCornerRadius(32);
-	diy.version = 18;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 19 ) {
+		// template resolution increased 4x; rescale existing portraits to match
+		let portraitIndex = getPortraitIndex( 'Portrait' );
+		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+
+		let backPortraitIndex = getPortraitIndex( 'BackPortrait' );
+		PortraitList[backPortraitIndex].setScale( PortraitList[backPortraitIndex].getScale() * 4 );
+	}
+	diy.version = 19;
 }
 
 function onWrite( diy, oos ) {

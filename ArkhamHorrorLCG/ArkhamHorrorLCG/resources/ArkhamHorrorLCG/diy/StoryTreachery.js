@@ -27,7 +27,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function setDefaults() {
@@ -366,8 +366,15 @@ function onRead(diy, oos) {
 		$TrackerHeight = '100';
 	}
 
-	diy.setCornerRadius(32);
-	diy.version = 18;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 19 ) {
+		// template resolution increased 4x; rescale existing portrait to match
+		let backPortraitIndex = getPortraitIndex( 'BackPortrait' );
+		PortraitList[backPortraitIndex].setScale( PortraitList[backPortraitIndex].getScale() * 4 );
+	}
+	diy.version = 19;
 }
 
 function onWrite( diy, oos ) {

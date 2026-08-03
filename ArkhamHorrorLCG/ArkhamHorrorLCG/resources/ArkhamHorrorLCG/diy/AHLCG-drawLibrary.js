@@ -20,9 +20,12 @@ function drawTemplate( g, sheet, className ) {
 	}
 
 	if ( className != null && className.length > 0 ) {
-		// asset basic weaknesses should use the AssetStory template
-		if ( CardTypes[faceIndex] == 'Asset' && className == 'BasicWeakness' )
-			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-AssetStory' + '-' + getClassInitial( className ) + '.png');
+		// "AssetStory" cards (story assets, act/agenda backs, etc.) are visually
+		// just the plain class Asset template with an encounter-set circle
+		// overlaid separately (see drawEncounterSetOverlay) - reuse that art
+		// instead of a dedicated (and unmaintained) AssetStory template
+		if ( CardTypes[faceIndex] == 'AssetStory' || (CardTypes[faceIndex] == 'Asset' && className == 'BasicWeakness') )
+			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-Asset' + '-' + getClassInitial( className ) + '.png');
 		else
 			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '-' + getClassInitial( className ) + '.png');
 	}
@@ -429,7 +432,12 @@ function drawSubtitleTemplate( g, sheet, className ) {
 	}
 
 	if (className != null && className.length > 0) {
-		image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + 'ST-' + getClassInitial( className ) + '.png');
+		// "AssetStory" cards (story assets, act/agenda backs, etc.) reuse the
+		// plain class Asset template art (see drawTemplate) - do the same here
+		if ( CardTypes[faceIndex] == 'AssetStory' || (CardTypes[faceIndex] == 'Asset' && className == 'BasicWeakness') )
+			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-Asset-' + getClassInitial( className ) + 'S.png');
+		else
+			image = ImageUtils.get('ArkhamHorrorLCG/templates/AHLCG-' + CardTypes[faceIndex] + '-' + getClassInitial( className ) + 'S.png');
 	}
 	else
 	{
@@ -497,7 +505,7 @@ function drawName( g, diy, sheet, nameBox, cClass ) {
 		if ( unique == '1' ) {
 			title = '<uni>' + title;
 		}
-		
+
 		if (cClass){
 			var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Name' + getClassInitial( cClass ) +  '-region') );
 		} else {
@@ -731,7 +739,7 @@ function drawChaosName( g, diy, sheet, nameBox ) {
 	return region.y + hiResDelta( faceIndex, 12 );
 }
 
-function drawSubtitle( g, diy, sheet, subtitleBox, className, drawBox ) {
+function drawSubtitle( g, diy, sheet, subtitleBox, className ) {
 	var faceIndex = sheet.getSheetIndex();
 	// can't make this work without creating a new box
 	// otherwise, you have to edit the text for the color change to happen
@@ -739,19 +747,6 @@ function drawSubtitle( g, diy, sheet, subtitleBox, className, drawBox ) {
 		subtitleBox = markupBox(sheet);
 		subtitleBox.defaultStyle = diy.settings.getTextStyle(getExpandedKey(faceIndex, 'ParallelSubtitle-style'), null);
 		subtitleBox.alignment = diy.settings.getTextAlignment(getExpandedKey(faceIndex, 'Subtitle-alignment'));
-	}
-
-	if ( drawBox ) {
-		var image = ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Subtitle-' + getClassInitial( className )  + '.png');
-
-		var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Subtitle' + getClassInitial( className ) + '-region' ) );
-
-		var iw = image.getWidth();
-		var ih = image.getHeight();
-
-		var x = region.x + (region.width - iw)/2;
-
-		sheet.paintImage( g, image, new Region(x, region.y, iw, ih) );
 	}
 
 	var subtitle = $( 'Subtitle' + BindingSuffixes[faceIndex] );
@@ -2731,23 +2726,31 @@ function drawCost( g, diy, sheet ) {
 	}
 }
 
+// classes whose level circle gets a class icon painted in the center;
+// Specialist/Dual have no dedicated icon art, and Skill-type cards use a
+// single achromatic circle regardless of class
+var LevelCircleIconClasses = { 'G': true, 'K': true, 'R': true, 'M': true, 'V': true, 'N': true };
+
 function drawLevel( g, diy, sheet, className ) {
 	var faceIndex = sheet.getSheetIndex();
 	var level = $( 'Level' + BindingSuffixes[faceIndex] );
+	var isSkillType = (CardTypes[faceIndex] == 'Skill');
 
-	if (level == 'None') {
-		if ( CardTypes[ faceIndex] == 'Skill' ) {
-			sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-NoLevelSkill.png'),
-				diy.settings.getRegion( getExpandedKey( faceIndex, 'NoLevel-region' ) ) );
-		}
-		else {
-			sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-NoLevel.png'),
-				diy.settings.getRegion( getExpandedKey( faceIndex, 'NoLevel-region' ) ) );
-		}
-	}
-	else if (level > 0) {
-		sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Level-' + level + '.png'),
-			diy.settings.getRegion( getExpandedKey( faceIndex, 'Level-region' ) ) );
+	var levelKey;
+	if ( level == 'None' ) levelKey = 'None';
+	else if ( level == 'Customizable' ) levelKey = isSkillType ? 'SkillCustom' : 'Custom';
+	else levelKey = String(level);
+
+	// numbered/None levels on Skill-type cards use a single achromatic circle
+	// regardless of class; Customizable always uses the class-colored circle
+	var classKey = (isSkillType && level != 'Customizable') ? 'Skill' : getClassInitial( className );
+
+	sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-LevelCircle-' + classKey + '-' + levelKey + '.png'),
+		diy.settings.getRegion( getExpandedKey( faceIndex, 'LevelCircle-region' ) ) );
+
+	if ( isSkillType && LevelCircleIconClasses[classKey] ) {
+		sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-ClassSymbol-' + classKey + '.png'),
+			diy.settings.getRegion( getExpandedKey( faceIndex, 'LevelIcon-region' ) ) );
 	}
 }
 
@@ -3112,6 +3115,16 @@ function drawEncounterInfo( g, diy, sheet, encounterInfoBox, collectorX ) {
 	var width = encounterInfoBox.drawAsSingleLine( g, region );
 
 	return region.x + region.width - width;		// return left edge
+}
+
+// draws the circle that sits behind the encounter-set icon on "AssetStory"
+// family cards (story assets, act/agenda backs) - mirrors the Story-class
+// overlay already used for Event/Skill cards
+function drawEncounterSetOverlay( g, diy, sheet ) {
+	var faceIndex = sheet.getSheetIndex();
+
+	sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Asset-EncounterSetOverlay.png'),
+		diy.settings.getRegion( getExpandedKey( faceIndex, 'Encounter-overlay-region' ) ) );
 }
 
 function drawEncounterIcon( g, diy, sheet ) {

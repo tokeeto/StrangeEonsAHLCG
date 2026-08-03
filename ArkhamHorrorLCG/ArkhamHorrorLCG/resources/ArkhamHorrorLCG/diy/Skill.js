@@ -26,7 +26,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function setDefaults() {
@@ -279,8 +279,15 @@ function onRead(diy, oos) {
 	updateCollection();
 	updateEncounter();
 
-	diy.setCornerRadius(32);
-	diy.version = 17;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 19 ) {
+		// template resolution increased 4x; rescale existing portrait to match
+		let portraitIndex = getPortraitIndex( 'Portrait' );
+		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+	}
+	diy.version = 19;
 }
 
 function onWrite( diy, oos ) {

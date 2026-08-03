@@ -26,7 +26,7 @@ function create( diy ) {
 
     diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 19;
+	diy.version = 20;
 }
 
 function setDefaults() {
@@ -161,6 +161,9 @@ function paintFront( g, diy, sheet ) {
 	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Event );
 	drawName( g, diy, sheet, Name_box );
 
+	var cClass = $CardClass;
+	if ( getClassCount( $CardClass, $CardClass2, $CardClass3 ) > 1 ) cClass = 'Dual';
+
 	var subtypeRegion = diy.settings.getRegion( getExpandedKey( FACE_FRONT, 'Subtype-region' ) );
 	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) subtypeRegion.y -= 2;
 
@@ -174,12 +177,12 @@ function paintFront( g, diy, sheet ) {
 		drawBasicWeaknessIcon( g, diy, sheet );
 	}
 	else {
-		drawLevel( g, diy, sheet, $CardClass );
+		drawLevel( g, diy, sheet, cClass );
 	}
 
 	drawCost( g, diy, sheet );
 
-	drawSkillIcons( g, diy, sheet, $CardClass );
+	drawSkillIcons( g, diy, sheet, cClass );
 
 	var regionName = 'Body';
 	if ( $CardClass == 'Weakness' || $CardClass == 'BasicWeakness' || $CardClass == 'StoryWeakness') regionName = 'WeaknessBody';
@@ -269,8 +272,15 @@ function onRead(diy, oos) {
 	updateCollection();
     updateEncounter();
 
-	diy.setCornerRadius(32);
-	diy.version = 19;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 20 ) {
+		// template resolution increased 4x; rescale existing portrait to match
+		let portraitIndex = getPortraitIndex( 'Portrait' );
+		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+	}
+	diy.version = 20;
 }
 
 function onWrite( diy, oos ) {

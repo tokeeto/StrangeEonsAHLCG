@@ -1058,28 +1058,6 @@ function layoutStoryBackStats( diy, bindings, faceIndex, selectBack ) {
 			let type = (String)(BackList.getSelectedItem());
 
 			updateCardType( diy, type, faceIndex, 'Story', 'AHLCG-Story-Default-template' );
-/*
-			if ( type == 'Chaos' ) {
-	 			CardTypes[faceIndex] = 'StoryChaos';
-				$AHLCG-Story-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-Chaos.jp2';
-			}
-			else if ( type == 'ChaosFull' ) {
-	 			CardTypes[faceIndex] = 'StoryChaosFull';
-				$AHLCG-Story-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-StoryChaosFull.jp2';
-			}
-			else if ( type == 'Player' ) {
- 				CardTypes[faceIndex] = 'Story';
-				$AHLCG-Story-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2';
-			}
-			else if ( type == 'Encounter' ) {
- 				CardTypes[faceIndex] = 'Story';
-				$AHLCG-Story-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-EncounterBack.jp2';
- 			}
-			else {
- 				CardTypes[faceIndex] = 'Story';
-				$AHLCG-Story-Default-template = 'ArkhamHorrorLCG/templates/AHLCG-Story.jp2';
-			}
-*/
 		} catch (ex) {
 			Error.handleUncaught( ex );
 		}

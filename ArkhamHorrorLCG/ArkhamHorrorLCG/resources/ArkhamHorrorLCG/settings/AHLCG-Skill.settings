@@ -7,8 +7,7 @@ AHLCG-Skill-Label-region = 156,320,152,56
 AHLCG-Skill-Subtype-region = 416,1464,812,60
 AHLCG-Skill-Subtype-alignment = center, middle
 
-AHLCG-Skill-Level-region = 128,212,196,92
-AHLCG-Skill-NoLevel-region = 108,168,232,152
+AHLCG-Skill-LevelCircle-region = 109,135,232,232
 AHLCG-Skill-StoryWeakness-region = 108,100,232,208
 AHLCG-Skill-StoryWeakness-Inner-region = 116,108,216,192
 

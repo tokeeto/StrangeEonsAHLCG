@@ -1,9 +1,11 @@
-AHLCG-AssetStory-Default-template = ArkhamHorrorLCG/templates/AHLCG-AssetStory-N.png
+AHLCG-AssetStory-Default-template = ArkhamHorrorLCG/templates/AHLCG-Asset-N.png
 AHLCG-AssetStoryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png
 
 AHLCG-AssetStory-Name-region = 344,128,952,116
 AHLCG-AssetStory-Label-region = 152,320,152,56
 AHLCG-AssetStory-Subtype-region = 416,1276,812,60
+
+AHLCG-AssetStory-Encounter-overlay-region = 1336,76,220,220
 
 AHLCG-AssetStory-SubtitleN-region = 344,236,960,88
 AHLCG-AssetStory-SubtitleW-region = 332,244,992,92

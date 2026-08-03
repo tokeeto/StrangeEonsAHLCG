@@ -25,7 +25,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 16;
+	diy.version = 17;
 }
 
 function setDefaults() {
@@ -207,7 +207,7 @@ function paintFront( g, diy, sheet ) {
 
 	drawName( g, diy, sheet, Name_box );
 
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, 'Story', false );
+	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, 'Story' );
 
 	drawSkills( g, diy, sheet, Skill_box_array, [ 'Willpower', 'Intellect', 'Combat', 'Agility' ] );
 
@@ -229,7 +229,7 @@ function paintBack( g, diy, sheet ) {
 
 	drawName( g, diy, sheet, BackName_box );
 
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, 'Story', false );
+	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, 'Story' );
 
 //	drawBody( g, diy, sheet, BackBody_box, new Array( 'DeckSize', 'SecondaryClass', 'DeckOptions', 'DeckRequirements', 'DeckRestrictions', 'AdditionalRequirements', 'Setup', 'StartingPlayArea', 'OpeningHand', 'InvStory' ) );
 	drawInvBackBody( g, diy, sheet, BackBody_box, new Array( 'Text1', 'Text2', 'Text3', 'Text4', 'Text5', 'Text6', 'Text7', 'Text8', 'InvStory' ) );
@@ -313,8 +313,15 @@ function onRead(diy, oos) {
 
 	updateCollection();
 
-	diy.setCornerRadius(32);
-	diy.version = 16;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 17 ) {
+		// template resolution increased 4x; rescale existing portrait to match
+		let portraitIndex = getPortraitIndex( 'Portrait' );
+		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+	}
+	diy.version = 17;
 }
 
 function onWrite( diy, oos ) {

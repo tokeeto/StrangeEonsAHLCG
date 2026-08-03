@@ -7,7 +7,7 @@ useLibrary('tints');
 
 importClass( arkham.component.DefaultPortrait );
 
-const CardTypes = [ 'AssetStory', 'AssetStoryBack' ];
+const CardTypes = [ 'AssetStory', 'AssetBack' ];
 const BindingSuffixes = [ '', 'Back' ];
 
 const PortraitTypeList = [ 'Portrait-Front', 'Collection-Front', 'Encounter-Front' ];
@@ -27,7 +27,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function setDefaults() {
@@ -41,7 +41,8 @@ function setDefaults() {
 	$Skill2 = 'None';
 	$Skill3 = 'None';
 	$Skill4 = 'None';
-	$Skill5 = 'None';
+    $Skill5 = 'None';
+    $Level = 'None';
 
 	$ResourceCost = '0';
 	$Slot = 'None';
@@ -169,14 +170,17 @@ function paintFront( g, diy, sheet ) {
 
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
 
-	drawTemplate( g, sheet, $CardClass );
+	if ( $Subtitle.length > 0 ) drawSubtitleTemplate( g, sheet, $CardClass );
+	else drawTemplate( g, sheet, $CardClass );
+	drawEncounterSetOverlay( g, diy, sheet );
 
 	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Asset );
 	drawName( g, diy, sheet, Name_box );
 
-//	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, 'Neutral', true );
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, $CardClass, true );
+//	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, 'Neutral' );
+	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, $CardClass );
 
+	drawLevel( g, diy, sheet, $CardClass );
 	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
@@ -245,8 +249,17 @@ function onRead(diy, oos) {
 	updateCollection();
 	updateEncounter();
 
-	diy.setCornerRadius(32);
-	diy.version = 18;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 19 ) {
+		// template resolution increased 4x; rescale existing portrait to match
+		let portraitIndex = getPortraitIndex( 'Portrait' );
+        PortraitList[portraitIndex].setScale(PortraitList[portraitIndex].getScale() * 4);
+
+	}
+	$Level = 'None';
+	diy.version = 19;
 }
 
 function onWrite( diy, oos ) {

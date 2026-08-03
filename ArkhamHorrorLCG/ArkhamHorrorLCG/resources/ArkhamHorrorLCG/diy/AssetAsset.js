@@ -26,7 +26,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function setDefaults() {
@@ -241,15 +241,18 @@ function paintFront( g, diy, sheet ) {
 	clearImage( g, sheet );
 
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
-	drawAssetTemplate( g, diy, sheet, $CardClass, $CardClass2, $CardClass3 );
-	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Asset );
 	var cClass = $CardClass;
 	if ( getClassCount( $CardClass, $CardClass2, $CardClass3 ) > 1 ) cClass = 'Dual';
+
+	// no subtitles for multiclass
+	if ( cClass != 'Dual' && $Subtitle.length > 0 ) drawSubtitleTemplate( g, sheet, cClass );
+	else drawAssetTemplate( g, diy, sheet, $CardClass, $CardClass2, $CardClass3 );
+	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Asset );
 
 	drawName( g, diy, sheet, Name_box, cClass );
 
 	// no subtitles for multiclass
-	if ( cClass != 'Dual' && $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, cClass, true );
+	if ( cClass != 'Dual' && $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, cClass );
 
 	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
@@ -283,14 +286,17 @@ function paintBack( g, diy, sheet ) {
 	clearImage( g, sheet );
 
 	PortraitList[getPortraitIndex( 'BackPortrait' )].paint( g, sheet.getRenderTarget() );
-	drawAssetTemplate( g, diy, sheet, $CardClassBack, $CardClass2Back, $CardClass3Back );
-	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Asset );
 	var cClass = $CardClassBack;
 	if ( getClassCount( $CardClassBack, $CardClass2Back, $CardClass3Back ) > 1 ) cClass = 'Dual';
 
+	// no subtitles for multiclass
+	if ( cClass != 'Dual' && $SubtitleBack.length > 0 ) drawSubtitleTemplate( g, sheet, cClass );
+	else drawAssetTemplate( g, diy, sheet, $CardClassBack, $CardClass2Back, $CardClass3Back );
+	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Asset );
+
 	drawName( g, diy, sheet, BackName_box, cClass );
 
-	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, cClass, true );
+	if ( cClass != 'Dual' && $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, cClass );
 
 	if ($CardClassBack == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, BackSubtype_box, #AHLCG-Label-Weakness );
@@ -362,8 +368,18 @@ function onRead(diy, oos) {
 
 	updateCollection();
 
-	diy.setCornerRadius(32);
-	diy.version = 18;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 19 ) {
+		// template resolution increased 4x; rescale existing portraits to match
+		let portraitIndex = getPortraitIndex( 'Portrait' );
+		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+
+		let backPortraitIndex = getPortraitIndex( 'BackPortrait' );
+		PortraitList[backPortraitIndex].setScale( PortraitList[backPortraitIndex].getScale() * 4 );
+	}
+	diy.version = 19;
 }
 
 function onWrite( diy, oos ) {

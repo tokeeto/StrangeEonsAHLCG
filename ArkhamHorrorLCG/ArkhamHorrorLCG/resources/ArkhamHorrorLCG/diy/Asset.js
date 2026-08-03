@@ -25,7 +25,7 @@ function create( diy ) {
 	setDefaultCollection();
 
 	diy.setCornerRadius(32);
-	diy.version = 18;
+	diy.version = 19;
 	diy.bleedMargin = 8.64;
 }
 
@@ -158,14 +158,17 @@ function paintFront( g, diy, sheet ) {
 	clearImage( g, sheet );
 
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
-	drawAssetTemplate( g, diy, sheet, $CardClass, $CardClass2, $CardClass3 );
-	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Asset );
 
 	var cClass = $CardClass;
 	if ( getClassCount( $CardClass, $CardClass2, $CardClass3 ) > 1 ) cClass = 'Dual';
+
+	if ( cClass != 'Dual' && $Subtitle.length > 0 ) drawSubtitleTemplate( g, sheet, cClass );
+	else drawAssetTemplate( g, diy, sheet, $CardClass, $CardClass2, $CardClass3 );
+	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Asset );
+
 	drawName( g, diy, sheet, Name_box, cClass );
 
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, cClass, true );
+	if ( cClass != 'Dual' && $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, cClass );
 
 	if ($CardClass == 'Weakness' ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
@@ -242,8 +245,15 @@ function onRead(diy, oos) {
 	updateCollection();
 
 	diy.faceStyle = FaceStyle.TWO_FACES;
-	diy.setCornerRadius(32);
-	diy.version = 18;
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
+
+	if ( diy.version < 19 ) {
+		// template resolution increased 4x; rescale existing portrait to match
+		let portraitIndex = getPortraitIndex( 'Portrait' );
+		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+	}
+	diy.version = 19;
 }
 
 function onWrite( diy, oos ) {

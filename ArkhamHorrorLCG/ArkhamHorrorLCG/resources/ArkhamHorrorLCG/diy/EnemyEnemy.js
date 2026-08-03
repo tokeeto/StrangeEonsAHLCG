@@ -242,7 +242,7 @@ function paintFront( g, diy, sheet ) {
 	drawLabel( g, diy, sheet, Label_box, #AHLCG-Label-Enemy );
 	drawName( g, diy, sheet, Name_box );
 
-	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, '', false );
+	if ( $Subtitle.length > 0 ) drawSubtitle( g, diy, sheet, Subtitle_box, '' );
 
 	drawEnemyStats( g, diy, sheet, [ 'Attack', 'Evade' ] );
 	drawEnemyHealth( g, diy, sheet );
@@ -277,7 +277,7 @@ function paintBack( g, diy, sheet ) {
 	drawLabel( g, diy, sheet, BackLabel_box, #AHLCG-Label-Enemy );
 	drawName( g, diy, sheet, BackName_box );
 
-	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, '', false );
+	if ( $SubtitleBack.length > 0 ) drawSubtitle( g, diy, sheet, BackSubtitle_box, '' );
 
 	drawEnemyStats( g, diy, sheet, [ 'Attack', 'Evade' ] );
 	drawEnemyHealth( g, diy, sheet );

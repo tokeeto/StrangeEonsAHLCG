@@ -608,6 +608,7 @@ function gameObject( masterSettings ) {
 	for( let index = 0; index <= 5; index++ ){
 		this.comboLevelsN[this.comboLevelsN.length] = ListItem( index, String(index) );
 	}
+	this.comboLevelsN[this.comboLevelsN.length] = ListItem( 'Customizable', @AHLCG-Level-Customizable );
 	this.comboPortraitPosition1 = new Array(
 		ListItem( 'None', @AHLCG-Guide-None ),
 		ListItem( 'TopLeftSmall', @AHLCG-Guide-TopLeftSmall ),
@@ -1186,9 +1187,9 @@ function gameObject( masterSettings ) {
 
 	this.baseLocationIcon = ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-LocationBase.png' );
 
-	test_tinter = new TintCache( new TintFilter(), this.baseLocationIcon );
 
 	for( let index = 0; index < this.locationIcons.length; index++ ) {
+	    let test_tinter = new TintCache( new TintFilter(), this.baseLocationIcon );
 		let item = this.locationIcons[index];
 
 		var hsb = masterSettings.getTint( 'AHLCG-' + item + '-tint' );
@@ -1198,7 +1199,7 @@ function gameObject( masterSettings ) {
 
 		let ig = iconBaseImage.createGraphics();
 
-		ig.drawImage( ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + item + '.png' ), 4, 4, null );
+		ig.drawImage( ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + item + '.png' ), 16, 16, null );
 
 		this.comboConnections[index+2] = ListItem(
 			item, @('AHLCG-LocIcon-' + item),

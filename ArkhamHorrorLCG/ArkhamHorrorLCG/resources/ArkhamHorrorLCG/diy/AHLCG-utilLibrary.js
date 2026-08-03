@@ -1316,10 +1316,10 @@ function getClassInitial( className ) {
 			initial = 'NP';
 			break;
 		case 'Story':
-			initial = 'S';
+			initial = 'N';
 			break;
 		case 'StoryWeakness':
-			initial = 'SW';
+			initial = 'W';
 			break;
 		case 'Dual':
 			initial = 'D';

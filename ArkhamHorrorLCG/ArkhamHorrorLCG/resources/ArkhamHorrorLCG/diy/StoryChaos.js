@@ -381,7 +381,8 @@ function onRead(diy, oos) {
 		$TrackerHeightBack = '100';
 	}
 
-	diy.setCornerRadius(32);
+    diy.setCornerRadius(32);
+	diy.bleedMargin = 8.64;
 	diy.version = 18;
 }
 

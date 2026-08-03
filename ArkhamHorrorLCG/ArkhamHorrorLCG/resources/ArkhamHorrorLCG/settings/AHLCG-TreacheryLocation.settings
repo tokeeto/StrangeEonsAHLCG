@@ -1,6 +1,6 @@
 AHLCG-TreacheryLocation-Default-template = ArkhamHorrorLCG/templates/AHLCG-TreacheryLocation.jp2
-AHLCG-TreacheryLocationBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-EncounterBack.jp2
-AHLCG-TreacheryLocationStoryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.jp2
+AHLCG-TreacheryLocationBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-EncounterBack.png
+AHLCG-TreacheryLocationStoryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png
 
 AHLCG-TreacheryLocation-Name-region = 39,307,299,29
 AHLCG-TreacheryLocation-Label-region = 137,286,104,14
