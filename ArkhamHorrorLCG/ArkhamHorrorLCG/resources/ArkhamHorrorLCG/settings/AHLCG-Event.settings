@@ -11,7 +11,7 @@ AHLCG-Event-Body-region = 248,1424,1152,632
 
 AHLCG-Event-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Event-Portrait-portrait-pany = 0
-AHLCG-Event-Portrait-portrait-clip-region = 72,72,1500,1152
+AHLCG-Event-Portrait-portrait-clip-region = 0,0,1644,1224
 
 AHLCG-Event-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Event-Collection-portrait-pany = 0
