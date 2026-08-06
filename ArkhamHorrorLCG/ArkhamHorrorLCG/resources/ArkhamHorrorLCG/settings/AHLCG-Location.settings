@@ -21,15 +21,15 @@ AHLCG-LocationBack-Body-region = 152,1272,1344,572
 
 AHLCG-Location-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Location-Portrait-portrait-pany = 0
-AHLCG-Location-Portrait-portrait-clip-region = 0,217,1644,1200
+AHLCG-Location-Portrait-portrait-clip-region = 72,240,1500,1100
 
 AHLCG-LocationBack-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-LocationBack-BackPortrait-portrait-pany = 0
-AHLCG-LocationBack-BackPortrait-portrait-clip-region = 0,217,1644,1200
+AHLCG-LocationBack-BackPortrait-portrait-clip-region = 72,240,1500,1100
 
 AHLCG-Location-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Location-BackPortrait-portrait-pany = 0
-AHLCG-Location-BackPortrait-portrait-clip-region = 0,217,1644,1200
+AHLCG-Location-BackPortrait-portrait-clip-region = 72,240,1500,1100
 
 AHLCG-Location-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Location-Encounter-portrait-pany = 0
