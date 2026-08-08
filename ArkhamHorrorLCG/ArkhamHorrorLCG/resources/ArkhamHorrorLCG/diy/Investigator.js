@@ -394,8 +394,10 @@ function onRead(diy, oos) {
 
 	if ( diy.version < 16 ) {
 		// template resolution increased 4x; rescale existing portrait to match
-		let portraitIndex = getPortraitIndex( 'Portrait' );
-		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+		let portraitIndex = getPortraitIndex( 'TransparentPortrait' );
+        PortraitList[portraitIndex].setScale(PortraitList[portraitIndex].getScale() * 4);
+        let pIndex = getPortraitIndex('Portrait');
+        PortraitList[pIndex].setScale(PortraitList[pIndex].getScale() * 4);
 	}
 	diy.version = 16;
 }

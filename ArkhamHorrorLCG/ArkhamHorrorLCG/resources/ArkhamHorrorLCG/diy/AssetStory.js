@@ -256,7 +256,8 @@ function onRead(diy, oos) {
 		// template resolution increased 4x; rescale existing portrait to match
 		let portraitIndex = getPortraitIndex( 'Portrait' );
         PortraitList[portraitIndex].setScale(PortraitList[portraitIndex].getScale() * 4);
-
+        let encounterPortraitIndex = getPortraitIndex( 'Encounter' );
+        PortraitList[encounterPortraitIndex].setScale(PortraitList[encounterPortraitIndex].getScale() * 4);
 	}
 	$Level = 'None';
 	diy.version = 19;

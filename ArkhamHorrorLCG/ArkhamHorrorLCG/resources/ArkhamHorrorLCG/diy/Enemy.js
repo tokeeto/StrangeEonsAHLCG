@@ -243,7 +243,10 @@ function onRead(diy, oos) {
 	if ( diy.version < 18 ) {
 		// template resolution increased 4x; rescale existing portrait to match
 		let portraitIndex = getPortraitIndex( 'Portrait' );
-		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
+        PortraitList[portraitIndex].setScale(PortraitList[portraitIndex].getScale() * 4);
+
+        let encounterPortraitIndex = getPortraitIndex( 'Encounter' );
+        PortraitList[encounterPortraitIndex].setScale(PortraitList[encounterPortraitIndex].getScale() * 4);
 	}
     diy.version = 18;
 	diy.bleedMargin = 8.64;

@@ -476,7 +476,10 @@ function onRead(diy, oos) {
 		PortraitList[portraitIndex].setScale( PortraitList[portraitIndex].getScale() * 4 );
 
 		let backPortraitIndex = getPortraitIndex( 'BackPortrait' );
-		PortraitList[backPortraitIndex].setScale( PortraitList[backPortraitIndex].getScale() * 4 );
+        PortraitList[backPortraitIndex].setScale(PortraitList[backPortraitIndex].getScale() * 4);
+
+        let encounterPortraitIndex = getPortraitIndex( 'Encounter' );
+        PortraitList[encounterPortraitIndex].setScale(PortraitList[encounterPortraitIndex].getScale() * 4);
 	}
 	diy.version = 18;
 }

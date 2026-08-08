@@ -10,11 +10,11 @@ AHLCG-Treachery-Body-region = 192,1432,1272,640
 
 AHLCG-Treachery-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Treachery-Portrait-portrait-pany = 0
-AHLCG-Treachery-Portrait-portrait-clip-region = 140,72,1376,1192
+AHLCG-Treachery-Portrait-portrait-clip-region = 140,0,1376,1264
 
 AHLCG-Treachery-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Treachery-BackPortrait-portrait-pany = 0
-AHLCG-Treachery-BackPortrait-portrait-clip-region = 140,72,1376,1192
+AHLCG-Treachery-BackPortrait-portrait-clip-region = 140,0,1376,1264
 
 AHLCG-Treachery-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Treachery-Encounter-portrait-pany = 0
