@@ -26,7 +26,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function setDefaults() {
@@ -261,7 +261,10 @@ function onRead(diy, oos) {
 
     diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	if ( diy.version < 19 ) {
+		scaleTextFieldSizes( diy, [ 'Skull', 'Cultist', 'Tablet', 'ElderThing', 'SkullBack', 'CultistBack', 'TabletBack', 'ElderThingBack' ], 4 );
+	}
+	diy.version = 19;
 }
 
 function onWrite( diy, oos ) {

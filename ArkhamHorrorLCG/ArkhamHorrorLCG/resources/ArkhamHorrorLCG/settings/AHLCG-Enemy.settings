@@ -6,7 +6,7 @@ AHLCG-Enemy-Name-region = 320,92,1008,108
 AHLCG-Enemy-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.05}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
 AHLCG-Enemy-SubtitleText-region = 232,200,1172,80
 
-AHLCG-Enemy-Label-region = 700,1304,244,56
+AHLCG-Enemy-Label-region = 700,1294,244,56
 AHLCG-Enemy-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
 
 AHLCG-Enemy-Body-region = 152,488,1352,660
@@ -41,15 +41,15 @@ AHLCG-Enemy-Health-region = 744,252,160,140
 AHLCG-Enemy-HealthPerInv-region = 748,252,108,140
 AHLCG-Enemy-HealthPerInvIcon-region = 832,280,68,68
 
-AHLCG-Enemy-Damage1-region = 600,1208,76,92
-AHLCG-Enemy-Damage2-region = 508,1180,76,92
-AHLCG-Enemy-Damage3-region = 416,1144,76,92
-AHLCG-Enemy-Damage4-region = 332,1096,76,92
-AHLCG-Enemy-Damage5-region = 252,1040,76,92
-AHLCG-Enemy-Horror1-region = 956,1208,108,96
-AHLCG-Enemy-Horror2-region = 1048,1180,108,96
-AHLCG-Enemy-Horror3-region = 1140,1144,108,96
-AHLCG-Enemy-Horror4-region = 1224,1092,108,96
-AHLCG-Enemy-Horror5-region = 1304,1036,108,96
+AHLCG-Enemy-Damage1-region = 600,1208,65,79
+AHLCG-Enemy-Damage2-region = 508,1180,65,79
+AHLCG-Enemy-Damage3-region = 416,1144,65,79
+AHLCG-Enemy-Damage4-region = 332,1096,65,79
+AHLCG-Enemy-Damage5-region = 252,1040,65,79
+AHLCG-Enemy-Horror1-region = 956,1208,83,70
+AHLCG-Enemy-Horror2-region = 1048,1180,83,70
+AHLCG-Enemy-Horror3-region = 1140,1144,83,70
+AHLCG-Enemy-Horror4-region = 1224,1092,83,70
+AHLCG-Enemy-Horror5-region = 1304,1036,83,70
 
 AHLCG-Enemy-Dash-tint = 38.0, 0.14, 1.0

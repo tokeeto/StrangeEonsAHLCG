@@ -27,7 +27,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 19;
+	diy.version = 20;
 }
 
 function setDefaults() {
@@ -479,7 +479,10 @@ function onRead(diy, oos) {
 		let backPortraitIndex = getPortraitIndex( 'BackPortrait' );
 		PortraitList[backPortraitIndex].setScale( PortraitList[backPortraitIndex].getScale() * 4 );
 	}
-	diy.version = 19;
+	if ( diy.version < 20 ) {
+		scaleTextFieldSizes( diy, [ 'TraitsA', 'HeaderA', 'AccentedStoryA', 'RulesA', 'HeaderB', 'AccentedStoryB', 'RulesB', 'HeaderC', 'AccentedStoryC', 'RulesC', 'TraitsBack', 'KeywordsBack', 'RulesBack', 'FlavorBack', 'VictoryBack' ], 4 );
+	}
+	diy.version = 20;
 }
 
 function onWrite( diy, oos ) {

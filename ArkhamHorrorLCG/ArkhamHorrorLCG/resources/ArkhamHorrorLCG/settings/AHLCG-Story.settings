@@ -1,5 +1,6 @@
 AHLCG-Story-Default-template = ArkhamHorrorLCG/templates/AHLCG-Story.png
 AHLCG-StoryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-Asset-N.png
+AHLCG-Story-Default-bleed = 8.64
 
 #AHLCG-Story-Name-region = 224,196,1016,124
 AHLCG-Story-Name-region = 224,168,1016,176
@@ -28,22 +29,22 @@ AHLCG-Story-DefaultReturnEncounter-portrait-clip-region = 1302,217,118,110
 
 AHLCG-Story-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Story-Collection-portrait-pany = 0
-AHLCG-Story-DefaultCollection-portrait-clip-region = 1145,1985,52,52
-AHLCG-Story-Collection-portrait-clip-region = 1145,1985,52,52
+AHLCG-Story-DefaultCollection-portrait-clip-region = 1145,2015,52,52
+AHLCG-Story-Collection-portrait-clip-region = 1145,2015,52,52
 
 AHLCG-Story-TrackerBox-region = 208,1644,1227,340
 AHLCG-Story-TrackerName-region = 256,1660,1120,80
 AHLCG-Story-TrackerName-alignment = center, middle
 AHLCG-Story-TrackerName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE:{Eons.namedObjects.AHLCGObject.titleFontSize*0.836}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.02}; FOREGROUND: #000000
 
-AHLCG-Story-EncounterNumber-region = 945,2000,146,40
+AHLCG-Story-EncounterNumber-region = 945,2030,146,40
 AHLCG-Story-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #000000
 #AHLCG-StoryChaos-EncounterNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
-AHLCG-Story-CollectionNumber-region = 1170,2000,115,40
+AHLCG-Story-CollectionNumber-region = 1170,2030,115,40
 AHLCG-Story-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #000000
 #AHLCG-StoryChaos-CollectionNumber-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 
-AHLCG-Story-Copyright-region = 349,2000,344,40
+AHLCG-Story-Copyright-region = 349,2030,344,40
 AHLCG-Story-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #000000
 #AHLCG-StoryChaos-Copyright-style = FAMILY: {Eons.namedObjects.AHLCGObject.collectionFamily}; SIZE: {Eons.namedObjects.AHLCGObject.collectionSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.collectionWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.collectionWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.collectionTracking}; FOREGROUND: #FFFFFF
 AHLCG-Story-Copyright-alignment = left, middle

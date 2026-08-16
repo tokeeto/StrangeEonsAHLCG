@@ -26,7 +26,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(8);
 	diy.bleedMargin = 8.64;
-	diy.version = 16;
+	diy.version = 17;
 }
 
 function setDefaults() {
@@ -187,7 +187,10 @@ function onRead(diy, oos) {
 	updateEncounter();
 
 	diy.setCornerRadius(8);
-	diy.version = 16;
+	if ( diy.version < 17 ) {
+		scaleTextFieldSizes( diy, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], 4 );
+	}
+	diy.version = 17;
 }
 
 function onWrite( diy, oos ) {

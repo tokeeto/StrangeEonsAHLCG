@@ -211,7 +211,10 @@ function onRead(diy, oos) {
 
     diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 2;
+	if ( diy.version < 3 ) {
+		scaleTextFieldSizes( diy, [ 'CustHeader', 'CustText1', 'CustText2', 'CustText3', 'CustText4', 'CustText5', 'CustText6', 'CustText7', 'CustText8' ], 4 );
+	}
+	diy.version = 3;
 }
 
 function onWrite( diy, oos ) {

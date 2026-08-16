@@ -27,7 +27,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	diy.version = 20;
 }
 
 function setDefaults() {
@@ -489,7 +489,10 @@ function onRead(diy, oos) {
 
     diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 19;
+	if ( diy.version < 20 ) {
+		scaleTextFieldSizes( diy, [ 'Traits', 'TraitsA', 'HeaderA', 'AccentedStoryA', 'RulesA', 'HeaderB', 'AccentedStoryB', 'RulesB', 'HeaderC', 'AccentedStoryC', 'RulesC', 'TraitsBack', 'TraitsABack', 'HeaderABack', 'AccentedStoryABack', 'RulesABack', 'HeaderBBack', 'AccentedStoryBBack', 'RulesBBack', 'HeaderCBack', 'AccentedStoryCBack', 'RulesCBack' ], 4 );
+	}
+	diy.version = 20;
 }
 
 function onWrite( diy, oos ) {

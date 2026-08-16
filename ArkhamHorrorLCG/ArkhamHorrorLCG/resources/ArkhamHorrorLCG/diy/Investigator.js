@@ -23,7 +23,7 @@ function create( diy ) {
 	setDefaultCollection();
 
 	diy.setCornerRadius(32);
-	diy.version = 16;
+	diy.version = 17;
 	diy.bleedMargin = 8.64;
 }
 
@@ -399,7 +399,10 @@ function onRead(diy, oos) {
         let pIndex = getPortraitIndex('Portrait');
         PortraitList[pIndex].setScale(PortraitList[pIndex].getScale() * 4);
 	}
-	diy.version = 16;
+	if ( diy.version < 17 ) {
+		scaleTextFieldSizes( diy, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Text1Back', 'Text2Back', 'Text3Back', 'Text4Back', 'Text5Back', 'Text6Back', 'Text7Back', 'Text8Back', 'InvStoryBack' ], 4 );
+	}
+	diy.version = 17;
 }
 
 function onWrite( diy, oos ) {

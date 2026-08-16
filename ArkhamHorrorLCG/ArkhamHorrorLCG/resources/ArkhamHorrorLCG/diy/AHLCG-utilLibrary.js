@@ -63,7 +63,9 @@ const HI_RES_TEMPLATES = {
 	'Chaos': true,
 	'PlayerBack': true,
 	'EncounterBack': true,
-	'LocationBack': true
+    'LocationBack': true,
+    'Asset': true,
+    'Enemy': true
 };
 
 function isHiResType( faceIndex ) {
@@ -113,6 +115,27 @@ function hiResRegion( faceIndex, x, y, width, height, fullWidth, fullHeight ) {
 		fullWidth ? hiResFullLength( faceIndex, width ) : hiResLength( faceIndex, width ),
 		fullHeight ? hiResFullLength( faceIndex, height ) : hiResLength( faceIndex, height )
 	);
+}
+
+// Scales absolute <size N> markup tags (but not <size N%> relative tags) by
+// factor. Used to migrate user-entered markup when the underlying template
+// resolution changes, so a hand-tuned absolute point size still renders the
+// same physical size.
+function scaleMarkupSizeTags( text, factor ) {
+	if ( text == null || text.length == 0 ) return text;
+	return String(text).replace( /(<size\s+)(\d+(?:\.\d+)?)(\s*>)/gi, function( match, prefix, size, suffix ) {
+		return prefix + ( parseFloat(size) * factor ) + suffix;
+	} );
+}
+
+function scaleTextFieldSizes( diy, keys, factor ) {
+	for ( let i = 0; i < keys.length; i++ ) {
+		let key = keys[i];
+		let value = diy.settings.get( key );
+		if ( value != null && value.length > 0 ) {
+			diy.settings.set( key, scaleMarkupSizeTags( value, factor ) );
+		}
+	}
 }
 
 function templateResource( templateName ) {

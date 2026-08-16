@@ -26,7 +26,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 18;
+	diy.version = 19;
 }
 
 function setDefaults() {
@@ -240,15 +240,17 @@ function onRead(diy, oos) {
 
 	diy.setCornerRadius(32);
 
-	if ( diy.version < 18 ) {
+	if ( diy.version < 19 ) {
 		// template resolution increased 4x; rescale existing portrait to match
 		let portraitIndex = getPortraitIndex( 'Portrait' );
         PortraitList[portraitIndex].setScale(PortraitList[portraitIndex].getScale() * 4);
 
-        let encounterPortraitIndex = getPortraitIndex( 'Encounter' );
-        PortraitList[encounterPortraitIndex].setScale(PortraitList[encounterPortraitIndex].getScale() * 4);
-	}
-    diy.version = 18;
+        let encounterPortraitIndex = getPortraitIndex('Encounter');
+        PortraitList[encounterPortraitIndex].setScale(PortraitList[encounterPortraitIndex].getScale() * 4.0);
+
+    	scaleTextFieldSizes( diy, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], 4 );
+    }
+    diy.version = 19;
 	diy.bleedMargin = 8.64;
 }
 

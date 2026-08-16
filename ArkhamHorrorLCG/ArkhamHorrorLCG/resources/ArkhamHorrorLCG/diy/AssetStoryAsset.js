@@ -27,7 +27,7 @@ function create( diy ) {
 
 	diy.setCornerRadius(32);
 	diy.bleedMargin = 8.64;
-	diy.version = 19;
+	diy.version = 20;
 }
 
 function setDefaults() {
@@ -40,7 +40,9 @@ function setDefaults() {
 	$Skill4 = 'None';
 	$Skill5 = 'None';
 
-	$CardClass = 'Neutral';
+    $CardClass = 'Neutral';
+    $Level = 'None';
+    $LevelBack = 'None';
 	$ResourceCost = '0';
 	$Slot = 'None';
 	$Slot2 = 'None';
@@ -259,7 +261,6 @@ function paintFront( g, diy, sheet ) {
 	clearImage( g, sheet );
 
 	PortraitList[getPortraitIndex( 'Portrait' )].paint( g, sheet.getRenderTarget() );
-
 	if ( $Subtitle.length > 0 ) drawSubtitleTemplate( g, sheet, $CardClass );
 	else drawTemplate( g, sheet, $CardClass );
 	drawEncounterSetOverlay( g, diy, sheet );
@@ -273,6 +274,7 @@ function paintFront( g, diy, sheet ) {
 		drawSubtype( g, diy, sheet, Subtype_box, #AHLCG-Label-Weakness );
 	}
 
+	drawLevel( g, diy, sheet, 'Neutral' );
 	drawCost( g, diy, sheet );
 
 	drawSkillIcons( g, diy, sheet, 'Neutral' );
@@ -310,6 +312,7 @@ function paintBack( g, diy, sheet ) {
 		drawSubtype( g, diy, sheet, BackSubtype_box, #AHLCG-Label-Weakness );
 	}
 
+	drawLevel( g, diy, sheet, 'Neutral' );
 	drawCost( g, diy, sheet );
 
 	drawSkillIcons( g, diy, sheet, 'Neutral' );
@@ -380,7 +383,14 @@ function onRead(diy, oos) {
 		let backPortraitIndex = getPortraitIndex( 'BackPortrait' );
 		PortraitList[backPortraitIndex].setScale( PortraitList[backPortraitIndex].getScale() * 4 );
 	}
-    diy.version = 19;
+    if ( diy.version < 20 ) {
+    	scaleTextFieldSizes( diy, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory', 'TraitsBack', 'KeywordsBack', 'RulesBack', 'FlavorBack', 'VictoryBack' ], 4 );
+        let encounterPortraitIndex = getPortraitIndex('Encounter');
+        PortraitList[encounterPortraitIndex].setScale(PortraitList[encounterPortraitIndex].getScale() * 4.0);
+        $Level = 'None';
+        $LevelBack = 'None';
+    }
+    diy.version = 20;
 }
 
 function onWrite( diy, oos ) {
