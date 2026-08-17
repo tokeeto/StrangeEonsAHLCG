@@ -3725,6 +3725,8 @@ function drawScenarioIndexFront( g, diy, sheet, typeText, textBox ) {
 
 	var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'ScenarioIndex-region' ) );
 	region.y += parseInt(Eons.namedObjects.AHLCGObject.typeFontOffset);
+	region.y += hiResDelta( faceIndex, 5 )
+	region.x += hiResDelta( faceIndex, 6 )
 //	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y -= 2;
 
 	if ( $Orientation == 'Reversed' ) {
