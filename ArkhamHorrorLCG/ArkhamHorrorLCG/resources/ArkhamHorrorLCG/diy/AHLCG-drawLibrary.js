@@ -790,6 +790,7 @@ function drawLabel( g, diy, sheet, textBox, text ) {
 
 	var region = diy.settings.getRegion( getExpandedKey( faceIndex, 'Label-region') );
 	if ( CardTypes[faceIndex] === 'Asset' && $CardClass === 'Neutral' ) region.y -= hiResDelta( faceIndex, 1 );
+	if ( CardTypes[faceIndex] === 'Treachery' ) region.y -= hiResDelta( faceIndex, 2 );
 
 	region.y += parseInt(Eons.namedObjects.AHLCGObject.typeFontOffset);
 //	if ( Eons.namedObjects.AHLCGObject.bodyFamily == 'Times New Roman' ) region.y -= 2;
