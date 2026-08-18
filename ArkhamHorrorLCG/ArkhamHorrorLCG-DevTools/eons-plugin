@@ -1,0 +1,8 @@
+id = CATALOGUEID{02faba59-a781-419b-a668-b2d5cca539b3:2026-7-18-16-46-28-681}
+
+catalog-name = AHLCG Developer Tools
+catalog-description = Adds a Toolbox command that reloads AHLCG layout settings \
+    from the open project and repaints open editors.
+catalog-game = AHLCGs
+
+res://ArkhamHorrorLCG-DevTools/reload-layout.js
