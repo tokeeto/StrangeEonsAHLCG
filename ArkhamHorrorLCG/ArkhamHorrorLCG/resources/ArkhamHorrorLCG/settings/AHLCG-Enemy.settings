@@ -6,7 +6,7 @@ AHLCG-Enemy-Name-region = 320,92,1008,108
 AHLCG-Enemy-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth*1.05}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
 AHLCG-Enemy-SubtitleText-region = 232,200,1172,80
 
-AHLCG-Enemy-Label-region = 700,1294,244,56
+AHLCG-Enemy-Label-region = 700,1291,244,56
 AHLCG-Enemy-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
 
 AHLCG-Enemy-Body-region = 152,488,1352,660
@@ -21,8 +21,8 @@ AHLCG-Enemy-BackPortrait-portrait-clip-region = 0,1036,1644,1208
 
 AHLCG-Enemy-EncounterPortrait-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Enemy-EncounterPortrait-portrait-pany = 0
-AHLCG-Enemy-Encounter-portrait-clip-region = 768,1168,112,112
-AHLCG-Enemy-DefaultEncounter-portrait-clip-region = 768,1168,112,112
+AHLCG-Enemy-Encounter-portrait-clip-region = 768,1156,112,112
+AHLCG-Enemy-DefaultEncounter-portrait-clip-region = 768,1156,112,112
 AHLCG-Enemy-ReturnEncounter-portrait-clip-region = 748,1152,148,132
 AHLCG-Enemy-DefaultReturnEncounter-portrait-clip-region = 748,1152,148,132
 

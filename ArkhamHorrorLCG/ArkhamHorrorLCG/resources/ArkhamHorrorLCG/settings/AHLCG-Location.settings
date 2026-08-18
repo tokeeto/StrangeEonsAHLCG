@@ -48,17 +48,17 @@ AHLCG-LocationBack-DefaultCollection-portrait-clip-region = 1352,2112,52,52
 AHLCG-LocationBack-Collection-portrait-clip-region = 1352,2112,52,52
 
 AHLCG-LocationIcon-region = 128,96,144,140
-AHLCG-Connection1Icon-region = 340,1940,140,140
-AHLCG-Connection2Icon-region = 504,1908,140,140
-AHLCG-Connection3Icon-region = 672,1896,136,136
-AHLCG-Connection4Icon-region = 836,1896,136,136
-AHLCG-Connection5Icon-region = 1000,1908,140,140
-AHLCG-Connection6Icon-region = 1164,1940,140,140
+AHLCG-Location-Connection1Icon-region = 340,1935,140,140
+AHLCG-Location-Connection2Icon-region = 504,1903,140,140
+AHLCG-Location-Connection3Icon-region = 667,1891,140,140
+AHLCG-Location-Connection4Icon-region = 832,1891,140,140
+AHLCG-Location-Connection5Icon-region = 997,1903,140,140
+AHLCG-Location-Connection6Icon-region = 1161,1935,140,140
 
 AHLCG-Location-Shroud-region = 116,1076,196,200
 AHLCG-Location-ShroudPerInv-region = 88,1076,196,196
 AHLCG-Location-ShroudPerInvIcon-region = 196,1072,116,196
-AHLCG-Location-Clues-region = 1344,1076,196,200
+AHLCG-Location-Clues-region = 1331,1076,196,200
 AHLCG-Location-CluesPerInv-region = 1316,1076,196,196
 #AHLCG-Location-CluesPerInvIcon-region = 1424,1088,120,180
 AHLCG-Location-CluesPerInvIcon-region = 1424,1072,116,196
