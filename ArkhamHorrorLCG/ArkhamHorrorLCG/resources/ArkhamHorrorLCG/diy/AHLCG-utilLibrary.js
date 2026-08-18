@@ -65,7 +65,9 @@ const HI_RES_TEMPLATES = {
 	'EncounterBack': true,
     'LocationBack': true,
     'Asset': true,
-    'Enemy': true
+    'Enemy': true,
+    'Investigator': true,
+    'InvestigatorBack': true
 };
 
 function isHiResType( faceIndex ) {
@@ -599,10 +601,15 @@ function addSpacing( faceIndex, text, key, diy ) {
 	var spacing = 0;
 
 	if ( forceDisplay || sectionText != '' ) {
-		if (key == 'Traits') spacing = 0.5;
-		else spacing = 1.5;
+        if (key == 'Traits') {
+            spacing = 0.5;
+        } else {
+            spacing = 1.5;
+        }
 
-		if (sectionSpacing != null && sectionSpacing > 0) spacing += parseInt(sectionSpacing);
+        if (sectionSpacing != null && sectionSpacing > 0) {
+            spacing += parseInt(sectionSpacing);
+        }
 		spacing *= hiResScale( faceIndex );
 
 		text = text + '\n<image res://ArkhamHorrorLCG/images/empty1x1.png 1pt ' + spacing + 'pt>';
@@ -1650,11 +1657,11 @@ function getPathPointArrays( className ) {
 			break;
 		case 'ParallelNeutral':
 			pointArray[0] = new Array( 0.400, 0.357, 0.010, 0.010, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.468, 0.468, 1.000, 1.0, 0.0 );
+			pointArray[1] = new Array( 0.000, 0.485, 0.485, 1.000, 1.0, 0.0 );
 			break;
 		case 'Neutral':
 			pointArray[0] = new Array( 0.400, 0.357, 0.010, 0.010, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.468, 0.468, 1.000, 1.0, 0.0 );
+			pointArray[1] = new Array( 0.000, 0.485, 0.485, 1.000, 1.0, 0.0 );
 			break;
 	}
 

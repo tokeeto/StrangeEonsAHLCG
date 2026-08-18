@@ -399,10 +399,13 @@ function onRead(diy, oos) {
         let pIndex = getPortraitIndex('Portrait');
         PortraitList[pIndex].setScale(PortraitList[pIndex].getScale() * 4);
 	}
-	if ( diy.version < 17 ) {
-		scaleTextFieldSizes( diy, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Text1Back', 'Text2Back', 'Text3Back', 'Text4Back', 'Text5Back', 'Text6Back', 'Text7Back', 'Text8Back', 'InvStoryBack' ], 4 );
+	if ( diy.version < 19 ) {
+        scaleTextFieldSizes(diy, ['Traits', 'Keywords', 'Rules', 'Flavor', 'Text1Back', 'Text2Back', 'Text3Back', 'Text4Back', 'Text5Back', 'Text6Back', 'Text7Back', 'Text8Back', 'InvStoryBack'], 4);
+        $TraitsSpacing = '0';
+    	$KeywordsSpacing = '0';
+    	$RulesSpacing = '0';
 	}
-	diy.version = 17;
+	diy.version = 18;
 }
 
 function onWrite( diy, oos ) {

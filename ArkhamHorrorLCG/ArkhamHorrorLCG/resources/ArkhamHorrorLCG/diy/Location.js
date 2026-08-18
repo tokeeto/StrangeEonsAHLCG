@@ -47,7 +47,7 @@ function setDefaults() {
 	$FlavorSpacing = '0';
 
 	$LocationIcon = 'Circle';
-	$Connection1Icon =  'None';
+	$Connection1Icon = 'None';
 	$Connection2Icon = 'None';
 	$Connection3Icon = 'None';
 	$Connection4Icon = 'None';
@@ -333,73 +333,7 @@ function paintBack( g, diy, sheet ) {
 function onClear() {
 	setDefaults();
 }
-/*
-function createTextShape( textBox, textRegion ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
 
-	var path = new java.awt.geom.Path2D.Double();
-
-	// asymmetrical
-	var xPathPoints = new Array( 0.074, 0.000, 0.000, 1.000, 1.000, 0.951, 0.926 );
-	var yPathPoints = new Array( 0.000, 0.174, 1.000, 1.000, 0.319, 0.125, 0.000 );
-
-	var xControlPoints = new Array( 0.037, 0.107, 0.991, 0.962, 0.936, 0.970 );
-	var yControlPoints = new Array( 0.153, 0.139, 0.278, 0.167, 0.132, 0.174 );
-
-	var numPoints = xPathPoints.length;
-
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	// just create by hand, it's asymmetrical
-	path.curveTo( x + w * xControlPoints[0], y + h * yControlPoints[0],
-		x + w * xControlPoints[1], y + h * yControlPoints[1],
-		x + w * xPathPoints[1], y + h * yPathPoints[1]
-	);
-
-	for (let i = 2; i <= 4; i++) {
-		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
-	}
-
-	for (let i = 5; i <= 6; i++) {
-		path.curveTo( x + w * xControlPoints[i*2 - 8], y + h * yControlPoints[i*2 - 8],
-			x + w * xControlPoints[i*2 - 7], y + h * yControlPoints[i*2 - 7],
-			x + w * xPathPoints[i], y + h * yPathPoints[i]
-		);
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-
-function createBackTextShape( textBox, textRegion ) {
-	var x = textRegion.x;
-	var y = textRegion.y;
-	var w = textRegion.width;
-	var h = textRegion.height;
-
-//	var xPathPoints = new Array( 0.151, 0.000, 0.000, 1.000, 1.000, 0.849 );
-	var xPathPoints = new Array( 0.111, 0.000, 0.000, 1.000, 1.000, 0.889 );
-	var yPathPoints = new Array( 0.000, 0.204, 1.000, 1.000, 0.204, 0.000 );
-
-	var path = new java.awt.geom.Path2D.Double();
-
-	var numPoints = xPathPoints.length;
-
-	path.moveTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	for (let i = 1; i < numPoints; i++) {
-		path.lineTo( x + w * xPathPoints[i], y + h * yPathPoints[i] );
-	}
-
-	path.lineTo( x + w * xPathPoints[0], y + h * yPathPoints[0] );
-
-	textBox.pageShape = PageShape.GeometricShape( path, textRegion );
-}
-*/
 function setTextShape( box, region ) {
 	var AHLCGObject = Eons.namedObjects.AHLCGObject;
 
@@ -420,8 +354,6 @@ function createVictoryTextShape( textBox, textRegion ) {
 
 	var xPathPoints = new Array( 0.000, 1.000, 1.000, 0.500, 0.000 );
 	var yPathPoints = new Array( 0.000, 0.000, 1.000, 1.000, 0.500 );
-//	var xPathPoints = new Array( 0.000, 1.000, 1.000 );
-//	var yPathPoints = new Array( 0.000, 0.000, 1.000 );
 
 	var path = new java.awt.geom.Path2D.Double();
 
@@ -492,6 +424,14 @@ function onRead(diy, oos) {
 	}
 	if ( diy.version < 20 ) {
 		scaleTextFieldSizes( diy, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory', 'TraitsBack', 'KeywordsBack', 'RulesBack', 'FlavorBack' ], 4 );
+    }
+    if (diy.version < 21) {
+        diy.settings.reset('AHLCG-Connection1Icon-region');
+        diy.settings.reset('AHLCG-Connection2Icon-region');
+        diy.settings.reset('AHLCG-Connection3Icon-region');
+        diy.settings.reset('AHLCG-Connection4Icon-region');
+        diy.settings.reset('AHLCG-Connection5Icon-region');
+        diy.settings.reset('AHLCG-Connection6Icon-region');
 	}
 	diy.version = 20;
 }
