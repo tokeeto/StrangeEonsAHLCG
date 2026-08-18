@@ -3,7 +3,7 @@ AHLCG-TreacheryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-Encounter
 AHLCG-TreacheryStoryBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-PlayerBack.png
 
 AHLCG-Treachery-Name-region = 228,1300,1196,116
-AHLCG-Treachery-Label-region = 620,1216,416,56
+AHLCG-Treachery-Label-region = 620,1208,416,56
 AHLCG-Treachery-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
 
 AHLCG-Treachery-Body-region = 192,1432,1272,640

@@ -40,7 +40,7 @@ AHLCG-Act-DefaultCollection-portrait-clip-region = 1152,1504,52,52
 
 AHLCG-Act-EncounterNumber-region = 852,1516,220,40
 AHLCG-Act-CollectionNumber-region = 1136,1516,148,40
-AHLCG-Act-ScenarioIndex-region = 340,100,536,84
+AHLCG-Act-ScenarioIndex-region = 364,120,536,84
 AHLCG-ActBack-BackScenarioIndex-region = 160,204,180,64
 
 AHLCG-Act-Clues-region = 1032,1232,196,200
