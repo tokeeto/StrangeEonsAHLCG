@@ -2,7 +2,7 @@ AHLCG-Act-Default-template = ArkhamHorrorLCG/templates/AHLCG-Act.png
 AHLCG-ActBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-ActBack.png
 
 #AHLCG-Act-Name-region = 108,328,1000,88
-AHLCG-Act-Name-region = 108,292,1000,176
+AHLCG-Act-Name-region = 130,292,1000,176
 AHLCG-Act-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
 
 #AHLCG-ActBack-Name-region = 156,512,192,904
@@ -26,7 +26,7 @@ AHLCG-Act-Encounter-portrait-pany = 0
 #AHLCG-Act-Encounter-portrait-clip-region = 560,180,112,112
 AHLCG-Act-Encounter-portrait-clip-region = 552,164,128,128
 #AHLCG-Act-DefaultEncounter-portrait-clip-region = 560,180,112,112
-AHLCG-Act-DefaultEncounter-portrait-clip-region = 552,164,128,128
+AHLCG-Act-DefaultEncounter-portrait-clip-region = 568,188,128,128
 AHLCG-Act-ReturnEncounter-portrait-clip-region = 544,160,140,140
 AHLCG-Act-DefaultReturnEncounter-portrait-clip-region = 544,160,140,140
 #AHLCG-ActBack-Encounter-portrait-clip-region = 180,300,144,144
