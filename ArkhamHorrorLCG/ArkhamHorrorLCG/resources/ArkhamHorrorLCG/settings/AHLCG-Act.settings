@@ -4,7 +4,7 @@ AHLCG-ActBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-ActBack.png
 AHLCG-Act-Name-region = 130,292,1000,176
 AHLCG-Act-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
 
-AHLCG-ActBack-Name-region = 160,512,188,904
+AHLCG-ActBack-Name-region = 183,512,188,904
 AHLCG-ActBack-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking}; FOREGROUND: #000000
 AHLCG-ActBack-Name-alignment = center, middle
 
@@ -24,8 +24,8 @@ AHLCG-Act-Encounter-portrait-clip-region = 568,188,128,128
 AHLCG-Act-DefaultEncounter-portrait-clip-region = 568,188,128,128
 AHLCG-Act-ReturnEncounter-portrait-clip-region = 544,160,140,140
 AHLCG-Act-DefaultReturnEncounter-portrait-clip-region = 544,160,140,140
-AHLCG-ActBack-Encounter-portrait-clip-region = 200,295,144,144
-AHLCG-ActBack-ReturnEncounter-portrait-clip-region = 172,293,196,192
+AHLCG-ActBack-Encounter-portrait-clip-region = 190,285,164,164
+AHLCG-ActBack-ReturnEncounter-portrait-clip-region = 173,272,196,192
 
 AHLCG-Act-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Act-Collection-portrait-pany = 0
@@ -34,7 +34,7 @@ AHLCG-Act-DefaultCollection-portrait-clip-region = 1152,1504,52,52
 
 AHLCG-Act-EncounterNumber-region = 852,1516,220,40
 AHLCG-Act-CollectionNumber-region = 1136,1516,148,40
-AHLCG-Act-ScenarioIndex-region = 364,120,536,84
+AHLCG-Act-ScenarioIndex-region = 364,127,536,84
 AHLCG-ActBack-BackScenarioIndex-region = 160,204,200,64
 
 AHLCG-Act-Clues-region = 1032,1232,196,200

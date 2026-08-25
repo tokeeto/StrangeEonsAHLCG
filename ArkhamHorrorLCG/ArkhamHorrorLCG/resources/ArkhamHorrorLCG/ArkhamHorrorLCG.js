@@ -1199,7 +1199,7 @@ function gameObject( masterSettings ) {
 
 		let ig = iconBaseImage.createGraphics();
 
-		ig.drawImage( ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + item + '.png' ), 16, 16, null );
+		ig.drawImage( ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + item + '.png' ), -12, -12, null );
 
 		this.comboConnections[index+2] = ListItem(
 			item, @('AHLCG-LocIcon-' + item),

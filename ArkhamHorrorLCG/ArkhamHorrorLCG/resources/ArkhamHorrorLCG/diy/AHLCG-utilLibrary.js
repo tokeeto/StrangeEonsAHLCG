@@ -1657,11 +1657,11 @@ function getPathPointArrays( className ) {
 			break;
 		case 'ParallelNeutral':
 			pointArray[0] = new Array( 0.400, 0.357, 0.010, 0.010, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.485, 0.485, 1.000, 1.0, 0.0 );
+			pointArray[1] = new Array( 0.000, 0.505, 0.505, 1.000, 1.0, 0.0 );
 			break;
 		case 'Neutral':
 			pointArray[0] = new Array( 0.400, 0.357, 0.010, 0.010, 1.0, 1.0 );
-			pointArray[1] = new Array( 0.000, 0.485, 0.485, 1.000, 1.0, 0.0 );
+			pointArray[1] = new Array( 0.000, 0.505, 0.505, 1.000, 1.0, 0.0 );
 			break;
 	}
 

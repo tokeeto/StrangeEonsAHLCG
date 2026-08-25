@@ -12,7 +12,7 @@ function run() {
         return;
     }
 
-    const settingsDir = new File(project.getFile(), 'ArkhamHorrorLCG/ArkhamHorrorLCG/resources/ArkhamHorrorLCG/settings');
+    const settingsDir = new File(project.getFile(), 'ArkhamHorrorLCG/resources/ArkhamHorrorLCG/settings');
     if (!settingsDir.listFiles()) {
         alert('ArkhamHorrorLCG/ArkhamHorrorLCG/resources not found in this project.', true);
         return;

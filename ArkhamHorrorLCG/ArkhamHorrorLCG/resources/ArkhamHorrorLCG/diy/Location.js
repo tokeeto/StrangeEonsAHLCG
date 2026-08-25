@@ -270,7 +270,7 @@ function paintFront( g, diy, sheet ) {
 	var encounterIcon = false;
 
 	if ( $ShowEncounterIcon == '1' ) {
-		drawLocationEncounterOverlay( g, diy, sheet );
+		//drawLocationEncounterOverlay( g, diy, sheet );
 		encounterIcon = true;
 	}
 
@@ -295,7 +295,7 @@ function paintBack( g, diy, sheet ) {
 		else drawTemplate( g, sheet, '' );
 
 		if ( $ShowEncounterIconBack == '1' ) {
-			drawLocationEncounterOverlay( g, diy, sheet );
+			//drawLocationEncounterOverlay( g, diy, sheet );
 			drawEncounterIcon( g, diy, sheet );
 		}
 

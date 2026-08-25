@@ -1,15 +1,15 @@
 AHLCG-Key-Default-template = ArkhamHorrorLCG/templates/AHLCG-Key.png
 AHLCG-KeyBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-KeyBack.png
 
-AHLCG-Key-Name-region = 332,1916,952,116
+AHLCG-Key-Name-region = 332,1890,952,116
 AHLCG-Key-Subtype-region = 404,1276,812,60
-AHLCG-Key-Label-region = 1376,276,152,56
-AHLCG-KeyBack-Name-region = 332,1916,952,116
+AHLCG-Key-Label-region = 1339,280,152,56
+AHLCG-KeyBack-Name-region = 332,1890,952,116
 AHLCG-KeyBack-Subtype-region = 404,1276,812,60
-AHLCG-KeyBack-Label-region = 1376,276,152,56
+AHLCG-KeyBack-Label-region = 1339,276,152,56
 
-AHLCG-Key-SubtitleText-region = 392,2040,852,88
-AHLCG-KeyBack-SubtitleText-region = 392,2040,852,88
+AHLCG-Key-SubtitleText-region = 392,2010,852,88
+AHLCG-KeyBack-SubtitleText-region = 392,2010,852,88
 
 AHLCG-Key-Body-region = 128,1320,1392,560
 AHLCG-Key-Body-alignment = left
@@ -32,8 +32,8 @@ AHLCG-Key-DefaultCollection-portrait-clip-region = 1352,2120,52,52
 
 AHLCG-Key-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Key-Encounter-portrait-pany = 0
-AHLCG-Key-Encounter-portrait-clip-region = 1392,116,120,120
-AHLCG-Key-DefaultEncounter-portrait-clip-region = 1392,116,120,120
+AHLCG-Key-Encounter-portrait-clip-region = 1355,116,120,120
+AHLCG-Key-DefaultEncounter-portrait-clip-region = 1355,116,120,120
 AHLCG-Key-ReturnEncounter-portrait-clip-region = 1384,108,128,128
 AHLCG-Key-DefaultReturnEncounter-portrait-clip-region = 1384,108,128,128
 

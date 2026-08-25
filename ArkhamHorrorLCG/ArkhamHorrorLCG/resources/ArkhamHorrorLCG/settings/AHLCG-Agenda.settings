@@ -20,12 +20,12 @@ AHLCG-Agenda-DefaultPortrait-portrait-clip-region = 72,72,1220,1500
 
 AHLCG-Agenda-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Agenda-Encounter-portrait-pany = 0
-AHLCG-Agenda-Encounter-portrait-clip-region = 1526,172,128,128
-AHLCG-Agenda-DefaultEncounter-portrait-clip-region = 1526,172,128,128
+AHLCG-Agenda-Encounter-portrait-clip-region = 1526,188,128,128
+AHLCG-Agenda-DefaultEncounter-portrait-clip-region = 1526,188,128,128
 AHLCG-Agenda-ReturnEncounter-portrait-clip-region = 1528,160,140,140
 AHLCG-Agenda-DefaultReturnEncounter-portrait-clip-region = 1528,160,140,140
-AHLCG-AgendaBack-Encounter-portrait-clip-region = 200,295,144,144
-AHLCG-AgendaBack-ReturnEncounter-portrait-clip-region = 152,272,196,192
+AHLCG-AgendaBack-Encounter-portrait-clip-region = 190,285,164,164
+AHLCG-AgendaBack-ReturnEncounter-portrait-clip-region = 173,272,196,192
 
 AHLCG-Agenda-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Agenda-Collection-portrait-pany = 0
@@ -35,7 +35,7 @@ AHLCG-Agenda-DefaultCollection-portrait-clip-region = 1976,1504,52,52
 AHLCG-Agenda-EncounterNumber-region = 1676,1516,220,40
 AHLCG-Agenda-CollectionNumber-region = 1960,1516,148,40
 
-AHLCG-Agenda-ScenarioIndex-region = 1328,115,536,84
+AHLCG-Agenda-ScenarioIndex-region = 1328,127,536,84
 AHLCG-AgendaBack-BackScenarioIndex-region = 168,200,192,64
 
 AHLCG-Agenda-Doom-region = 1004,1236,200,196

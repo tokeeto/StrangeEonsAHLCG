@@ -2719,10 +2719,10 @@ function drawCost( g, diy, sheet ) {
 			drawDash( g, diy, sheet, costRegion, 2, 0 );
 	}
 	else if ( cost == 'X' ) {
-			sheet.drawOutlinedTitle( g, cost, costRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 14.0 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, cost, costRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 14.0 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else {
-		sheet.drawOutlinedTitle( g, cost, costRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 16.0 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, cost, costRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 16.0 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 }
 
@@ -2880,11 +2880,11 @@ function drawStamina( g, diy, sheet ) {
         }
 
         if (stamina == '-') {
-            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 9.8 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 9.8 ), 6.0, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
         else if (stamina == '*') {
             // Teutonic
-            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 18.5 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 18.5 ), 6.0, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
         else if (perInvestigator == '1') {
             let staminaPerInvRegion = diy.settings.getRegion(getExpandedKey(faceIndex, 'StaminaPerInvIcon-region'));
@@ -2903,14 +2903,14 @@ function drawStamina( g, diy, sheet ) {
 				staminaPerInvRegion.x += hiResDelta( faceIndex, 4 );
             }
 
-            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
-            sheet.drawOutlinedTitle(g, 'p', staminaPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+            sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 6, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+            sheet.drawOutlinedTitle(g, 'p', staminaPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 6, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
         else if (stamina.length() > 1) {	// 10+
-			sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.5 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+			sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.5 ), 6, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
         else {
-			sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
+			sheet.drawOutlinedTitle(g, stamina, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14 ), 6, new Color(0.996, 0.945, 0.859), new Color(0.68, 0.12, 0.22), 0, true);
         }
    	}
 }
@@ -2976,11 +2976,11 @@ function drawSanity( g, diy, sheet ) {
         }
 
 		if ( sanity == '-' ) {
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 9.8 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 9.8 ), 6.0, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 		else if ( sanity == '*' ) {
 			// Teutonic
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 18.5 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 18.5 ), 6.0, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 		else if (perInvestigator == '1') {
 			let sanityPerInvRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'SanityPerInvIcon-region' ) );
@@ -2999,14 +2999,14 @@ function drawSanity( g, diy, sheet ) {
 				sanityPerInvRegion.x += hiResDelta( faceIndex, 4 );
 			}
 
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
-			sheet.drawOutlinedTitle( g, 'p', sanityPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 6.0, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, 'p', sanityPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 6.0, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 		else if ( sanity.length() > 1 ) {	// 10+
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.5 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.5 ), 6.0, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14 ), 1.5, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
+			sheet.drawOutlinedTitle( g, sanity, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14 ), 6.0, new Color(0.996, 0.945, 0.859), new Color(0.25, 0.33, 0.44), 0, true );
 		}
 
 //		sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Sanity-' + sanity + '.png'),
@@ -3107,8 +3107,10 @@ function drawEncounterInfo( g, diy, sheet, encounterInfoBox, collectorX ) {
 	encounterInfoBox.markupText = encounterNumber;
 	if ( Eons.namedObjects.AHLCGObject.OS == 'Mac' ) {
 		encounterInfoBox.markupText += '\u200a/\u200a' + encounterTotal;
-	}
-	else {
+    }
+    else if (CardTypes[sheet.getSheetIndex()] == 'Story') {
+        encounterInfoBox.markupText += '/' + encounterTotal;
+    } else {
 		encounterInfoBox.markupText += ' / ' + encounterTotal;
 	}
 
@@ -3235,7 +3237,7 @@ function drawEnemyStats( g, diy, sheet, statNames ) {
 		if ( statValue == '-' ) {
 			statRegion.y += hiResDelta( faceIndex, 6.0 );
 
-			sheet.drawOutlinedTitle( g, '\u2014', statRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, '\u2014', statRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 		}
 		else if (perInvestigator == '1') {
 			let statRegion = diy.settings.getRegion( getExpandedKey(faceIndex, stat + 'PerInv-region' ) );
@@ -3259,11 +3261,11 @@ function drawEnemyStats( g, diy, sheet, statNames ) {
 				statPerInvRegion.x += hiResDelta( faceIndex, 4 );
 			}
 
-			sheet.drawOutlinedTitle( g, statValue, statRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
-			sheet.drawOutlinedTitle( g, 'p', statPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, statValue, statRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, 'p', statPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, symbolFontSize, 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, statValue, statRegion, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.0 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, statValue, statRegion, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 11.0 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 		}
 	}
 }
@@ -3278,7 +3280,7 @@ function drawEnemyLocationHealth( g, diy, sheet ) {
 		healthRegion.x += hiResDelta( faceIndex, 5.0 );
 		healthRegion.y += hiResDelta( faceIndex, 6.0 );
 
-		sheet.drawOutlinedTitle( g, '\u2014', healthRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, '\u2014', healthRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else if (perInvestigator == '1') {
 		let healthRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'HealthPerInv-region' ) );
@@ -3295,11 +3297,11 @@ function drawEnemyLocationHealth( g, diy, sheet ) {
 			healthPerInvRegion.x += hiResDelta( faceIndex, 4 );
 		}
 
-		sheet.drawOutlinedTitle( g, health, healthRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
-		sheet.drawOutlinedTitle( g, 'p', healthPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 6.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, health, healthRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, 'p', healthPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 6.5 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else {
-		sheet.drawOutlinedTitle( g, health, diy.settings.getRegion( getExpandedKey(faceIndex, 'Health-region' ) ), Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 13.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, health, diy.settings.getRegion( getExpandedKey(faceIndex, 'Health-region' ) ), Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 13.5 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 }
 
@@ -3313,7 +3315,7 @@ function drawEnemyHealth( g, diy, sheet ) {
 		healthRegion.x += hiResDelta( faceIndex, 5.0 );
 		healthRegion.y += hiResDelta( faceIndex, 6.0 );
 
-		sheet.drawOutlinedTitle( g, '\u2014', healthRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, '\u2014', healthRegion, Eons.namedObjects.AHLCGObject.costFont, hiResDelta( faceIndex, 11.5 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else if (perInvestigator == '1') {
 		let healthRegion = diy.settings.getRegion( getExpandedKey(faceIndex, 'HealthPerInv-region' ) );
@@ -3330,11 +3332,11 @@ function drawEnemyHealth( g, diy, sheet ) {
 			healthPerInvRegion.x += hiResDelta( faceIndex, 4 );
 		}
 
-		sheet.drawOutlinedTitle( g, health, healthRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
-		sheet.drawOutlinedTitle( g, 'p', healthPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 6.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, health, healthRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, 'p', healthPerInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 6.5 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 	else {
-		sheet.drawOutlinedTitle( g, health, diy.settings.getRegion( getExpandedKey(faceIndex, 'Health-region' ) ), Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 13.5 ), 0.8, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
+		sheet.drawOutlinedTitle( g, health, diy.settings.getRegion( getExpandedKey(faceIndex, 'Health-region' ) ), Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 13.5 ), 3.2, new Color(1, 1, 1), new Color(0, 0, 0), 0, true );
 	}
 }
 
@@ -3377,17 +3379,7 @@ function drawLocationIcon( g, diy, sheet, locationIconName, drawBaseCircle )
 	if ( locationIcon == 'Copy front' )	locationIcon = $( locationIconName );
 
 	if ( locationIcon != 'None' && locationIcon != 'Empty' && locationIcon != null) {
-		var index = AHLCGObject.locationIcons.indexOf( locationIcon );
-
-		var icon_tinter = new TintCache( new TintFilter(), Eons.namedObjects.AHLCGObject.baseLocationIcon );
-		var hsb = diy.settings.getTint( 'AHLCG-' + locationIcon + '-tint' );
-		icon_tinter.setFactors( hsb[0], hsb[1], hsb[2] );
-
-		var locationImage = icon_tinter.getTintedImage();
-
-		var ig = locationImage.createGraphics();
-		ig.drawImage( ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + locationIcon + '.png' ), hiResDelta( faceIndex, 5 ), hiResDelta( faceIndex, 5 ), null );
-
+		var locationImage = ImageUtils.get( 'ArkhamHorrorLCG/icons/AHLCG-Loc' + locationIcon + '.png' )
 		sheet.paintImage(g, locationImage, region );
 	}
 }
@@ -3418,7 +3410,7 @@ function drawShroud( g, diy, sheet ) {
 
 
 	if ( shroud == '-' ) {
-		sheet.drawOutlinedTitle( g, shroud, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 12.0 ), 1.5, textColor, borderColor, 0, true );
+		sheet.drawOutlinedTitle( g, shroud, region, Eons.namedObjects.AHLCGObject.symbolFont, hiResDelta( faceIndex, 12.0 ), 6.0, textColor, borderColor, 0, true );
 	}
 	else if ( perInvestigator == '1' ) {
 		var perInvShroudRegion = diy.settings.getRegion( getExpandedKey( faceIndex, 'ShroudPerInv-region' ) );
@@ -3450,24 +3442,24 @@ function drawShroud( g, diy, sheet ) {
 			perInvShroudRegion.x += hiResDelta( faceIndex, 1 );
 			perInvShroudRegion.y += hiResDelta( faceIndex, 2 );
 			perInvRegion.x -= hiResDelta( faceIndex, 2 );
-			sheet.drawOutlinedTitle( g, '*', perInvShroudRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', perInvShroudRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, shroud, perInvShroudRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, shroud, perInvShroudRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 3.2, textColor, borderColor, 0, true );
 		}
-		sheet.drawOutlinedTitle( g, 'p', perInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, piIconSize, 0.8, textColor, borderColor, 0, true );
+		sheet.drawOutlinedTitle( g, 'p', perInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, piIconSize, 3.2, textColor, borderColor, 0, true );
 	}
 	else {
 		if ( shroud == 'Star' ) {
 			region.y += hiResDelta( faceIndex, 2 );
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, shroud, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, shroud, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 	}
 
-//	sheet.drawOutlinedTitle( g, $( 'Shroud' + BindingSuffixes[faceIndex] ), region, Eons.namedObjects.AHLCGObject.enemyFont, 14.0, 0.8, lightColor, darkColor, 0, true );
+//	sheet.drawOutlinedTitle( g, $( 'Shroud' + BindingSuffixes[faceIndex] ), region, Eons.namedObjects.AHLCGObject.enemyFont, 14.0, 3.2, lightColor, darkColor, 0, true );
 }
 
 function drawClues( g, diy, sheet ) {
@@ -3511,7 +3503,7 @@ function drawClues( g, diy, sheet ) {
 
 	if ( clues == '-' ) {
 		drawDash( g, diy, sheet, region, 0, 6 );
-//		sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.symbolFont, 12.0, 1.5, textColor, borderColor, 0, true );
+//		sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.symbolFont, 12.0, 6.0, textColor, borderColor, 0, true );
 	}
 	else if ( perInvestigator == '1' ) {
 		var perInvCluesRegion = diy.settings.getRegion( getExpandedKey( faceIndex, 'CluesPerInv-region' ) );
@@ -3552,12 +3544,12 @@ function drawClues( g, diy, sheet ) {
 			perInvCluesRegion.x += hiResDelta( faceIndex, 1 );
 			perInvCluesRegion.y += hiResDelta( faceIndex, 2 );
 			perInvRegion.x -= hiResDelta( faceIndex, 2 );
-			sheet.drawOutlinedTitle( g, '*', perInvCluesRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', perInvCluesRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, clues, perInvCluesRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, clues, perInvCluesRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 3.2, textColor, borderColor, 0, true );
 		}
-		sheet.drawOutlinedTitle( g, 'p', perInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, piIconSize, 0.8, textColor, borderColor, 0, true );
+		sheet.drawOutlinedTitle( g, 'p', perInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, piIconSize, 3.2, textColor, borderColor, 0, true );
 	}
 	else if ( asterisk == '1' ) {
 		let fontSize = hiResDelta( faceIndex, 14.0 );
@@ -3580,11 +3572,11 @@ function drawClues( g, diy, sheet ) {
 		if ( clues == 'Star' ) {
 			region.x -= hiResDelta( faceIndex, 4 );
 			region.y += hiResDelta( faceIndex, 2 );
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 		else {
 			region.x -= hiResDelta( faceIndex, 4 );
-			sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 3.2, textColor, borderColor, 0, true );
 		}
 
 		let asteriskFont = new Font( Eons.namedObjects.AHLCGObject.bodyFamily, Font.ITALIC, hiResDelta( faceIndex, 12.0 ) );
@@ -3598,15 +3590,15 @@ function drawClues( g, diy, sheet ) {
 		else {
 			region.x += g.getFontMetrics(asteriskFont).stringWidth(clues);
 		}
-			sheet.drawOutlinedTitle( g, '*', region, asteriskFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', region, asteriskFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 	}
 	else {
 		if ( clues == 'Star' ) {
 			region.y += hiResDelta( faceIndex, 2 );
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, clues, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 	}
 }
@@ -3654,12 +3646,12 @@ function drawDoom( g, diy, sheet ) {
 			perInvDoomRegion.x += hiResDelta( faceIndex, 1 );
 			perInvDoomRegion.y += hiResDelta( faceIndex, 2 );
 			perInvRegion.x -= hiResDelta( faceIndex, 3 );
-			sheet.drawOutlinedTitle( g, '*', perInvDoomRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', perInvDoomRegion, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 		else {
-			sheet.drawOutlinedTitle( g, doom, perInvDoomRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, doom, perInvDoomRegion, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 3.2, textColor, borderColor, 0, true );
 		}
-		sheet.drawOutlinedTitle( g, 'p', perInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, piIconSize, 0.8, textColor, borderColor, 0, true );
+		sheet.drawOutlinedTitle( g, 'p', perInvRegion, Eons.namedObjects.AHLCGObject.symbolFont, piIconSize, 3.2, textColor, borderColor, 0, true );
 	}
 	else if ( asterisk == '1' ) {
 		let fontSize = hiResDelta( faceIndex, 14.0 );
@@ -3682,11 +3674,11 @@ function drawDoom( g, diy, sheet ) {
 		if ( doom == 'Star' ) {
 			region.x -= hiResDelta( faceIndex, 4 );
 			region.y += hiResDelta( faceIndex, 2 );
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 		else {
 			region.x -= hiResDelta( faceIndex, 4 );
-			sheet.drawOutlinedTitle( g, doom, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, doom, region, Eons.namedObjects.AHLCGObject.enemyFont, fontSize, 3.2, textColor, borderColor, 0, true );
 		}
 
 		let asteriskFont = new Font( Eons.namedObjects.AHLCGObject.bodyFamily, Font.ITALIC, hiResDelta( faceIndex, 12.0 ) );
@@ -3701,19 +3693,19 @@ function drawDoom( g, diy, sheet ) {
 			region.x += g.getFontMetrics(asteriskFont).stringWidth(doom);
 		}
 
-		sheet.drawOutlinedTitle( g, '*', region, asteriskFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+		sheet.drawOutlinedTitle( g, '*', region, asteriskFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 	}
 	else {
 		if ( doom == 'Star' ) {
 			region.y += hiResDelta( faceIndex, 2 );
-			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 0.8, textColor, borderColor, 0, true );
+			sheet.drawOutlinedTitle( g, '*', region, Eons.namedObjects.AHLCGObject.chaosFont, hiResDelta( faceIndex, 12.0 ), 3.2, textColor, borderColor, 0, true );
 		}
 		else {
 			if ( $Orientation == 'Reversed' ) {
 				region.x -= hiResDelta( faceIndex, 1 );
 				}
 
-			sheet.drawOutlinedTitle( g, doom, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 0.8, new Color(0.996, 0.945, 0.859), new Color(0, 0, 0), 0, true );
+			sheet.drawOutlinedTitle( g, doom, region, Eons.namedObjects.AHLCGObject.enemyFont, hiResDelta( faceIndex, 14.0 ), 3.2, new Color(0.996, 0.945, 0.859), new Color(0, 0, 0), 0, true );
 		}
 	}
 }

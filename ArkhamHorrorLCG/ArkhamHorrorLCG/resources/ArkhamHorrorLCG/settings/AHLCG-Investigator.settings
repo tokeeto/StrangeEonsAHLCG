@@ -46,6 +46,7 @@ AHLCG-InvestigatorBack-ParallelSubtitle-style = FAMILY: {Eons.namedObjects.AHLCG
 AHLCG-InvestigatorBack-Subtitle-alignment = center, middle
 
 AHLCG-Investigator-Body-region = 1296,400,792,850
+AHLCG-Investigator-Body-tightness = 0.66
 AHLCG-Investigator-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize*0.85}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking}; FOREGROUND: #000000; LIGATURES: LIGATURES_ON
 AHLCG-InvestigatorBack-Body-region = 175,386,1893,1066
 AHLCG-InvestigatorBack-Body-style = FAMILY: {Eons.namedObjects.AHLCGObject.bodyFamily}; SIZE: {Eons.namedObjects.AHLCGObject.bodyFontSize*0.85}; WEIGHT: {Eons.namedObjects.AHLCGObject.bodyFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.bodyFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.bodyFontTracking*0.8}; FOREGROUND: #000000; LIGATURES: LIGATURES_ON

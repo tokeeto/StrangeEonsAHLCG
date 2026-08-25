@@ -250,7 +250,10 @@ function onRead(diy, oos) {
 
     	scaleTextFieldSizes( diy, [ 'Traits', 'Keywords', 'Rules', 'Flavor', 'Victory' ], 4 );
     }
-    diy.version = 19;
+    if (diy.version < 20) {
+        diy.settings.reset('AHLCG-Enemy-Label-region');
+	}
+    diy.version = 20;
 	diy.bleedMargin = 8.64;
 }
 
