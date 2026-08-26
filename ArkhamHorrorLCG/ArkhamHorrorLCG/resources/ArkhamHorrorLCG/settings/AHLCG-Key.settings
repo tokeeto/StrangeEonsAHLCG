@@ -11,7 +11,7 @@ AHLCG-KeyBack-Label-region = 1339,276,152,56
 AHLCG-Key-SubtitleText-region = 392,2010,852,88
 AHLCG-KeyBack-SubtitleText-region = 392,2010,852,88
 
-AHLCG-Key-Body-region = 128,1320,1392,560
+AHLCG-Key-Body-region = 160,1320,1320,540
 AHLCG-Key-Body-alignment = left
 
 AHLCG-Key-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png

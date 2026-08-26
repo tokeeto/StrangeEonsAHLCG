@@ -20,8 +20,8 @@ AHLCG-Act-DefaultPortrait-portrait-clip-region = 952,72,1220,1500
 
 AHLCG-Act-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Act-Encounter-portrait-pany = 0
-AHLCG-Act-Encounter-portrait-clip-region = 568,188,128,128
-AHLCG-Act-DefaultEncounter-portrait-clip-region = 568,188,128,128
+AHLCG-Act-Encounter-portrait-clip-region = 578,198,108,108
+AHLCG-Act-DefaultEncounter-portrait-clip-region = 578,198,108,108
 AHLCG-Act-ReturnEncounter-portrait-clip-region = 544,160,140,140
 AHLCG-Act-DefaultReturnEncounter-portrait-clip-region = 544,160,140,140
 AHLCG-ActBack-Encounter-portrait-clip-region = 190,285,164,164
@@ -37,9 +37,9 @@ AHLCG-Act-CollectionNumber-region = 1136,1516,148,40
 AHLCG-Act-ScenarioIndex-region = 364,127,536,84
 AHLCG-ActBack-BackScenarioIndex-region = 160,204,200,64
 
-AHLCG-Act-Clues-region = 1032,1232,196,200
-AHLCG-Act-CluesPerInv-region = 1008,1232,196,196
-AHLCG-Act-CluesPerInvIcon-region = 1116,1228,116,196
+AHLCG-Act-Clues-region = 1032,1223,196,200
+AHLCG-Act-CluesPerInv-region = 1008,1223,196,196
+AHLCG-Act-CluesPerInvIcon-region = 1116,1219,116,196
 
 AHLCG-Act-Dash-tint = 38.0, 0.14, 1.0
 

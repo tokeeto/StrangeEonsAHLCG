@@ -3105,10 +3105,7 @@ function drawEncounterInfo( g, diy, sheet, encounterInfoBox, collectorX ) {
 
 	// Please don't ask me why I have to do a markupText += X in order to get the color to change
 	encounterInfoBox.markupText = encounterNumber;
-	if ( Eons.namedObjects.AHLCGObject.OS == 'Mac' ) {
-		encounterInfoBox.markupText += '\u200a/\u200a' + encounterTotal;
-    }
-    else if (CardTypes[sheet.getSheetIndex()] == 'Story') {
+	if (CardTypes[sheet.getSheetIndex()] == 'Story') {
         encounterInfoBox.markupText += '/' + encounterTotal;
     } else {
 		encounterInfoBox.markupText += ' / ' + encounterTotal;
@@ -3772,7 +3769,7 @@ function drawDash( g, diy, sheet, region, offsetX, offsetY ) {
 	var faceIndex = sheet.getSheetIndex();
 
 	var dashX = hiResDelta( faceIndex, 26 );
-	var dashY = hiResDelta( faceIndex, 10 );
+	var dashY = hiResDelta( faceIndex, 4 );
 
 	// center in region
 	region.x = region.x + ( region.width - dashX ) / 2 + offsetX;

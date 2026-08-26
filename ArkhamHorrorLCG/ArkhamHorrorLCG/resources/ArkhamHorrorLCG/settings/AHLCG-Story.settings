@@ -16,10 +16,10 @@ AHLCG-Story-Body-region = 216,500,1220,1540
 
 AHLCG-Story-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Story-Encounter-portrait-pany = 0
-AHLCG-Story-Encounter-portrait-clip-region = 1300,209,128,128
-AHLCG-Story-DefaultEncounter-portrait-clip-region = 1300,209,128,128
-AHLCG-Story-ReturnEncounter-portrait-clip-region = 1300,209,128,128
-AHLCG-Story-DefaultReturnEncounter-portrait-clip-region = 1300,209,128,128
+AHLCG-Story-Encounter-portrait-clip-region = 1298,205,128,128
+AHLCG-Story-DefaultEncounter-portrait-clip-region = 1298,205,128,128
+AHLCG-Story-ReturnEncounter-portrait-clip-region = 1298,205,128,128
+AHLCG-Story-DefaultReturnEncounter-portrait-clip-region = 1298,205,128,128
 
 AHLCG-Story-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Story-Collection-portrait-pany = 0

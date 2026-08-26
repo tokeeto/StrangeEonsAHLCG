@@ -2,11 +2,11 @@ AHLCG-Concealed-Default-template = ArkhamHorrorLCG/templates/AHLCG-Concealed.png
 AHLCG-ConcealedBack-Default-template = ArkhamHorrorLCG/templates/AHLCG-ConcealedBack.png
 
 # Standard
-AHLCG-Concealed-Name-region = 196,1096,744,260
+AHLCG-Concealed-Name-region = 196,1096,704,260
 AHLCG-Concealed-Name-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize*1.45}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking-0.015}; FOREGROUND: #000000
 
 # Named Decoy
-AHLCG-Concealed-DecoyName-region = 204,848,584,252
+AHLCG-Concealed-DecoyName-region = 204,848,554,252
 AHLCG-Concealed-DecoyName-style = FAMILY: {Eons.namedObjects.AHLCGObject.titleFamily}; SIZE: {Eons.namedObjects.AHLCGObject.titleFontSize*1.40}; WEIGHT: {Eons.namedObjects.AHLCGObject.titleFontWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.titleFontWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.titleFontTracking-0.025}; FOREGROUND: #FFFFFF
 
 AHLCG-Concealed-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png

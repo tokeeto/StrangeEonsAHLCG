@@ -13,30 +13,33 @@ AHLCG-LocationBack-Label-region = 624,1184,400,56
 AHLCG-LocationBack-Label-style = FAMILY: {Eons.namedObjects.AHLCGObject.typeFamily}; SIZE: {Eons.namedObjects.AHLCGObject.largeLabelSize}; WEIGHT: {Eons.namedObjects.AHLCGObject.largeLabelWeight}; WIDTH: {Eons.namedObjects.AHLCGObject.largeLabelWidth}; TRACKING: {Eons.namedObjects.AHLCGObject.largeLabelTracking}; FOREGROUND: #000000
 AHLCG-LocationBack-SubtitleText-region = 452,216,764,84
 
-AHLCG-Location-EncounterOverlay-region = 724,1008,200,200
-AHLCG-LocationBack-EncounterOverlay-region = 724,1008,200,200
+
+#AHLCG-Location-EncounterOverlay-region = 724,1008,200,200
+#AHLCG-LocationBack-EncounterOverlay-region = 724,1008,200,200
+AHLCG-Location-EncounterOverlay-region = 0,0,0,0
+AHLCG-LocationBack-EncounterOverlay-region = 0,0,0,0
 
 AHLCG-Location-Body-region = 152,1272,1344,572
 AHLCG-LocationBack-Body-region = 152,1272,1344,572
 
 AHLCG-Location-Portrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Location-Portrait-portrait-pany = 0
-AHLCG-Location-Portrait-portrait-clip-region = 0,240,1644,1100
+AHLCG-Location-Portrait-portrait-clip-region = 0,240,1644,1150
 
 AHLCG-LocationBack-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-LocationBack-BackPortrait-portrait-pany = 0
-AHLCG-LocationBack-BackPortrait-portrait-clip-region = 0,240,1644,1100
+AHLCG-LocationBack-BackPortrait-portrait-clip-region = 0,240,1644,1150
 
 AHLCG-Location-BackPortrait-portrait-template = ArkhamHorrorLCG/default-portraits/DefaultTexture.png
 AHLCG-Location-BackPortrait-portrait-pany = 0
-AHLCG-Location-BackPortrait-portrait-clip-region = 0,240,1644,1100
+AHLCG-Location-BackPortrait-portrait-clip-region = 0,240,1644,1150
 
 AHLCG-Location-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-Location-Encounter-portrait-pany = 0
-AHLCG-Location-Encounter-portrait-clip-region = 768,1052,112,112
+AHLCG-Location-Encounter-portrait-clip-region = 770,1056,104,104
 AHLCG-Location-ReturnEncounter-portrait-clip-region = 752,1036,148,136
 
-AHLCG-LocationBack-Encounter-portrait-clip-region = 768,1052,112,112
+AHLCG-LocationBack-Encounter-portrait-clip-region = 765,1052,112,112
 AHLCG-LocationBack-ReturnEncounter-portrait-clip-region = 752,1036,148,136
 
 AHLCG-Location-Collection-portrait-template = ArkhamHorrorLCG/images/empty1x1.png

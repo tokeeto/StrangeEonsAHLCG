@@ -295,7 +295,7 @@ function paintBack( g, diy, sheet ) {
 		else drawTemplate( g, sheet, '' );
 
 		if ( $ShowEncounterIconBack == '1' ) {
-			//drawLocationEncounterOverlay( g, diy, sheet );
+			// drawLocationEncounterOverlay( g, diy, sheet );
 			drawEncounterIcon( g, diy, sheet );
 		}
 
@@ -432,8 +432,8 @@ function onRead(diy, oos) {
         diy.settings.reset('AHLCG-Connection4Icon-region');
         diy.settings.reset('AHLCG-Connection5Icon-region');
         diy.settings.reset('AHLCG-Connection6Icon-region');
-	}
-	diy.version = 20;
+    }
+	diy.version = 21;
 }
 
 function onWrite( diy, oos ) {

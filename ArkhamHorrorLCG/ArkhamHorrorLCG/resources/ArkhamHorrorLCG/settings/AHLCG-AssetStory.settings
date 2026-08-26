@@ -24,8 +24,8 @@ AHLCG-AssetStory-BackPortrait-portrait-clip-region = 112,232,1432,1032
 
 AHLCG-AssetStory-Encounter-portrait-template = ArkhamHorrorLCG/images/empty1x1.png
 AHLCG-AssetStory-Encounter-portrait-pany = 0
-AHLCG-AssetStory-Encounter-portrait-clip-region = 1388,112,120,120
-AHLCG-AssetStory-DefaultEncounter-portrait-clip-region = 1388,112,120,120
+AHLCG-AssetStory-Encounter-portrait-clip-region = 1393,124,108,108
+AHLCG-AssetStory-DefaultEncounter-portrait-clip-region = 1393,124,108,108
 AHLCG-AssetStory-ReturnEncounter-portrait-clip-region = 1380,104,128,128
 AHLCG-AssetStory-DefaultReturnEncounter-portrait-clip-region = 1380,104,128,128
 
