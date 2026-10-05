@@ -350,13 +350,13 @@ function drawGuideTemplateLetter( diy, g, sheet, labelBox ) {
 
 		switch ( locale ) {
 			case 'fr':
-				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Guide75Title-' + locale + '.png'), new Region(223, 56, 827, 207) );
+				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Guide75Title-' + locale + '.png'), new Region(264, 81, 787, 205) );
 				break;
 			case 'it':
-				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Guide75Title-' + locale + '.png'), new Region(206, 162, 865, 99) );
+				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Guide75Title-' + locale + '.png'), new Region(242, 186, 830, 98) );
 				break;
 			case 'de':
-				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Guide75Title-' + locale + '.png'), new Region(207, 162, 863, 104) );
+				sheet.paintImage( g, ImageUtils.get('ArkhamHorrorLCG/overlays/AHLCG-Guide75Title-' + locale + '.png'), new Region(243, 186, 829, 102) );
 				break;
 		}
 
@@ -1480,9 +1480,9 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 
 						bodyBox.markupText = preSpecialText;
 						bodyBox.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * tightness );
-						sectionHeight = bodyBox.measure( g, bodyRegion );
+						sectionHeight = guideHangMeasure( g, bodyBox, preSpecialText, bodyRegion );
 
-						bodyBox.draw( g, bodyRegion );
+						guideHangDraw( g, bodyBox, preSpecialText, bodyRegion );
 						bodyBox.markupText = '';
 
 						bodyRegion.y += sectionHeight;
@@ -1552,9 +1552,9 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 
 						bodyBox.markupText = preSpecialText;
 						bodyBox.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * tightness );
-						sectionHeight = bodyBox.measure( g, bodyRegion );
+						sectionHeight = guideHangMeasure( g, bodyBox, preSpecialText, bodyRegion );
 
-						bodyBox.draw( g, bodyRegion );
+						guideHangDraw( g, bodyBox, preSpecialText, bodyRegion );
 						bodyBox.markupText = '';
 
 						bodyRegion.y += sectionHeight;
@@ -1671,9 +1671,9 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 
 						bodyBox.markupText = preSpecialText;
 						bodyBox.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * tightness );
-						sectionHeight = bodyBox.measure( g, bodyRegion );
+						sectionHeight = guideHangMeasure( g, bodyBox, preSpecialText, bodyRegion );
 
-						bodyBox.draw( g, bodyRegion );
+						guideHangDraw( g, bodyBox, preSpecialText, bodyRegion );
 						bodyBox.markupText = '';
 
 						bodyRegion.y += sectionHeight;
@@ -1745,7 +1745,7 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 
 					bodyBox.markupText = specialText;
 					bodyBox.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * tightness );
-					sectionHeight = bodyBox.measure( g, textRegion );
+					sectionHeight = guideHangMeasure( g, bodyBox, specialText, textRegion );
 
 					if (interlude) {
 						let inset = 24;
@@ -1758,7 +1758,7 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 						textRegion.height = sectionHeight + 2;
 
 						// test again, sectionHeight may have increased by a line because of the CupShape
-						let newSectionHeight = bodyBox.measure( g, textRegion );
+						let newSectionHeight = guideHangMeasure( g, bodyBox, specialText, textRegion );
 						while (newSectionHeight > sectionHeight) {
 							sectionHeight = newSectionHeight;
 
@@ -1769,7 +1769,7 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 								) );
 
 							textRegion.height = sectionHeight + 2;
-							newSectionHeight = bodyBox.measure( g, textRegion );
+							newSectionHeight = guideHangMeasure( g, bodyBox, specialText, textRegion );
 							}
 
 						// test again if it shrunk again, means with the indents it doesn't fit, but without the indents,
@@ -1787,7 +1787,7 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 									) );
 
 								textRegion.height = sectionHeight + 2;
-								newSectionHeight = bodyBox.measure( g, textRegion );
+								newSectionHeight = guideHangMeasure( g, bodyBox, specialText, textRegion );
 							} while (newSectionHeight > sectionHeight && inset > 0);
 						}
 
@@ -2021,7 +2021,7 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 					g.draw(new Rectangle(textRegion.x, textRegion.y, textRegion.width, textRegion.height));
 */
 					bodyBox.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * tightness );
-					bodyBox.draw( g, textRegion );
+					guideHangDraw( g, bodyBox, specialText, textRegion );
 					bodyBox.markupText = '';
 
 //					bodyRegion.x -= 34;
@@ -2042,7 +2042,7 @@ function drawGuideBody( g, diy, sheet, bodyBox, headerBox, bodyRegion, text, spa
 		else {
 			bodyBox.markupText = text;
 			bodyBox.setLineTightness( $(getExpandedKey(FACE_FRONT, 'Body', '-tightness') + '-tightness') * tightness );
-			bodyBox.draw( g, bodyRegion );
+			guideHangDraw( g, bodyBox, text, bodyRegion );
 			bodyBox.markupText = '';
 
 			text = '';
@@ -3821,3 +3821,454 @@ function drawWatermark( g, diy, sheet ) {
 	g.setComposite( AlphaComposite.SrcOver.derive(0.06) );
 	g.drawImage( sizedImage, region.x, region.y, null );
 }
+
+// ---------------------------------------------------------------------------
+// HANG PATCH - justified hanging indent for campaign guide pages
+//
+// Adds the <hang> tag: placed at the start of a paragraph (one line of the
+// source text), it justifies that paragraph and aligns the following lines
+// with the start of the text, after the bullet. Example:
+//     <hang><gbul> Put the following locations into play: ...
+// The bullet (<gbul>, <bul>, or text such as "1.") and the spaces after it
+// form the prefix; the indent equals its width.
+// Paragraphs without <hang> are rendered exactly as before.
+// ---------------------------------------------------------------------------
+
+var HANG_CARRY_TAGS = {
+	'family': 1, 'size': 1, 'b': 1, 'i': 1, 'u': 1, 'del': 1, 'sup': 1, 'sub': 1,
+	'colour': 1, 'color': 1, 'width': 1, 'tracking': 1, 'weight': 1, 'bg': 1,
+	'ahf': 1, 'tight': 1, 'loose': 1
+};
+var HANG_HALIGN_TAGS = { 'left': 1, 'center': 1, 'centre': 1, 'right': 1 };
+var HANG_JALIGN_TAGS = { 'justified': 1, 'ragged': 1 };
+var HANG_NBSP = ' ';
+
+function hangHasTag( text ) {
+	return /<(?:hang|hangtext|jbr)>/i.test( String( text ) );
+}
+
+// transparent image wider than any column: placed after the text, it forces
+// a line break, so the line before it is no longer the last line of the
+// paragraph and gets justified
+var HANG_JBR_FILLER = ' <image res://ArkhamHorrorLCG/images/empty1x1.png 30in 0.01in>';
+
+// <hangtext>: paragraph without a bullet, aligned with the previous bullet's text
+function hangIsText( line ) {
+	return /<hangtext>/i.test( String( line ) );
+}
+
+// removes <hangtext> and any manual indent (<bultab>, spaces) at line start
+function hangParseTextLine( line ) {
+	var s = String( line ).replace( /<hangtext>/i, '' );
+	var lead = /^(?:\s|<[^<>]*>)*/.exec( s )[0];
+	var kept = lead.replace( /<[^<>]*>|[^<]+/g, function ( tok ) {
+		return ( tok.charAt( 0 ) == '<' && !/^<bultab>$/i.test( tok ) ) ? tok : '';
+	} );
+	return kept + s.slice( lead.length );
+}
+
+function hangTagName( tag ) {
+	var m = /^<\/?\s*([A-Za-z][A-Za-z0-9]*)/.exec( tag );
+	return m ? m[1].toLowerCase() : '';
+}
+
+function hangIsClosing( tag ) {
+	return /^<\//.test( tag );
+}
+
+function hangIsAlignTag( tag ) {
+	var n = hangTagName( tag );
+	return HANG_HALIGN_TAGS[n] == 1 || HANG_JALIGN_TAGS[n] == 1;
+}
+
+// style tags that are carried over from one chunk to the next
+function hangIsStyleTag( tag, extra ) {
+	var n = hangTagName( tag );
+	if ( n == '' ) return false;
+	if ( HANG_CARRY_TAGS[n] == 1 ) return true;
+	if ( extra && extra[n] == 1 ) return true;
+	return hangIsAlignTag( tag );
+}
+
+// Tracks the tags left open through the text, so that each separately drawn
+// chunk keeps the font, size, alignment... of the preceding text.
+function hangNewState() {
+	return { stack: [], halign: '', jalign: '' };
+}
+
+function hangUpdateState( state, text, extra ) {
+	var re = /<[^<>]*>/g;
+	var m;
+	while ( ( m = re.exec( text ) ) != null ) {
+		var tag = m[0];
+		var n = hangTagName( tag );
+		if ( n == '' ) continue;
+		if ( HANG_HALIGN_TAGS[n] == 1 ) {
+			state.halign = hangIsClosing( tag ) ? '' : tag;
+			continue;
+		}
+		if ( HANG_JALIGN_TAGS[n] == 1 ) {
+			state.jalign = hangIsClosing( tag ) ? '' : tag;
+			continue;
+		}
+		if ( HANG_CARRY_TAGS[n] != 1 && !( extra && extra[n] == 1 ) ) continue;
+		if ( n == 'color' ) n = 'colour';
+		if ( hangIsClosing( tag ) ) {
+			for ( var i = state.stack.length - 1; i >= 0; i-- ) {
+				if ( state.stack[i].name == n ) {
+					state.stack.splice( i, 1 );
+					break;
+				}
+			}
+		}
+		else {
+			state.stack.push( { name: n, raw: tag } );
+		}
+	}
+}
+
+function hangContext( state, withAlign ) {
+	var s = withAlign ? ( state.halign + state.jalign ) : '';
+	for ( var i = 0; i < state.stack.length; i++ ) s += state.stack[i].raw;
+	return s;
+}
+
+function hangStripAlign( text ) {
+	return String( text ).replace( /<[^<>]*>/g, function ( tag ) {
+		return hangIsAlignTag( tag ) ? '' : tag;
+	} );
+}
+
+// spaces and <bultab> -> non-breaking spaces (justification does not stretch them)
+function hangNbsp( text ) {
+	return String( text ).replace( /<[^<>]*>|[^<]+/g, function ( tok ) {
+		if ( tok.charAt( 0 ) == '<' ) {
+			return /^<bultab>$/i.test( tok ) ? '     ' : tok;
+		}
+		return tok.replace( /[ \t]/g, HANG_NBSP );
+	} );
+}
+
+// keeps only the style tags (to measure the width without the bullet)
+function hangStylesOnly( text, extra ) {
+	var out = '';
+	var re = /<[^<>]*>/g;
+	var m;
+	while ( ( m = re.exec( text ) ) != null ) {
+		if ( hangIsStyleTag( m[0], extra ) ) out += m[0];
+	}
+	return out;
+}
+
+// Splits the text into chunks: <hang> paragraphs are isolated, the others
+// are grouped together unchanged.
+function hangSplitChunks( text ) {
+	var lines = String( text ).replace( /\r/g, '' ).split( '\n' );
+	var chunks = [];
+	var cur = [];
+	for ( var i = 0; i < lines.length; i++ ) {
+		if ( !hangHasTag( lines[i] ) ) {
+			cur.push( lines[i] );
+			continue;
+		}
+		if ( cur.length > 0 ) {
+			chunks.push( { hang: false, jbr: false, text: cur.join( '\n' ) } );
+			cur = [];
+		}
+		// <jbr>: forced line break; the line before it stays justified
+		var parts = lines[i].split( /<jbr>/i );
+		// a <jbr> at the end of a line does not create an empty paragraph
+		// (if only tags remain, they are attached to the previous chunk)
+		while ( parts.length > 1 && !/\S/.test( parts[parts.length - 1].replace( /<[^<>]*>/g, '' ) ) ) {
+			var tail = parts.pop();
+			parts[parts.length - 1] += tail.replace( /^\s+|\s+$/g, '' );
+			parts.trailingJbr = true;
+		}
+		var special = /<hang(?:text)?>/i.test( parts[0] );
+		for ( var k = 0; k < parts.length; k++ ) {
+			var t = parts[k];
+			if ( k > 0 ) {
+				t = t.replace( /^[ \t]+/, '' );
+				if ( special ) t = '<hangtext>' + t;
+			}
+			var last = ( k == parts.length - 1 );
+			chunks.push( {
+				hang: special,
+				jbr: !last || ( last && parts.trailingJbr == true ),
+				text: t
+			} );
+		}
+	}
+	if ( cur.length > 0 ) chunks.push( { hang: false, jbr: false, text: cur.join( '\n' ) } );
+	return chunks;
+}
+
+// Parses a <hang> line:
+//   before: whatever precedes <hang> (often tags such as </family>)
+//   prefix: the bullet + style tags + the spaces that follow it
+//           (spaces converted to non-breaking so they are not stretched)
+//   rest:   the paragraph text
+function hangParseLine( line, extra ) {
+	var m = /<hang>/i.exec( line );
+	var before = line.slice( 0, m.index );
+	var after = line.slice( m.index + m[0].length );
+
+	var tokens = after.match( /<[^<>]*>|[^<]+|</g ) || [];
+	var prefix = '';
+	var phase = 0;	// 0 = looking for the bullet, 1 = after the bullet
+	var i = 0;
+	var restStart = '';
+	var bulletTok = '';
+
+	for ( ; i < tokens.length; i++ ) {
+		var tok = tokens[i];
+		var isTag = tok.length > 1 && tok.charAt( 0 ) == '<' && tok.charAt( tok.length - 1 ) == '>';
+
+		if ( isTag ) {
+			if ( hangIsStyleTag( tok, extra ) ) {
+				prefix += tok;
+				continue;
+			}
+			if ( /^<hang>$/i.test( tok ) ) continue;
+			if ( phase == 0 ) {
+				prefix += tok;	// the bullet (<gbul>, <bul>, icon...)
+				bulletTok = tok;
+				phase = 1;
+				continue;
+			}
+			break;	// another visible tag: start of the text
+		}
+
+		// plain text
+		var ws = /^\s*/.exec( tok )[0];
+		if ( phase == 0 ) {
+			prefix += ws.replace( /[ \t]/g, HANG_NBSP );
+			var body = tok.slice( ws.length );
+			if ( body.length == 0 ) continue;
+			var word = /^\S+/.exec( body )[0];	// text bullet, e.g. "1.", "a)" or "-"
+			if ( !/^(?:[0-9]+[.)]?|[A-Za-z][.)]|[^\sA-Za-z0-9À-ɏ]{1,3})$/.test( word ) ) {
+				// no bullet: plain justified paragraph without indent
+				restStart = body;
+				i++;
+				break;
+			}
+			prefix += word;
+			bulletTok = word;
+			phase = 1;
+			var tail = body.slice( word.length );
+			var ws2 = /^\s*/.exec( tail )[0];
+			prefix += ws2.replace( /[ \t]/g, HANG_NBSP );
+			tail = tail.slice( ws2.length );
+			if ( tail.length > 0 ) {
+				restStart = tail;
+				i++;
+				break;
+			}
+			continue;
+		}
+		// phase 1: consume the spaces after the bullet
+		prefix += ws.replace( /[ \t]/g, HANG_NBSP );
+		if ( ws.length < tok.length ) {
+			restStart = tok.slice( ws.length );
+			i++;
+			break;
+		}
+	}
+
+	var rest = restStart + tokens.slice( i ).join( '' );
+	return { before: before, prefix: prefix, rest: rest, hasBullet: phase == 1, bullet: bulletTok };
+}
+
+// sub-bullet: a <bul> bullet (<gbul> bullets are top-level bullets)
+function hangIsSubBullet( p ) {
+	return p.hasBullet && /^<bul>$/i.test( p.bullet );
+}
+
+// is there any visible text (ignoring tags and whitespace)?
+function hangHasVisible( text ) {
+	return /\S/.test( String( text ).replace( /<[^<>]*>/g, '' ) );
+}
+
+// removes the manual indent (<bultab>, spaces) while keeping other tags
+function hangStripIndent( text ) {
+	return String( text ).replace( /<[^<>]*>|[^<]+/g, function ( tok ) {
+		if ( tok.charAt( 0 ) == '<' ) return /^<bultab>$/i.test( tok ) ? '' : tok;
+		return /\S/.test( tok ) ? tok : '';
+	} );
+}
+
+// --- rendering (uses the plugin's MarkupBox) -------------------------------
+
+function hangExtraStyleTags() {
+	var extra = {};
+	try {
+		var AHLCGObject = Eons.namedObjects.AHLCGObject;
+		var lists = [ AHLCGObject.StyleList, AHLCGObject.SmallStyleTagList ];
+		for ( var l = 0; l < lists.length; l++ ) {
+			if ( !lists[l] ) continue;
+			for ( var k = 0; k < lists[l].length; k++ ) {
+				var t = $( lists[l][k] + '-tag' );
+				if ( t != null && String( t ) != '' ) extra[ String( t ).toLowerCase() ] = 1;
+			}
+		}
+	} catch ( ex ) {}
+	return extra;
+}
+
+// width of one line of markup, measured without drawing anything
+function hangLineWidth( hg, box, markup ) {
+	box.markupText = markup;
+	return box.drawAsSingleLine( hg, new Region2D( 0, 0, 100000, 1000 ) );
+}
+
+// page shape: first line indented by first, following lines by w
+function hangShape( base, y0, w, h1, first ) {
+	if ( !first ) first = 0;
+	try {
+		return new JavaAdapter( PageShape, {
+			getLeftInset: function ( y1, y2 ) {
+				var v = base.getLeftInset( y1, y2 );
+				return ( y1 > y0 + 0.5 ) ? v + w : v + first;
+			},
+			getRightInset: function ( y1, y2 ) {
+				return base.getRightInset( y1, y2 );
+			}
+		} );
+	} catch ( ex ) {
+		// fallback if JavaAdapter is not available
+		var cut = y0 + h1 * 1.25;
+		return new PageShape.CompoundShape(
+			first > 0 ? new PageShape.InsetShape( base.getLeftInset( y0, y0 + 1 ) + first, base.getRightInset( y0, y0 + 1 ) ) : base,
+			cut,
+			new PageShape.InsetShape( base.getLeftInset( cut, cut + 1 ) + w, base.getRightInset( cut, cut + 1 ) )
+		);
+	}
+}
+
+// Measures (draw = false) or draws (draw = true) guide text, handling
+// <hang> paragraphs. Returns the height used, like measure().
+function guideHangLayout( g, box, text, region, draw ) {
+	text = String( text );
+
+	if ( !hangHasTag( text ) ) {
+		box.markupText = text;
+		if ( draw ) {
+			box.draw( g, region );
+			return 0;
+		}
+		return box.measure( g, region );
+	}
+
+	var extra = hangExtraStyleTags();
+	var chunks = hangSplitChunks( text );
+	var base = box.getPageShape();
+	var x = region.getX();
+	var w = region.getWidth();
+	var top = region.getY();
+	var bottom = top + region.getHeight();
+	var y = top;
+	var state = hangNewState();
+	var lastIndent = 0;
+	var parentIndent = 0;	// text indent of the last top-level bullet
+	var hg = g.create();
+	hg.setClip( 0, 0, 0, 0 );
+
+	try {
+		for ( var c = 0; c < chunks.length; c++ ) {
+			var chunk = chunks[c];
+			var r = new Region2D( x, y, w, Math.max( 1, bottom - y ) );
+			var markup;
+			var shape = null;
+
+			if ( !chunk.hang ) {
+				markup = hangContext( state, true ) + ( chunk.jbr ? '<justified>' : '' ) + chunk.text;
+				// ordinary text ends the list: following <bul> bullets
+				// are no longer sub-bullets
+				if ( hangHasVisible( chunk.text ) ) parentIndent = 0;
+			}
+			else if ( hangIsText( chunk.text ) ) {
+				// all lines aligned with the previous bullet's text
+				shape = hangShape( base, y - 100000, lastIndent, 0 );
+				markup = hangContext( state, false ) + '<left><justified>'
+					+ hangStripAlign( hangParseTextLine( chunk.text ) );
+			}
+			else {
+				var p = hangParseLine( chunk.text, extra );
+				var ctx = hangContext( state, false );
+				// <bul> sub-bullet after a top-level bullet: it starts under
+				// that bullet's text (any manual indent is ignored)
+				var offset = 0;
+				if ( hangIsSubBullet( p ) && parentIndent > 0 && !hangHasVisible( p.before ) ) {
+					offset = parentIndent;
+					p.before = hangStripIndent( p.before );
+				}
+				var before = hangNbsp( hangStripAlign( p.before ) );
+				var prefix = hangStripAlign( p.prefix );
+				var rest = hangStripAlign( p.rest );
+
+				var indent = 0;
+				if ( p.hasBullet ) {
+					indent = hangLineWidth( hg, box, ctx + before + prefix + 'M' )
+						- hangLineWidth( hg, box, ctx + hangStylesOnly( before + prefix, extra ) + 'M' );
+					if ( !( indent > 0 ) ) indent = 0;
+				}
+				if ( !hangIsSubBullet( p ) ) parentIndent = indent;
+				lastIndent = offset + indent;
+
+				box.markupText = ctx + before + prefix + 'M';
+				var lineH = box.measure( g, new Region2D( x, y, w, 1000 ) );
+
+				shape = hangShape( base, y, offset + indent, lineH, offset );
+				markup = ctx + '<left><justified>' + before + prefix + rest;
+			}
+
+			box.setPageShape( shape != null ? shape : base );
+			box.markupText = markup;
+			var h = box.measure( g, r );
+			if ( draw ) {
+				if ( chunk.jbr ) {
+					// draw with the (invisible) filler image; the layout
+					// itself ignores this image
+					box.markupText = markup + HANG_JBR_FILLER;
+					box.draw( g, r );
+					box.markupText = markup;
+				}
+				else {
+					box.draw( g, r );
+				}
+			}
+
+			hangUpdateState( state, chunk.text, extra );
+
+			if ( c == chunks.length - 1 ) {
+				y += h;
+			}
+			else {
+				// position of the next chunk: exactly where Strange Eons would
+				// have placed the next line if everything were a single block
+				// (append an "M" line to this chunk, then subtract its height)
+				box.markupText = markup + '\nM';
+				var joint = box.measure( g, r );
+				box.setPageShape( base );
+				box.markupText = hangContext( state, false ) + 'M';
+				var lineM = box.measure( g, new Region2D( x, y, w, 1000 ) );
+				y += joint - lineM;
+			}
+			box.setPageShape( base );
+		}
+	} finally {
+		box.setPageShape( base );
+		hg.dispose();
+	}
+
+	return y - top;
+}
+
+function guideHangMeasure( g, box, text, region ) {
+	return guideHangLayout( g, box, text, region, false );
+}
+
+function guideHangDraw( g, box, text, region ) {
+	return guideHangLayout( g, box, text, region, true );
+}
+// --- end HANG PATCH --------------------------------------------------------

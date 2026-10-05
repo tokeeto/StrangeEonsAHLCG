@@ -733,6 +733,11 @@ function initGuideTags( diy, textBox ) {
 		let item = AHLCGObject.GuideStyleList[index];
 		textBox.setStyleForTag($(item+'-tag'), diy.settings.getTextStyle(item+'-style',null));
 	}
+
+	// HANG PATCH : balises gerees par drawGuideBody, jamais affichees
+	textBox.setReplacementForTag( 'hang', '' );
+	textBox.setReplacementForTag( 'hangtext', '' );
+	textBox.setReplacementForTag( 'jbr', '' );
 }
 
 function setPortraitDefaults( diy, faceIndex, key, portraitKey ) {
